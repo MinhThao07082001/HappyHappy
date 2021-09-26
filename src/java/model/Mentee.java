@@ -40,6 +40,9 @@ public class Mentee {
         this.createTime = createTime;
     }
 
+    public Mentee() {
+    }
+
     public int getMenteeID() {
         return menteeID;
     }
