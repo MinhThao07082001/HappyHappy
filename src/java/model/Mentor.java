@@ -46,6 +46,9 @@ public class Mentor {
         this.createTime = createTime;
     }
 
+    public Mentor() {
+    }
+
     public int getMentorID() {
         return mentorID;
     }

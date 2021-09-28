@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/controller/MentorAuthentication.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/dal/admin/MentorControl.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/logic/DEnoLogic.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/dal/MentorDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/ShareData/FileHandling.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/HappyHappy/src/java/dal/MenteeDAO.java</file>
+        </group>
+    </open-files>
 </project-private>
