@@ -4,9 +4,49 @@
         <servlet-name>DemoController</servlet-name>
         <servlet-class>controller.DemoController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignInServlet</servlet-name>
+        <servlet-class>controller.SignInServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignUpServlet</servlet-name>
+        <servlet-class>controller.SignUpServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignOutServlet</servlet-name>
+        <servlet-class>controller.SignOutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SignUp2Servlet</servlet-name>
+        <servlet-class>controller.SignUp2Servlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ChangedPasswordServlet</servlet-name>
+        <servlet-class>controller.ChangedPasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DemoController</servlet-name>
         <url-pattern>/DemoController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignInServlet</servlet-name>
+        <url-pattern>/signin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUpServlet</servlet-name>
+        <url-pattern>/signup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignOutServlet</servlet-name>
+        <url-pattern>/signout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUp2Servlet</servlet-name>
+        <url-pattern>/signup2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangedPasswordServlet</servlet-name>
+        <url-pattern>/changepassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
