@@ -118,4 +118,47 @@ public class UserDAO extends DBContext {
         }
         return 0;
     }
+    public UserCommon getAccountByID(String userID) {
+        String sql = "select * from userCommon where userID = ?";
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            st.setString(1, userID);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return new UserCommon(rs.getInt("userID"),
+                                    rs.getString("name"),
+                                    rs.getString("password"),
+                                    rs.getString("email"),
+                                    rs.getString("dob"),
+                                    rs.getInt("sex"),
+                                    rs.getString("address"),
+                                    rs.getString("phone"),
+                                    rs.getString("imgAvt"),
+                                    rs.getString("description"),
+                                    rs.getString("status"),
+                                    rs.getInt("moneyLeft"),
+                                    rs.getDate("createTime"),
+                                    rs.getInt("role"));
+            }
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return null;   
+    }
+    public boolean updatePassword(String userID, String newPassword) {
+        UserCommon toChange = getAccountByID(userID);
+        String sql = "UPDATE userCommon\n"
+                + "SET password = ?\n"
+                + "WHERE userID = ?";
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            st.setString(1, newPassword);
+            st.setString(2, userID);
+            st.executeUpdate();
+            return true;
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+        return false;
+    }
 }

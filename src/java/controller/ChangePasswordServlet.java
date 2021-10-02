@@ -5,8 +5,6 @@
  */
 package controller;
 
-import dal.MenteeDAO;
-import dal.MentorDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,13 +12,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.UserCommon;
 
 /**
  *
  * @author Admin
  */
-public class SignUp2Servlet extends HttpServlet {
+public class ChangePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +38,10 @@ public class SignUp2Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignUp2Servlet</title>");            
+            out.println("<title>Servlet ChangePasswordServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SignUp2Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ChangePasswordServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +59,7 @@ public class SignUp2Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("SignUp2.jsp").forward(request, response);
+        request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
     }
 
     /**
@@ -74,40 +73,24 @@ public class SignUp2Servlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String e = request.getParameter("email");
-        String p = request.getParameter("password");
-        String n = request.getParameter("name");
-        String dob = request.getParameter("dob");
-        String ph = request.getParameter("phone");
-        String s = request.getParameter("sex");
-        String r = request.getParameter("role");
-        UserDAO ud = new UserDAO();
-        MenteeDAO ted = new MenteeDAO();
-        MentorDAO tod = new MentorDAO();
-        UserCommon a = ud.getEmail(e);
-        UserCommon b = ud.getPhone(ph);
-        if (a != null || b!=null) {
-            request.setAttribute("error", "Email hoặc số điện thoại đã tồn tại");
-            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-        } else {
-            UserCommon u = new UserCommon();
-            u.setEmail(e);
-            u.setPassword(p);
-            u.setName(n);
-            u.setDob(dob);
-            u.setPhone(ph);
-            u.setSex(Integer.parseInt(s));
-            u.setRole(Integer.parseInt(r));
-            ud.create(u);
-            if(u.getRole()==1){
-                tod.createMentor(u);
+        try {
+            UserDAO dao = new UserDAO();
+            HttpSession session = request.getSession();
+            UserCommon account = dao.getEmail((String)session.getAttribute("email"));
+            String oldPassword = request.getParameter("pass");
+            String newPassword = request.getParameter("new-pass");
+            String repeatNewPassword = request.getParameter("repeat-new-pass");
+            if (account.getPassword().equals(oldPassword)
+                    && newPassword.equals(repeatNewPassword)) {
+                dao.updatePassword(String.valueOf(account.getUserID()), newPassword);
+                request.setAttribute("message", "Changed password successfully!");
+            } else {
+                request.setAttribute("message", "Fail to change password");
+                request.setAttribute("compare", "CorrectCode.");
             }
-            if(u.getRole()==2){
-                ted.createMentee(u);
-            }
-            response.sendRedirect("signin");
+             request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 

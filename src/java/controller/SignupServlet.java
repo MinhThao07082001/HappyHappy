@@ -18,6 +18,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Mentee;
 import model.Mentor;
 import model.UserCommon;
@@ -115,7 +116,10 @@ public class SignUpServlet extends HttpServlet {
             u.setPhone(ph);
             u.setSex(Integer.parseInt(s));
             u.setRole(Integer.parseInt(r));
-            response.sendRedirect("signup2");
+            HttpSession session = request.getSession();
+            session.setAttribute("email", e);
+            session.setAttribute("user", u);
+            response.sendRedirect("UserAuthentication");
         }
     }
 

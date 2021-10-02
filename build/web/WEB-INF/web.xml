@@ -20,6 +20,10 @@
         <servlet-name>SignUp2Servlet</servlet-name>
         <servlet-class>controller.SignUp2Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>controller.ChangePasswordServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DemoController</servlet-name>
         <url-pattern>/DemoController</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>SignUp2Servlet</servlet-name>
         <url-pattern>/signup2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/changepassword</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
