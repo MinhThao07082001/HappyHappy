@@ -5,7 +5,9 @@
  */
 package controller;
 
-import dal.userDAO;
+import dal.MenteeDAO;
+import dal.MentorDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.Format;
@@ -16,13 +18,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.userCommon;
+import javax.servlet.http.HttpSession;
+import model.Mentee;
+import model.Mentor;
+import model.UserCommon;
 
 /**
  *
  * @author Admin
  */
-public class SignupServlet extends HttpServlet {
+public class SignUpServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -70,7 +75,7 @@ public class SignupServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("now", new SignupServlet().now());
+        request.setAttribute("now", new SignUpServlet().now());
         request.getRequestDispatcher("SignUp.jsp").forward(request, response);
     }
 
@@ -94,14 +99,16 @@ public class SignupServlet extends HttpServlet {
         String ph = request.getParameter("phone");
         String s = request.getParameter("sex");
         String r = request.getParameter("role");
-        userDAO db = new userDAO();
-        userCommon a = db.getEmail(e);
-        userCommon b = db.getPhone(ph);
+        UserDAO ud = new UserDAO();
+        MenteeDAO ted = new MenteeDAO();
+        MentorDAO tod = new MentorDAO();
+        UserCommon a = ud.getEmail(e);
+        UserCommon b = ud.getPhone(ph);
         if (a != null || b!=null) {
             request.setAttribute("error", "Email hoặc số điện thoại đã tồn tại");
             request.getRequestDispatcher("SignUp.jsp").forward(request, response);
         } else {
-            userCommon u = new userCommon();
+            UserCommon u = new UserCommon();
             u.setEmail(e);
             u.setPassword(p);
             u.setName(n);
@@ -109,8 +116,9 @@ public class SignupServlet extends HttpServlet {
             u.setPhone(ph);
             u.setSex(Integer.parseInt(s));
             u.setRole(Integer.parseInt(r));
-            db.create(u);
-            response.sendRedirect("signin");
+            HttpSession session = request.getSession();
+            session.setAttribute("user", u);
+            response.sendRedirect("UserAuthentication");
         }
     }
 

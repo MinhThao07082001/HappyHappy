@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/SE/semester%205/SWP391/Happy-Happy/HappyHappy/src/java/controller/SignupServlet.java</file>
-            <file>file:/D:/SE/semester%205/SWP391/Happy-Happy/HappyHappy/src/java/controller/SigninServlet.java</file>
-            <file>file:/D:/SE/semester%205/SWP391/Happy-Happy/HappyHappy/web/SignIn.jsp</file>
-            <file>file:/D:/SE/semester%205/SWP391/Happy-Happy/HappyHappy/web/SignUp.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/HappyHappy/src/java/dal/DBContext.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/SignInServlet.java</file>
         </group>
     </open-files>
 </project-private>
