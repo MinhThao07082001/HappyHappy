@@ -5,8 +5,6 @@
  */
 package controller;
 
-import dal.MenteeDAO;
-import dal.MentorDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,13 +12,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.SystemEmail;
 import model.UserCommon;
 
 /**
  *
- * @author Admin
+ * @author user
  */
-public class SignUp2Servlet extends HttpServlet {
+public class ConfirmEmailServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class SignUp2Servlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignUp2Servlet</title>");            
+            out.println("<title>Servlet ConfirmEmailServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SignUp2Servlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ConfirmEmailServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +60,7 @@ public class SignUp2Servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("SignUp2.jsp").forward(request, response);
+         request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
     }
 
     /**
@@ -75,49 +75,48 @@ public class SignUp2Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("UTF-8");
-        String e = request.getParameter("email");
-        String p = request.getParameter("password");
-        String n = request.getParameter("name");
-        String dob = request.getParameter("dob");
-        String ph = request.getParameter("phone");
-        String s = request.getParameter("sex");
-        String r = request.getParameter("role");
-        UserDAO ud = new UserDAO();
-        MenteeDAO ted = new MenteeDAO();
-        MentorDAO tod = new MentorDAO();
-        UserCommon a = ud.getEmail(e);
-        UserCommon b = ud.getPhone(ph);
-        if (a != null || b!=null) {
-            request.setAttribute("error", "Email hoặc số điện thoại đã tồn tại");
-            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-        } else {
-            UserCommon u = new UserCommon();
-            u.setEmail(e);
-            u.setPassword(p);
-            u.setName(n);
-            u.setDob(dob);
-            u.setPhone(ph);
-            u.setSex(Integer.parseInt(s));
-            u.setRole(Integer.parseInt(r));
-            ud.create(u);
-            if(u.getRole()==1){
-                tod.createMentor(u);
-            }
-            if(u.getRole()==2){
-                ted.createMentee(u);
-            }
-            response.sendRedirect("signin");
-        }
-    }
+        String email = request.getParameter("email").trim();
+        String mess = "";
+        UserDAO dao = new UserDAO();
+       
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
+        if (email.length() == 0 || email == null) {
+            mess = "You have to input your email";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
+            return;
+        } else if (email == null) {
+            mess = "Email not existed!";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
+            return;
+        } else {
+            String code = sendResetMail(email) ;
+            HttpSession session = request.getSession() ;
+            session.setAttribute("vericode", code);
+            mess = "An verification code have been sent to your email address";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("ConfirmCode.jsp").forward(request, response);
+            return;
+        }
+
+}
+       
+    public String sendResetMail(String userMail) {
+        SystemEmail se = new SystemEmail();
+        UserDAO dao = new UserDAO() ;
+        long milis = System.currentTimeMillis(); // 
+        String captcha = dao.randomCaptcha(); 
+        se.sendEmail(userMail, "verifitation code", captcha);
+        return captcha ;
+    }
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */
+@Override
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

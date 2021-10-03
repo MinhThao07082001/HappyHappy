@@ -11,7 +11,7 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Sign In</title>
+    <title>Login</title>
 
     <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
     <meta name="robots"
@@ -122,7 +122,7 @@
                             </button>
                         </div>
                         <div class="text-center">
-                            <a href="guest-forgot-password.html"
+                            <a href="confirm"
                                class="text-black-70"
                                style="text-decoration: underline;">Forgot Password?</a>
                         </div>

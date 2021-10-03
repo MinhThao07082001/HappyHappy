@@ -19,7 +19,7 @@ import model.UserCommon;
  *
  * @author user
  */
-public class ChangedPasswordServlet extends HttpServlet {
+public class ForgetChangePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class ChangedPasswordServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChangedPasswordServlet</title>");
+            out.println("<title>Servlet ForgetChangePasswordServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ChangedPasswordServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ForgetChangePasswordServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +59,7 @@ public class ChangedPasswordServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+        request.getRequestDispatcher("Forget_ChangePassword.jsp").forward(request, response);
     }
 
     /**
@@ -73,31 +73,27 @@ public class ChangedPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            HttpSession session = request.getSession();
-            UserCommon accountChangePass = (UserCommon) session.getAttribute("acc");
+        HttpSession session = request.getSession();
+        String mess;
 
-            String oldPassword = request.getParameter("pass");
-            String newPassword = request.getParameter("new-pass");
-            String repeatNewPassword = request.getParameter("repeat-new-pass");
-            UserDAO dao = new UserDAO();
+        String userMail = request.getParameter("userMail");
+        String newPass = request.getParameter("newPass");
+        String confirmNewPass = request.getParameter("confirmNewPass");
+        UserDAO dao = new UserDAO();
+        UserCommon account = dao.getAccountByEmail((String) session.getAttribute("email"));
 
-            UserCommon a = dao.getAccountByID(String.valueOf(accountChangePass.getUserID()));
-
-            if (a.getPassword().equals(oldPassword)
-                    && newPassword.equals(repeatNewPassword)) {
-                dao.updatePassword(String.valueOf(accountChangePass.getUserID()), newPassword);
-
-                request.setAttribute("message", "Changed password successfully!");
-                response.sendRedirect("SignIn.jsp");
-            } else {
-                request.setAttribute("message", "Fail to change password");
-                request.setAttribute("compare", "CorrectCode.");
-             request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
-            }
-
-        } catch (Exception e) {
-
+        if (newPass.equals(confirmNewPass)) {
+            account.setPassword(newPass);
+            dao.updatePassword(account.getEmail(), newPass);
+            mess = "Your password have been reset";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("SignIn.jsp").forward(request, response);
+            return;
+        } else {
+            mess = "Confirm password dont match";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("Forget_ChangePassword.jsp").forward(request, response);
+            return;
         }
     }
 

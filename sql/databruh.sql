@@ -144,7 +144,12 @@ password nvarchar(100),
 role int,
 description nvarchar(1000),
 )
-
+CREATE TABLE authenticationCode(
+id int identity(1,1) primary key,
+email nvarchar(100),
+code nvarchar(10),
+createTime datetime default getDate(),
+)
 /*Sample database*/
 INSERT INTO subject(subjectName) values ('Java')
 INSERT INTO subject(subjectName) values ('C')
