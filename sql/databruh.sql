@@ -151,8 +151,25 @@ email nvarchar(100),
 code nvarchar(10),
 createTime datetime default getDate(),
 )
-
-
+create table conversation(
+conversationID int identity(1,1) primary key,
+userID1 int,
+userID2 int,
+foreign key (userID1) references userCommon(userID),
+foreign key (userID2) references userCommon(userID),
+createTime datetime default getDate(),
+)
+create table message(
+messageID int identity(1,1) primary key,
+conversationID int,
+sender int,
+foreign key (sender) references userCommon(userID),
+receiver int,
+foreign key (receiver) references userCommon(userID),
+content nvarchar(1000),
+foreign key (conversationID) references conversation(conversationID),
+createTime datetime default getDate(),
+)
 /*Sample database*/
 INSERT INTO subject(subjectName) values ('Java')
 INSERT INTO subject(subjectName) values ('C')
