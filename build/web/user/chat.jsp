@@ -558,7 +558,7 @@
                                         <div class="message__aside">
                                             <a href="fixed-instructor-profile.html"
                                                class="avatar">
-                                                <img src="${pageContext.request.contextPath}/user/assets/images/people/110/guy-6.jpg"
+                                                <img src="${mess.sender eq requestScope.user1.userID ? requestScope.user1.imgAvt : requestScope.user2.imgAvt}"
                                                      alt="people"
                                                      class="avatar-img rounded-circle">
                                             </a>
@@ -567,7 +567,7 @@
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex mr-3">
-                                                        <a href="fixed-instructor-profile.html"
+                                                        <a href="#0"
                                                            class="text-body"><strong>${mess.sender}</strong></a>
                                                     </div>
                                                     <div>

@@ -2,6 +2,7 @@ package controller;
 
 import dal.ConversationDAO;
 import dal.MessageDAO;
+import dal.UserDAO;
 import java.util.Collections;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -13,6 +14,7 @@ import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
 import model.Conversation;
 import model.Message;
+import model.UserCommon;
 
 @ServerEndpoint("/chat/{conversationID}")
 public class ChatController {
@@ -27,12 +29,12 @@ public class ChatController {
     public void onOpen(Session curSession, @PathParam("conversationID") String room) {
         curSession.getUserProperties().put("conversationID", room);
         System.out.println("room enter: "+room);
-        for (Session ses : userSessions) {//Return a reference a RemoteEndpoint object representing the peer of this conversation that is able to send messages asynchronously to the peer.
-            ses.getAsyncRemote().sendText("access");
-//            UOA uoa = new UOA();
-//            uoa.insert(id, curSession.getId());
-        }
-        System.out.println(curSession.getId());
+//        for (Session ses : userSessions) {//Return a reference a RemoteEndpoint object representing the peer of this conversation that is able to send messages asynchronously to the peer.
+//            ses.getAsyncRemote().sendText("access");
+////            UOA uoa = new UOA();
+////            uoa.insert(id, curSession.getId());
+//        }
+//        System.out.println(curSession.getId());
         userSessions.add(curSession);
     }
     //called when a web socket session is closing.
@@ -40,10 +42,10 @@ public class ChatController {
     @OnClose
     public void onClose(Session curSession, @PathParam("conversationID") String room) {
         userSessions.remove(curSession);
-        for (Session ses : userSessions) {//Return a reference a RemoteEndpoint object representing the peer of this conversation that is able to send messages asynchronously to the peer.
-            
-            ses.getAsyncRemote().sendText("out");
-        }
+//        for (Session ses : userSessions) {//Return a reference a RemoteEndpoint object representing the peer of this conversation that is able to send messages asynchronously to the peer.
+//            
+//            ses.getAsyncRemote().sendText("out");
+//        }
     }
 
     @OnMessage
@@ -57,16 +59,19 @@ public class ChatController {
             String conv = Integer.toString(cd.getConversationByUserID(Integer.parseInt(sp[0]), Integer.parseInt(sp[2])).getConversationID());
             if(conv!=null && ses.getUserProperties().get("conversationID").equals(conv)){
                 Message m = new Message();
+                UserDAO ud = new UserDAO();
                 m.setConversationID(Integer.parseInt(sp[3]));
                 m.setSender(Integer.parseInt(sp[0]));
                 m.setReceiver(Integer.parseInt(sp[2]));
                 m.setContent(sp[1]);
                 md.insertMessage(m);
+                UserCommon u1 = ud.getAccountByID(sp[0]);
+                UserCommon u2 = ud.getAccountByID(sp[2]);
                 String text = "         <li class=\"message d-inline-flex\">\n" +
 "                                        <div class=\"message__aside\">\n" +
 "                                            <a href=\"fixed-instructor-profile.html\"\n" +
 "                                               class=\"avatar\">\n" +
-"                                                <img src=\"/HappyHappy/user/assets/images/people/110/guy-6.jpg\"\n" +
+"                                                <img src=\""+u1.getImgAvt()+"\"\n" +
 "                                                     alt=\"people\"\n" +
 "                                                     class=\"avatar-img rounded-circle\">\n" +
 "                                            </a>\n" +
@@ -76,7 +81,7 @@ public class ChatController {
 "                                                <div class=\"d-flex align-items-center\">\n" +
 "                                                    <div class=\"flex mr-3\">\n" +
 "                                                        <a href=\"fixed-instructor-profile.html\"\n" +
-"                                                           class=\"text-body\"><strong>Sender</strong></a>\n" +
+"                                                           class=\"text-body\"><strong>"+u1.getName()+"</strong></a>\n" +
 "                                                    </div>\n" +
 "                                                    <div>\n" +
 "                                                        <small class=\"text-muted\">just now</small>\n" +
@@ -87,6 +92,7 @@ public class ChatController {
 "                                            </div>\n" +
 "                                        </div>\n" +
 "                                    </li>";
+                
                 ses.getAsyncRemote().sendText(text);
 //                System.out.println(message);
 //                System.out.println(room);

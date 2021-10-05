@@ -71,16 +71,19 @@ public class ConversationControl extends HttpServlet {
         UserDAO ud = new UserDAO();
         MessageDAO md = new MessageDAO();
         String email = (String) session.getAttribute("email");
-        UserCommon u = ud.getEmail(email);
-        int user1 = u.getUserID();
+        UserCommon u1 = ud.getEmail(email);
+        int user1 = u1.getUserID();
         int user2 = Integer.parseInt(request.getParameter("id"));
         Conversation conv = cd.getConversationByUserID(user1, user2);
         if(conv == null){
             cd.createConversation(user1, user2);
             conv = cd.getConversationByUserID(user1, user2);
         }
+        UserCommon u2 = ud.getAccountByID(Integer.toString(user2));
         List<Message> mList = md.getMessageByConservationID(conv.getConversationID());
         System.out.println(user1 + "    " + user2 + "       " +conv.getConversationID());
+        request.setAttribute("user1", u1);
+        request.setAttribute("user2", u2);
         request.setAttribute("mList", mList);
         request.setAttribute("from", user1);
         request.setAttribute("to", user2);
