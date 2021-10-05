@@ -568,7 +568,7 @@
                                                 <div class="d-flex align-items-center">
                                                     <div class="flex mr-3">
                                                         <a href="#0"
-                                                           class="text-body"><strong>${mess.sender}</strong></a>
+                                                           class="text-body"><strong>${mess.sender eq requestScope.user1.userID ? requestScope.user1.name : requestScope.user2.name}</strong></a>
                                                     </div>
                                                     <div>
                                                         <small class="text-muted">just now</small>
