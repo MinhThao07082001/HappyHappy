@@ -6,25 +6,34 @@
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Mentor.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/DBContext.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/UserAuthentication.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/mentor/MentorHome.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/ShareData/Mailer.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/SignInServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Course.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/UserCommon.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Conversation.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/MentorDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/chat.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/ConversationDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/UserDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/DemoController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/assets/js/messages.js</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_edit_profile.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/ChatController.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/ConversationControl.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/mentor/MentorHome.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/mentee/MenteeHome.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_header.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/SignInServlet.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/MenteeDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/fixed-instructor-messages-2.html</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Conversation.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/fixed-instructor-messages.html</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/ProcessAuthenticationCode.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/chat.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/MenteeEditProfile.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/SignIn.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee-dashboard.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/SignUpServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/MessageDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Message.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/ConversationDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/ShareData/FileHandling.java</file>
         </group>
     </open-files>
 </project-private>

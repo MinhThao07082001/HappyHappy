@@ -67,9 +67,7 @@ CREATE TABLE course(
 courseID int identity(1,1) primary key,
 subjectID int,
 foreign key (subjectID) references subject(subjectID),
-menteeID int,
 mentorID int,
-foreign key (menteeID) references mentee(userID),
 foreign key (mentorID) references mentor(userID),
 slots int,
 timePerSlot int,
@@ -82,7 +80,12 @@ status int,
 description nvarchar(1000) default '',
 createTime datetime default getDate(),
 )
-
+create table menteeCourse(
+courseID int,
+foreign key (courseID) references course(courseID),
+menteeID int,
+foreign key (menteeID) references mentee(userID),
+)
 CREATE TABLE major(
 subjectID int,
 foreign key (subjectID) references subject(subjectID),
@@ -167,6 +170,7 @@ foreign key (sender) references userCommon(userID),
 receiver int,
 foreign key (receiver) references userCommon(userID),
 content nvarchar(1000),
+status int,
 foreign key (conversationID) references conversation(conversationID),
 createTime datetime default getDate(),
 )
