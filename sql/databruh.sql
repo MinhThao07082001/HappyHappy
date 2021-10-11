@@ -1,5 +1,5 @@
 go
-drop database SWP391
+--drop database SWP391
 CREATE DATABASE [SWP391]
 go
 use [SWP391]
@@ -85,6 +85,7 @@ courseID int,
 foreign key (courseID) references course(courseID),
 menteeID int,
 foreign key (menteeID) references mentee(userID),
+joinTime datetime default getDate(),
 )
 CREATE TABLE major(
 subjectID int,
