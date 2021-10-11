@@ -304,193 +304,7 @@
             <!-- Header Layout Content -->
             <div class="mdk-header-layout__content d-flex flex-column">
 
-                <div class="page__header">
-                    <div class="navbar bg-dark navbar-dark navbar-expand-sm d-none2 d-md-flex2">
-                        <div class="container">
-
-                            <div class="navbar-collapse collapse"
-                                 id="navbarsExample03">
-                                <ul class="nav navbar-nav">
-                                    <li class="nav-item dropdown">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Student</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="fixed-student-dashboard.html">Dashboard</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-browse-courses.html">Browse Courses</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-view-course.html">View Course</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-take-course.html">Take Course</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-take-quiz.html">Take a Quiz</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-quiz-results.html">Quiz Results</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-my-courses.html">My Courses</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-billing.html">Billing</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-pay.html">Payment</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown active">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Instructor</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-dashboard.html">Dashboard</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-courses.html">Course Manager</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-quizzes.html">Quiz Manager</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-earnings.html">Earnings</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-statement.html">Statement</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown active">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Account</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-account-edit.html">Edit Account</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-account-edit-basic.html">Basic Information</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-account-edit-profile.html">Profile &amp; Privacy</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-account-billing-subscription.html">Subscription</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-account-billing-upgrade.html">Upgrade Account</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-account-billing-payment-information.html">Payment Information</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-billing.html">Payment History</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-invoice.html">Student Invoice</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-invoice.html">Instructor Invoice</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-edit-invoice.html">Edit Invoice</a>
-                                            <a class="dropdown-item active"
-                                               href="fixed-instructor-messages.html">Messages</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item"
-                                               href="guest-login.html">Login</a>
-                                            <a class="dropdown-item"
-                                               href="guest-signup.html">Signup</a>
-                                            <a class="dropdown-item"
-                                               href="guest-forgot-password.html">Forgot Password</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Community</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-forum.html">Forum</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-forum-thread.html">Discussion</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-forum-ask.html">Ask Question</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-profile.html">Student Profile - Courses</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-student-profile-posts.html">Student Profile - Posts</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-profile.html">Instructor Profile</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item"
-                                               href="fixed-instructor-help-center.html">Help Center</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Components</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-avatars.html">Avatars</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-forms.html">Forms</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-loaders.html">Loaders</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-tables.html">Tables</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-cards.html">Cards</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-tabs.html">Tabs</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-icons.html">Icons</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-buttons.html">Buttons</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-alerts.html">Alerts</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-badges.html">Badges</a>
-                                            <!-- <a class="dropdown-item" href="fixed-ui-modals.html">- Modals</a> -->
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-progress.html">Progress</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-pagination.html">Pagination</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Plugins</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-charts.html">Charts</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-drag.html">Drag &amp; Drop</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-calendar.html">Calendar</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-nestable.html">Nestable</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-tree.html">Tree</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-maps-vector.html">Vector Maps</a>
-                                            <a class="dropdown-item"
-                                               href="fixed-ui-sweet-alert.html">Sweet Alert</a>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown">
-                                        <a href="#"
-                                           class="nav-link dropdown-toggle"
-                                           data-toggle="dropdown">Layouts</a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                               href="instructor-messages-2.html">Fluid</a>
-                                            <a class="dropdown-item active"
-                                               href="fixed-instructor-messages-2.html">Fixed</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <button class="navbar-toggler"
-                                    data-toggle="collapse"
-                                    data-target="#navbarsExample03"
-                                    type="button">
-                                <span class="material-icons">menu</span>
-                            </button>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="page ">
+                <div class="page " style="margin-top: -64px">
 
                     <div class="app-messages__container d-flex flex-column h-100 pb-4">
                         <div class="navbar navbar-light bg-white navbar-expand-sm navbar-shadow z-1">
@@ -499,29 +313,19 @@
                                     <div class="nav-item align-items-center mr-3">
                                         <div class="mr-3">
                                             <div class="avatar avatar-online avatar-sm">
-                                                <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg"
+                                                <img src="${user2.imgAvt}"
                                                      alt="people"
                                                      class="avatar-img rounded-circle">
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column"
                                              style="max-width: 200px; font-size: 15px">
-                                            <strong class="text-body">Michelle Smith</strong>
-                                            <span class="text-muted text-ellipsis">Personal Development Teacher since 2014</span>
+                                            <strong class="text-body">${user2.name}</strong>
+                                            <!--<span class="text-muted text-ellipsis">Personal Development Teacher since 2014</span>-->
                                         </div>
                                     </div>
                                 </div>
                                 <div class="py-2 flex d-flex align-items-center">
-                                    <div class="flex search-form form-control-rounded search-form--light"
-                                         style="min-width: 200px;">
-                                        <input type="text"
-                                               class="form-control"
-                                               placeholder="Search messages"
-                                               id="searchSample02">
-                                        <button class="btn pr-3"
-                                                type="button"
-                                                role="button"><i class="material-icons">search</i></button>
-                                    </div>
                                     <button data-target="#messages-drawer"
                                             class="navbar-toggler d-block ml-3 p-0"
                                             data-toggle="sidebar"
@@ -535,21 +339,7 @@
                              style="position: relative;"
                              data-perfect-scrollbar>
                             <div class="container page__container">
-                                <div class="jumbotron">
-                                    <div class="d-flex align-items-center">
-                                        <div class="mr-3">
-                                            <div class="avatar avatar-xl">
-                                                <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg"
-                                                     alt="people"
-                                                     class="avatar-img rounded-circle">
-                                            </div>
-                                        </div>
-                                        <div class="flex">
-                                            <h4 class="mb-0">Michelle Smith</h4>
-                                            <p class="text-muted mb-0">Personal Development Teacher since 2014</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <ul class="d-flex flex-column list-unstyled"
                                     id="messages">
 
@@ -601,7 +391,7 @@
                                                     type="button"><i class="material-icons">tag_faces</i></button>-->
                                                          <input type="Submit" value="Send">
                                         </div>
-                                        <div class="input-group-text pl-0">
+<!--                                        <div class="input-group-text pl-0">
                                             <div class="custom-file custom-file-naked d-flex"
                                                  style="width: 24px; overflow: hidden;">
                                                 <input type="file"
@@ -613,7 +403,7 @@
                                                     <i class="material-icons">attach_file</i>
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </form>

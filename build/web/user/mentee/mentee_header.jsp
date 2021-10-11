@@ -171,7 +171,7 @@
                      <i class="material-icons">person</i> Public Profile
                      </a>
                      <a class="dropdown-item"
-                        href="../signout">
+                        href="../../signout">
                      <i class="material-icons">lock</i> Logout
                      </a>
                   </div>
