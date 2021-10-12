@@ -83,7 +83,7 @@
             });
         </script>
         <script>
-                    var elements = document.getElementsByClassName("time");
+            var elements = document.getElementsByClassName("time");
             var func = function () {
                 var arr = [];
                 for (let i = 2; i <= 8; i++) {
