@@ -52,6 +52,7 @@ timePerSlot int,
 startTime datetime,
 endTime datetime,
 description nvarchar(1000) default '',
+--0 is destroy, 1 is display, 2 is learning
 status int,
 /*1 is off, 2 is onl*/
 learnType int,
@@ -80,12 +81,19 @@ status int,
 description nvarchar(1000) default '',
 createTime datetime default getDate(),
 )
-create table menteeCourse(
+create table requestsCourse(
 courseID int,
 foreign key (courseID) references course(courseID),
-menteeID int,
-foreign key (menteeID) references mentee(userID),
-joinTime datetime default getDate(),
+requestID int,
+foreign key (requestID) references request(requestID),
+--1 is mentee request, mentor ask to teach, 2 is mentor request, mentees ask to study
+[type] int,
+)
+create table wishRequest(
+requestMenteeID int,
+requestMentorID int,
+foreign key (requestMenteeID) references request(requestID),
+foreign key (requestMentorID) references request(requestID),
 )
 CREATE TABLE major(
 subjectID int,
@@ -175,6 +183,17 @@ status int,
 foreign key (conversationID) references conversation(conversationID),
 createTime datetime default getDate(),
 )
+create table adminAction(
+adminID int,
+foreign key (adminID) references admin(id),
+action nvarchar(1000),
+createTime datetime default getDate(),
+)
+ALTER table requestSlotTime add [day] int
+ALTER TABLE requestSlotTime
+ALTER COLUMN slotFrom time;
+ALTER TABLE requestSlotTime
+ALTER COLUMN slotTo time;
 /*Sample database*/
 INSERT INTO subject(subjectName) values ('Java')
 INSERT INTO subject(subjectName) values ('C')
