@@ -82,7 +82,7 @@ public class AdminProcessAuthentication extends HttpServlet {
         int mtorID = Integer.parseInt(request.getParameter("id"));
         MentorDAO md = new MentorDAO();
         md.updateMentorAuthen(mtorID);
-        
+        doGet(request, response);
     }
 
     /**
