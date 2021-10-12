@@ -25,6 +25,8 @@
         <h3>${mtor.imgAuthen2}</h3>
         <h3>${mtor.createTime}</h3>
         <h3>Authen: ${mtor.authen}</h3>
+        <img style="width: 100px; height: 100px" src="${mtor.imgAuthen1}">
+        <img style="width: 100px; height: 100px"src="${mtor.imgAuthen2}">
         <c:forEach var="sub" items="${mtor.listMajor}">
             <h5>${sub.subjectName}</h5>
         </c:forEach>
