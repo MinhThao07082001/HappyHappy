@@ -39,6 +39,7 @@ CREATE TABLE subject(
 subjectID int identity(1,1) primary key,
 subjectName nvarchar(100),
 status nvarchar(1000),
+SubjectLevel int,
 )
 
 CREATE TABLE request(
