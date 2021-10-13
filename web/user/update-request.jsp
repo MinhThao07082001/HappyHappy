@@ -18,9 +18,9 @@
             ID:<input type="text" value="${req.requestID}"  disabled><br/>
             <input type="text" name="reqID" value="${req.requestID}"  hidden>
             <select name="subject">
-                <option value="${req.subject.subjectID}">${req.subject.subjectName}</option>
+                <option value="${req.subject.subjectID}">${req.subject.subjectName} ${req.subject.level}</option>
                 <c:forEach var="sub" items="${requestScope.sub}">
-                    <option value="${sub.subjectID}">${sub.subjectName}</option>
+                    <option value="${sub.subjectID}">${sub.subjectName} ${sub.level}</option>
                 </c:forEach>
             </select><br/>
             Money Per Slot   <input type="number" value="${req.moneyPerSlot}"name="moneyPerSlot"><br/>

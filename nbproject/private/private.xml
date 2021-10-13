@@ -3,12 +3,31 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/AuthenticationCodeDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Mentor.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentor/mentor-authentication.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentor/mentor-dashboard.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/UserAuthentication.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/AuthenticationCode.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Subject.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/admin/MentorControl.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_header.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/MentorDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/MentorAuthentication.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/AdminProcessAuthentication.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/admin/ViewMentorDetails.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/Major.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/ConversationDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentor/mentor_header.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_edit_profile.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/MentorAuthentication.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/AuthenticationCodeDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentor/mentor_tab.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/MajorDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/EditRequest.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_profile.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/create-request.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/ProcessAuthenticationCode.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee_tab.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/ShareData/FileHandling.java</file>
         </group>
     </open-files>
 </project-private>

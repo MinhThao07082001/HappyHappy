@@ -28,7 +28,7 @@
                 <tr>
                     <th>${rList.requestID}</th>
                     <!--<th>${rList.userID}</th>-->
-                    <th>${rList.subject.subjectName}</th>
+                    <th>${rList.subject.subjectName} - ${rList.subject.level}</th>
                     <th>${rList.moneyPerSlot}</th>
                     <th>${rList.timePerSlot}</th>
                     <th>${rList.startTime}</th>

@@ -16,7 +16,7 @@
         <form action="createRequest" method="POST">
             <select name="subject">
                 <c:forEach var="sub" items="${requestScope.sList}">
-                    <option value="${sub.subjectID}">${sub.subjectName}</option>
+                    <option value="${sub.subjectID}">${sub.subjectName} - ${sub.level}</option>
                 </c:forEach>
             </select>
             Money Per Slot: <input type="number" name="moneyPerSlot">

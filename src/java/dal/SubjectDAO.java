@@ -28,6 +28,7 @@ public class SubjectDAO extends DBContext {
                 Subject s = new Subject();
                 s.setSubjectID(rs.getInt("subjectID"));
                 s.setSubjectName(rs.getString("subjectname"));
+                s.setLevel(rs.getString("level"));
                 s.setStatus(rs.getString("status"));
                 list.add(s);
             }
@@ -47,6 +48,7 @@ public class SubjectDAO extends DBContext {
                 Subject s = new Subject();
                 s.setSubjectID(rs.getInt("subjectID"));
                 s.setSubjectName(rs.getString("subjectname"));
+                 s.setLevel(rs.getString("level"));
                 s.setStatus(rs.getString("status"));
                 return s;
             }
