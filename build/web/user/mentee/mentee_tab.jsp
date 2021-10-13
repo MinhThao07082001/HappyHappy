@@ -4,7 +4,7 @@
          <div class="sidebar-p-y">
             <ul class="sidebar-menu sm-active-button-bg">
                <li class="sidebar-menu-item active">
-                  <a class="sidebar-menu-button" href="student-dashboard.html">
+                  <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-dashboard.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">account_box</i>
                   Student
@@ -24,62 +24,53 @@
                   </a>
                   <ul class="sidebar-submenu sm-indent collapse" id="account_menu">
                      <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="guest-login.html">
-                        <span class="sidebar-menu-text">Login</span>
-                        </a>
-                     </li>
-                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="guest-signup.html">
-                        <span class="sidebar-menu-text">Sign Up</span>
-                        </a>
-                     </li>
-                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="guest-forgot-password.html">
+                           href="${pageContext.request.contextPath}/forgetchangepassword">
                         <span class="sidebar-menu-text">Forgot Password</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-account-edit.html">
+                        <a class="sidebar-menu-button"
+                           href="${pageContext.request.contextPath}/user/mentee/editprofile">
                         <span class="sidebar-menu-text">Edit Account</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="student-account-edit-basic.html">
+                           href="${pageContext.request.contextPath}/user/student-account-edit-basic.html">
                         <span class="sidebar-menu-text">Basic Information</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="student-account-edit-profile.html">
+                           href="${pageContext.request.contextPath}/user/student-account-edit-profile.html">
                         <span class="sidebar-menu-text">Profile &amp; Privacy</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="student-account-billing-payment-information.html">
+                           href="${pageContext.request.contextPath}/user/student-account-billing-payment-information.html">
                         <span class="sidebar-menu-text">Payment Information</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-billing.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-billing.html">
                         <span class="sidebar-menu-text">Payment History</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-invoice.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-invoice.html">
                         <span class="sidebar-menu-text">Student Invoice</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="instructor-invoice.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/instructor-invoice.html">
                         <span class="sidebar-menu-text">Instructor Invoice</span>
                         </a>
                      </li>
                      <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"
-                           href="instructor-edit-invoice.html">
+                           href="${pageContext.request.contextPath}/user/instructor-edit-invoice.html">
                         <span class="sidebar-menu-text">Edit Invoice</span>
                         </a>
                      </li>
@@ -95,7 +86,7 @@
                   </a>
                   <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
                      <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="student-messages.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-messages.html">
                         <span class="sidebar-menu-text">Conversation</span>
                         <span
                            class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
@@ -107,35 +98,35 @@
             <div class="sidebar-heading">Student</div>
             <ul class="sidebar-menu sm-active-button-bg">
                <li class="sidebar-menu-item">
-                  <a class="sidebar-menu-button" href="student-browse-courses.html">
+                  <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-browse-courses.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i>
                   Search Course
                   </a>
                </li>
                <li class="sidebar-menu-item">
-                  <a class="sidebar-menu-button" href="student-view-course.html">
+                  <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-view-course.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>
                   View Course
                   </a>
                </li>
                <li class="sidebar-menu-item">
-                  <a class="sidebar-menu-button" href="student-my-courses.html">
+                  <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-my-courses.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">school</i>
                   My Courses
                   </a>
                </li>
                <li class="sidebar-menu-item">
-                  <a class="sidebar-menu-button" href="student-help-center.html">
+                  <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-help-center.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">live_help</i>
                   Get Help
                   </a>
                </li>
                <li class="sidebar-menu-item">
-                  <a class="sidebar-menu-button" href="guest-login.html">
+                  <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/guest-login.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">lock_open</i>
                   Logout

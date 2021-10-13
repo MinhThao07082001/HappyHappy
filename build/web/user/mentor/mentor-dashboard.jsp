@@ -22,27 +22,27 @@
 
         <!-- Perfect Scrollbar -->
         <link type="text/css"
-              href="assets/vendor/perfect-scrollbar.css"
+              href="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.css"
               rel="stylesheet">
 
         <!-- Material Design Icons -->
         <link type="text/css"
-              href="assets/css/material-icons.css"
+              href="${pageContext.request.contextPath}/user/assets/css/material-icons.css"
               rel="stylesheet">
 
         <!-- Font Awesome Icons -->
         <link type="text/css"
-              href="assets/css/fontawesome.css"
+              href="${pageContext.request.contextPath}/user/assets/css/fontawesome.css"
               rel="stylesheet">
 
         <!-- Preloader -->
         <link type="text/css"
-              href="assets/vendor/spinkit.css"
+              href="${pageContext.request.contextPath}/user/assets/vendor/spinkit.css"
               rel="stylesheet">
 
         <!-- App CSS -->
         <link type="text/css"
-              href="assets/css/app.css"
+              href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
 
     </head>
@@ -86,7 +86,7 @@
 
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="instructor-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/instructor-dashboard.html">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                             <h1 class="h2">Dashboard</h1>
@@ -98,7 +98,7 @@
                                                 <h4 class="card-title">Earnings</h4>
                                                 <p class="card-subtitle">Last 7 Days</p>
                                             </div>
-                                            <a href="instructor-earnings.html"
+                                            <a href="${pageContext.request.contextPath}/user/instructor-earnings.html"
                                                class="btn btn-sm btn-primary"><i class="material-icons">trending_up</i></a>
                                         </div>
                                         <div class="card-body">
@@ -121,7 +121,7 @@
                                                 <h4 class="card-title">Transactions</h4>
                                                 <p class="card-subtitle">Latest Transactions</p>
                                             </div>
-                                            <a href="instructor-statement.html"
+                                            <a href="${pageContext.request.contextPath}/user/instructor-statement.html"
                                                class="btn btn-sm btn-primary"><i class="material-icons">receipt</i></a>
                                         </div>
                                         <div data-toggle="lists"
@@ -158,18 +158,18 @@
                                                     <tr>
                                                         <td>
                                                             <div class="media align-items-center">
-                                                                <a href="instructor-course-edit.html"
+                                                                <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/vuejs.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/vuejs.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
                                                                 <div class="media-body">
                                                                     <a class="text-body js-lists-values-course"
-                                                                       href="instructor-course-edit.html"><strong>Angular Routing In-Depth</strong></a><br>
+                                                                       href="${pageContext.request.contextPath}/user/instructor-course-edit.html"><strong>Angular Routing In-Depth</strong></a><br>
                                                                     <small class="text-muted mr-1">
                                                                         Invoice
-                                                                        <a href="instructor-invoice.html"
+                                                                        <a href="${pageContext.request.contextPath}/user/instructor-invoice.html"
                                                                            style="color: inherit;"
                                                                            class="js-lists-values-document">#8734</a> -
                                                                         &dollar;<span class="js-lists-values-amount">89</span> USD
@@ -185,18 +185,18 @@
                                                     <tr>
                                                         <td>
                                                             <div class="media align-items-center">
-                                                                <a href="instructor-course-edit.html"
+                                                                <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/vuejs.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/vuejs.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
                                                                 <div class="media-body">
                                                                     <a class="text-body js-lists-values-course"
-                                                                       href="instructor-course-edit.html"><strong>Angular Unit Testing</strong></a><br>
+                                                                       href="${pageContext.request.contextPath}/user/instructor-course-edit.html"><strong>Angular Unit Testing</strong></a><br>
                                                                     <small class="text-muted mr-1">
                                                                         Invoice
-                                                                        <a href="instructor-invoice.html"
+                                                                        <a href="${pageContext.request.contextPath}/user/instructor-invoice.html"
                                                                            style="color: inherit;"
                                                                            class="js-lists-values-document">#8735</a> -
                                                                         &dollar;<span class="js-lists-values-amount">89</span> USD
@@ -212,18 +212,18 @@
                                                     <tr>
                                                         <td>
                                                             <div class="media align-items-center">
-                                                                <a href="instructor-course-edit.html"
+                                                                <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/github.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/github.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
                                                                 <div class="media-body">
                                                                     <a class="text-body js-lists-values-course"
-                                                                       href="instructor-course-edit.html"><strong>Introduction to TypeScript</strong></a><br>
+                                                                       href="${pageContext.request.contextPath}/user/instructor-course-edit.html"><strong>Introduction to TypeScript</strong></a><br>
                                                                     <small class="text-muted mr-1">
                                                                         Invoice
-                                                                        <a href="instructor-invoice.html"
+                                                                        <a href="${pageContext.request.contextPath}/user/instructor-invoice.html"
                                                                            style="color: inherit;"
                                                                            class="js-lists-values-document">#8736</a> -
                                                                         &dollar;<span class="js-lists-values-amount">89</span> USD
@@ -239,18 +239,18 @@
                                                     <tr>
                                                         <td>
                                                             <div class="media align-items-center">
-                                                                <a href="instructor-course-edit.html"
+                                                                <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/gulp.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/gulp.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
                                                                 <div class="media-body">
                                                                     <a class="text-body js-lists-values-course"
-                                                                       href="instructor-course-edit.html"><strong>Learn Angular Fundamentals</strong></a><br>
+                                                                       href="${pageContext.request.contextPath}/user/instructor-course-edit.html"><strong>Learn Angular Fundamentals</strong></a><br>
                                                                     <small class="text-muted mr-1">
                                                                         Invoice
-                                                                        <a href="instructor-invoice.html"
+                                                                        <a href="${pageContext.request.contextPath}/user/instructor-invoice.html"
                                                                            style="color: inherit;"
                                                                            class="js-lists-values-document">#8737</a> -
                                                                         &dollar;<span class="js-lists-values-amount">89</span> USD
@@ -276,13 +276,13 @@
                                                 <p class="card-subtitle">by course</p>
                                             </div>
                                             <a class="btn btn-sm btn-primary"
-                                               href="instructor-earnings.html">Earnings</a>
+                                               href="${pageContext.request.contextPath}/user/instructor-earnings.html">Earnings</a>
                                         </div>
                                         <ul class="list-group list-group-fit mb-0">
                                             <li class="list-group-item">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
-                                                        <a href="instructor-course-edit.html"
+                                                        <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                            class="text-body"><strong>Basics of HTML</strong></a>
                                                     </div>
                                                     <div class="media-right">
@@ -295,7 +295,7 @@
                                             <li class="list-group-item">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
-                                                        <a href="instructor-course-edit.html"
+                                                        <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                            class="text-body"><strong>Angular in Steps</strong></a>
                                                     </div>
                                                     <div class="media-right">
@@ -308,7 +308,7 @@
                                             <li class="list-group-item">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
-                                                        <a href="instructor-course-edit.html"
+                                                        <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                            class="text-body"><strong>Bootstrap Foundations</strong></a>
                                                     </div>
                                                     <div class="media-right">
@@ -321,7 +321,7 @@
                                             <li class="list-group-item">
                                                 <div class="media align-items-center">
                                                     <div class="media-body">
-                                                        <a href="instructor-course-edit.html"
+                                                        <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                            class="text-body"><strong>GitHub Basics</strong></a>
                                                     </div>
                                                     <div class="media-right">
@@ -352,18 +352,18 @@
                                                 <div class="media-left">
                                                     <a href="#"
                                                        class="avatar avatar-sm">
-                                                        <img src="assets/images/people/110/guy-9.jpg"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/people/110/guy-9.jpg"
                                                              alt="Guy"
                                                              class="avatar-img rounded-circle">
                                                     </a>
                                                 </div>
                                                 <div class="media-body d-flex flex-column">
                                                     <div class="d-flex align-items-center">
-                                                        <a href="instructor-profile.html"
+                                                        <a href="${pageContext.request.contextPath}/user/instructor-profile.html"
                                                            class="text-body"><strong>Laza Bogdan</strong></a>
                                                         <small class="ml-auto text-muted">27 min ago</small><br>
                                                     </div>
-                                                    <span class="text-muted">on <a href="instructor-course-edit.html"
+                                                    <span class="text-muted">on <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                                                    class="text-black-50"
                                                                                    style="text-decoration: underline;">Data Visualization With Chart.js</a></span>
                                                     <p class="mt-1 mb-0 text-black-70">How can I load Charts on a page?</p>
@@ -373,14 +373,14 @@
                                                 <div class="media-left">
                                                     <a href="#"
                                                        class="avatar avatar-sm">
-                                                        <img src="assets/images/people/110/guy-6.jpg"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/people/110/guy-6.jpg"
                                                              alt="Guy"
                                                              class="avatar-img rounded-circle">
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
                                                     <div class="d-flex align-items-center">
-                                                        <a href="instructor-profile.html"
+                                                        <a href="${pageContext.request.contextPath}/user/instructor-profile.html"
                                                            class="text-body"><strong>FrontendMatter</strong></a>
                                                         <small class="ml-auto text-muted">just now</small>
                                                     </div>
@@ -447,46 +447,46 @@
     </div>
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/vendor/popper.min.js"></script>
-    <script src="assets/vendor/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/bootstrap.min.js"></script>
 
     <!-- Perfect Scrollbar -->
-    <script src="assets/vendor/perfect-scrollbar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.min.js"></script>
 
     <!-- MDK -->
-    <script src="assets/vendor/dom-factory.js"></script>
-    <script src="assets/vendor/material-design-kit.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/dom-factory.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/material-design-kit.js"></script>
 
     <!-- App JS -->
-    <script src="assets/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/app.js"></script>
 
     <!-- Highlight.js -->
-    <script src="assets/js/hljs.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/hljs.js"></script>
 
     <!-- App Settings (safe to remove) -->
-    <script src="assets/js/app-settings.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/app-settings.js"></script>
 
     <!-- Global Settings -->
-    <script src="assets/js/settings.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/settings.js"></script>
 
     <!-- Moment.js -->
-    <script src="assets/vendor/moment.min.js"></script>
-    <script src="assets/vendor/moment-range.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/moment-range.js"></script>
 
     <!-- Chart.js -->
-    <script src="assets/vendor/Chart.min.js"></script>
-    <script src="assets/js/chartjs-rounded-bar.js"></script>
-    <script src="assets/js/chartjs.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/chartjs-rounded-bar.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/chartjs.js"></script>
 
     <!-- Instructor Dashboard Page JS -->
-    <script src="assets/js/page.instructor-dashboard.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/page.instructor-dashboard.js"></script>
 
     <!-- List.js -->
-    <script src="assets/vendor/list.min.js"></script>
-    <script src="assets/js/list.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/list.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/list.js"></script>
 
 </body>
 

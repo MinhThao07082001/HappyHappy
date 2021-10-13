@@ -60,7 +60,7 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/student-dashboard.html">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                             <h1 class="h2" style="width: auto;
@@ -100,7 +100,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column flex-sm-row">
-                                                    <a href="instructor-course-edit.html"
+                                                    <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">
@@ -132,7 +132,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">
-                                                                <a href="instructor-course-edit.html"
+                                                                <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
                                                                    class="btn btn-sm btn-white">Edit</a>
                                                             </div>
                                                         </div>
@@ -145,7 +145,7 @@
                                                     <i class="material-icons">more_vert</i>
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="instructor-course-edit.html">Edit course</a>
+                                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/user/instructor-course-edit.html">Edit course</a>
                                                     <a class="dropdown-item" href="#">Course Insights</a>
                                                     <div class="dropdown-divider"></div>
                                                     <a class="dropdown-item text-danger" href="#">Delete course</a>
@@ -343,7 +343,7 @@
                                                     <p class="card-subtitle">Your recent courses</p>
                                                 </div>
                                                 <div class="media-right">
-                                                    <a class="btn btn-sm btn-primary" href="student-my-courses.html">My
+                                                    <a class="btn btn-sm btn-primary" href="s${pageContext.request.contextPath}/user/tudent-my-courses.html">My
                                                         courses</a>
                                                 </div>
                                             </div>
@@ -351,13 +351,13 @@
                                         <ul class="list-group list-group-fit mb-0" style="z-index: initial;">
                                             <li class="list-group-item" style="z-index: initial;">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="student-take-course.html"
+                                                    <a href="${pageContext.request.contextPath}/user/student-take-course.html"
                                                        class="avatar avatar-4by3 avatar-sm mr-3">
-                                                        <img src="assets/images/gulp.png" alt="course"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/gulp.png" alt="course"
                                                              class="avatar-img rounded">
                                                     </a>
                                                     <div class="flex">
-                                                        <a href="student-take-course.html" class="text-body"><strong>Learn
+                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html" class="text-body"><strong>Learn
                                                                 Vue.js Fundamentals</strong></a>
                                                         <div class="d-flex align-items-center">
                                                             <div class="progress" style="width: 100px;">
@@ -375,20 +375,20 @@
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                               href="student-take-course.html">Continue</a>
+                                                               href="${pageContext.request.contextPath}/user/student-take-course.html">Continue</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="list-group-item" style="z-index: initial;">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="student-take-course.html"
+                                                    <a href="${pageContext.request.contextPath}/user/student-take-course.html"
                                                        class="avatar avatar-4by3 avatar-sm mr-3">
-                                                        <img src="assets/images/vuejs.png" alt="course"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/vuejs.png" alt="course"
                                                              class="avatar-img rounded">
                                                     </a>
                                                     <div class="flex">
-                                                        <a href="student-take-course.html" class="text-body"><strong>Angular
+                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html" class="text-body"><strong>Angular
                                                                 in Steps</strong></a>
                                                         <div class="d-flex align-items-center">
                                                             <div class="progress" style="width: 100px;">
@@ -406,20 +406,20 @@
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                               href="student-take-course.html">Continue</a>
+                                                               href="${pageContext.request.contextPath}/user/student-take-course.html">Continue</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
                                             <li class="list-group-item" style="z-index: initial;">
                                                 <div class="d-flex align-items-center">
-                                                    <a href="student-take-course.html"
+                                                    <a href="${pageContext.request.contextPath}/user/student-take-course.html"
                                                        class="avatar avatar-4by3 avatar-sm mr-3">
-                                                        <img src="assets/images/nodejs.png" alt="course"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/nodejs.png" alt="course"
                                                              class="avatar-img rounded">
                                                     </a>
                                                     <div class="flex">
-                                                        <a href="student-take-course.html"
+                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html"
                                                            class="text-body"><strong>Bootstrap Foundations</strong></a>
                                                         <div class="d-flex align-items-center">
                                                             <div class="progress" style="width: 100px;">
@@ -437,7 +437,7 @@
                                                         </a>
                                                         <div class="dropdown-menu dropdown-menu-right">
                                                             <a class="dropdown-item"
-                                                               href="student-take-course.html">Continue</a>
+                                                               href="${pageContext.request.contextPath}/user/student-take-course.html">Continue</a>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -25,7 +25,7 @@ private int status;
 private int learnType;
 private String reqTime;
 private List<RequestSlotTime> listSlotTime;
-    
+
     public int getRequestID() {
         return requestID;
     }
@@ -136,8 +136,5 @@ private List<RequestSlotTime> listSlotTime;
         this.reqTime = reqTime;
     }
 
-    public Request() {
-    }
 
-    
 }

@@ -56,14 +56,14 @@ public class SignInServlet extends HttpServlet {
                 MentorDAO md = new MentorDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", md.getMentorByEmail(u.getEmail()));
-//                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
-                response.sendRedirect("mentor/home");
+                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
+                
             } else {
                 MenteeDAO mtd = new MenteeDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", mtd.getMenteeByEmail(u.getEmail()));
-//                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response);
-                response.sendRedirect("mentee/home");
+                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response); 
+                
             }
         }
     }

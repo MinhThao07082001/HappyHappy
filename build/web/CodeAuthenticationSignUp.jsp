@@ -41,12 +41,10 @@
                 border: #2295F5;
                 color: #FFFFFF;
             }
-
             .next:hover {
                 background-color: #0C83E2;
                 color: #FFFFFF;
             }
-
             .form-group .next {
                 margin-top: 15px;
                 border-radius: 4px;

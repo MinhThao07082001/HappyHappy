@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class ConfirmEmail_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -43,7 +43,6 @@ public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("<!DOCTYPE html>\n");
       out.write("\n");
-      out.write("\n");
       out.write("<html lang=\"en\" dir=\"ltr\">\n");
       out.write("\n");
       out.write("\n");
@@ -53,7 +52,7 @@ public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <meta charset=\"utf-8\">\n");
       out.write("        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n");
-      out.write("        <title>Change PassWord</title>\n");
+      out.write("        <title>Confirm Email</title>\n");
       out.write("\n");
       out.write("        <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->\n");
       out.write("        <meta name=\"robots\" content=\"noindex\">\n");
@@ -142,16 +141,6 @@ public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                left: -35px;\n");
       out.write("                content: \"✖\";\n");
       out.write("            }\n");
-      out.write("            #confirm {\n");
-      out.write("                background: #2295F5;\n");
-      out.write("                padding-left: 195px;\n");
-      out.write("                padding-right: 195px;\n");
-      out.write("                padding-bottom: 5px;\n");
-      out.write("                padding-top: 5px;\n");
-      out.write("                border-radius: 2px;\n");
-      out.write("                border-color: #2295F5;\n");
-      out.write("                color: #fff;\n");
-      out.write("            }\n");
       out.write("        </style>\n");
       out.write("    </head>\n");
       out.write("\n");
@@ -168,11 +157,11 @@ public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\n");
       out.write("                ");
 
-                    if (request.getAttribute("message") != null) {
+                    if (request.getAttribute("error") != null) {
                 
       out.write("\n");
       out.write("                <p style=\"color: yellow; background: red;margin: 0;font-size: x-large;\" align=\"center\" >");
-      out.print( request.getAttribute("message"));
+      out.print( request.getAttribute("error"));
       out.write("</p>\n");
       out.write("                ");
 
@@ -181,68 +170,34 @@ public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("                <div class=\"card navbar-shadow\">\n");
       out.write("                    <div class=\"card-header text-center\">\n");
-      out.write("                        <h4 class=\"card-title\">Change Password</h4>\n");
-      out.write("                        <p class=\"card-subtitle\">Change you password</p>\n");
+      out.write("                        <h4 class=\"card-title\">Confirm Email</h4>\n");
+      out.write("                        <p class=\"card-subtitle\">Check your email for verification code</p>\n");
       out.write("                    </div>\n");
       out.write("                    <div class=\"card-body\">\n");
-      out.write("                     \n");
-      out.write("                        <form action=\"changepassword\" method=\"POST\">\n");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mess}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\n");
+      out.write("                        <form action=\"confirm\" method=\"post\">\n");
+      out.write("                            <!-- page 1 -->\n");
       out.write("                            <div id=\"test1\">\n");
       out.write("                                <div class=\"sign \">\n");
-      out.write("\n");
       out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label class=\"form-label\" for=\"password\">old Password: <span style=\"color:red\">*</span></label>\n");
+      out.write("                                        <label class=\"form-label\" for=\"email\">Verification code: <span style=\"color:red\">*</span></label>\n");
       out.write("                                        <div class=\"input-group input-group-merge\">\n");
-      out.write("                                            <input type=\"password\" id=\"pass\" name=\"pass\" \n");
-      out.write("                                                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\"  required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Enter your old password\">\n");
+      out.write("                                            <input id=\"email\" type=\"email\" name=\"email\"\n");
+      out.write("                                                   required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Your verification code\">\n");
       out.write("                                            <div class=\"input-group-prepend\">\n");
       out.write("                                                <div class=\"input-group-text\">\n");
-      out.write("                                                    <span class=\"far fa-key\"></span>\n");
+      out.write("                                                    <span class=\"far fa-envelope\"></span>\n");
       out.write("                                                </div>\n");
       out.write("                                            </div>\n");
       out.write("                                        </div>\n");
-      out.write("\n");
-      out.write("                                    </div>\n");
-      out.write("\n");
-      out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label class=\"form-label\" for=\"password\">New Password: <span style=\"color:red\">*</span></label>\n");
-      out.write("                                        <div class=\"input-group input-group-merge\">\n");
-      out.write("                                            <input id=\"password\" type=\"password\" name=\"new-pass\" \n");
-      out.write("                                                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\"  required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Enter your new password\">\n");
-      out.write("                                            <div class=\"input-group-prepend\">\n");
-      out.write("                                                <div class=\"input-group-text\">\n");
-      out.write("                                                    <span class=\"far fa-key\"></span>\n");
-      out.write("                                                </div>\n");
-      out.write("                                            </div>\n");
-      out.write("                                        </div>\n");
-      out.write("                                        <div id=\"message\">\n");
-      out.write("                                            <h8 id=\"letter\" class=\"invalid\">At least a <b>lowercase</b> letter</h8><br>\n");
-      out.write("                                            <h8 id=\"capital\" class=\"invalid\">At least a <b>uppercase</b> letter</h8><br>\n");
-      out.write("                                            <h8 id=\"number\" class=\"invalid\">At least a <b>number</b></h8><br>\n");
-      out.write("                                            <h8 id=\"length\" class=\"invalid\">Minimum <b>8 characters</b></h8>\n");
-      out.write("                                        </div>\n");
-      out.write("                                    </div>\n");
-      out.write("\n");
-      out.write("                                    <div class=\"form-group\">\n");
-      out.write("                                        <label class=\"form-label\" for=\"password\">confirm new Password: <span style=\"color:red\">*</span></label>\n");
-      out.write("                                        <div class=\"input-group input-group-merge\">\n");
-      out.write("                                            <input type=\"password\" id=\"repeat-new-pass\" name=\"repeat-new-pass\" \n");
-      out.write("                                                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\"  required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Confirm your new password\">\n");
-      out.write("                                            <div class=\"input-group-prepend\">\n");
-      out.write("                                                <div class=\"input-group-text\">\n");
-      out.write("                                                    <span class=\"far fa-key\"></span>\n");
-      out.write("                                                </div>\n");
-      out.write("                                            </div>\n");
-      out.write("                                        </div>\n");
-      out.write("\n");
       out.write("                                    </div>\n");
       out.write("                                </div>\n");
       out.write("                            </div>\n");
       out.write("                            <div>\n");
-      out.write("                                <button  type=\"submit\" id=\"confirm\" >Confirm</button>\n");
+      out.write("                                <input class=\"next\" type=\"submit\" value=\"Confirm\">\n");
       out.write("                            </div>\n");
-      out.write("                        </form>     \n");
-      out.write("\n");
+      out.write("                        </form>                  \n");
       out.write("                    </div>\n");
       out.write("\n");
       out.write("                </div>\n");

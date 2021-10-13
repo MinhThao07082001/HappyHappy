@@ -5,28 +5,21 @@
  */
 package controller;
 
-import dal.ConversationDAO;
-import dal.MessageDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Conversation;
-import model.Message;
 import model.UserCommon;
 
 /**
  *
- * @author Admin
+ * @author user
  */
-@WebServlet(name = "ChatServlet", urlPatterns = {"/conversation"})
-public class ConversationControl extends HttpServlet {
+public class ForgetChangePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +38,10 @@ public class ConversationControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChatServlet</title>");            
+            out.println("<title>Servlet ForgetChangePasswordServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ChatServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ForgetChangePasswordServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,30 +59,7 @@ public class ConversationControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        ConversationDAO cd = new ConversationDAO();
-        UserDAO ud = new UserDAO();
-        MessageDAO md = new MessageDAO();
-        String email = (String) session.getAttribute("email");
-        UserCommon u1 = ud.getEmail(email);
-        int user1 = u1.getUserID();
-        int user2 = Integer.parseInt(request.getParameter("id"));
-        Conversation conv = cd.getConversationByUserID(user1, user2);
-        if(conv == null){
-            cd.createConversation(user1, user2);
-            conv = cd.getConversationByUserID(user1, user2);
-        }
-        UserCommon u2 = ud.getAccountByID(Integer.toString(user2));
-        List<Message> mList = md.getMessageByConservationID(conv.getConversationID());
-        System.out.println(user1 + "    " + user2 + "       " +conv.getConversationID());
-        request.setAttribute("user1", u1);
-        request.setAttribute("user2", u2);
-        request.setAttribute("mList", mList);
-        request.setAttribute("from", user1);
-        request.setAttribute("to", user2);
-        request.setAttribute("conversationID", conv.getConversationID());
-        request.getRequestDispatcher("user/chat.jsp").forward(request, response);
-         
+        request.getRequestDispatcher("Forget_ChangePassword.jsp").forward(request, response);
     }
 
     /**
@@ -103,7 +73,28 @@ public class ConversationControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        String mess;
+
+        String userMail = request.getParameter("userMail");
+        String newPass = request.getParameter("newPass");
+        String confirmNewPass = request.getParameter("confirmNewPass");
+        UserDAO dao = new UserDAO();
+        UserCommon account = dao.getAccountByEmail((String) session.getAttribute("email"));
+
+        if (newPass.equals(confirmNewPass)) {
+            account.setPassword(newPass);
+            dao.updatePassword(account.getEmail(), newPass);
+            mess = "Your password have been reset";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("SignIn.jsp").forward(request, response);
+            return;
+        } else {
+            mess = "Confirm password dont match";
+            request.setAttribute("mess", mess);
+            request.getRequestDispatcher("Forget_ChangePassword.jsp").forward(request, response);
+            return;
+        }
     }
 
     /**

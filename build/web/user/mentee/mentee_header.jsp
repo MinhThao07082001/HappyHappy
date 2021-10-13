@@ -17,8 +17,8 @@
             <span class="material-icons">menu</span>
             </button>
             <!-- Brand -->
-            <a href="student-dashboard.html" class="navbar-brand">
-            <img src="assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
+            <a href="${pageContext.request.contextPath}/user/student-dashboard.html" class="navbar-brand">
+            <img src="${pageContext.request.contextPath}/user/assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
             <span class="d-none d-xs-md-block">LearnPlus</span>
             </a>
             <!-- Search -->
@@ -32,16 +32,16 @@
             <!-- Menu -->
             <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                <li class="nav-item">
-                  <a class="nav-link" href="student-forum.html">Forum</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/user/student-forum.html">Forum</a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" href="student-help-center.html">Get Help</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath}/user/student-help-center.html">Get Help</a>
                </li>
             </ul>
             <!-- Menu -->
             <ul class="nav navbar-nav flex-nowrap">
                <li class="nav-item d-none d-md-flex">
-                  <a href="student-cart.html" class="nav-link">
+                  <a href="${pageContext.request.contextPath}/user/student-cart.html" class="nav-link">
                   <i class="material-icons">shopping_cart</i>
                   </a>
                </li>
@@ -56,7 +56,7 @@
                      <div data-perfect-scrollbar class="position-relative">
                         <div class="dropdown-header"><strong>Messages</strong></div>
                         <div class="list-group list-group-flush mb-0">
-                           <a href="student-messages.html"
+                           <a href="${pageContext.request.contextPath}/user/student-messages.html"
                               class="list-group-item list-group-item-action unread">
                            <span class="d-flex align-items-center mb-1">
                            <small class="text-muted">5 minutes ago</small>
@@ -64,7 +64,7 @@
                            </span>
                            <span class="d-flex">
                            <span class="avatar avatar-xs mr-2">
-                           <img src="assets/images/people/110/woman-5.jpg" alt="people"
+                           <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg" alt="people"
                               class="avatar-img rounded-circle">
                            </span>
                            <span class="flex d-flex flex-column">
@@ -73,7 +73,7 @@
                            </span>
                            </span>
                            </a>
-                           <a href="student-messages.html"
+                           <a href="${pageContext.request.contextPath}/user/student-messages.html"
                               class="list-group-item list-group-item-action unread">
                            <span class="d-flex align-items-center mb-1">
                            <small class="text-muted">5 minutes ago</small>
@@ -81,7 +81,7 @@
                            </span>
                            <span class="d-flex">
                            <span class="avatar avatar-xs mr-2">
-                           <img src="assets/images/people/110/woman-5.jpg" alt="people"
+                           <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg" alt="people"
                               class="avatar-img rounded-circle">
                            </span>
                            <span class="flex d-flex flex-column">
@@ -93,7 +93,7 @@
                         </div>
                         <div class="dropdown-header"><strong>System notifications</strong></div>
                         <div class="list-group list-group-flush mb-0">
-                           <a href="student-messages.html"
+                           <a href="${pageContext.request.contextPath}/user/student-messages.html"
                               class="list-group-item list-group-item-action border-left-3 border-left-danger">
                            <span class="d-flex align-items-center mb-1">
                            <small class="text-muted">3 minutes ago</small>
@@ -111,7 +111,7 @@
                            </span>
                            </span>
                            </a>
-                           <a href="student-messages.html"
+                           <a href="${pageContext.request.contextPath}/user/student-messages.html"
                               class="list-group-item list-group-item-action">
                            <span class="d-flex align-items-center mb-1">
                            <small class="text-muted">5 hours ago</small>
@@ -130,7 +130,7 @@
                            </span>
                            </span>
                            </a>
-                           <a href="student-messages.html"
+                           <a href="${pageContext.request.contextPath}/user/student-messages.html"
                               class="list-group-item list-group-item-action">
                            <span class="d-flex align-items-center mb-1">
                            <small class="text-muted">1 day ago</small>
@@ -167,11 +167,11 @@
                      <i class="material-icons">edit</i> Edit Account
                      </a>
                      <a class="dropdown-item"
-                        href="student-profile.html">
+                        href="${pageContext.request.contextPath}/user/student-profile.html">
                      <i class="material-icons">person</i> Public Profile
                      </a>
                      <a class="dropdown-item"
-                        href="../signout">
+                        href="${pageContext.request.contextPath}/signout">
                      <i class="material-icons">lock</i> Logout
                      </a>
                   </div>

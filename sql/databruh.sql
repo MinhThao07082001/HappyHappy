@@ -1,5 +1,5 @@
 go
---drop database SWP391
+drop database SWP391
 CREATE DATABASE [SWP391]
 go
 use [SWP391]
@@ -13,9 +13,9 @@ sex int,
 address nvarchar(200),
 phone nvarchar(12) unique,
 imgAvt nvarchar(1000) default 'https://iupac.org/wp-content/uploads/2018/05/default-avatar.png',
-description nvarchar(1000) default '',
+description nvarchar(1000),
 status nvarchar(1000),
-moneyLeft int default 0,
+moneyLeft int,
 createTime datetime default getDate(),
 /*1 is mentor, 2 is mentee*/
 role int,
@@ -23,12 +23,12 @@ role int,
 CREATE TABLE mentor(
 userID int primary key,
 foreign key (userID) references userCommon(userID),
-education nvarchar(200) default '',
-yearExperiment int default 0,
-intro nvarchar(1000) default '',
+education nvarchar(200),
+yearExperiment int,
+intro nvarchar(1000),
 imgAuthen1 nvarchar(1000),
 imgAuthen2 nvarchar(1000),
-authen int default 0,
+authen int,
 )
 CREATE TABLE mentee(
 userID int primary key,
@@ -39,7 +39,6 @@ CREATE TABLE subject(
 subjectID int identity(1,1) primary key,
 subjectName nvarchar(100),
 status nvarchar(1000),
-SubjectLevel int,
 )
 
 CREATE TABLE request(
@@ -52,8 +51,7 @@ moneyPerSlot int,
 timePerSlot int,
 startTime datetime,
 endTime datetime,
-description nvarchar(1000) default '',
---0 is destroy, 1 is display, 2 is learning
+description nvarchar(1000),
 status int,
 /*1 is off, 2 is onl*/
 learnType int,
@@ -69,7 +67,9 @@ CREATE TABLE course(
 courseID int identity(1,1) primary key,
 subjectID int,
 foreign key (subjectID) references subject(subjectID),
+menteeID int,
 mentorID int,
+foreign key (menteeID) references mentee(userID),
 foreign key (mentorID) references mentor(userID),
 slots int,
 timePerSlot int,
@@ -79,23 +79,10 @@ timeEnd date,
 /*1 is off, 2 is onl*/
 learnType int,
 status int,
-description nvarchar(1000) default '',
+description nvarchar(1000),
 createTime datetime default getDate(),
 )
-create table requestsCourse(
-courseID int,
-foreign key (courseID) references course(courseID),
-requestID int,
-foreign key (requestID) references request(requestID),
---1 is mentee request, mentor ask to teach, 2 is mentor request, mentees ask to study
-[type] int,
-)
-create table wishRequest(
-requestMenteeID int,
-requestMentorID int,
-foreign key (requestMenteeID) references request(requestID),
-foreign key (requestMentorID) references request(requestID),
-)
+
 CREATE TABLE major(
 subjectID int,
 foreign key (subjectID) references subject(subjectID),
@@ -110,7 +97,7 @@ slotTimeTo datetime,
 courseID int,
 foreign key (courseID) references course(courseID),
 status int,
-description nvarchar(1000) default '',
+description nvarchar(1000),
 )
 
 
@@ -157,44 +144,12 @@ password nvarchar(100),
 role int,
 description nvarchar(1000),
 )
-
 CREATE TABLE authenticationCode(
 id int identity(1,1) primary key,
 email nvarchar(100),
 code nvarchar(10),
 createTime datetime default getDate(),
 )
-create table conversation(
-conversationID int identity(1,1) primary key,
-userID1 int,
-userID2 int,
-foreign key (userID1) references userCommon(userID),
-foreign key (userID2) references userCommon(userID),
-createTime datetime default getDate(),
-)
-create table message(
-messageID int identity(1,1) primary key,
-conversationID int,
-sender int,
-foreign key (sender) references userCommon(userID),
-receiver int,
-foreign key (receiver) references userCommon(userID),
-content nvarchar(1000),
-status int,
-foreign key (conversationID) references conversation(conversationID),
-createTime datetime default getDate(),
-)
-create table adminAction(
-adminID int,
-foreign key (adminID) references admin(id),
-action nvarchar(1000),
-createTime datetime default getDate(),
-)
-ALTER table requestSlotTime add [day] int
-ALTER TABLE requestSlotTime
-ALTER COLUMN slotFrom time;
-ALTER TABLE requestSlotTime
-ALTER COLUMN slotTo time;
 /*Sample database*/
 INSERT INTO subject(subjectName) values ('Java')
 INSERT INTO subject(subjectName) values ('C')
@@ -222,10 +177,3 @@ INSERT INTO mentor([userID]
       ,[yearExperiment]
       ,[intro]
       ,[authen]) values (1,'fBt',8,'Uoa',0)
-
-
-	  INSERT INTO authenticationCode(email, code) values ('abc@gmail.com', 'UOAUOA')
-
-INSERT INTO major values (2,1)
-INSERT INTO major values (1,1)
-INSERT INTO major values (3,1)

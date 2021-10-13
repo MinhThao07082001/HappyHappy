@@ -22,9 +22,9 @@
                 </button>
 
                 <!-- Brand -->
-                <a href="instructor-dashboard.html"
+                <a href="${pageContext.request.contextPath}/user/mentor/mentor-dashboard.jsp"
                    class="navbar-brand">
-                    <img src="assets/images/logo/white.svg"
+                    <img src="${pageContext.request.contextPath}/user/assets/images/logo/white.svg"
                          class="mr-2"
                          alt="LearnPlus" />
                     <span class="d-none d-xs-md-block">LearnPlus</span>
@@ -58,7 +58,7 @@
                 <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="instructor-forum.html">Forum</a>
+                           href="${pageContext.request.contextPath}/user/instructor-forum.html">Forum</a>
                     </li>
                 </ul>
 
@@ -81,7 +81,7 @@
                                 <div class="dropdown-header"><strong>Messages</strong></div>
                                 <div class="list-group list-group-flush mb-0">
 
-                                    <a href="instructor-messages.html"
+                                    <a href="${pageContext.request.contextPath}/user/instructor-messages.html"
                                        class="list-group-item list-group-item-action unread">
                                         <span class="d-flex align-items-center mb-1">
                                             <small class="text-muted">5 minutes ago</small>
@@ -91,7 +91,7 @@
                                         </span>
                                         <span class="d-flex">
                                             <span class="avatar avatar-xs mr-2">
-                                                <img src="assets/images/people/110/woman-5.jpg"
+                                                <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg"
                                                      alt="people"
                                                      class="avatar-img rounded-circle">
                                             </span>
@@ -102,7 +102,7 @@
                                         </span>
                                     </a>
 
-                                    <a href="instructor-messages.html"
+                                    <a href="${pageContext.request.contextPath}/user/instructor-messages.html"
                                        class="list-group-item list-group-item-action unread">
                                         <span class="d-flex align-items-center mb-1">
                                             <small class="text-muted">5 minutes ago</small>
@@ -112,7 +112,7 @@
                                         </span>
                                         <span class="d-flex">
                                             <span class="avatar avatar-xs mr-2">
-                                                <img src="assets/images/people/110/woman-5.jpg"
+                                                <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg"
                                                      alt="people"
                                                      class="avatar-img rounded-circle">
                                             </span>
@@ -128,7 +128,7 @@
                                 <div class="dropdown-header"><strong>System notifications</strong></div>
                                 <div class="list-group list-group-flush mb-0">
 
-                                    <a href="instructor-messages.html"
+                                    <a href="${pageContext.request.contextPath}/user/instructor-messages.html"
                                        class="list-group-item list-group-item-action border-left-3 border-left-danger">
                                         <span class="d-flex align-items-center mb-1">
                                             <small class="text-muted">3 minutes ago</small>
@@ -147,7 +147,7 @@
                                         </span>
                                     </a>
 
-                                    <a href="instructor-messages.html"
+                                    <a href="${pageContext.request.contextPath}/user/instructor-messages.html"
                                        class="list-group-item list-group-item-action">
                                         <span class="d-flex align-items-center mb-1">
                                             <small class="text-muted">5 hours ago</small>
@@ -166,7 +166,7 @@
                                         </span>
                                     </a>
 
-                                    <a href="instructor-messages.html"
+                                    <a href="${pageContext.request.contextPath}/user/instructor-messages.html"
                                        class="list-group-item list-group-item-action">
                                         <span class="d-flex align-items-center mb-1">
                                             <small class="text-muted">1 day ago</small>
@@ -195,21 +195,21 @@
                         <a class="nav-link dropdown-toggle"
                            data-toggle="dropdown"
                            href="#"
-                           role="button"><img src="assets/images/people/50/guy-6.jpg"
+                           role="button"><img src="${pageContext.request.contextPath}/user/assets/images/people/50/guy-6.jpg"
                                            alt="Avatar"
                                            class="rounded-circle"
                                            width="40"></a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item"
-                               href="instructor-account-edit.html">
+                               href="${pageContext.request.contextPath}/user/mentor/editprofile">
                                 <i class="material-icons">edit</i> Edit Account
                             </a>
                             <a class="dropdown-item"
-                               href="instructor-profile.html">
+                               href="${pageContext.request.contextPath}/user/instructor-profile.html">
                                 <i class="material-icons">person</i> Public Profile
                             </a>
                             <a class="dropdown-item"
-                               href="guest-login.html">
+                               href="${pageContext.request.contextPath}/signout">
                                 <i class="material-icons">lock</i> Logout
                             </a>
                         </div>
