@@ -7,17 +7,6 @@ public class Rating {
     private int mentorID;
     private int menteeID;
 
-    public Rating(int rateAmount, String rateTime, int mentorID, int menteeID) {
-        this.rateAmount = rateAmount;
-        
-        this.rateTime = rateTime;
-        this.mentorID = mentorID;
-        this.menteeID = menteeID;
-    }
-
-    public Rating() {
-    }
-
     public Rating(int rateID, int rateAmount, String rateDescription, String rateTime, int mentorID, int menteeID) {
         this.rateID = rateID;
         this.rateAmount = rateAmount;

@@ -41,12 +41,10 @@
                 border: #2295F5;
                 color: #FFFFFF;
             }
-
             .next:hover {
                 background-color: #0C83E2;
                 color: #FFFFFF;
             }
-
             .form-group .next {
                 margin-top: 15px;
                 border-radius: 4px;
@@ -61,7 +59,6 @@
                 margin-top: 6px;
                 margin-bottom: 16px;
             }
-
             /* Style the container for inputs */
             /* The message box is shown when the user clicks on the password field */
             #message {
@@ -71,28 +68,23 @@
                 padding: 20px;
                 margin-top: 10px;
             }
-
             #message h8 {
                 padding: 10px 35px;
                 font-size: 14px;
             }
-
             /* Add a green text color and a checkmark when the requirements are right */
             .valid {
                 color: green;
             }
-
             .valid:before {
                 position: relative;
                 left: -35px;
                 content: "✔";
             }
-
             /* Add a red text color and an "x" when the requirements are wrong */
             .invalid {
                 color: red;
             }
-
             .invalid:before {
                 position: relative;
                 left: -35px;
@@ -243,17 +235,14 @@
             var capital = document.getElementById("capital");
             var number = document.getElementById("number");
             var length = document.getElementById("length");
-
             // When the user clicks on the password field, show the message box
             myInput.onfocus = function () {
                 document.getElementById("message").style.display = "block";
             }
-
             // When the user clicks outside of the password field, hide the message box
             myInput.onblur = function () {
                 document.getElementById("message").style.display = "none";
             }
-
             // When the user starts to type something inside the password field
             myInput.onkeyup = function () {
                 // Validate lowercase letters
@@ -265,7 +254,6 @@
                     letter.classList.remove("valid");
                     letter.classList.add("invalid");
                 }
-
                 // Validate capital letters
                 var upperCaseLetters = /[A-Z]/g;
                 if (myInput.value.match(upperCaseLetters)) {
@@ -275,7 +263,6 @@
                     capital.classList.remove("valid");
                     capital.classList.add("invalid");
                 }
-
                 // Validate numbers
                 var numbers = /[0-9]/g;
                 if (myInput.value.match(numbers)) {
@@ -285,7 +272,6 @@
                     number.classList.remove("valid");
                     number.classList.add("invalid");
                 }
-
                 // Validate length
                 if (myInput.value.length >= 8) {
                     length.classList.remove("invalid");

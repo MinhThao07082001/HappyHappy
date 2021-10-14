@@ -17,7 +17,7 @@ public class UserAuthentication extends HttpServlet {
                        HttpSession session = request.getSession();
         UserCommon u = (UserCommon) session.getAttribute("user");
         String email = u.getEmail();
-//        String email = "puungok@gmail.com";
+//        String email = "vinhhshe150155@fpt.edu.vn";
         String code = getRandomString(6);
         AuthenticationCodeDAO acd = new AuthenticationCodeDAO();
         acd.insertCodeAuthentication(email, code);

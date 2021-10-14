@@ -22,27 +22,27 @@
 
         <!-- Perfect Scrollbar -->
         <link type="text/css"
-              href="assets/vendor/perfect-scrollbar.css"
+              href="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.css"
               rel="stylesheet">
 
         <!-- Material Design Icons -->
         <link type="text/css"
-              href="assets/css/material-icons.css"
+              href="${pageContext.request.contextPath}/user/assets/css/material-icons.css"
               rel="stylesheet">
 
         <!-- Font Awesome Icons -->
         <link type="text/css"
-              href="assets/css/fontawesome.css"
+              href="${pageContext.request.contextPath}/user/assets/css/fontawesome.css"
               rel="stylesheet">
 
         <!-- Preloader -->
         <link type="text/css"
-              href="assets/vendor/spinkit.css"
+              href="${pageContext.request.contextPath}/user/assets/vendor/spinkit.css"
               rel="stylesheet">
 
         <!-- App CSS -->
         <link type="text/css"
-              href="assets/css/app.css"
+              href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
 
     </head>
@@ -160,7 +160,7 @@
                                                             <div class="media align-items-center">
                                                                 <a href="instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/vuejs.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/vuejs.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
@@ -187,7 +187,7 @@
                                                             <div class="media align-items-center">
                                                                 <a href="instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/vuejs.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/vuejs.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
@@ -214,7 +214,7 @@
                                                             <div class="media align-items-center">
                                                                 <a href="instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/github.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/github.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
@@ -241,7 +241,7 @@
                                                             <div class="media align-items-center">
                                                                 <a href="instructor-course-edit.html"
                                                                    class="avatar avatar-4by3 avatar-sm mr-3">
-                                                                    <img src="assets/images/gulp.png"
+                                                                    <img src="${pageContext.request.contextPath}/user/assets/images/gulp.png"
                                                                          alt="course"
                                                                          class="avatar-img rounded">
                                                                 </a>
@@ -352,7 +352,7 @@
                                                 <div class="media-left">
                                                     <a href="#"
                                                        class="avatar avatar-sm">
-                                                        <img src="assets/images/people/110/guy-9.jpg"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/people/110/guy-9.jpg"
                                                              alt="Guy"
                                                              class="avatar-img rounded-circle">
                                                     </a>
@@ -373,7 +373,7 @@
                                                 <div class="media-left">
                                                     <a href="#"
                                                        class="avatar avatar-sm">
-                                                        <img src="assets/images/people/110/guy-6.jpg"
+                                                        <img src="${pageContext.request.contextPath}/user/assets/images/people/110/guy-6.jpg"
                                                              alt="Guy"
                                                              class="avatar-img rounded-circle">
                                                     </a>
@@ -447,46 +447,46 @@
     </div>
 
     <!-- jQuery -->
-    <script src="assets/vendor/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/vendor/popper.min.js"></script>
-    <script src="assets/vendor/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/bootstrap.min.js"></script>
 
     <!-- Perfect Scrollbar -->
-    <script src="assets/vendor/perfect-scrollbar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.min.js"></script>
 
     <!-- MDK -->
-    <script src="assets/vendor/dom-factory.js"></script>
-    <script src="assets/vendor/material-design-kit.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/dom-factory.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/material-design-kit.js"></script>
 
     <!-- App JS -->
-    <script src="assets/js/app.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/app.js"></script>
 
     <!-- Highlight.js -->
-    <script src="assets/js/hljs.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/hljs.js"></script>
 
     <!-- App Settings (safe to remove) -->
-    <script src="assets/js/app-settings.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/app-settings.js"></script>
 
     <!-- Global Settings -->
-    <script src="assets/js/settings.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/settings.js"></script>
 
     <!-- Moment.js -->
-    <script src="assets/vendor/moment.min.js"></script>
-    <script src="assets/vendor/moment-range.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/moment.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/moment-range.js"></script>
 
     <!-- Chart.js -->
-    <script src="assets/vendor/Chart.min.js"></script>
-    <script src="assets/js/chartjs-rounded-bar.js"></script>
-    <script src="assets/js/chartjs.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/Chart.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/chartjs-rounded-bar.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/chartjs.js"></script>
 
     <!-- Instructor Dashboard Page JS -->
-    <script src="assets/js/page.instructor-dashboard.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/page.instructor-dashboard.js"></script>
 
     <!-- List.js -->
-    <script src="assets/vendor/list.min.js"></script>
-    <script src="assets/js/list.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/vendor/list.min.js"></script>
+    <script src="${pageContext.request.contextPath}/user/assets/js/list.js"></script>
 
 </body>
 
