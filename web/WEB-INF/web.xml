@@ -25,12 +25,16 @@
         <servlet-class>controller.ChangePasswordServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>RateAndComment</servlet-name>
-        <servlet-class>controller.RateAndComment</servlet-class>
+        <servlet-name>ForgetChangePasswordServlet</servlet-name>
+        <servlet-class>controller.ForgetChangePasswordServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>MentorDetail</servlet-name>
-        <servlet-class>controller.MentorDetail</servlet-class>
+        <servlet-name>ConfirmEmailServlet</servlet-name>
+        <servlet-class>controller.ConfirmEmailServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmCodeServlet</servlet-name>
+        <servlet-class>controller.ConfirmCodeServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DemoController</servlet-name>
@@ -57,12 +61,16 @@
         <url-pattern>/changepassword</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RateAndComment</servlet-name>
-        <url-pattern>/rate</url-pattern>
+        <servlet-name>ForgetChangePasswordServlet</servlet-name>
+        <url-pattern>/forgetchangepassword</url-pattern> 
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>MentorDetail</servlet-name>
-        <url-pattern>/detail</url-pattern>
+        <servlet-name>ConfirmEmailServlet</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmCodeServlet</servlet-name>
+        <url-pattern>/code</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

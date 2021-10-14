@@ -7,8 +7,10 @@ public class Rating {
     private int mentorID;
     private int menteeID;
 
+
     public Rating() {
     }
+
 
     public Rating(int rateID, int rateAmount, String rateDescription, String rateTime, int mentorID, int menteeID) {
         this.rateID = rateID;

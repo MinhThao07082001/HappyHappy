@@ -11,9 +11,14 @@ package model;
  */
 public class RequestSlotTime {
     private int requestID;
-    private int day;
     private String slotFrom;
     private String slotTo;
+
+    public RequestSlotTime(int requestID, String slotFrom, String slotTo) {
+        this.requestID = requestID;
+        this.slotFrom = slotFrom;
+        this.slotTo = slotTo;
+    }
 
     public int getRequestID() {
         return requestID;
@@ -21,14 +26,6 @@ public class RequestSlotTime {
 
     public void setRequestID(int requestID) {
         this.requestID = requestID;
-    }
-
-    public int getDay() {
-        return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
     }
 
     public String getSlotFrom() {
@@ -46,16 +43,5 @@ public class RequestSlotTime {
     public void setSlotTo(String slotTo) {
         this.slotTo = slotTo;
     }
-
-    public RequestSlotTime(int requestID, int day, String slotFrom, String slotTo) {
-        this.requestID = requestID;
-        this.day = day;
-        this.slotFrom = slotFrom;
-        this.slotTo = slotTo;
-    }
-
-    public RequestSlotTime() {
-    }
-
     
 }

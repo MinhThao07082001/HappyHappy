@@ -133,7 +133,7 @@
                 <div class="card navbar-shadow">
                     <div class="card-header text-center">
                         <h4 class="card-title">Change Password</h4>
-                        <p class="card-subtitle">Change you password</p>
+                        <p class="card-subtitle">Change your password</p>
                     </div>
                     <div class="card-body">
                      

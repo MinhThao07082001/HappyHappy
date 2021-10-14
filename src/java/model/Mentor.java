@@ -22,7 +22,7 @@ public class Mentor {
     private String status;
     private int moneyLeft;
     private String createTime;
-    private List<Subject> listMajor;
+    private List<Major> listMajor;
 
     public Mentor(int mentorID, String name, String password, String email, String dob, int sex, String education, int yearExperiment, String address, String phone, String intro, String imgAvt, String imgAuthen1, String imgAuthen2, String description, int authen, String status, int moneyLeft, String createTime) {
         this.mentorID = mentorID;
@@ -201,11 +201,11 @@ public class Mentor {
         this.createTime = createTime;
     }
 
-    public List<Subject> getListMajor() {
+    public List<Major> getListMajor() {
         return listMajor;
     }
 
-    public void setListMajor(List<Subject> listMajor) {
+    public void setListMajor(List<Major> listMajor) {
         this.listMajor = listMajor;
     }
 
