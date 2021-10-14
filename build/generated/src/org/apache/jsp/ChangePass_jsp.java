@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class ChangePass_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -53,7 +53,7 @@ public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runti
       out.write("        <meta charset=\"utf-8\">\r\n");
       out.write("        <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n");
-      out.write("        <title>Forget PassWord</title>\r\n");
+      out.write("        <title>Change PassWord</title>\r\n");
       out.write("\r\n");
       out.write("        <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->\r\n");
       out.write("        <meta name=\"robots\" content=\"noindex\">\r\n");
@@ -76,20 +76,20 @@ public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runti
       out.write("        <!-- App CSS -->\r\n");
       out.write("        <link type=\"text/css\" href=\"user/assets/css/app.css\" rel=\"stylesheet\">\r\n");
       out.write("        <style>\r\n");
-      out.write("            /*            .next {\r\n");
-      out.write("                            padding-left: 46%;\r\n");
-      out.write("                            padding-right: 46%;\r\n");
-      out.write("                            padding-top: 9px;\r\n");
-      out.write("                            padding-bottom: 9px;\r\n");
-      out.write("                            background-color: #2295F5;\r\n");
-      out.write("                            border: #2295F5;\r\n");
-      out.write("                            color: #FFFFFF;\r\n");
-      out.write("                        }\r\n");
-      out.write("            \r\n");
-      out.write("                        .next:hover {\r\n");
-      out.write("                            background-color: #0C83E2;\r\n");
-      out.write("                            color: #FFFFFF;\r\n");
-      out.write("                        }*/\r\n");
+      out.write("/*            .next {\r\n");
+      out.write("                padding-left: 46%;\r\n");
+      out.write("                padding-right: 46%;\r\n");
+      out.write("                padding-top: 9px;\r\n");
+      out.write("                padding-bottom: 9px;\r\n");
+      out.write("                background-color: #2295F5;\r\n");
+      out.write("                border: #2295F5;\r\n");
+      out.write("                color: #FFFFFF;\r\n");
+      out.write("            }\r\n");
+      out.write("\r\n");
+      out.write("            .next:hover {\r\n");
+      out.write("                background-color: #0C83E2;\r\n");
+      out.write("                color: #FFFFFF;\r\n");
+      out.write("            }*/\r\n");
       out.write("\r\n");
       out.write("            .form-group .next {\r\n");
       out.write("                margin-top: 15px;\r\n");
@@ -152,7 +152,7 @@ public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runti
       out.write("                border-color: #2295F5;\r\n");
       out.write("                color: #fff;\r\n");
       out.write("            }\r\n");
-      out.write("            body{\r\n");
+      out.write("              body{\r\n");
       out.write("                background-image: url('user/assets/images/background.jpg') ;\r\n");
       out.write("\r\n");
       out.write("            }\r\n");
@@ -166,40 +166,56 @@ public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runti
       out.write("    <body class=\"login\">\r\n");
       out.write("        <div class=\"d-flex align-items-center\" style=\"min-height: 100vh\">\r\n");
       out.write("            <div class=\"col-sm-8 col-md-6 col-lg-4 mx-auto\" style=\"min-width: 300px;\">\r\n");
-      out.write("\r\n");
-      out.write("\r\n");
+      out.write("                <div class=\"text-center mt-5 mb-1\">\r\n");
+      out.write("                    <div class=\"avatar avatar-lg\">\r\n");
+      out.write("                        <img src=\"user/assets/images/logo/primary.svg\" class=\"avatar-img rounded-circle\" alt=\"LearnPlus\" />\r\n");
+      out.write("                    </div>\r\n");
+      out.write("                </div>\r\n");
+      out.write("                <div class=\"d-flex justify-content-center mb-5 navbar-light\">\r\n");
+      out.write("                    <a href=\"student-dashboard.html\" class=\"navbar-brand m-0\">HappyHappy</a>\r\n");
+      out.write("                </div>\r\n");
       out.write("                ");
 
-                    if (request.getAttribute("mess") != null) {
+                    if (request.getAttribute("message") != null) {
                 
       out.write("\r\n");
       out.write("                <p style=\"color: yellow; background: red;margin: 0;font-size: x-large;\" align=\"center\" >");
-      out.print( request.getAttribute("mess"));
+      out.print( request.getAttribute("message"));
       out.write("</p>\r\n");
       out.write("                ");
 
                     }
                 
       out.write("\r\n");
-      out.write("                <div class=\"card navbar-shadow\" style=\"border-radius: 20px;\">\r\n");
-      out.write("                    <div class=\"text-center mt-5 mb-1\">\r\n");
-      out.write("                        <div class=\"avatar avatar-lg\">\r\n");
-      out.write("                            <img class=\"logo\" src=\"user/assets/images/logo/logo.svg\" class=\"avatar-img rounded-circle\" alt=\"LearnPlus\" />\r\n");
-      out.write("                        </div>\r\n");
-      out.write("                    </div>\r\n");
+      out.write("                <div class=\"card navbar-shadow\">\r\n");
       out.write("                    <div class=\"card-header text-center\">\r\n");
       out.write("                        <h4 class=\"card-title\">Change Password</h4>\r\n");
       out.write("                        <p class=\"card-subtitle\">Change your password</p>\r\n");
       out.write("                    </div>\r\n");
       out.write("                    <div class=\"card-body\">\r\n");
-      out.write("\r\n");
-      out.write("                        <form action=\"forgetchangepassword\" method=\"POST\">\r\n");
+      out.write("                     \r\n");
+      out.write("                        <form action=\"changepassword\" method=\"POST\">\r\n");
       out.write("                            <div id=\"test1\">\r\n");
       out.write("                                <div class=\"sign \">\r\n");
+      out.write("\r\n");
+      out.write("                                    <div class=\"form-group\">\r\n");
+      out.write("                                        <label class=\"form-label\" for=\"password\">old Password: <span style=\"color:red\">*</span></label>\r\n");
+      out.write("                                        <div class=\"input-group input-group-merge\">\r\n");
+      out.write("                                            <input type=\"password\" id=\"pass\" name=\"pass\" \r\n");
+      out.write("                                                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\"  required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Enter your old password\">\r\n");
+      out.write("                                            <div class=\"input-group-prepend\">\r\n");
+      out.write("                                                <div class=\"input-group-text\">\r\n");
+      out.write("                                                    <span class=\"far fa-key\"></span>\r\n");
+      out.write("                                                </div>\r\n");
+      out.write("                                            </div>\r\n");
+      out.write("                                        </div>\r\n");
+      out.write("\r\n");
+      out.write("                                    </div>\r\n");
+      out.write("\r\n");
       out.write("                                    <div class=\"form-group\">\r\n");
       out.write("                                        <label class=\"form-label\" for=\"password\">New Password: <span style=\"color:red\">*</span></label>\r\n");
       out.write("                                        <div class=\"input-group input-group-merge\">\r\n");
-      out.write("                                            <input id=\"password\" type=\"password\" name=\"newPass\" \r\n");
+      out.write("                                            <input id=\"password\" type=\"password\" name=\"new-pass\" \r\n");
       out.write("                                                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\"  required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Enter your new password\">\r\n");
       out.write("                                            <div class=\"input-group-prepend\">\r\n");
       out.write("                                                <div class=\"input-group-text\">\r\n");
@@ -218,7 +234,7 @@ public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runti
       out.write("                                    <div class=\"form-group\">\r\n");
       out.write("                                        <label class=\"form-label\" for=\"password\">confirm new Password: <span style=\"color:red\">*</span></label>\r\n");
       out.write("                                        <div class=\"input-group input-group-merge\">\r\n");
-      out.write("                                            <input type=\"password\" id=\"repeat-new-pass\" name=\"confirmNewPass\" \r\n");
+      out.write("                                            <input type=\"password\" id=\"repeat-new-pass\" name=\"repeat-new-pass\" \r\n");
       out.write("                                                   pattern=\"(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}\"  required=\"\" class=\"form-control form-control-prepended\" placeholder=\"Confirm your new password\">\r\n");
       out.write("                                            <div class=\"input-group-prepend\">\r\n");
       out.write("                                                <div class=\"input-group-text\">\r\n");
@@ -230,14 +246,13 @@ public final class Forget_005fChangePassword_jsp extends org.apache.jasper.runti
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
       out.write("                            </div>\r\n");
-      out.write("                            <div class=\"form-group \" style=\"text-align: center;\" >\r\n");
-      out.write("                                <button type=\"submit \" style=\"border-radius: 10px; background-color: #94B85E; width: 30%; \"\r\n");
-      out.write("                                        class=\"btn btn-primary btn-block\">\r\n");
-      out.write("                                    Sign In\r\n");
-      out.write("                                </button>\r\n");
+      out.write("                            <div>\r\n");
+      out.write("                                <button  type=\"submit\" id=\"confirm\" >Confirm</button>\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </form>     \r\n");
+      out.write("\r\n");
       out.write("                    </div>\r\n");
+      out.write("\r\n");
       out.write("                </div>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
