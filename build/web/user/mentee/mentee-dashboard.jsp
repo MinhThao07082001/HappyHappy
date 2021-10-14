@@ -87,7 +87,7 @@
                             <div class="card-header">
                                 <div class="media align-items-center">
                                     <div class="media-body">
-                                        <h4 class="card-title">Mentor Recommendation</h4>
+                                        <h4 class="card-title">Mentor Suggestions</h4>
                                         <p class="card-subtitle">Choose the list of mentors recommend by US!</p>
                                     </div>
                                 </div>
@@ -100,7 +100,7 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column flex-sm-row">
-                                                    <a href="instructor-course-edit.html"
+                                                    <a href="?id=${mtor.mentorID}"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">

@@ -12,20 +12,22 @@ import java.util.List;
  * @author Admin
  */
 public class Request {
-private int requestID;
-private int userID;
-private int subjectID;
-private int moneyPerSlot;
-private int timePerSlot;
-private String startTime;
-private String endTime;
-private String description;
-private int status;
-/*1 is off, 2 is onl*/
-private int learnType;
-private String reqTime;
-private List<RequestSlotTime> listSlotTime;
-    
+
+    private int requestID;
+    private int userID;
+    private int subjectID;
+    private int moneyPerSlot;
+    private int timePerSlot;
+    private String startTime;
+    private String endTime;
+    private String description;
+    private int status;
+    /*1 is off, 2 is onl*/
+    private int learnType;
+    private String reqTime;
+    private List<RequestSlotTime> listSlotTime;
+    private Subject subject;
+
     public int getRequestID() {
         return requestID;
     }
@@ -36,6 +38,14 @@ private List<RequestSlotTime> listSlotTime;
 
     public int getUserID() {
         return userID;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     public void setUserID(int userID) {
@@ -139,5 +149,17 @@ private List<RequestSlotTime> listSlotTime;
     public Request() {
     }
 
-    
+    public Request(int userID, int subjectID, int moneyPerSlot, int timePerSlot, String startTime, String endTime, String description, int learnType) {
+        this.userID = userID;
+        this.subjectID = subjectID;
+        this.moneyPerSlot = moneyPerSlot;
+        this.timePerSlot = timePerSlot;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.description = description;
+
+        this.learnType = learnType;
+
+    }
+
 }
