@@ -122,7 +122,7 @@
                             </button>
                         </div>
                         <div class="text-center">
-                            <a href="guest-forgot-password.html"
+                            <a href="confirm"
                                class="text-black-70"
                                style="text-decoration: underline;">Forgot Password?</a>
                         </div>

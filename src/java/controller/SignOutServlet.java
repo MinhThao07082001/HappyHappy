@@ -57,7 +57,7 @@ public class SignOutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getSession().invalidate();
-        response.sendRedirect("welcome page/index.html");
+        response.sendRedirect("signin");
     }
 
     /**
