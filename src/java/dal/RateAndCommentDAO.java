@@ -31,7 +31,7 @@ public class RateAndCommentDAO extends DBContext {
     } 
     
     public int CheckLearned(){
-        
+        return 0;
     }
     
     
@@ -40,8 +40,8 @@ public class RateAndCommentDAO extends DBContext {
     
     public static void main(String[] args) {
         RateAndCommentDAO rate = new RateAndCommentDAO();
-        Rating rating = new Rating(4, "fjkaiofqawjiorjawio", 2, 1);
-        rate.RateMentor(rating);
+   
+      
        
        
     }
