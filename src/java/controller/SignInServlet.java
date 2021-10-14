@@ -16,9 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.UserCommon;
-
 public class SignInServlet extends HttpServlet {
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,13 +33,11 @@ public class SignInServlet extends HttpServlet {
             out.println("</html>");
         }
     }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("SignIn.jsp").forward(request, response);
     }
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -52,7 +48,7 @@ public class SignInServlet extends HttpServlet {
         String p = request.getParameter("password");
         UserDAO db = new UserDAO();
         UserCommon u = db.getAccount(m, p);
-        if (u == null) {
+        if (u == null) {          
             request.setAttribute("error", "Tài khoản hoặc mật khẩu không đúng");
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);
         } else {
@@ -60,14 +56,14 @@ public class SignInServlet extends HttpServlet {
                 MentorDAO md = new MentorDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", md.getMentorByEmail(u.getEmail()));
-                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
-
+//                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
+                response.sendRedirect("mentor/home");
             } else {
                 MenteeDAO mtd = new MenteeDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", mtd.getMenteeByEmail(u.getEmail()));
-                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response);
-
+//                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response);
+                response.sendRedirect("mentee/home");
             }
         }
     }

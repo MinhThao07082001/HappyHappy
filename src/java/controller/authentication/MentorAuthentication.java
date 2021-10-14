@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ShareData.FileHandling;
 import dal.MentorDAO;
+import dal.UserDAO;
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.http.HttpSession;
+import model.UserCommon;
 @MultipartConfig(fileSizeThreshold=1024*1024, 
     maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 @WebServlet(name = "MentorAuthentication", urlPatterns = {"/mentorAuthen"})
@@ -23,24 +26,27 @@ public class MentorAuthentication extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("user/mentor/mentor-authentication.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String userID = request.getParameter("userID");
+         HttpSession session = request.getSession();
+        UserDAO ud = new UserDAO();
+        UserCommon u = ud.getEmail((String) session.getAttribute("email"));
+        int userID = u.getUserID();
         String img1Name = "imgAuthen1_" + userID;
         String img2Name = "imgAuthen2_" + userID;
         FileHandling fh = new FileHandling();
         String img1Path =  fh.uploadFile(request, response, "img1", img1Name);
         String img2Path = fh.uploadFile(request, response, "img2", img2Name);
         MentorDAO md = new MentorDAO();
-        md.updateImageAuthenMentor(Integer.parseInt(userID), img1Path, img2Path);
+        md.updateImageAuthenMentor(userID, img1Path, img2Path);
         request.setAttribute("img1", img1Path);
         request.setAttribute("img2", img2Path);
-        request.getRequestDispatcher("test.jsp").forward(request, response);
+//        request.getRequestDispatcher("test.jsp").forward(request, response);
     }
 
     @Override

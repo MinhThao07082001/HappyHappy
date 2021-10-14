@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-<<<<<<< HEAD
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/RateAndComment.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee-dashboard.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_tab.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/Forget_ChangePassword.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_edit_profile.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/dal/MentorDAO.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/dal/RateAndCommentDAO.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/SignOutServlet.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_header.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/authentication/UserAuthentication.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/SignUpServlet.java</file>
             <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/dal/UserDAO.java</file>
             <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/SignInServlet.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_create_request.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/CodeAuthenticationSignUp.jsp</file>
             <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/assets/css/nestable.css</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/SignOutServlet.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/dal/MentorDAO.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_request.jsp</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/ChatController.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee-dashboard.jsp</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/CreateRequest.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_header.jsp</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_comment_rate.jsp</file>
             <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/ChangePasswordServlet.java</file>
             <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/model/Rating.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/MentorDetail.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_edit_profile.jsp</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/dal/RateAndCommentDAO.java</file>
-            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/web/user/mentee/mentee_tab.jsp</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/dal/DBContext.java</file>
+            <file>file:/D:/FPT/SWP%20Project/Happy-Happy-main/HappyHappy/src/java/controller/authentication/ProcessAuthenticationCode.java</file>
         </group>
     </open-files>
-=======
->>>>>>> 31bfb9bcc027c8517649db5cf56660d7d861bba9
 </project-private>
