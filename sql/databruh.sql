@@ -38,8 +38,8 @@ foreign key (userID) references userCommon(userID),
 CREATE TABLE subject(
 subjectID int identity(1,1) primary key,
 subjectName nvarchar(100),
+level nvarchar(100),
 status nvarchar(1000),
-SubjectLevel int,
 )
 
 CREATE TABLE request(
@@ -204,6 +204,8 @@ INSERT INTO subject(subjectName) values ('Python')
 INSERT INTO subject(subjectName) values ('C#')
 INSERT INTO subject(subjectName) values ('Ruby')
 INSERT INTO subject(subjectName) values ('Android')
+INSERT INTO subject(subjectName, [level]) values ('Math','Grade 1')
+
 INSERT INTO userCommon(     
 	   [name]
       ,[password]
