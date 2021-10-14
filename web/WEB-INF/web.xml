@@ -72,6 +72,14 @@
         <servlet-name>ConfirmCodeServlet</servlet-name>
         <url-pattern>/code</url-pattern>
     </servlet-mapping>
+     <servlet>
+        <servlet-name>RateAndComment</servlet-name>
+        <servlet-class>controller.RateAndComment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MentorDetail</servlet-name>
+        <servlet-class>controller.MentorDetail</servlet-class>
+    </servlet>
     <session-config>
         <session-timeout>
             30
