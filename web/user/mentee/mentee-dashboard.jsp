@@ -10,6 +10,14 @@
               content="IE=edge">
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <title>Student - Dashboard</title>
         <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
         <meta name="robots"
@@ -38,7 +46,7 @@
               href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
     </head>
-    <body class=" layout-fluid">
+    <body class=" layout-fluid" style="background-color: #eaf4fc">
         <div class="preloader">
             <div class="sk-chase">
                 <div class="sk-chase-dot"></div>
@@ -60,7 +68,7 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/student-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentee/home">Home</a></li>
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ol>
                             <h1 class="h2" style="width: auto;
@@ -87,7 +95,7 @@
                             <div class="card-header">
                                 <div class="media align-items-center">
                                     <div class="media-body">
-                                        <h4 class="card-title">Mentor Recommendation</h4>
+                                        <h4 class="card-title">Mentor Suggestions</h4>
                                         <p class="card-subtitle">Choose the list of mentors recommend by US!</p>
                                     </div>
                                 </div>
@@ -100,17 +108,17 @@
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column flex-sm-row">
-                                                    <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
+                                                    <a href="?id=${mtor.mentorID}"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">
                                                     </a>
-                                                             <a href="../conversation?id=${mtor.mentorID}">
-                                                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
-                                                             </a>
+                                                    <a href="../conversation?id=${mtor.mentorID}">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
+                                                    </a>
                                                     <div class="flex" style="min-width: 200px;">
                                                         <!-- <h5 class="card-title text-base m-0"><a href="instructor-course-edit.html"><strong>Learn Vue.js</strong></a></h5> -->
-                                                        <h4 class="card-title mb-1"><a href="instructor-course-edit.html">${mtor.name}
+                                                        <h4 class="card-title mb-1"><a href="${pageContext.request.contextPath}/user/instructor-course-edit.html">${mtor.name}
                                                                 <c:if test="${mtor.authen eq 1}">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#0000FF"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
                                                                 </c:if>
@@ -343,7 +351,7 @@
                                                     <p class="card-subtitle">Your recent courses</p>
                                                 </div>
                                                 <div class="media-right">
-                                                    <a class="btn btn-sm btn-primary" href="s${pageContext.request.contextPath}/user/tudent-my-courses.html">My
+                                                    <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/user/student-my-courses.html">My
                                                         courses</a>
                                                 </div>
                                             </div>
@@ -464,6 +472,36 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div style="width: 80%;margin: 0 auto;" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <img src="${pageContext.request.contextPath}/user/assets/images/1.png" alt="Anime">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="${pageContext.request.contextPath}/user/assets/images/2.png" alt="Anime">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="${pageContext.request.contextPath}/user/assets/images/4.png" alt="Anime">
+                                        </div>
+                                    </div>
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left"></span>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    </a>
+                                </div><!--Kết thúc slider-->
                             </div>
                         </div>
                     </div>

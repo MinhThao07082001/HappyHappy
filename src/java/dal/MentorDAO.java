@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import model.Major;
 import model.Mentor;
 import model.Subject;
 public class MentorDAO extends DBContext {
@@ -44,7 +45,58 @@ public class MentorDAO extends DBContext {
         }
         return 0;
     }
-
+    public int createMentorPro(Mentor m) {
+        String sql = "insert into mentor (education,yearExperiment,intro) values(?,?,?) where userID=? ;\n" +
+                     "insert into major (subjectID) values (?) where mentorID=?;";
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            Major mj=new Major();
+            st.setString(1, m.getEducation());
+            st.setInt(2, m.getYearExperiment());
+            st.setString(3, m.getIntro());
+            st.setInt(4, m.getMentorID());
+            st.setInt(5, mj.getSubjectID());
+            st.setInt(6, m.getMentorID());
+            return st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+    public int updateMentor(Mentor m) {
+        String sql = "UPDATE userCommon set "
+                + "      [name] = ?,"
+                + "      [dob] = ?,"
+                + "      [address] = ?,"
+                + "      [phone] = ?,"
+                + "      [imgAvt] = ?,"
+                + "      [description] = ?"
+                + "      where userID = ?;\n"; 
+//                     "UPDATE mentor set "
+//                + "      [education] = ?, "
+//                + "      [yearExperiment] = ?, "
+//                + "      [intro] ?, "
+//                + "      where userID = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, m.getName());
+            st.setString(2, m.getDob());
+            st.setString(3, m.getAddress());
+            st.setString(4, m.getPhone());
+            st.setString(5, m.getImgAvt());
+            st.setString(6, m.getDescription());
+            st.setInt(7, m.getMentorID());
+//            st.setString(8, m.getEducation());
+//            st.setInt(9, m.getYearExperiment());
+//            st.setString(10, m.getIntro());
+//            st.setInt(11, m.getMentorID());
+            return st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return 0;
+    }
     public int updateMentorAuthen(int id) {
         String sql = "UPDATE mentor set authen = 1 where userID = " +id;
         try {

@@ -23,7 +23,7 @@ public class MajorDAO extends DBContext {
     public List<Subject> getListMajorByMentorID(int id) {
         List<Subject> mList = new ArrayList<>();
         String sql = "SELECT TOP 1000 s.[subjectID]\n"
-                + "      ,s.subjectName\n"
+                + "      ,s.subjectName, s.level\n"
                 + "  FROM [SWP391].[dbo].[major] m\n"
                 + "  inner join [subject] s on m.subjectID = s.subjectID where mentorID = ?";
         try {
@@ -31,7 +31,7 @@ public class MajorDAO extends DBContext {
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                Subject s = new Subject(rs.getInt(1), rs.getString(2), "");
+                Subject s = new Subject(rs.getInt(1), rs.getString(2), rs.getString(3));
                 mList.add(s);
             }
             return mList;

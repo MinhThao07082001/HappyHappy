@@ -32,21 +32,21 @@
         <!-- App CSS -->
         <link type="text/css" href="user/assets/css/app.css" rel="stylesheet">
         <style>
-            .next {
-                padding-left: 46%;
-                padding-right: 46%;
-                padding-top: 9px;
-                padding-bottom: 9px;
-                background-color: #2295F5;
-                border: #2295F5;
-                color: #FFFFFF;
-            }
-
-            .next:hover {
-                background-color: #0C83E2;
-                color: #FFFFFF;
-            }
-
+            /*            .next {
+                            padding-left: 46%;
+                            padding-right: 46%;
+                            padding-top: 9px;
+                            padding-bottom: 9px;
+                            background-color: #2295F5;
+                            border: #2295F5;
+                            color: #FFFFFF;
+                        }
+            
+                        .next:hover {
+                            background-color: #0C83E2;
+                            color: #FFFFFF;
+                        }
+            */
             .form-group .next {
                 margin-top: 15px;
                 border-radius: 4px;
@@ -97,29 +97,36 @@
                 position: relative;
                 left: -35px;
                 content: "✖";
+
             }
+            body{
+                background-image: url('user/assets/images/background.jpg') ;
+
+            }
+            .logo{
+                width: 100%;
+                height: 100%;
+            }
+
         </style>
     </head>
 
     <body class="login">
         <div class="d-flex align-items-center" style="min-height: 100vh">
             <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
-                <div class="text-center mt-5 mb-1">
-                    <div class="avatar avatar-lg">
-                        <img src="user/assets/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center mb-5 navbar-light">
-                    <a href="student-dashboard.html" class="navbar-brand m-0">HappyHappy</a>
-                </div>
                 <%
                     if (request.getAttribute("mess") != null) {
                 %>
-                <p style="color: yellow; background: red;margin: 0;font-size: x-large;" align="center" ><%= request.getAttribute("mess")%></p>
+                <script> alert("<%= request.getAttribute("mess")%>")</script>
                 <%
                     }
                 %>
-                <div class="card navbar-shadow">
+                <div class="card navbar-shadow" style="border-radius: 20px;">
+                    <div class="text-center mt-5 mb-1">
+                        <div class="avatar avatar-lg">
+                            <img class="logo" src="user/assets/images/logo/logo.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
+                        </div>
+                    </div>
                     <div class="card-header text-center">
                         <h4 class="card-title">Confirm Email</h4>
                         <p class="card-subtitle">Check your email for verification code</p>
@@ -143,8 +150,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <input class="next" type="submit" value="Confirm">
+                            <div style="text-align: center;">
+                                <input style=" border-radius: 10px; background-color: #94B85E; color:#FFFFFF; width: 30%;" class="next" type="submit" value="Confirm">
                             </div>
                         </form>                  
                     </div>

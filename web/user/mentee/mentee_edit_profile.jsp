@@ -141,7 +141,7 @@
                                           id="email"
                                           class="form-control"
                                           value="${user.email}"
-                                          disabled>
+                                          readonly>
                                     </div>
                                  </div>
                               </div>
@@ -183,12 +183,7 @@
                                              <i class="material-icons md-18 phone"></i>
                                           </div>
                                        </div>
-                                       <input id="phone" type="text"
-                                            pattern="[0][0-9]{9}" 
-                                            name="phone" 
-                                            class="form-control" 
-                                            value="${user.phone}"
-                                            disabled>
+                                       <input id="phone" type="text" name="phone" class="form-control" value="${user.phone}" readonly>
                                     </div>
                                  </div>
                               </div>

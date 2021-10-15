@@ -185,7 +185,6 @@
                                        </div>
                                        <input id="phone" 
                                             type="text" 
-                                            pattern="[0][0-9]{9}" 
                                             name="phone" 
                                             class="form-control" 
                                             value="${user.phone}" 

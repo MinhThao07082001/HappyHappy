@@ -75,19 +75,20 @@ public class ChangePasswordServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             UserDAO dao = new UserDAO();
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession();  
             UserCommon account = dao.getEmail((String) session.getAttribute("email"));
             String oldPassword = request.getParameter("pass");
             String newPassword = request.getParameter("new-pass");
             String repeatNewPassword = request.getParameter("repeat-new-pass");
             if (account.getPassword().equals(oldPassword)
                     && newPassword.equals(repeatNewPassword)) {
-                dao.updatePassword(String.valueOf(account.getUserID()), newPassword);
-                request.setAttribute("message", "Changed password successfully!");
+                dao.updatePassword(String.valueOf(account.getEmail()), newPassword);
+                request.setAttribute("mess", "Changed password successfully!");
             } else {
-                request.setAttribute("message", "Fail to change password");
+                request.setAttribute("mess", "Fail to change password");
                 request.setAttribute("compare", "CorrectCode.");
-            }
+                  request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
+            }  
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println(e);

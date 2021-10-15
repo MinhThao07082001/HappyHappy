@@ -49,21 +49,21 @@ public class SignInServlet extends HttpServlet {
         UserDAO db = new UserDAO();
         UserCommon u = db.getAccount(m, p);
         if (u == null) {          
-            request.setAttribute("error", "Tài khoản hoặc mật khẩu không đúng");
+            request.setAttribute("mess", "Email or password is not correct");
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);
         } else {
             if (u.getRole() == 1) {
                 MentorDAO md = new MentorDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", md.getMentorByEmail(u.getEmail()));
-                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
-                
+//                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
+                response.sendRedirect("mentor/home");
             } else {
                 MenteeDAO mtd = new MenteeDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", mtd.getMenteeByEmail(u.getEmail()));
-                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response); 
-                
+//                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response);
+                response.sendRedirect("mentee/home");
             }
         }
     }

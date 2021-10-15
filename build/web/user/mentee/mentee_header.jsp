@@ -17,9 +17,9 @@
             <span class="material-icons">menu</span>
             </button>
             <!-- Brand -->
-            <a href="${pageContext.request.contextPath}/user/student-dashboard.html" class="navbar-brand">
-            <img src="${pageContext.request.contextPath}/user/assets/images/logo/white.svg" class="mr-2" alt="LearnPlus" />
-            <span class="d-none d-xs-md-block">LearnPlus</span>
+            <a href="${pageContext.request.contextPath}/mentee/home" class="navbar-brand">
+                <img src="${pageContext.request.contextPath}/user/assets/images/logo/result.svg" class="mr-2pt" style="width: 90px;height: 50px" alt="LearnPlus" />
+<!--            <span class="d-none d-xs-md-block">LearnPlus</span>-->
             </a>
             <!-- Search -->
             <form class="search-form d-none d-md-flex">
@@ -31,9 +31,7 @@
             <div class="flex"></div>
             <!-- Menu -->
             <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
-               <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath}/user/student-forum.html">Forum</a>
-               </li>
+         
                <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath}/user/student-help-center.html">Get Help</a>
                </li>
