@@ -49,7 +49,7 @@ public class SignInServlet extends HttpServlet {
         UserDAO db = new UserDAO();
         UserCommon u = db.getAccount(m, p);
         if (u == null) {          
-            request.setAttribute("error", "Tài khoản hoặc mật khẩu không đúng");
+            request.setAttribute("mess", "Email or password is not correct");
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);
         } else {
             if (u.getRole() == 1) {

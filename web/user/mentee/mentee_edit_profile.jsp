@@ -66,7 +66,7 @@
             <div class="mdk-drawer-layout__content page ">
                <div class="container-fluid page__container">
                   <ol class="breadcrumb">
-                     <li class="breadcrumb-item"><a href="student-dashboard.html">Home</a></li>
+                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/student-dashboard.html">Home</a></li>
                      <li class="breadcrumb-item active">Edit Account</li>
                   </ol>
                   <h1 class="h2">Edit Account</h1>
@@ -141,7 +141,7 @@
                                           id="email"
                                           class="form-control"
                                           value="${user.email}"
-                                          disabled>
+                                          readonly>
                                     </div>
                                  </div>
                               </div>
@@ -155,7 +155,7 @@
                                              <i class="material-icons md-18 text-muted">language</i>
                                           </div>
                                        </div>
-                                       <input id="dob" type="date" name="dob" class="form-control" value="${user.dob}">
+                                       <input id="dob" type="date" name="dob" max="${now}" class="form-control" value="${user.dob}">
                                     </div>
                                  </div>
                               </div>
@@ -183,7 +183,7 @@
                                              <i class="material-icons md-18 phone"></i>
                                           </div>
                                        </div>
-                                       <input id="phone" type="text" name="phone" class="form-control" value="${user.phone}">
+                                       <input id="phone" type="text" name="phone" class="form-control" value="${user.phone}" readonly>
                                     </div>
                                  </div>
                               </div>

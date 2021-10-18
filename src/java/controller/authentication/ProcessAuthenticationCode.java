@@ -40,11 +40,11 @@ public class ProcessAuthenticationCode extends HttpServlet {
 //        System.out.println(codeUserInput);
 //        System.out.println(ac+" ");
         if (ac == null) {
-            request.setAttribute("error", "Invalid code");
+            request.setAttribute("mess", "Invalid code");
             request.getRequestDispatcher("CodeAuthenticationSignUp.jsp").forward(request, response);
         } else {
             if (!ac.getCode().equals(codeUserInput)) {
-                request.setAttribute("error", "Invalid code");
+                request.setAttribute("mess", "Invalid code");
                 request.getRequestDispatcher("CodeAuthenticationSignUp.jsp").forward(request, response);
             } else {
                 UserDAO ud = new UserDAO();

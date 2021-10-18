@@ -5,7 +5,6 @@
  */
 package dal;
 
-import com.sun.corba.se.spi.monitoring.MonitoringConstants;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import model.Rating;
@@ -31,6 +30,7 @@ public class RateAndCommentDAO extends DBContext {
     } 
     
     public int CheckLearned(){
+        String sql= "select * from";
         return 0;
     }
     
@@ -40,9 +40,6 @@ public class RateAndCommentDAO extends DBContext {
     
     public static void main(String[] args) {
         RateAndCommentDAO rate = new RateAndCommentDAO();
-   
-      
-       
-       
+        rate.RateMentor(new Rating(2, "Allahu",2,4));
     }
 }

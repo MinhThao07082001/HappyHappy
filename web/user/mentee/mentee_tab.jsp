@@ -41,7 +41,7 @@
                   <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-help-center.html">
                   <i
                      class="sidebar-menu-icon sidebar-menu-icon--left material-icons">credit_card</i>
-                  Payment
+                  Terms of Services
                   </a>
                </li>
             

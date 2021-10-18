@@ -83,9 +83,9 @@ public class ChangePasswordServlet extends HttpServlet {
             if (account.getPassword().equals(oldPassword)
                     && newPassword.equals(repeatNewPassword)) {
                 dao.updatePassword(String.valueOf(account.getEmail()), newPassword);
-                request.setAttribute("message", "Changed password successfully!");
+                request.setAttribute("mess", "Changed password successfully!");
             } else {
-                request.setAttribute("message", "Fail to change password");
+                request.setAttribute("mess", "Fail to change password");
                 request.setAttribute("compare", "CorrectCode.");
                   request.getRequestDispatcher("ChangePass.jsp").forward(request, response);
             }  

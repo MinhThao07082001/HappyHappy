@@ -5,7 +5,10 @@
  */
 package controller;
 
+import dal.MenteeDAO;
+import dal.MentorDAO;
 import dal.RateAndCommentDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.Format;
@@ -22,6 +25,7 @@ import javax.servlet.http.HttpSession;
 import model.Mentee;
 import model.Mentor;
 import model.Rating;
+import model.UserCommon;
 
 /**
  *
@@ -67,7 +71,14 @@ public class RateAndComment extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+        int id = Integer.parseInt(request.getParameter("id"));
+        MentorDAO db = new MentorDAO(); 
+        Mentor mt = db.getMentorById(id);
+        request.setAttribute("mentor", mt);
+        request.getRequestDispatcher("/user/mentee/mentee_comment_rate.jsp").forward(request, response);
 
     }
 
@@ -85,20 +96,21 @@ public class RateAndComment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        String RateStar = request.getParameter("star");
-        String mentorid = request.getParameter("mtorid");
-        String Comment = request.getParameter("comment");
-        String mentorID = request.getParameter("mentor");
-        RateAndCommentDAO rating = new RateAndCommentDAO();
         Mentee m = (Mentee) session.getAttribute("user");
-        Rating rate = new Rating();
-        rate.getRateAmount();
-        rate.getRateDescription();
-        rate.getMenteeID();
-        rate.getMentorID();
+        int RateStar = Integer.parseInt(request.getParameter("star"));     
+        String Comment = request.getParameter("comment");
+        int menteeid = Integer.parseInt(request.getParameter("mentee"));
+        int mentorid = Integer.parseInt(request.getParameter("mtorid"));
+        String id = request.getParameter("id");
+        RateAndCommentDAO rating = new RateAndCommentDAO();      
+        Rating rate = new Rating();       
+        rate.setRateAmount(RateStar);
+        rate.setRateDescription(Comment);
+        rate.setMenteeID(menteeid);
+        rate.setMentorID(mentorid);
         rating.RateMentor(rate);
         session.setAttribute("user", m);
-        request.getRequestDispatcher("/user/mentee/mentee_edit_profile.jsp").forward(request, response);
+        response.sendRedirect("rate?id= "+id);
     }
 
     /**

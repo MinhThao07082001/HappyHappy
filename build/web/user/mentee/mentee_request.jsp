@@ -308,7 +308,7 @@
         </style>
     </head>
 
-    <body class="layout-fluid">
+    <body class="layout-fluid" style="background-color: #eaf4fc">
 
         <div class="preloader">
             <div class="sk-chase">
@@ -337,7 +337,7 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="mentee-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/mentee-dashboard.html">Home</a></li>
                                 <li class="breadcrumb-item active">Request Mentor</li>
                             </ol>
 
@@ -348,7 +348,7 @@
                                         <h4 class="card-title">List of Request</h4>                                        
                                     </div>
                                     <div class="media-right mt-2 mt-xs-plus-0">
-                                        <a class="btn-grad" href="student-account-billing-upgrade.html">Create a request</a>
+                                        <a class="btn-grad" href="${pageContext.request.contextPath}/createRequest">Create a request</a>
                                     </div>
                                 </div>
                                 <div class="tabs">
@@ -524,14 +524,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
 
                     <!-- End Page content-->
 
