@@ -172,11 +172,7 @@
                      <i class="material-icons">person</i> Public Profile
                      </a>
                      <a class="dropdown-item"
-<<<<<<< HEAD
-                        href="../../signout">
-=======
                         href="${pageContext.request.contextPath}/signout">
->>>>>>> origin/Chau
                      <i class="material-icons">lock</i> Logout
                      </a>
                   </div>

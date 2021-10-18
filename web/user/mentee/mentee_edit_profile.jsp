@@ -179,8 +179,6 @@
                                           </div>
                                        </div>
 
-                                        <input id="phone" type="text" name="phone" class="form-control" value="${user.phone}" disabled="">
-
                                        <input id="phone" type="text" name="phone" class="form-control" value="${user.phone}" readonly>
 
                                     </div>

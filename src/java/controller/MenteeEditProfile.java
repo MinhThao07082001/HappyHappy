@@ -99,8 +99,9 @@ public class MenteeEditProfile extends HttpServlet {
         FileHandling fh = new FileHandling();
         Mentee m = (Mentee) session.getAttribute("user");
         MenteeDAO md = new MenteeDAO();
+        String[] fileName = request.getPart("imgAvt").toString().split(",")[0].split("=");
         String nameSave = "imgAvt_" + m.getMenteeID();
-        String imgAvtPath = fh.uploadFile(request, response, "imgAvt", nameSave);
+        String imgAvtPath = fileName.length==1?m.getImg():fh.uploadFile(request, response, "imgAvt", nameSave);
         String name = request.getParameter("name");
         String dob = request.getParameter("dob");
         String address = request.getParameter("address");
