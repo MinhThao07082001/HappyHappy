@@ -16,6 +16,18 @@ public class Rating {
         this.menteeID = menteeID;
     }
 
+    public Rating(int rateAmount, String rateDescription, int menteeID, int mentorID) {
+        this.rateAmount = rateAmount;
+        this.rateDescription = rateDescription;
+        
+        this.menteeID = menteeID;
+        this.mentorID = mentorID;
+    }
+
+    public Rating() {
+ }
+  
+
     public int getRateID() {
         return rateID;
     }

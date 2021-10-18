@@ -105,7 +105,7 @@ public class SignUpServlet extends HttpServlet {
         UserCommon a = ud.getEmail(e);
         UserCommon b = ud.getPhone(ph);
         if (a != null || b!=null) {
-            request.setAttribute("error", "Email hoặc số điện thoại đã tồn tại");
+            request.setAttribute("mess", "Email or phonenumber has already existed");
             request.getRequestDispatcher("SignUp.jsp").forward(request, response);
         } else {
             UserCommon u = new UserCommon();

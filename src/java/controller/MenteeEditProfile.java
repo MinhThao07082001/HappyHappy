@@ -10,6 +10,10 @@ import dal.MenteeDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -64,9 +68,17 @@ public class MenteeEditProfile extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    String now() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat simpleformat = new SimpleDateFormat("dd/MMMM/yyyy hh:mm:s");
+        Format f = new SimpleDateFormat("yyyy-MM-dd");
+        String strDate = f.format(new Date());
+        return strDate;
+    }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("now", new SignUpServlet().now());
         request.getRequestDispatcher("/user/mentee/mentee_edit_profile.jsp").forward(request, response);
     }
 

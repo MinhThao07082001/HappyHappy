@@ -41,47 +41,51 @@
                 border: #2295F5;
                 color: #FFFFFF;
             }
-
             .next:hover {
                 background-color: #0C83E2;
                 color: #FFFFFF;
             }
-
             .form-group .next {
                 margin-top: 15px;
                 border-radius: 4px;
             }
+            body{
+                background-image: url('user/assets/images/background.jpg') ;
+
+            }
+            .logo{
+                width: 100%;
+                height: 100%
+            }
+
         </style>
     </head>
 
-    <body class="login">
-        <div class="d-flex align-items-center" style="min-height: 100vh">
-            <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
-                <div class="text-center mt-5 mb-1">
-                    <div class="avatar avatar-lg">
-                        <img src="user/assets/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center mb-5 navbar-light">
-                    <a href="student-dashboard.html" class="navbar-brand m-0">HappyHappy</a>
-                </div>
+    <body class="login" >
+        <div class="d-flex align-items-center" style="min-height: 100vh" >
+            <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px; ">
                 <%
-                    if (request.getAttribute("error") != null) {
+                    if (request.getAttribute("mess") != null) {
                 %>
-                <p style="color: yellow; background: red;margin: 0;font-size: x-large;" align="center" ><%= request.getAttribute("error")%></p>
+                <script> alert("<%= request.getAttribute("mess")%>")</script>
                 <%
                     }
                 %>
-                <div class="card navbar-shadow">
+                <div class="card navbar-shadow" style="border-radius: 20px;">
+                    <div class="text-center mt-5 mb-1">
+                        <div class="avatar avatar-lg">
+                            <img class="logo" src="user/assets/images/logo/logo.svg"  alt="LearnPlus" />
+                        </div>
+                    </div>
                     <div class="card-header text-center">
                         <h4 class="card-title">Sign Up</h4>
                         <p class="card-subtitle">Create a new account</p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body " >
 
                         <form action="ProcessAuthenticationCode" method="post">
                             <!-- page 2 -->
-                            <div id="test2">
+                            <div id="test2" >
                                 <div class="form-group">
                                     <label class="form-label" for="email">ENTER THE VERIFICATION::</label>
                                     <div class="input-group input-group-merge">
@@ -93,7 +97,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit " class="btn btn-primary btn-block mb-3 ">Submit</button>
+                                <div class="form-group " style="text-align: center;" >
+                                    <button style="border-radius: 10px; background-color: #94B85E; width: 30%; "type="submit " class="btn btn-primary btn-block mb-3 ">Submit</button>
+                                </div>
                                 <div class="form-group text-center mb-0 ">
                                     <!--                                    <div class="custom-control custom-checkbox ">
                                                                             <input id="terms " type="checkbox " class="custom-control-input " checked required=" ">
@@ -107,7 +113,7 @@
                             </div>
                         </form>                  
                     </div>
-                    <div class="card-footer text-center text-black-50 ">Already signed up? <a href="signin">Login</a></div>
+                    <div class="card-footer text-center text-black-50 ">Already signed up? <a href="signin" style="color:#94B85E;">Login</a></div>
                 </div>
             </div>
         </div>
@@ -138,17 +144,17 @@
 
         <script type="text/javascript" src="user/js/yourCode.js"></script>
         <script src="user/script.js"></script>
-<!--        <script>
-            var second = 10;
-            setInterval(function () {
-                var sec = document.getElementById("email").innerHTML = second
-                if (sec === 0) {
-                    alert("Uoa");
-                    second = 10;
-                }
-                second -= 1;
-            }, 1000);
-        </script>-->
+        <!--        <script>
+                    var second = 10;
+                    setInterval(function () {
+                        var sec = document.getElementById("email").innerHTML = second
+                        if (sec === 0) {
+                            alert("Uoa");
+                            second = 10;
+                        }
+                        second -= 1;
+                    }, 1000);
+                </script>-->
     </body>
 
 

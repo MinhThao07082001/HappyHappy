@@ -64,7 +64,28 @@ public class MenteeHome extends HttpServlet {
             throws ServletException, IOException {
         MentorDAO md = new MentorDAO();
         List<Mentor> mList = md.getListMentor();
-        request.setAttribute("mtorList", mList);
+        //request.setAttribute("mtorList", mList); 
+        //Tạo Phân Trang
+        
+         int size = mList.size();
+        int numperPage=4; 
+        int numPage=size/numperPage+(size%numperPage==0?0:1);
+        String spage=request.getParameter("page");
+        int page;
+        if(spage==null){
+            page=1;
+        }else{
+                page=Integer.parseInt(spage);
+            }
+        int start,end;
+        start=(page-1)*numperPage;
+        end=Math.min(size,page*numperPage);
+        
+        List<Mentor> arr = md.getMentorByPage(mList, start, end);
+        request.setAttribute("num", numPage);
+        request.setAttribute("data", arr);
+        request.setAttribute("page", page);  
+        //Phân trang xong
         request.getRequestDispatcher("/user/mentee/mentee-dashboard.jsp").forward(request, response);
         
     }

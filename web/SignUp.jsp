@@ -9,7 +9,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Signup</title>
+        <title>Sign Up</title>
 
         <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
         <meta name="robots" content="noindex">
@@ -32,21 +32,19 @@
         <!-- App CSS -->
         <link type="text/css" href="user/assets/css/app.css" rel="stylesheet">
         <style>
-            .next {
-                padding-left: 46%;
-                padding-right: 46%;
-                padding-top: 9px;
-                padding-bottom: 9px;
-                background-color: #2295F5;
-                border: #2295F5;
-                color: #FFFFFF;
-            }
-
-            .next:hover {
-                background-color: #0C83E2;
-                color: #FFFFFF;
-            }
-
+            /*            .next {
+                            padding-left: 46%;
+                            padding-right: 46%;
+                            padding-top: 9px;
+                            padding-bottom: 9px;
+                            background-color: #2295F5;
+                            border: #2295F5;
+                            color: #FFFFFF;
+                        }
+                        .next:hover {
+                            background-color: #0C83E2;
+                            color: #FFFFFF;
+                        }*/
             .form-group .next {
                 margin-top: 15px;
                 border-radius: 4px;
@@ -61,7 +59,6 @@
                 margin-top: 6px;
                 margin-bottom: 16px;
             }
-
             /* Style the container for inputs */
             /* The message box is shown when the user clicks on the password field */
             #message {
@@ -71,32 +68,36 @@
                 padding: 20px;
                 margin-top: 10px;
             }
-
             #message h8 {
                 padding: 10px 35px;
                 font-size: 14px;
             }
-
             /* Add a green text color and a checkmark when the requirements are right */
             .valid {
                 color: green;
             }
-
             .valid:before {
                 position: relative;
                 left: -35px;
                 content: "✔";
             }
-
             /* Add a red text color and an "x" when the requirements are wrong */
             .invalid {
                 color: red;
             }
-
             .invalid:before {
                 position: relative;
                 left: -35px;
                 content: "✖";
+            }
+
+            body{
+                background-image: url('user/assets/images/background.jpg') ;
+
+            }
+            .logo{
+                width: 100%;
+                height: 100%
             }
         </style>
     </head>
@@ -104,22 +105,21 @@
     <body class="login">
         <div class="d-flex align-items-center" style="min-height: 100vh">
             <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
-                <div class="text-center mt-5 mb-1">
-                    <div class="avatar avatar-lg">
-                        <img src="user/assets/images/logo/primary.svg" class="avatar-img rounded-circle" alt="LearnPlus" />
-                    </div>
-                </div>
-                <div class="d-flex justify-content-center mb-5 navbar-light">
-                    <a href="student-dashboard.html" class="navbar-brand m-0">HappyHappy</a>
-                </div>
+
                 <%
-                    if (request.getAttribute("error") != null) {
+                    if (request.getAttribute("mess") != null) {
                 %>
-                <p style="color: yellow; background: red;margin: 0;font-size: x-large;" align="center" ><%= request.getAttribute("error")%></p>
+                <script> alert("<%= request.getAttribute("mess")%>")</script>
                 <%
                     }
                 %>
-                <div class="card navbar-shadow">
+                <div class="card navbar-shadow" style="border-radius: 20px;">
+                    <div class="text-center mt-5 mb-1">
+                        <div class="avatar avatar-lg">
+                            <img class="logo" src="user/assets/images/logo/logo.svg"  alt="LearnPlus" />
+                        </div>
+                    </div>
+
                     <div class="card-header text-center">
                         <h4 class="card-title">Sign Up</h4>
                         <p class="card-subtitle">Create a new account</p>
@@ -227,12 +227,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <input class="next" type="submit" value="Sign up">
+                            <div style="width: 30%; margin: 0 auto; ">
+                                <input style=" border-radius: 10px; background-color: #94B85E; color:#FFFFFF;" class="next" type="submit" value="Sign Up">
                             </div>
                         </form>                  
                     </div>
-                    <div class="card-footer text-center text-black-50 ">Already signed up? <a href="signin">Login</a></div>
+                    <div class="card-footer text-center text-black-50 ">Already signed up? <a href="signin" style="color:#94B85E;">Sign In</a></div>
                 </div>
             </div>
         </div>
@@ -243,17 +243,14 @@
             var capital = document.getElementById("capital");
             var number = document.getElementById("number");
             var length = document.getElementById("length");
-
             // When the user clicks on the password field, show the message box
             myInput.onfocus = function () {
                 document.getElementById("message").style.display = "block";
             }
-
             // When the user clicks outside of the password field, hide the message box
             myInput.onblur = function () {
                 document.getElementById("message").style.display = "none";
             }
-
             // When the user starts to type something inside the password field
             myInput.onkeyup = function () {
                 // Validate lowercase letters
@@ -265,7 +262,6 @@
                     letter.classList.remove("valid");
                     letter.classList.add("invalid");
                 }
-
                 // Validate capital letters
                 var upperCaseLetters = /[A-Z]/g;
                 if (myInput.value.match(upperCaseLetters)) {
@@ -275,7 +271,6 @@
                     capital.classList.remove("valid");
                     capital.classList.add("invalid");
                 }
-
                 // Validate numbers
                 var numbers = /[0-9]/g;
                 if (myInput.value.match(numbers)) {
@@ -285,7 +280,6 @@
                     number.classList.remove("valid");
                     number.classList.add("invalid");
                 }
-
                 // Validate length
                 if (myInput.value.length >= 8) {
                     length.classList.remove("invalid");

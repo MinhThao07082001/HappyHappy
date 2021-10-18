@@ -9,6 +9,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 import model.UserCommon;
 
 
@@ -160,5 +161,46 @@ public class UserDAO extends DBContext {
             System.out.println(e);
         }
         return false;
+    }
+    
+    public UserCommon getAccountByEmail(String userEmail) {
+        String sql = "select * from userCommon where email = ?";
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            st.setString(1, userEmail);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                return new UserCommon(rs.getInt("userID"),
+                        rs.getString("name"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("dob"),
+                        rs.getInt("sex"),
+                        rs.getString("address"),
+                        rs.getString("phone"),
+                        rs.getString("imgAvt"),
+                        rs.getString("description"),
+                        rs.getString("status"),
+                        rs.getInt("moneyLeft"),
+                        rs.getDate("createTime"),
+                        rs.getInt("role"));
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    
+        public String randomCaptcha() {
+        String s = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        Random r = new Random();
+        String captcha = "";
+        for (int i = 0; i < 5; i++) {
+            int index = r.nextInt(s.length());
+            captcha = captcha + s.charAt(index);
+            s = s.substring(0, index) + s.substring(index + 1);
+        }
+        return captcha;
     }
 }

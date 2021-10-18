@@ -13,6 +13,9 @@ public class Major {
     private int subjectID;
     private int mentorID;
 
+    public Major() {
+    }
+
     public Major(int subjectID, int mentorID) {
         this.subjectID = subjectID;
         this.mentorID = mentorID;
