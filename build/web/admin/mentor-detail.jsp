@@ -31,7 +31,7 @@
             <h5>${sub.subjectName}</h5>
         </c:forEach>
         <h3>${mtor.sex}</h3>
-        <form action="processAuthen" method="POST">
+        <form action="../admin/processAuthen" method="POST">
             <input type="text" value="${mtor.mentorID}" name="id" hidden>
             <input type="submit" value="Verify">
         </form>

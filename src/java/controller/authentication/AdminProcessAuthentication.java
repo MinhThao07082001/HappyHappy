@@ -20,7 +20,7 @@ import model.Mentor;
  *
  * @author Admin
  */
-@WebServlet(name = "AdminProcessAuthentication", urlPatterns = {"/processAuthen"})
+@WebServlet(name = "AdminProcessAuthentication", urlPatterns = {"/admin/processAuthen"})
 public class AdminProcessAuthentication extends HttpServlet {
 
     /**
@@ -64,7 +64,7 @@ public class AdminProcessAuthentication extends HttpServlet {
         MentorDAO md = new MentorDAO();
         List<Mentor> mList = md.getListMentorNotAuthen();
         request.setAttribute("mtor", mList);
-        request.getRequestDispatcher("admin/list-mentor-authentication.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/list-mentor-authentication.jsp").forward(request, response);
                
     }
 

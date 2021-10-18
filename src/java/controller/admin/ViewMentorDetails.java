@@ -19,7 +19,7 @@ import model.Mentor;
  *
  * @author Admin
  */
-@WebServlet(name = "ViewMentorDetails", urlPatterns = {"/mtorDetail"})
+@WebServlet(name = "ViewMentorDetails", urlPatterns = {"/admin/mtorDetail"})
 public class ViewMentorDetails extends HttpServlet {
 
     /**
@@ -64,7 +64,7 @@ public class ViewMentorDetails extends HttpServlet {
         MentorDAO md = new MentorDAO();
         Mentor m = md.getMentorById(mtorID);
         request.setAttribute("mtor", m);
-        request.getRequestDispatcher("admin/mentor-detail.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/mentor-detail.jsp").forward(request, response);
     }
 
     /**
