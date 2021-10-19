@@ -1,8 +1,10 @@
 <div class="mdk-drawer js-mdk-drawer" id="default-drawer">
    <div class="mdk-drawer__content ">
       <div class="sidebar sidebar-left sidebar-dark bg-dark o-hidden" data-perfect-scrollbar>
-         <div class="sidebar-p-y">
-            <ul class="sidebar-menu sm-active-button-bg">
+         
+          
+          <div class="sidebar-p-y">
+            <ul id="sidebar-menu1"  class="sidebar-menu sm-active-button-bg">
                <li class="sidebar-menu-item active">
                   <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-dashboard.html">
                   <i
@@ -14,8 +16,8 @@
             <!-- Account menu -->
             
            
-            <div class="sidebar-heading">Mentee</div>
-            <ul class="sidebar-menu sm-active-button-bg">
+            <div  class="sidebar-heading">Mentee</div>
+            <ul id="sidebar-menu2" class="sidebar-menu">
                <li class="sidebar-menu-item">
                   <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/mentee/mentee_request.jsp">
                   <i

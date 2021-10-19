@@ -527,6 +527,8 @@
                    }"
                                  sidebar-variant="bg-transparent border-0"></app-settings>
                    </div>-->
+                <!-- Nav Tab active-->
+                
                 <!-- jQuery -->
                 <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
                 <!-- Bootstrap -->

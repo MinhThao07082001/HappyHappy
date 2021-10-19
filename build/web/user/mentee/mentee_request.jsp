@@ -537,7 +537,12 @@
             </div>
         </div>
 
-
+        <!--Nav Tab active-->
+        <script> document.getElementById('sidebar-menu2').getElementsByTagName('li')[0].className += " active ";
+                 document.getElementById('sidebar-menu2').getOwnPropertyNames().;
+        </script>
+        
+        <!--JQuery-->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
 
         <!-- Bootstrap -->
