@@ -96,16 +96,19 @@ public class CreateRequest extends HttpServlet {
         System.out.println("UOA");
         try {
             int userID = u.getUserID();
-            int subjectID = Integer.parseInt(request.getParameter("subject"));
+            String subject = request.getParameter("subject");
             int moneyPerSlot = Integer.parseInt(request.getParameter("moneyPerSlot"));
             int timePerSlot = Integer.parseInt(request.getParameter("timePerSlot"));
+            String level = request.getParameter("level");
             String startTime = (request.getParameter("startTime"));
             String endTime = (request.getParameter("endTime"));
             String description = request.getParameter("description");
             int learnType = Integer.parseInt(request.getParameter("learnType"));
             String timeJson = request.getParameter("timeJson");
             System.out.println("        TIME: "+timeJson);
-            Request r = new Request(userID, subjectID, moneyPerSlot, timePerSlot, startTime, endTime, description, learnType);
+            SubjectDAO sd = new SubjectDAO();
+            Subject s = sd.getSubject(subject, level);
+            Request r = new Request(userID, s.getSubjectID(), moneyPerSlot, timePerSlot, startTime, endTime, description, learnType);
             JSONArray j = new JSONArray(timeJson);
             List<RequestSlotTime> rstList = new ArrayList<>();
             RequestDAO rd = new RequestDAO();

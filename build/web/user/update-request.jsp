@@ -17,14 +17,64 @@
         <form action="editRequest" method="POST">
             ID:<input type="text" value="${req.requestID}"  disabled><br/>
             <input type="text" name="reqID" value="${req.requestID}"  hidden>
-            <select name="subject">
-                <option value="${req.subject.subjectID}">${req.subject.subjectName} ${req.subject.level}</option>
-                <c:forEach var="sub" items="${requestScope.sub}">
-                    <option value="${sub.subjectID}">${sub.subjectName} ${sub.level}</option>
-                </c:forEach>
-            </select><br/>
+            Subject: <select name="subject">
+                <option value="${req.subject.subjectName}">${req.subject.subjectName}</option>
+                <option value="Literature">Literature</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Ethics">Ethics</option>
+                <option value="History">History</option>
+                <option value="Geography">Geography</option>
+                <option value="Science">Science</option>
+                <option value="Physics">Physics</option>
+                <option value="Chemistry">Chemistry</option>
+                <option value="Biology">Biology</option>
+                <option value="Music">Music</option>
+                <option value="Fine Arts">Fine Arts</option>
+                <option value="Physical Education">Physical Education</option>
+                <option value="Technology">Technology</option>
+                <option value="Informatics">Informatics</option>
+            </select>
+            Level: <select name="level">
+                <option value="${req.subject.level}">Grade ${req.subject.level}</option>
+                <option value="1">
+                    Grade 1
+                </option>
+                <option value="2">
+                    Grade 2
+                </option>
+                <option value="3">
+                    Grade 3
+                </option>
+                <option value="4">
+                    Grade 4
+                </option>
+                <option value="5">
+                    Grade 5
+                </option>
+                <option value="6">
+                    Grade 6
+                </option>
+                <option value="7">
+                    Grade 7
+                </option>
+                <option value="8">
+                    Grade 8
+                </option>
+                <option value="9">
+                    Grade 9
+                </option>
+                <option value="10">
+                    Grade 10
+                </option>
+                <option value="11">
+                    Grade 11
+                </option>
+                <option value="12">
+                    Grade 12
+                </option>
+            </select>
             Money Per Slot   <input type="number" value="${req.moneyPerSlot}"name="moneyPerSlot"><br/>
-            timePerSlot:   <input type="number" value="${req.timePerSlot}" name="timePerSlot"><br/>
+            timePerSlot:   <input type="number" id="timePerSlot"value="${req.timePerSlot}" name="timePerSlot"><br/>
 
             startTime: <input type="date" value="${fn:substring(req.startTime,0, 10)}" name="startTime"><br/>
             endTime:  <input type="date" value="${fn:substring(req.endTime,0, 10)}" name="endTime"><br/>
@@ -52,7 +102,7 @@
                 <tr>
                     <td>From</td>
                     <c:forEach begin="2" end="8" var="i">
-                        <td><input type="time" name="${i}" class="time" value="${fn:substring(req.listSlotTime[i-2].slotFrom,0, 5)}"></td>
+                        <td><input type="time" name="${i}" class="time time-start" value="${fn:substring(req.listSlotTime[i-2].slotFrom,0, 5)}"></td>
                         </c:forEach>
     <!--                    <td><input type="time" name="2" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
                         <td><input type="time" name="3" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
@@ -77,7 +127,7 @@
 
                 </tr>
             </table>
-                <input type="text" id="timeJson" name="timeJson" hidden>
+            <input type="text" id="timeJson" name="timeJson" hidden>
             <input type="submit">
         </form>
         <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
@@ -118,5 +168,26 @@
                 elements[i].addEventListener('input', func, false);
             }
         </script>        
+                <script>
+            document.querySelectorAll('.time-start').forEach(item => {
+                item.addEventListener('input', event => {
+                    //handle click
+                    var time = document.getElementById("timePerSlot").value.length === 0 ? 0 : document.getElementById("timePerSlot").value;
+                    var toTime = document.getElementsByName(item.name)[1];
+                    const timeArr = item.value.split(":");
+                    var min = parseInt(timeArr[0]) * 60 + parseInt(timeArr[1]) + parseInt(time);
+                    if (min > 1440) {
+                        alert("Fix time per slot")
+                    } else {
+                        toTime.value = parseInt(min / 60) + ":" + min % 60;
+                    }
+
+//                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))
+
+//                    alert("blah");
+                })
+            })
+
+        </script>
     </body>
 </html>

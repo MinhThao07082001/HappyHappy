@@ -39,10 +39,31 @@ public class SubjectDAO extends DBContext {
     }
 
     public Subject getSubject(int id) {
-        List<Subject> list = new ArrayList<>();
         String sql = "select * from subject where subjectID = " + id;
         try {
             PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Subject s = new Subject();
+                s.setSubjectID(rs.getInt("subjectID"));
+                s.setSubjectName(rs.getString("subjectname"));
+                 s.setLevel(rs.getString("level"));
+                s.setStatus(rs.getString("status"));
+                return s;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+    
+    public Subject getSubject(String name, String level) {
+        String sql = "select * from subject where subjectName = ? and level = ?";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, name);
+            st.setString(2, level);
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
                 Subject s = new Subject();

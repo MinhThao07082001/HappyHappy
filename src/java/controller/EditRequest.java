@@ -96,9 +96,13 @@ public class EditRequest extends HttpServlet {
 //        System.out.println("UOA");
 //System.out.println(request.getParameter("reqID"));
         try {
+            String subject = request.getParameter("subject");
+            String level = request.getParameter("level");
+            SubjectDAO sd = new SubjectDAO();
+            Subject s = sd.getSubject(subject, level);
             int requestID = Integer.parseInt(request.getParameter("reqID"));
             int userID = u.getUserID();
-            int subjectID = Integer.parseInt(request.getParameter("subject"));
+            int subjectID = sd.getSubject(subject, level).getSubjectID();
             int moneyPerSlot = Integer.parseInt(request.getParameter("moneyPerSlot"));
             int timePerSlot = Integer.parseInt(request.getParameter("timePerSlot"));
             String startTime = (request.getParameter("startTime"));

@@ -91,12 +91,60 @@
 
                                 <form action="createRequest" method="POST">
                                     Subject: <select name="subject">
-                                        <c:forEach var="sub" items="${requestScope.sList}">
-                                            <option value="${sub.subjectID}">
-                                                ${sub.subjectName} - ${sub.level}
-                                            </option>
-                                        </c:forEach>
+                                        <option value="Literature">Literature</option>
+                                        <option value="Mathematics">Mathematics</option>
+                                        <option value="Ethics">Ethics</option>
+                                        <option value="History">History</option>
+                                        <option value="Geography">Geography</option>
+                                        <option value="Science">Science</option>
+                                        <option value="Physics">Physics</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Biology">Biology</option>
+                                        <option value="Music">Music</option>
+                                        <option value="Fine Arts">Fine Arts</option>
+                                        <option value="Physical Education">Physical Education</option>
+                                        <option value="Technology">Technology</option>
+                                        <option value="Informatics">Informatics</option>
                                     </select>
+                                    Level: <select name="level">
+                                        <option value="1">
+                                            Grade 1
+                                        </option>
+                                        <option value="2">
+                                            Grade 2
+                                        </option>
+                                        <option value="3">
+                                            Grade 3
+                                        </option>
+                                        <option value="4">
+                                            Grade 4
+                                        </option>
+                                        <option value="5">
+                                            Grade 5
+                                        </option>
+                                        <option value="6">
+                                            Grade 6
+                                        </option>
+                                        <option value="7">
+                                            Grade 7
+                                        </option>
+                                        <option value="8">
+                                            Grade 8
+                                        </option>
+                                        <option value="9">
+                                            Grade 9
+                                        </option>
+                                        <option value="10">
+                                            Grade 10
+                                        </option>
+                                        <option value="11">
+                                            Grade 11
+                                        </option>
+                                        <option value="12">
+                                            Grade 12
+                                        </option>
+                                    </select>
+
                                     </br>
                                     </br>
                                     CourseType: 
@@ -112,7 +160,7 @@
                                     Budget per lesson: </br>
                                     <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
                                     Length of each lesson: </br> 
-                                    <input type="number" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                    <input type="number" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
                                     <div class="row">     
                                         <div class=" col-6">
                                             Start Time: <input  type="date" name="startTime">
@@ -138,13 +186,13 @@
 
                                         <tr>
                                             <td>From</td>
-                                            <td><input type="time" name="2" class="time"></td>
-                                            <td><input type="time" name="3" class="time"></td>
-                                            <td><input type="time" name="4" class="time"></td>
-                                            <td><input type="time" name="5" class="time"></td>
-                                            <td><input type="time" name="6" class="time"></td>
-                                            <td><input type="time" name="7" class="time"></td>
-                                            <td><input type="time" name="8" class="time"></td>
+                                            <td><input type="time" name="2" class="time time-start"></td>
+                                            <td><input type="time" name="3" class="time time-start"></td>
+                                            <td><input type="time" name="4" class="time time-start"></td>
+                                            <td><input type="time" name="5" class="time time-start"></td>
+                                            <td><input type="time" name="6" class="time time-start"></td>
+                                            <td><input type="time" name="7" class="time time-start"></td>
+                                            <td><input type="time" name="8" class="time time-start"></td>
                                         </tr>
                                         <tr>
                                             <td>To</td>
@@ -166,7 +214,7 @@
                                     <div class="form-group " style="text-align: center;">
                                         <button type="submit " style="border-radius: 5px; width: 10%;"
                                                 class="btn btn-primary">
-                                            Sign In
+                                            Submit
                                         </button>
                                     </div>
                                 </form>
@@ -244,6 +292,27 @@
             for (var i = 0; i < elements.length; i++) {
                 elements[i].addEventListener('input', func, false);
             }
+        </script>
+        <script>
+            document.querySelectorAll('.time-start').forEach(item => {
+                item.addEventListener('input', event => {
+                    //handle click
+                    var time = document.getElementById("timePerSlot").value.length === 0 ? 0 : document.getElementById("timePerSlot").value;
+                    var toTime = document.getElementsByName(item.name)[1];
+                    const timeArr = item.value.split(":");
+                    var min = parseInt(timeArr[0]) * 60 + parseInt(timeArr[1]) + parseInt(time);
+                    if (min > 1440) {
+                        alert("Fix time per slot")
+                    } else {
+                        toTime.value = parseInt(min / 60) + ":" + min % 60;
+                    }
+
+//                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))
+
+//                    alert("blah");
+                })
+            })
+
         </script>
     </body>
 </html>
