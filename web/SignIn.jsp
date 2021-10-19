@@ -54,7 +54,7 @@
                 width: 100%;
                 height: 100%
             }
-           
+
 
         </style>
     </head>
@@ -64,23 +64,23 @@
              style="min-height: 100vh">
             <div class="col-sm-8 col-md-6 col-lg-4 mx-auto"
                  style="min-width: 300px;">
-                <%
-                    if (request.getAttribute("error") != null) {
+                <% 
+                    if(request.getAttribute("mess")!=null){
                 %>
-                <p style="color: yellow; background: red;margin: 0;font-size: x-large;" align="center" ><%= request.getAttribute("error")%></p>
+                <script> alert("<%= request.getAttribute("mess")%>")</script>
                 <%
-                    }
+                  }
                 %>
-                
+
                 <div class="card navbar-shadow form" style="border-radius: 20px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
                             <img class="logo"  src="user/assets/images/logo/logo.svg"
-                                
+
                                  alt="LearnPlus" />
                         </div>
                     </div>
-                  
+
                     <div class="card-header text-center">
                         <h4 class="card-title">Sign In</h4>
                         <p class="card-subtitle">Access your account</p>

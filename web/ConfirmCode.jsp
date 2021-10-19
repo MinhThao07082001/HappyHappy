@@ -115,11 +115,10 @@
     <body class="login">
         <div class="d-flex align-items-center" style="min-height: 100vh">
             <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
-
                 <%
                     if (request.getAttribute("mess") != null) {
                 %>
-                <p style="color: yellow; background: red;margin: 0;font-size: x-large;" align="center" ><%= request.getAttribute("mess")%></p>
+                <script> alert("<%= request.getAttribute("mess")%>")</script>
                 <%
                     }
                 %>

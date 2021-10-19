@@ -48,7 +48,7 @@ public class SystemEmail {
             msg.setSubject(subject, "UTF-8");
             msg.setText(body, "UTF-8");
             msg.setSentDate(new Date());
-            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
+            msg.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
             Transport.send(msg);
 //            System.out.println("Gui mail thanh cong");
         } catch (MessagingException ex) {

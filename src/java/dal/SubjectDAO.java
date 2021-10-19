@@ -17,22 +17,46 @@ import model.Subject;
  * @author Admin
  */
 public class SubjectDAO extends DBContext {
-    public List<Subject> getAll(){
+
+    public List<Subject> getAll() {
         List<Subject> list = new ArrayList<>();
-        String sql="select * from subject";
-        try{
-            PreparedStatement st=connection.prepareStatement(sql);
-            ResultSet rs=st.executeQuery();
-            while(rs.next()){
-                Subject s=new Subject();
+        String sql = "select * from subject";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Subject s = new Subject();
                 s.setSubjectID(rs.getInt("subjectID"));
                 s.setSubjectName(rs.getString("subjectname"));
+                s.setLevel(rs.getString("level"));
                 s.setStatus(rs.getString("status"));
                 list.add(s);
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
     }
+
+    public Subject getSubject(int id) {
+        List<Subject> list = new ArrayList<>();
+        String sql = "select * from subject where subjectID = " + id;
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            if (rs.next()) {
+                Subject s = new Subject();
+                s.setSubjectID(rs.getInt("subjectID"));
+                s.setSubjectName(rs.getString("subjectname"));
+                 s.setLevel(rs.getString("level"));
+                s.setStatus(rs.getString("status"));
+                return s;
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
 }

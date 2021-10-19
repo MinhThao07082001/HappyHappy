@@ -123,12 +123,10 @@
     <body class="login">
         <div class="d-flex align-items-center" style="min-height: 100vh">
             <div class="col-sm-8 col-md-6 col-lg-4 mx-auto" style="min-width: 300px;">
-
-
                 <%
                     if (request.getAttribute("mess") != null) {
                 %>
-                <p style="color: yellow; background: red;margin: 0;font-size: x-large;" align="center" ><%= request.getAttribute("mess")%></p>
+                <script> alert("<%= request.getAttribute("mess")%>")</script>
                 <%
                     }
                 %>
@@ -184,7 +182,7 @@
                             <div class="form-group " style="text-align: center;" >
                                 <button type="submit " style="border-radius: 10px; background-color: #94B85E; width: 30%; "
                                         class="btn btn-primary btn-block">
-                                    Sign In
+                                    Change Pass
                                 </button>
                             </div>
                         </form>     

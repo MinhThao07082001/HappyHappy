@@ -12,15 +12,16 @@ package model;
 public class Subject {
     private int subjectID;
     private String subjectName;
+    private String level;
     private String status;
-
+    
     public Subject() {
     }
 
-    public Subject(int subjectID, String subjectName, String status) {
+    public Subject(int subjectID, String subjectName, String level) {
         this.subjectID = subjectID;
         this.subjectName = subjectName;
-        this.status = status;
+        this.level = level;
     }
 
     public int getSubjectID() {
@@ -39,11 +40,26 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
+    }
+
     public String getStatus() {
         return status;
     }
 
     public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Subject(int subjectID, String subjectName, String level, String status) {
+        this.subjectID = subjectID;
+        this.subjectName = subjectName;
+        this.level = level;
         this.status = status;
     }
 
