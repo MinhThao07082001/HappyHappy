@@ -195,39 +195,4 @@ ALTER TABLE requestSlotTime
 ALTER COLUMN slotFrom time;
 ALTER TABLE requestSlotTime
 ALTER COLUMN slotTo time;
-/*Sample database*/
-INSERT INTO subject(subjectName) values ('Java')
-INSERT INTO subject(subjectName) values ('C')
-INSERT INTO subject(subjectName) values ('Kotlin')
-INSERT INTO subject(subjectName) values ('SQL Server')
-INSERT INTO subject(subjectName) values ('Python')
-INSERT INTO subject(subjectName) values ('C#')
-INSERT INTO subject(subjectName) values ('Ruby')
-INSERT INTO subject(subjectName) values ('Android')
-INSERT INTO subject(subjectName, [level]) values ('Math','Grade 1')
 
-INSERT INTO userCommon(     
-	   [name]
-      ,[password]
-      ,[email]
-      ,[dob]
-      ,[sex]
-      ,[address]
-      ,[phone]
-      ,[description]
-      ,[status]
-      ,[moneyLeft]
-      ,[role]) 
-	  values ('test','test','test@gmai.com','2019-11-11',1,'Ha Noi', '034214312', 'Lmao','None', 99999, 1)
-INSERT INTO mentor([userID]
-      ,[education]
-      ,[yearExperiment]
-      ,[intro]
-      ,[authen]) values (1,'fBt',8,'Uoa',0)
-
-
-	  INSERT INTO authenticationCode(email, code) values ('abc@gmail.com', 'UOAUOA')
-
-INSERT INTO major values (2,1)
-INSERT INTO major values (1,1)
-INSERT INTO major values (3,1)
