@@ -81,7 +81,8 @@ public class ChangePasswordServlet extends HttpServlet {
             String newPassword = request.getParameter("new-pass");
             String repeatNewPassword = request.getParameter("repeat-new-pass");
             if (account.getPassword().equals(oldPassword)
-                    && newPassword.equals(repeatNewPassword)) {
+                    && newPassword.equals(repeatNewPassword)) 
+            {
                 dao.updatePassword(String.valueOf(account.getEmail()), newPassword);
                 request.setAttribute("mess", "Changed password successfully!");
             } else {

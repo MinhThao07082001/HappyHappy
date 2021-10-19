@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package logic;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 
 /**
  *
@@ -48,7 +49,7 @@ public class SystemEmail {
             msg.setSubject(subject, "UTF-8");
             msg.setText(body, "UTF-8");
             msg.setSentDate(new Date());
-            msg.setRecipients(javax.mail.Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
             Transport.send(msg);
 //            System.out.println("Gui mail thanh cong");
         } catch (MessagingException ex) {

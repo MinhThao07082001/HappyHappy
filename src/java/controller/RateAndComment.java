@@ -110,7 +110,7 @@ public class RateAndComment extends HttpServlet {
         rate.setMentorID(mentorid);
         rating.RateMentor(rate);
         session.setAttribute("user", m);
-        response.sendRedirect("rate?id= "+id);
+        response.sendRedirect("rate?id="+id);
     }
 
     /**

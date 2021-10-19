@@ -12,7 +12,7 @@ package model;
 public class Message {
     private int messageID;
     private int conversationID;
-    private int sender;
+    private int sender; 
     private int receiver;
     private String content;
     private String createTime;

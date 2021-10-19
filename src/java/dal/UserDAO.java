@@ -147,10 +147,10 @@ public class UserDAO extends DBContext {
         return null;   
     }
     public boolean updatePassword(String userID, String newPassword) {
-        UserCommon toChange = getAccountByID(userID);
+    
         String sql = "UPDATE userCommon\n"
                 + "SET password = ?\n"
-                + "WHERE userID = ?";
+                + "WHERE email = ?";
         try {
             PreparedStatement st = connection.prepareCall(sql);
             st.setString(1, newPassword);

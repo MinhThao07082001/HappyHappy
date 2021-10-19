@@ -257,9 +257,9 @@
                                                 <div class="col-10">
                                                     <div class="comment-box ml-2">
                                                         <h4>Add a comment</h4>
-                                                        <input type="hidden" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly style="display:none"> 
-                                                        <input type="hidden" name ="mentee" value="${sessionScope.user.menteeID}" reaonly style="display:none">
-                                                        <input type="hidden" name ="id" value="${param.id}" reaonly style="display:none">
+                                                        <input type="num" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly style="display:none"> 
+                                                        <input type="num" name ="mentee" value="${sessionScope.user.menteeID}" reaonly style="display:none">
+                                                        <input type="num" name ="id" value="${param.id}" reaonly style="display:none">
                                                         <div class="rating">
                                                             <input type="radio" name="star" value="5" id="5">
                                                             <label for="5">☆</label> 
