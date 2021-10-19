@@ -3,25 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.authentication;
+package controller.admin;
 
-import dal.MentorDAO;
+import dal.admin.DataDashboard;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Mentor;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "AdminProcessAuthentication", urlPatterns = {"/admin/processAuthen"})
-public class AdminProcessAuthentication extends HttpServlet {
+@WebServlet(name = "SignIn", urlPatterns = {"/admin/signin"})
+public class SignIn extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +38,10 @@ public class AdminProcessAuthentication extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AdminProcessAuthentication</title>");            
+            out.println("<title>Servlet SignIn</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AdminProcessAuthentication at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SignIn at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,11 +59,12 @@ public class AdminProcessAuthentication extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MentorDAO md = new MentorDAO();
-        List<Mentor> mList = md.getListMentorNotAuthen();
-        request.setAttribute("mtor", mList);
-        request.getRequestDispatcher("/admin/list-mentor-authentication.jsp").forward(request, response);
-               
+        DataDashboard db = new DataDashboard();
+        String userThisWeek  = db.getCountUserOneWeek(6);
+        String userLastWeek = db.getCountUserOneWeek(13);
+        request.setAttribute("lastWeekUser", userLastWeek);
+        request.setAttribute("thisWeekUser", userThisWeek);
+        request.getRequestDispatcher("/admin/admin-dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -79,10 +78,7 @@ public class AdminProcessAuthentication extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int mtorID = Integer.parseInt(request.getParameter("id"));
-        MentorDAO md = new MentorDAO();
-        md.updateMentorAuthen(mtorID);
-        response.sendRedirect("../admin/mtorDetail?id="+mtorID);
+        processRequest(request, response);
     }
 
     /**

@@ -195,21 +195,21 @@
                                 <div class="card">
                                     <div class="card-header border-0">
                                         <div class="d-flex justify-content-between">
-                                            <h3 class="card-title">Online Store Visitors</h3>
-                                            <a href="javascript:void(0);">View Report</a>
+                                            <h3 class="card-title">New users</h3>
+                                            <!--<a href="javascript:void(0);">View Report</a>-->
                                         </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <p class="d-flex flex-column">
-                                                <span class="text-bold text-lg">820</span>
-                                                <span>Visitors Over Time</span>
+                                                <span id="num-user" class="text-bold text-lg"></span>
+                                                <span >New users last 7 days</span>
                                             </p>
                                             <p class="ml-auto d-flex flex-column text-right">
-                                                <span class="text-success">
-                                                    <i class="fas fa-arrow-up"></i> 12.5%
+                                                <span id="text-percent" class="text-success">
+                                                    <i class="fas fa-arrow-up"></i> <span id="percent">12.5</span>%
                                                 </span>
-                                                <span class="text-muted">Since last week</span>
+                                                <span class="text-muted">Since last 7 days</span>
                                             </p>
                                         </div>
                                         <!-- /.d-flex -->
@@ -217,14 +217,15 @@
                                         <div class="position-relative mb-4">
                                             <canvas id="visitors-chart" height="200"></canvas>
                                         </div>
-
+                                        <input hidden="" type="text" id="lastWeek" value="${requestScope.lastWeekUser}"/>
+                                        <input hidden="" type="text" id="thisWeek" value="${requestScope.thisWeekUser}"/>
                                         <div class="d-flex flex-row justify-content-end">
                                             <span class="mr-2">
-                                                <i class="fas fa-square text-primary"></i> This Week
+                                                <i class="fas fa-square text-primary"></i> Last 7 days
                                             </span>
 
                                             <span>
-                                                <i class="fas fa-square text-gray"></i> Last Week
+                                                <i class="fas fa-square text-gray"></i> Last 14 days
                                             </span>
                                         </div>
                                     </div>
@@ -463,6 +464,6 @@
         <!-- AdminLTE for demo purposes -->
         <script src="dist/js/demo.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="dist/js/pages/dashboard3.js"></script>
+        <script src="assets/dist/js/pages/dashboard3.js"></script>
     </body>
 </html>
