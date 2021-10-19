@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "SignIn", urlPatterns = {"/admin/signin"})
+@WebServlet(name = "SignIn", urlPatterns = {"/admin/home"})
 public class SignIn extends HttpServlet {
 
     /**
