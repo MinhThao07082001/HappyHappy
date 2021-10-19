@@ -5,7 +5,7 @@
  */
 package controller.admin;
 
-import dal.admin.AdminDAO;
+import dal.admin.DataDashboard;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -13,15 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Admin;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "SignIn", urlPatterns = {"/admin/signin"})
-public class SignIn extends HttpServlet {
+@WebServlet(name = "AdminHome", urlPatterns = {"/admin/home"})
+public class AdminHome extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -61,8 +59,12 @@ public class SignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/admin/admin-signin.jsp").forward(request, response);
-        
+        DataDashboard db = new DataDashboard();
+        String userThisWeek  = db.getCountUserOneWeek(6);
+        String userLastWeek = db.getCountUserOneWeek(13);
+        request.setAttribute("lastWeekUser", userLastWeek);
+        request.setAttribute("thisWeekUser", userThisWeek);
+        request.getRequestDispatcher("/admin/admin-dashboard.jsp").forward(request, response);
     }
 
     /**
@@ -76,19 +78,7 @@ public class SignIn extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        AdminDAO ad = new AdminDAO();
-        Admin a = ad.getAccount(username, password);
-        if(a!=null){
-            session.setAttribute("admin", a);
-            response.sendRedirect("home");
-        }else{
-            request.setAttribute("error", "Login failed.");
-            doGet(request, response);
-        }
-        
+        processRequest(request, response);
     }
 
     /**
