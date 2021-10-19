@@ -1,9 +1,10 @@
+<html lang="en"
+      dir="ltr">
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-
-     <head>
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible"
               content="IE=edge">
@@ -38,18 +39,18 @@
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
-        
+
         <style>
             div th td{
                 display:flex;
                 justify-content:flex-end;
             }
         </style>
-        
+
     </head>
-    
-            
-     <body class=" layout-fluid" style="background-color: #eaf4fc">
+
+
+    <body class=" layout-fluid" style="background-color: #eaf4fc">
 
         <div class="preloader">
             <div class="sk-chase">
@@ -61,148 +62,125 @@
                 <div class="sk-chase-dot"></div>
             </div>
         </div>
-         <div class="mdk-header-layout js-mdk-header-layout">
-        <jsp:include page="mentee/mentee_header.jsp"/>
-        
-        <div class="mdk-header-layout__content">
-          
-              <div data-push
+        <div class="mdk-header-layout js-mdk-header-layout">
+            <jsp:include page="mentee/mentee_header.jsp"/>
+
+            <div class="mdk-header-layout__content">
+
+                <div data-push
                      data-responsive-width="992px"
                      class="mdk-drawer-layout js-mdk-drawer-layout">
-                  
-                  <div class="mdk-drawer-layout__content page ">
+
+                    <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Home</a></li>
                                 <li class="breadcrumb-item active">Request Mentor</li>
                             </ol>
-                                
-                                <div class="card-header flex-container " >
-                               <div class="media align-items-center">
+
+                            <div class="card-header flex-container " >
+                                <div class="media align-items-center">
                                     <div class="media-body">
                                         <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>                                        
                                     </div>  
-                                   
+
                                 </div>
+                                </br>
+                                <p><strong>1.Subject's Information</strong></p>
+
+
+                                <form action="createRequest" method="POST">
+                                    Subject: <select name="subject">
+                                        <c:forEach var="sub" items="${requestScope.sList}">
+                                            <option value="${sub.subjectID}">
+                                                ${sub.subjectName} - ${sub.level}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
                                     </br>
-                                    <p><strong>1.Subject's Information</strong></p>
-                                   
-                                   
-        <form action="createRequest" method="POST">
-           Subject: <select name="subject">
-                <c:forEach var="sub" items="${requestScope.sList}">
-                    <option value="${sub.subjectID}">
-                        ${sub.subjectName} - ${sub.level}
-                    </option>
-                </c:forEach>
-            </select>
-            </br>
-            </br>
-             CourseType: 
->>>>>>> origin/Chau
-            <select name="learnType">
-                <option value="1">Offline</option>
-                <option value="2">Online</option>
-            </select>
-<<<<<<< HEAD
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                </tr>
-=======
-             </br>
-            </br>
-            <p><strong>2.Time and Fees</strong></p>
-          
-            
-            Budget per lesson: </br>
-            <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
-            Length of each lesson: </br> 
-            <input type="number" name="timePerSlot" style="border-radius:  5px"></br></br>
-            <div class="row">     
-                <div class=" col-6">
-                Start Time: <input  type="date" name="startTime">
-                </div>
-                <div class="col-6">
-                End Time: <input  type="date" name="endTime">
+                                    </br>
+                                    CourseType: 
+                                    <select name="learnType">
+                                        <option value="1">Offline</option>
+                                        <option value="2">Online</option>
+                                    </select>
+                                    </br>
+                                    </br>
+                                    <p><strong>2.Time and Fees</strong></p>
+
+
+                                    Budget per lesson: </br>
+                                    <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
+                                    Length of each lesson: </br> 
+                                    <input type="number" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                    <div class="row">     
+                                        <div class=" col-6">
+                                            Start Time: <input  type="date" name="startTime">
+                                        </div>
+                                        <div class="col-6">
+                                            End Time: <input  type="date" name="endTime">
+                                        </div>
+                                    </div>
+
+                                    </br> 
+
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td>Monday</td>
+                                            <td>Tuesday</td>
+                                            <td>Wednesday</td>
+                                            <td>Thursday</td>
+                                            <td>Friday</td>
+                                            <td>Saturday</td>
+                                            <td>Sunday</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>From</td>
+                                            <td><input type="time" name="2" class="time"></td>
+                                            <td><input type="time" name="3" class="time"></td>
+                                            <td><input type="time" name="4" class="time"></td>
+                                            <td><input type="time" name="5" class="time"></td>
+                                            <td><input type="time" name="6" class="time"></td>
+                                            <td><input type="time" name="7" class="time"></td>
+                                            <td><input type="time" name="8" class="time"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>To</td>
+                                            <td><input type="time" name="2" class="time"></td>
+                                            <td><input type="time" name="3" class="time"></td>
+                                            <td><input type="time" name="4" class="time"></td>
+                                            <td><input type="time" name="5" class="time"></td>
+                                            <td><input type="time" name="6" class="time"></td>
+                                            <td><input type="time" name="7" class="time"></td>
+                                            <td><input type="time" name="8" class="time"></td>
+                                        </tr>
+                                    </table>
+                                    </br>
+                                    <p><strong> 3.Mentee's expectation from Mentor</strong></p>
+
+                                    Detail Description: </br>
+                                    <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
+                                    <input type="text" id="timeJson" name="timeJson" hidden>
+                                    <div class="form-group " style="text-align: center;">
+                                        <button type="submit " style="border-radius: 5px; width: 10%;"
+                                                class="btn btn-primary">
+                                            Sign In
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Nav Tab-->
+                    <jsp:include page="mentee/mentee_tab.jsp"/>
+                    <!--End of Nav Tab-->
                 </div>
             </div>
-           
-            </br> 
-               
-            <table>
-                <tr>
-                    <td></td>
-                    <td>Monday</td>
-                    <td>Tuesday</td>
-                    <td>Wednesday</td>
-                    <td>Thursday</td>
-                    <td>Friday</td>
-                    <td>Saturday</td>
-                    <td>Sunday</td>
-                </tr>
-               
->>>>>>> origin/Chau
-                <tr>
-                    <td>From</td>
-                    <td><input type="time" name="2" class="time"></td>
-                    <td><input type="time" name="3" class="time"></td>
-                    <td><input type="time" name="4" class="time"></td>
-                    <td><input type="time" name="5" class="time"></td>
-                    <td><input type="time" name="6" class="time"></td>
-                    <td><input type="time" name="7" class="time"></td>
-                    <td><input type="time" name="8" class="time"></td>
-                </tr>
-                <tr>
-                    <td>To</td>
-                    <td><input type="time" name="2" class="time"></td>
-                    <td><input type="time" name="3" class="time"></td>
-                    <td><input type="time" name="4" class="time"></td>
-                    <td><input type="time" name="5" class="time"></td>
-                    <td><input type="time" name="6" class="time"></td>
-                    <td><input type="time" name="7" class="time"></td>
-                    <td><input type="time" name="8" class="time"></td>
-<<<<<<< HEAD
-
-                </tr>
-            </table>
-            <input type="text" id="timeJson" name="timeJson" hidden>
-            <input type="submit">
-        </form>
-=======
-                </tr>
-            </table>
-            </br>
-            <p><strong> 3.Mentee's expectation from Mentor</strong></p>
-           
-            Detail Description: </br>
-            <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
-            <input type="text" id="timeJson" name="timeJson" hidden>
-             <div class="form-group " style="text-align: center;">
-                                <button type="submit " style="border-radius: 5px; width: 10%;"
-                                        class="btn btn-primary">
-                                    Sign In
-                                </button>
-                            </div>
-        </form>
-                                </div>
-                        </div>
-                  </div>
-      <!--Nav Tab-->
-        <jsp:include page="mentee/mentee_tab.jsp"/>
-        <!--End of Nav Tab-->
         </div>
-         </div>
-         </div>
-                 
-         <!-- jQuery -->
+
+        <!-- jQuery -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
@@ -229,9 +207,8 @@
         <!-- Student Dashboard Page JS -->
         <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
         <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
-   
->>>>>>> origin/Chau
-       <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
             $(document).ready(function () {
                 var arr = [];
