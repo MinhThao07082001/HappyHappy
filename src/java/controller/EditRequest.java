@@ -74,6 +74,8 @@ public class EditRequest extends HttpServlet {
         Request r = rd.getRequestById(id);
         request.setAttribute("req", r);
         SubjectDAO sd = new SubjectDAO();
+        List<String> sNameList = sd.getListSubjectName();
+        request.setAttribute("sNameList",sNameList);
         List<Subject> sList = sd.getAll();
         request.setAttribute("sub", sList);
         request.getRequestDispatcher("user/update-request.jsp").forward(request, response);

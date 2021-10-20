@@ -73,6 +73,8 @@ public class CreateRequest extends HttpServlet {
             throws ServletException, IOException {
         SubjectDAO sd = new SubjectDAO();
         List<Subject> sList = sd.getAll();
+        List<String> sNameList = sd.getListSubjectName();
+        request.setAttribute("sNameList",sNameList);
         request.setAttribute("sList", sList);
         request.getRequestDispatcher("user/create-request.jsp").forward(request, response);
     }
@@ -108,6 +110,7 @@ public class CreateRequest extends HttpServlet {
             System.out.println("        TIME: "+timeJson);
             SubjectDAO sd = new SubjectDAO();
             Subject s = sd.getSubject(subject, level);
+            System.out.println(subject+"'"+level);
             Request r = new Request(userID, s.getSubjectID(), moneyPerSlot, timePerSlot, startTime, endTime, description, learnType);
             JSONArray j = new JSONArray(timeJson);
             List<RequestSlotTime> rstList = new ArrayList<>();

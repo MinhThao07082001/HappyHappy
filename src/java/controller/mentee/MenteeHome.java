@@ -67,7 +67,7 @@ public class MenteeHome extends HttpServlet {
         //request.setAttribute("mtorList", mList); 
         //Tạo Phân Trang
         
-         int size = mList.size();
+        int size = mList.size();
         int numperPage=4; 
         int numPage=size/numperPage+(size%numperPage==0?0:1);
         String spage=request.getParameter("page");

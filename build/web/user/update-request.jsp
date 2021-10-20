@@ -19,60 +19,18 @@
             <input type="text" name="reqID" value="${req.requestID}"  hidden>
             Subject: <select name="subject">
                 <option value="${req.subject.subjectName}">${req.subject.subjectName}</option>
-                <option value="Literature">Literature</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Ethics">Ethics</option>
-                <option value="History">History</option>
-                <option value="Geography">Geography</option>
-                <option value="Science">Science</option>
-                <option value="Physics">Physics</option>
-                <option value="Chemistry">Chemistry</option>
-                <option value="Biology">Biology</option>
-                <option value="Music">Music</option>
-                <option value="Fine Arts">Fine Arts</option>
-                <option value="Physical Education">Physical Education</option>
-                <option value="Technology">Technology</option>
-                <option value="Informatics">Informatics</option>
+                <c:forEach items="${requestScope.sNameList}" var="sName">
+                    <option value="${sName}">${sName}</option>
+                </c:forEach>
             </select>
             Level: <select name="level">
                 <option value="${req.subject.level}">Grade ${req.subject.level}</option>
-                <option value="1">
-                    Grade 1
-                </option>
-                <option value="2">
-                    Grade 2
-                </option>
-                <option value="3">
-                    Grade 3
-                </option>
-                <option value="4">
-                    Grade 4
-                </option>
-                <option value="5">
-                    Grade 5
-                </option>
-                <option value="6">
-                    Grade 6
-                </option>
-                <option value="7">
-                    Grade 7
-                </option>
-                <option value="8">
-                    Grade 8
-                </option>
-                <option value="9">
-                    Grade 9
-                </option>
-                <option value="10">
-                    Grade 10
-                </option>
-                <option value="11">
-                    Grade 11
-                </option>
-                <option value="12">
-                    Grade 12
-                </option>
-            </select>
+                <c:forEach begin="1" end="12" var="i">
+                    <option value="${i}">
+                        Grade ${i}
+                    </option>
+                </c:forEach>
+            </select
             Money Per Slot   <input type="number" value="${req.moneyPerSlot}"name="moneyPerSlot"><br/>
             timePerSlot:   <input type="number" id="timePerSlot"value="${req.timePerSlot}" name="timePerSlot"><br/>
 
@@ -168,7 +126,7 @@
                 elements[i].addEventListener('input', func, false);
             }
         </script>        
-                <script>
+        <script>
             document.querySelectorAll('.time-start').forEach(item => {
                 item.addEventListener('input', event => {
                     //handle click

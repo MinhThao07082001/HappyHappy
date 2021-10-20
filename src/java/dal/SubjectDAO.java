@@ -47,7 +47,7 @@ public class SubjectDAO extends DBContext {
                 Subject s = new Subject();
                 s.setSubjectID(rs.getInt("subjectID"));
                 s.setSubjectName(rs.getString("subjectname"));
-                 s.setLevel(rs.getString("level"));
+                s.setLevel(rs.getString("level"));
                 s.setStatus(rs.getString("status"));
                 return s;
             }
@@ -57,7 +57,7 @@ public class SubjectDAO extends DBContext {
         }
         return null;
     }
-    
+
     public Subject getSubject(String name, String level) {
         String sql = "select * from subject where subjectName = ? and level = ?";
         try {
@@ -69,10 +69,29 @@ public class SubjectDAO extends DBContext {
                 Subject s = new Subject();
                 s.setSubjectID(rs.getInt("subjectID"));
                 s.setSubjectName(rs.getString("subjectname"));
-                 s.setLevel(rs.getString("level"));
+                s.setLevel(rs.getString("level"));
                 s.setStatus(rs.getString("status"));
                 return s;
             }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    public List<String> getListSubjectName() {
+        String sql = "SELECT distinct TOP 1000\n"
+                + "      [subjectName]\n"
+                + "  FROM [SWP391].[dbo].[subject] ";
+        List<String> subList = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                subList.add(rs.getString(1));
+            }
+            return subList;
 
         } catch (SQLException e) {
             System.out.println(e);
