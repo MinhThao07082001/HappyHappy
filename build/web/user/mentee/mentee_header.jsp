@@ -18,7 +18,7 @@
             </button>
             <!-- Brand -->
             <a href="${pageContext.request.contextPath}/mentee/home" class="navbar-brand">
-                <img src="${pageContext.request.contextPath}/user/assets/images/logo/result.svg" class="mr-2pt" style="width: 90px;height: 50px" alt="LearnPlus" />
+                <img src="${pageContext.request.contextPath}/user/assets/images/logo/logo.svg" class="mr-2pt" style="width: 90px;height: 50px" alt="LearnPlus" />
 <!--            <span class="d-none d-xs-md-block">LearnPlus</span>-->
             </a>
             <!-- Search -->
@@ -43,7 +43,9 @@
                   <i class="material-icons">shopping_cart</i>
                   </a>
                </li>
+            </ul>
                <!-- Notifications dropdown -->
+               <ul class="nav navbar-nav flex-nowrap">
                <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
                   <button class="nav-link btn-flush dropdown-toggle" type="button" data-toggle="dropdown"
                      data-dropdown-disable-document-scroll data-caret="false">
@@ -149,6 +151,7 @@
                      </div>
                   </div>
                </li>
+               </ul>
                <!-- // END Notifications dropdown -->
                <!-- User dropdown -->
                <li class="nav-item dropdown ml-1 ml-md-3">
@@ -175,7 +178,7 @@
                   </div>
                </li>
                <!-- // END User dropdown -->
-            </ul>
+            
             <!-- // END Menu -->
          </div>
       </nav>

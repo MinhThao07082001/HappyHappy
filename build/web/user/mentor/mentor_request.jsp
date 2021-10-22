@@ -16,7 +16,7 @@
               content="IE=edge">
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Student - Dashboard</title>
+        <title>Instructor Dashboard</title>
 
         <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
         <meta name="robots"
@@ -324,8 +324,8 @@
         <div class="mdk-header-layout js-mdk-header-layout">
 
             <!-- Header -->
-            <c:set var="user" value="${sessionScope.user}"/>
-            <jsp:include page="mentee_header.jsp"/>
+            
+            <jsp:include page="mentor_header.jsp"/>
 
             <!--End Of Header -->
 
@@ -337,7 +337,7 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/mentee-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/mentor-dashboard.html">Home</a></li>
                                 <li class="breadcrumb-item active">Request Mentor</li>
                             </ol>
 
@@ -531,7 +531,7 @@
 
 
                     <!--Nav Tab-->
-                    <jsp:include page="mentee_tab.jsp"/>
+                    <jsp:include page="mentor_tab.jsp"/>
                     <!--End Of Nav Tab-->
                 </div>
             </div>

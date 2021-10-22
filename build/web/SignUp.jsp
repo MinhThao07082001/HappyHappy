@@ -113,6 +113,13 @@
                 <%
                     }
                 %>
+                <%
+                    if (request.getAttribute("mess1") != null) {
+                %>
+                <script> alert("<%= request.getAttribute("mess1")%>")</script>
+                <%
+                    }
+                %>
                 <div class="card navbar-shadow" style="border-radius: 20px;">
                     <div class="text-center mt-5 mb-1">
                         <div class="avatar avatar-lg">
@@ -158,6 +165,18 @@
                                             <h8 id="capital" class="invalid">At least a <b>uppercase</b> letter</h8><br>
                                             <h8 id="number" class="invalid">At least a <b>number</b></h8><br>
                                             <h8 id="length" class="invalid">Minimum <b>8 characters</b></h8>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="password">Confirm password: <span style="color:red">*</span></label>
+                                        <div class="input-group input-group-merge">
+                                            <input type="password" id="repeat-new-pass" name="repeat-password" 
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required="" class="form-control form-control-prepended" placeholder="Confirm your new password">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    <span class="far fa-key"></span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">

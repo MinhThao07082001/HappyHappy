@@ -22,25 +22,11 @@
                 </button>
 
                 <!-- Brand -->
-                <a href="${pageContext.request.contextPath}/user/mentor/mentor-dashboard.jsp"
-                   class="navbar-brand">
-                    <img src="${pageContext.request.contextPath}/user/assets/images/logo/white.svg"
-                         class="mr-2"
-                         alt="LearnPlus" />
-                    <span class="d-none d-xs-md-block">LearnPlus</span>
-                </a>
+                <a href="${pageContext.request.contextPath}/mentor/home" class="navbar-brand">
+                <img src="${pageContext.request.contextPath}/user/assets/images/logo/logo.svg" class="mr-2pt" style="width: 90px;height: 50px" alt="LearnPlus" />
+<!--            <span class="d-none d-xs-md-block">LearnPlus</span>-->
+            </a>
 
-                <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap">
-                    <li class="nav-item">
-                        <div class="nav-stats">$591 <small>GROSS</small></div>
-                    </li>
-                    <li class="nav-item">
-                        <div class="nav-stats">$31 <small>TAXES</small></div>
-                    </li>
-                    <li class="nav-item mr-3">
-                        <div class="nav-stats">$560 <small>NET</small></div>
-                    </li>
-                </ul>
 
                 <!-- Search -->
                 <form class="search-form d-none d-md-flex">
@@ -195,17 +181,18 @@
                         <a class="nav-link dropdown-toggle"
                            data-toggle="dropdown"
                            href="#"
-                           role="button"><img src="${pageContext.request.contextPath}/user/assets/images/people/50/guy-6.jpg"
+                           role="button"><img src="${user.imgAvt}"
                                            alt="Avatar"
                                            class="rounded-circle"
-                                           width="40"></a>
+                                           width="40">
+                        </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item"
                                href="${pageContext.request.contextPath}/user/mentor/editprofile">
                                 <i class="material-icons">edit</i> Edit Account
                             </a>
                             <a class="dropdown-item"
-                               href="${pageContext.request.contextPath}/user/instructor-profile.html">
+                               href="${pageContext.request.contextPath}/user/mentor/profile">
                                 <i class="material-icons">person</i> Public Profile
                             </a>
                             <a class="dropdown-item"

@@ -89,6 +89,50 @@ public class MenteeDAO extends DBContext {
         }
         return null;
     }
+      public Mentee getMenteeById(int id) {
+        String sql = "SELECT TOP 1000 u.[userID]\n"
+                + "      ,[name]\n"
+                + "      ,[password]\n"
+                + "      ,[email]\n"
+                + "      ,[dob]\n"
+                + "      ,[sex]\n"
+                + "      ,[address]\n"
+                + "      ,[phone]\n"
+                + "      ,[imgAvt]\n"
+                + "      ,[description]\n"
+                + "      ,[status]\n"
+                + "      ,[moneyLeft]\n"
+                + "      ,[createTime]\n"
+                + "      ,[role]\n"
+                + "     FROM [SWP391].[dbo].[userCommon] u inner join mentee m on u.userID = m.userID "
+                + "     where id = ?";
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                Mentee m = new Mentee(
+                        rs.getInt("userID"),
+                        rs.getString("name"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("dob"),
+                        rs.getInt("sex"),
+                        rs.getString("address"),
+                        rs.getString("phone"),
+                        rs.getString("imgAvt"),
+                        rs.getString("description"),
+                        rs.getString("status"),
+                        rs.getInt("moneyLeft"),
+                        rs.getString("createTime"));
+                return m;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
  //Test
     public static void main(String[] args) {
         Mentee m = new Mentee(1, "Name", "Name", "Name", "2019-10-10", 1, "Adderess", "0102391293", "", "Des", "No", 999, "2918-12-12");

@@ -74,7 +74,7 @@
             <!-- Header -->
 
             <!--Header-->
-            <%@include file="mentee_header.jsp" %>
+            <%@include file="mentor_header.jsp" %>
             <!-- // END Header -->
 
             <!-- Header Layout Content -->
@@ -95,7 +95,7 @@
                         </div>
                         <div class="container-fluid page__container d-flex align-items-end position-relative mb-4">
                             <div class="avatar avatar-xxl position-absolute bottom-0 left-0 right-0">
-                                <img src="${requestScope.mentor.imgAvt}"
+                                <img src="${user.imgAvt}"
                                      alt="avatar"
                                      class="avatar-img rounded-circle border-3">
                             </div>
@@ -116,25 +116,18 @@
                             <div class="row flex-sm-nowrap">
                                 <div class="col-sm-auto mb-3 mb-sm-0"
                                      style="width: 265px;">
-                                    <h1 class="h2 mb-1">${requestScope.mentor.name}</h1>
-                                    <p class="d-flex align-items-center mb-4">
-                                        <a href="#"
-                                           class="btn btn-sm btn-success mr-2">Follow @LazaBogdan</a>
-                                    </p>
+                                    <h1 class="h2 mb-1">${user.name}</h1>
                                     <div class="text-muted d-flex align-items-center mb-2">
                                         <i class="material-icons mr-1">account_box</i>
-                                        <div class="flex">Student since 2012</div>
+                                        <div class="flex">${requestScope.mentor.education}</div>
                                     </div>
                                     <div class="text-muted d-flex align-items-center mb-4">
                                         <i class="material-icons mr-1">location_on</i>
-                                        <div class="flex">Romania, Europe</div>
+                                        <div class="flex">${user.address}</div>
                                     </div>
 
                                     <h4>About me</h4>
-                                    <p class="text-black-70 measure-paragraph">Fueled by my passion for understanding the nuances of cross-cultural advertising, I consider myself a forever student, eager to both build on my academic foundations in psychology and sociology and stay in tune with the latest digital marketing strategies through continued coursework.</p>
-
-                                    <h4>Connect</h4>
-                                    <p class="text-black-70 measure-paragraph">I’m currently working as a freelance marketing director and always interested in a challenge. Here’s how to reach out and connect.</p>
+                                    <p class="text-black-70 measure-paragraph">${requestScope.mentor.intro}</p>
                                 </div>
                                 <div class="col-sm">
                                     <!-- <div class="flex search-form search-form--light mb-4">
@@ -250,45 +243,6 @@
 
                                     <!--COmment Section-->
                                     <%--<c:if test="${sessionScope.user == '2' }">--%>
-                                    <form action="rate" method="POST">
-                                        <div class="card">
-                                            <div class="row comment">
-                                                <div class="col-2"> <img src="https://i.imgur.com/xELPaag.jpg" width="70" class="rounded-circle mt-2"> </div>
-                                                <div class="col-10">
-                                                    <div class="comment-box ml-2">
-                                                        <h4>Add a comment</h4>
-                                                        <input type="hidden" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly style="display:none"> 
-                                                        <input type="hidden" name ="mentee" value="${sessionScope.user.menteeID}" reaonly style="display:none">
-                                                        <input type="hidden" name ="id" value="${param.id}" reaonly style="display:none">
-                                                        <div class="rating">
-                                                            <input type="radio" name="star" value="5" id="5">
-                                                            <label for="5">☆</label> 
-                                                            <input type="radio" name="star" value="4" id="4">
-                                                            <label for="4">☆</label> 
-                                                            <input type="radio" name="star" value="3" id="3">
-                                                            <label for="3">☆</label> 
-                                                            <input type="radio" name="star" value="2" id="2">
-                                                            <label for="2">☆</label> 
-                                                            <input type="radio" name="star" value="1" id="1">
-                                                            <label for="1">☆</label> 
-                                                        </div>
-                                                        <div class="comment-area"> 
-                                                            <textarea class="form-control" name="comment" placeholder="what is your view?" rows="4"></textarea>                                                        
-                                                           
-                                                        </div>
-                                                        <div class="comment-btns mt-2">
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <div class="pull-right"> <button type="submit" class="btn btn-success send btn-sm">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
-                                                                
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                     <%--</c:if>--%>
                                                     
 
@@ -300,7 +254,7 @@
 
                     </div>
 
-                    <%@include file="mentee_tab.jsp" %>
+                    <%@include file="mentor_tab.jsp" %>
 
                 </div>
 

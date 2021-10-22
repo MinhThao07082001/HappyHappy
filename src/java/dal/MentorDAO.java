@@ -71,12 +71,7 @@ public class MentorDAO extends DBContext {
                 + "      [phone] = ?,"
                 + "      [imgAvt] = ?,"
                 + "      [description] = ?"
-                + "      where userID = ?;\n"; 
-//                     "UPDATE mentor set "
-//                + "      [education] = ?, "
-//                + "      [yearExperiment] = ?, "
-//                + "      [intro] ?, "
-//                + "      where userID = ?;";
+                + "      where userID = ?;"; 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, m.getName());
@@ -86,10 +81,25 @@ public class MentorDAO extends DBContext {
             st.setString(5, m.getImgAvt());
             st.setString(6, m.getDescription());
             st.setInt(7, m.getMentorID());
-//            st.setString(8, m.getEducation());
-//            st.setInt(9, m.getYearExperiment());
-//            st.setString(10, m.getIntro());
-//            st.setInt(11, m.getMentorID());
+            return st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return 0;
+    }
+    public int updateMentorCV(Mentor m) {
+        String sql ="UPDATE mentor set "
+                + "      [education] = ?, "
+                + "      [yearExperiment] = ?, "
+                + "      [intro] = ? "
+                + "      where userID = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, m.getEducation());
+            st.setInt(2, m.getYearExperiment());
+            st.setString(3, m.getIntro());
+            st.setInt(4, m.getMentorID());
             return st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -258,9 +268,19 @@ public class MentorDAO extends DBContext {
         }
         return null;
     }
+    
+    public List<Mentor> getMentorByPage(List<Mentor> list,
+            int start,int end){
+        List<Mentor> t=new ArrayList<>();
+        for(int i=start;i<end;i++){
+            t.add(list.get(i));
+        }
+        return t;
+    }
 
     public static void main(String[] args) {
+        Mentor m = new Mentor();
         MentorDAO md = new MentorDAO();
-        System.out.println(md.getMentorByEmail("chautvmhe150128@fpt.edu.vn"));
+        System.out.println(md.updateMentorCV(m));
     }
 }

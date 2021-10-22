@@ -94,6 +94,7 @@ public class SignUpServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String e = request.getParameter("email");
         String p = request.getParameter("password");
+        String rp = request.getParameter("repeat-password");
         String n = request.getParameter("name");
         String dob = request.getParameter("dob");
         String ph = request.getParameter("phone");
@@ -106,6 +107,9 @@ public class SignUpServlet extends HttpServlet {
         UserCommon b = ud.getPhone(ph);
         if (a != null || b!=null) {
             request.setAttribute("mess", "Email or phonenumber has already existed");
+            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+        } else if(!p.equals(rp)){
+            request.setAttribute("mess1", "Re-entered password does not match");
             request.getRequestDispatcher("SignUp.jsp").forward(request, response);
         } else {
             UserCommon u = new UserCommon();

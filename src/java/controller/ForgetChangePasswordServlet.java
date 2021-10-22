@@ -88,12 +88,12 @@ public class ForgetChangePasswordServlet extends HttpServlet {
             mess = "Your password have been reset";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);
-            return;
+            
         } else {
             mess = "Confirm password dont match";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("Forget_ChangePassword.jsp").forward(request, response);
-            return;
+
         }
     }
 

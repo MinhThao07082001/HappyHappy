@@ -45,6 +45,16 @@
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
+        
+        <style>
+                .pagination a.active {
+                background-color: #006cfa;
+                color: white;
+              }
+            .pagination a:hover:not(.active) {
+                background-color: lightskyblue;
+            }
+        </style>
     </head>
     <body class=" layout-fluid" style="background-color: #eaf4fc">
         <div class="preloader">
@@ -74,7 +84,7 @@
                             <h1 class="h2" style="width: auto;
                                 height: auto;
                                 background: #EDCBCB;
-                                border-radius: 200px;">&nbsp; &nbsp;Welcome Pham Thi Vjnh</h1>
+                                border-radius: 200px;">&nbsp; &nbsp;Welcome ${sessionScope.user.name}</h1>
                             <!-- <div class="card border-left-3 border-left-primary card-2by1">
                                <div class="card-body">
                                    <div class="media flex-wrap align-items-center">
@@ -103,12 +113,12 @@
                             <!--End of recom tab -->
                             <!--List of mentors -->
                             <div class="row">
-                                <c:forEach var="mtor" items="${requestScope.mtorList}">
+                                <c:forEach var="mtor" items="${requestScope.data}">
                                     <div class="col-md-6">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column flex-sm-row">
-                                                    <a href="?id=${mtor.mentorID}"
+                                                    <a href="../rate?id=${mtor.mentorID}"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">
@@ -316,30 +326,28 @@
                             </div>
                             <!-- End of List of mentors -->
                             <!-- Pagination -->
-                            <ul class="pagination justify-content-center pagination-sm">
-                                <li class="page-item disabled">
+                             <ul class="pagination justify-content-center pagination-sm">
+                                  <li class="page-item ">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true" class="material-icons">chevron_left</span>
                                         <span>Prev</span>
                                     </a>
                                 </li>
-                                <li class="page-item active">
-                                    <a class="page-link" href="#" aria-label="1">
-                                        <span>1</span>
-                                    </a>
-                                </li>
+                            <c:forEach begin="1" end="${requestScope.num}" var="i">                                                        
                                 <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="1">
-                                        <span>2</span>
+                                    <a class="${requestScope.page==i?"active":""} page-link" href="home?page=${i}">
+                                        <span>${i}</span>
                                     </a>
-                                </li>
+                               </li>                              
+                            </c:forEach>
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Next">
                                         <span>Next</span>
                                         <span aria-hidden="true" class="material-icons">chevron_right</span>
                                     </a>
-                                </li>
+                                </li> 
                             </ul>
+                           
                             <!-- end of pagination -->
                             <div class="row">
                                 <div class="col-lg-7">
@@ -507,6 +515,9 @@
                     </div>
                     <jsp:include page="mentee_tab.jsp"/>
                 </div>
+            </div>
+        </div>
+                
                 <!-- App Settings FAB -->
                 <!--                <div id="app-settings">
                    <app-settings layout-active="default"
