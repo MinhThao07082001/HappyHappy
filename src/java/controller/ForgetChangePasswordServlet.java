@@ -80,7 +80,7 @@ public class ForgetChangePasswordServlet extends HttpServlet {
         String newPass = request.getParameter("newPass");
         String confirmNewPass = request.getParameter("confirmNewPass");
         UserDAO dao = new UserDAO();
-        UserCommon account = dao.getAccountByEmail((String) session.getAttribute("email"));
+        UserCommon account = dao.getAccountByEmail((String) session.getAttribute("ConfirmEmail"));
 
         if (newPass.equals(confirmNewPass)) {
             account.setPassword(newPass);

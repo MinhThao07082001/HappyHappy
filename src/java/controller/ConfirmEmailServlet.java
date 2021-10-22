@@ -75,11 +75,12 @@ public class ConfirmEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
         String email = request.getParameter("email").trim();
         String mess = "";
         UserDAO dao = new UserDAO();
        
-
+        session.setAttribute("ConfirmEmail", email);
         if (email.length() == 0 || email == null) {
             mess = "You have to input your email";
             request.setAttribute("mess", mess);
@@ -92,7 +93,6 @@ public class ConfirmEmailServlet extends HttpServlet {
             return;
         } else {
             String code = sendResetMail(email) ;
-            HttpSession session = request.getSession() ;
             session.setAttribute("vericode", code);
             mess = "An verification code have been sent to your email address";
             request.setAttribute("mess", mess);
