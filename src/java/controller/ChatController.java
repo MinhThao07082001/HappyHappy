@@ -15,6 +15,7 @@ import javax.websocket.server.ServerEndpoint;
 import model.Conversation;
 import model.Message;
 import model.UserCommon;
+import org.json.JSONObject;
 
 @ServerEndpoint("/chat/{conversationID}")
 public class ChatController {
@@ -28,7 +29,7 @@ public class ChatController {
     @OnOpen
     public void onOpen(Session curSession, @PathParam("conversationID") String room) {
         curSession.getUserProperties().put("conversationID", room);
-        System.out.println("room enter: "+room);
+//        System.out.println("room enter: " + room);
 //        for (Session ses : userSessions) {//Return a reference a RemoteEndpoint object representing the peer of this conversation that is able to send messages asynchronously to the peer.
 //            ses.getAsyncRemote().sendText("access");
 ////            UOA uoa = new UOA();
@@ -49,56 +50,62 @@ public class ChatController {
     }
 
     @OnMessage
-    public void onMessage(@PathParam("conversationID")String room ,String message, Session userSession) {
-        for (Session ses : userSessions) {
-            String [] sp = message.split(",");
-            ConversationDAO cd = new ConversationDAO();
-            //get room by 2 user
-            MessageDAO md = new MessageDAO();
-            System.out.println(message);
-            String conv = Integer.toString(cd.getConversationByUserID(Integer.parseInt(sp[0]), Integer.parseInt(sp[2])).getConversationID());
-            if(conv!=null && ses.getUserProperties().get("conversationID").equals(conv)){
-                Message m = new Message();
-                UserDAO ud = new UserDAO();
-                m.setConversationID(Integer.parseInt(sp[3]));
-                m.setSender(Integer.parseInt(sp[0]));
-                m.setReceiver(Integer.parseInt(sp[2]));
-                m.setContent(sp[1]);
-                md.insertMessage(m);
-                UserCommon u1 = ud.getAccountByID(sp[0]);
-                UserCommon u2 = ud.getAccountByID(sp[2]);
-                String text = "         <li class=\"message d-inline-flex\">\n" +
-"                                        <div class=\"message__aside\">\n" +
-"                                            <a href=\"fixed-instructor-profile.html\"\n" +
-"                                               class=\"avatar\">\n" +
-"                                                <img src=\""+u1.getImgAvt()+"\"\n" +
-"                                                     alt=\"people\"\n" +
-"                                                     class=\"avatar-img rounded-circle\">\n" +
-"                                            </a>\n" +
-"                                        </div>\n" +
-"                                        <div class=\"message__body card\">\n" +
-"                                            <div class=\"card-body\">\n" +
-"                                                <div class=\"d-flex align-items-center\">\n" +
-"                                                    <div class=\"flex mr-3\">\n" +
-"                                                        <a href=\"fixed-instructor-profile.html\"\n" +
-"                                                           class=\"text-body\"><strong>"+u1.getName()+"</strong></a>\n" +
-"                                                    </div>\n" +
-"                                                    <div>\n" +
-"                                                        <small class=\"text-muted\">just now</small>\n" +
-"                                                    </div>\n" +
-"                                                </div>\n" +
-"                                                <span class=\"text-black-70\">"+sp[1]+"</span>\n" +
-"\n" +
-"                                            </div>\n" +
-"                                        </div>\n" +
-"                                    </li>";
-                
-                ses.getAsyncRemote().sendText(text);
+    public void onMessage(@PathParam("conversationID") String room, String message, Session userSession) {
+        try {
+            for (Session ses : userSessions) {
+
+                ConversationDAO cd = new ConversationDAO();
+                //get room by 2 user
+                MessageDAO md = new MessageDAO();
+//                System.out.println(message);
+                JSONObject data = new JSONObject(message);
+                String conv = Integer.toString(cd.getConversationByUserID(data.getInt("from"), data.getInt("to")).getConversationID());
+                if (conv != null && ses.getUserProperties().get("conversationID").equals(conv)) {
+                    Message m = new Message();
+                    UserDAO ud = new UserDAO();
+                    m.setConversationID(data.getInt("convID"));
+                    m.setSender(data.getInt("from"));
+                    m.setReceiver(data.getInt("to"));
+                    m.setContent(data.getString("msg"));
+                    md.insertMessage(m);
+                    UserCommon u1 = ud.getAccountByID(Integer.toString(data.getInt("from")));
+                    UserCommon u2 = ud.getAccountByID(Integer.toString(data.getInt("to")));
+                    String text = "         <li class=\"message d-inline-flex\">\n"
+                            + "                                        <div class=\"message__aside\">\n"
+                            + "                                            <a href=\"fixed-instructor-profile.html\"\n"
+                            + "                                               class=\"avatar\">\n"
+                            + "                                                <img src=\"" + u1.getImgAvt() + "\"\n"
+                            + "                                                     alt=\"people\"\n"
+                            + "                                                     class=\"avatar-img rounded-circle\">\n"
+                            + "                                            </a>\n"
+                            + "                                        </div>\n"
+                            + "                                        <div class=\"message__body card\">\n"
+                            + "                                            <div class=\"card-body\">\n"
+                            + "                                                <div class=\"d-flex align-items-center\">\n"
+                            + "                                                    <div class=\"flex mr-3\">\n"
+                            + "                                                        <a href=\"fixed-instructor-profile.html\"\n"
+                            + "                                                           class=\"text-body\"><strong>" + u1.getName() + "</strong></a>\n"
+                            + "                                                    </div>\n"
+                            + "                                                    <div>\n"
+                            + "                                                        <small class=\"text-muted\">just now</small>\n"
+                            + "                                                    </div>\n"
+                            + "                                                </div>\n"
+                            + "                                                <span class=\"text-black-70\">" + data.getString("msg") + "</span>\n"
+                            + "\n"
+                            + "                                            </div>\n"
+                            + "                                        </div>\n"
+                            + "                                    </li>";
+
+                    ses.getAsyncRemote().sendText(text);
 //                System.out.println(message);
 //                System.out.println(room);
-            }
-            
+                }
+
 //            System.out.println(message.toString() + " msg");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
+
     }
 }

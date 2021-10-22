@@ -45,7 +45,7 @@ public class ConversationControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChatServlet</title>");            
+            out.println("<title>Servlet ChatServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ChatServlet at " + request.getContextPath() + "</h1>");
@@ -66,6 +66,7 @@ public class ConversationControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         HttpSession session = request.getSession();
         ConversationDAO cd = new ConversationDAO();
         UserDAO ud = new UserDAO();
@@ -73,23 +74,31 @@ public class ConversationControl extends HttpServlet {
         String email = (String) session.getAttribute("email");
         UserCommon u1 = ud.getEmail(email);
         int user1 = u1.getUserID();
-        int user2 = Integer.parseInt(request.getParameter("id"));
-        Conversation conv = cd.getConversationByUserID(user1, user2);
-        if(conv == null){
-            cd.createConversation(user1, user2);
-            conv = cd.getConversationByUserID(user1, user2);
+        String idRaw = request.getParameter("id");
+        List<UserCommon> convList = cd.getListConversation(user1);
+        if (idRaw != null) {
+            int user2 = Integer.parseInt(idRaw);
+            Conversation conv = cd.getConversationByUserID(user1, user2);
+            if (conv == null) {
+                cd.createConversation(user1, user2);
+                conv = cd.getConversationByUserID(user1, user2);
+            }
+            UserCommon u2 = ud.getAccountByID(Integer.toString(user2));
+            List<Message> mList = md.getMessageByConservationID(conv.getConversationID());
+            request.setAttribute("user1", u1);
+            request.setAttribute("user2", u2);
+            request.setAttribute("mList", mList);
+            request.setAttribute("from", user1);
+            request.setAttribute("to", user2);
+
+            request.setAttribute("conversationID", conv.getConversationID());
+        } else {
+            request.setAttribute("noConv", "Choose a conversation and connecting...");
         }
-        UserCommon u2 = ud.getAccountByID(Integer.toString(user2));
-        List<Message> mList = md.getMessageByConservationID(conv.getConversationID());
-        System.out.println(user1 + "    " + user2 + "       " +conv.getConversationID());
-        request.setAttribute("user1", u1);
-        request.setAttribute("user2", u2);
-        request.setAttribute("mList", mList);
-        request.setAttribute("from", user1);
-        request.setAttribute("to", user2);
-        request.setAttribute("conversationID", conv.getConversationID());
+        request.setAttribute("role", u1.getRole());
+        request.setAttribute("convList", convList);
         request.getRequestDispatcher("user/chat.jsp").forward(request, response);
-         
+
     }
 
     /**

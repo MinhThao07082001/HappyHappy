@@ -14,6 +14,7 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_set_var_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_end_begin;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -25,12 +26,14 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_set_var_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_var_end_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
     _jspx_tagPool_c_set_var_value_nobody.release();
     _jspx_tagPool_c_if_test.release();
+    _jspx_tagPool_c_forEach_var_end_begin.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -69,6 +72,14 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("              content=\"IE=edge\">\r\n");
       out.write("        <meta name=\"viewport\"\r\n");
       out.write("              content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\r\n");
+      out.write("        <!-- Latest compiled and minified CSS -->\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\">\r\n");
+      out.write("        <!-- Optional theme -->\r\n");
+      out.write("        <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\">\r\n");
+      out.write("        <!-- Latest compiled and minified JavaScript -->\r\n");
+      out.write("        <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\r\n");
+      out.write("        <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js\" integrity=\"sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\" crossorigin=\"anonymous\"></script>\r\n");
+      out.write("\r\n");
       out.write("        <title>Student - Dashboard</title>\r\n");
       out.write("        <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->\r\n");
       out.write("        <meta name=\"robots\"\r\n");
@@ -106,6 +117,16 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("/user/assets/css/app.css\"\r\n");
       out.write("              rel=\"stylesheet\">\r\n");
+      out.write("        \r\n");
+      out.write("        <style>\r\n");
+      out.write("                .pagination a.active {\r\n");
+      out.write("                background-color: #006cfa;\r\n");
+      out.write("                color: white;\r\n");
+      out.write("              }\r\n");
+      out.write("            .pagination a:hover:not(.active) {\r\n");
+      out.write("                background-color: lightskyblue;\r\n");
+      out.write("            }\r\n");
+      out.write("        </style>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body class=\" layout-fluid\" style=\"background-color: #eaf4fc\">\r\n");
       out.write("        <div class=\"preloader\">\r\n");
@@ -142,7 +163,9 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                            <h1 class=\"h2\" style=\"width: auto;\r\n");
       out.write("                                height: auto;\r\n");
       out.write("                                background: #EDCBCB;\r\n");
-      out.write("                                border-radius: 200px;\">&nbsp; &nbsp;Welcome Pham Thi Vjnh</h1>\r\n");
+      out.write("                                border-radius: 200px;\">&nbsp; &nbsp;Welcome ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${sessionScope.user.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("</h1>\r\n");
       out.write("                            <!-- <div class=\"card border-left-3 border-left-primary card-2by1\">\r\n");
       out.write("                               <div class=\"card-body\">\r\n");
       out.write("                                   <div class=\"media flex-wrap align-items-center\">\r\n");
@@ -329,30 +352,25 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                            </div>\r\n");
       out.write("                            <!-- End of List of mentors -->\r\n");
       out.write("                            <!-- Pagination -->\r\n");
-      out.write("                            <ul class=\"pagination justify-content-center pagination-sm\">\r\n");
-      out.write("                                <li class=\"page-item disabled\">\r\n");
+      out.write("                             <ul class=\"pagination justify-content-center pagination-sm\">\r\n");
+      out.write("                                  <li class=\"page-item \">\r\n");
       out.write("                                    <a class=\"page-link\" href=\"#\" aria-label=\"Previous\">\r\n");
       out.write("                                        <span aria-hidden=\"true\" class=\"material-icons\">chevron_left</span>\r\n");
       out.write("                                        <span>Prev</span>\r\n");
       out.write("                                    </a>\r\n");
       out.write("                                </li>\r\n");
-      out.write("                                <li class=\"page-item active\">\r\n");
-      out.write("                                    <a class=\"page-link\" href=\"#\" aria-label=\"1\">\r\n");
-      out.write("                                        <span>1</span>\r\n");
-      out.write("                                    </a>\r\n");
-      out.write("                                </li>\r\n");
-      out.write("                                <li class=\"page-item\">\r\n");
-      out.write("                                    <a class=\"page-link\" href=\"#\" aria-label=\"1\">\r\n");
-      out.write("                                        <span>2</span>\r\n");
-      out.write("                                    </a>\r\n");
-      out.write("                                </li>\r\n");
+      out.write("                            ");
+      if (_jspx_meth_c_forEach_2(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("                                <li class=\"page-item\">\r\n");
       out.write("                                    <a class=\"page-link\" href=\"#\" aria-label=\"Next\">\r\n");
       out.write("                                        <span>Next</span>\r\n");
       out.write("                                        <span aria-hidden=\"true\" class=\"material-icons\">chevron_right</span>\r\n");
       out.write("                                    </a>\r\n");
-      out.write("                                </li>\r\n");
+      out.write("                                </li> \r\n");
       out.write("                            </ul>\r\n");
+      out.write("                           \r\n");
       out.write("                            <!-- end of pagination -->\r\n");
       out.write("                            <div class=\"row\">\r\n");
       out.write("                                <div class=\"col-lg-7\">\r\n");
@@ -364,7 +382,9 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                                    <p class=\"card-subtitle\">Your recent courses</p>\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                                <div class=\"media-right\">\r\n");
-      out.write("                                                    <a class=\"btn btn-sm btn-primary\" href=\"student-my-courses.html\">My\r\n");
+      out.write("                                                    <a class=\"btn btn-sm btn-primary\" href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-my-courses.html\">My\r\n");
       out.write("                                                        courses</a>\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                            </div>\r\n");
@@ -372,13 +392,19 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                        <ul class=\"list-group list-group-fit mb-0\" style=\"z-index: initial;\">\r\n");
       out.write("                                            <li class=\"list-group-item\" style=\"z-index: initial;\">\r\n");
       out.write("                                                <div class=\"d-flex align-items-center\">\r\n");
-      out.write("                                                    <a href=\"student-take-course.html\"\r\n");
+      out.write("                                                    <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\"\r\n");
       out.write("                                                       class=\"avatar avatar-4by3 avatar-sm mr-3\">\r\n");
-      out.write("                                                        <img src=\"assets/images/gulp.png\" alt=\"course\"\r\n");
+      out.write("                                                        <img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/assets/images/gulp.png\" alt=\"course\"\r\n");
       out.write("                                                             class=\"avatar-img rounded\">\r\n");
       out.write("                                                    </a>\r\n");
       out.write("                                                    <div class=\"flex\">\r\n");
-      out.write("                                                        <a href=\"student-take-course.html\" class=\"text-body\"><strong>Learn\r\n");
+      out.write("                                                        <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\" class=\"text-body\"><strong>Learn\r\n");
       out.write("                                                                Vue.js Fundamentals</strong></a>\r\n");
       out.write("                                                        <div class=\"d-flex align-items-center\">\r\n");
       out.write("                                                            <div class=\"progress\" style=\"width: 100px;\">\r\n");
@@ -396,20 +422,28 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                                        </a>\r\n");
       out.write("                                                        <div class=\"dropdown-menu dropdown-menu-right\">\r\n");
       out.write("                                                            <a class=\"dropdown-item\"\r\n");
-      out.write("                                                               href=\"student-take-course.html\">Continue</a>\r\n");
+      out.write("                                                               href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\">Continue</a>\r\n");
       out.write("                                                        </div>\r\n");
       out.write("                                                    </div>\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                            </li>\r\n");
       out.write("                                            <li class=\"list-group-item\" style=\"z-index: initial;\">\r\n");
       out.write("                                                <div class=\"d-flex align-items-center\">\r\n");
-      out.write("                                                    <a href=\"student-take-course.html\"\r\n");
+      out.write("                                                    <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\"\r\n");
       out.write("                                                       class=\"avatar avatar-4by3 avatar-sm mr-3\">\r\n");
-      out.write("                                                        <img src=\"assets/images/vuejs.png\" alt=\"course\"\r\n");
+      out.write("                                                        <img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/assets/images/vuejs.png\" alt=\"course\"\r\n");
       out.write("                                                             class=\"avatar-img rounded\">\r\n");
       out.write("                                                    </a>\r\n");
       out.write("                                                    <div class=\"flex\">\r\n");
-      out.write("                                                        <a href=\"student-take-course.html\" class=\"text-body\"><strong>Angular\r\n");
+      out.write("                                                        <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\" class=\"text-body\"><strong>Angular\r\n");
       out.write("                                                                in Steps</strong></a>\r\n");
       out.write("                                                        <div class=\"d-flex align-items-center\">\r\n");
       out.write("                                                            <div class=\"progress\" style=\"width: 100px;\">\r\n");
@@ -427,20 +461,28 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                                        </a>\r\n");
       out.write("                                                        <div class=\"dropdown-menu dropdown-menu-right\">\r\n");
       out.write("                                                            <a class=\"dropdown-item\"\r\n");
-      out.write("                                                               href=\"student-take-course.html\">Continue</a>\r\n");
+      out.write("                                                               href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\">Continue</a>\r\n");
       out.write("                                                        </div>\r\n");
       out.write("                                                    </div>\r\n");
       out.write("                                                </div>\r\n");
       out.write("                                            </li>\r\n");
       out.write("                                            <li class=\"list-group-item\" style=\"z-index: initial;\">\r\n");
       out.write("                                                <div class=\"d-flex align-items-center\">\r\n");
-      out.write("                                                    <a href=\"student-take-course.html\"\r\n");
+      out.write("                                                    <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\"\r\n");
       out.write("                                                       class=\"avatar avatar-4by3 avatar-sm mr-3\">\r\n");
-      out.write("                                                        <img src=\"assets/images/nodejs.png\" alt=\"course\"\r\n");
+      out.write("                                                        <img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/assets/images/nodejs.png\" alt=\"course\"\r\n");
       out.write("                                                             class=\"avatar-img rounded\">\r\n");
       out.write("                                                    </a>\r\n");
       out.write("                                                    <div class=\"flex\">\r\n");
-      out.write("                                                        <a href=\"student-take-course.html\"\r\n");
+      out.write("                                                        <a href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\"\r\n");
       out.write("                                                           class=\"text-body\"><strong>Bootstrap Foundations</strong></a>\r\n");
       out.write("                                                        <div class=\"d-flex align-items-center\">\r\n");
       out.write("                                                            <div class=\"progress\" style=\"width: 100px;\">\r\n");
@@ -458,7 +500,9 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                                        </a>\r\n");
       out.write("                                                        <div class=\"dropdown-menu dropdown-menu-right\">\r\n");
       out.write("                                                            <a class=\"dropdown-item\"\r\n");
-      out.write("                                                               href=\"student-take-course.html\">Continue</a>\r\n");
+      out.write("                                                               href=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/student-take-course.html\">Continue</a>\r\n");
       out.write("                                                        </div>\r\n");
       out.write("                                                    </div>\r\n");
       out.write("                                                </div>\r\n");
@@ -485,6 +529,42 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       out.write("                                        </div>\r\n");
       out.write("                                    </div>\r\n");
       out.write("                                </div>\r\n");
+      out.write("                                <div style=\"width: 80%;margin: 0 auto;\" id=\"carousel-example-generic\" class=\"carousel slide\" data-ride=\"carousel\">\r\n");
+      out.write("                                    <!-- Indicators -->\r\n");
+      out.write("                                    <ol class=\"carousel-indicators\">\r\n");
+      out.write("                                        <li data-target=\"#carousel-example-generic\" data-slide-to=\"0\" class=\"active\"></li>\r\n");
+      out.write("                                        <li data-target=\"#carousel-example-generic\" data-slide-to=\"1\"></li>\r\n");
+      out.write("                                        <li data-target=\"#carousel-example-generic\" data-slide-to=\"2\"></li>\r\n");
+      out.write("                                    </ol>\r\n");
+      out.write("\r\n");
+      out.write("                                    <!-- Wrapper for slides -->\r\n");
+      out.write("                                    <div class=\"carousel-inner\">\r\n");
+      out.write("                                        <div class=\"item active\">\r\n");
+      out.write("                                            <img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/assets/images/1.png\" alt=\"Anime\">\r\n");
+      out.write("                                        </div>\r\n");
+      out.write("\r\n");
+      out.write("                                        <div class=\"item\">\r\n");
+      out.write("                                            <img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/assets/images/2.png\" alt=\"Anime\">\r\n");
+      out.write("                                        </div>\r\n");
+      out.write("\r\n");
+      out.write("                                        <div class=\"item\">\r\n");
+      out.write("                                            <img src=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("/user/assets/images/4.png\" alt=\"Anime\">\r\n");
+      out.write("                                        </div>\r\n");
+      out.write("                                    </div>\r\n");
+      out.write("                                    <!-- Controls -->\r\n");
+      out.write("                                    <a class=\"left carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"prev\">\r\n");
+      out.write("                                        <span class=\"glyphicon glyphicon-chevron-left\"></span>\r\n");
+      out.write("                                    </a>\r\n");
+      out.write("                                    <a class=\"right carousel-control\" href=\"#carousel-example-generic\" role=\"button\" data-slide=\"next\">\r\n");
+      out.write("                                        <span class=\"glyphicon glyphicon-chevron-right\"></span>\r\n");
+      out.write("                                    </a>\r\n");
+      out.write("                                </div><!--Kết thúc slider-->\r\n");
       out.write("                            </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("                    </div>\r\n");
@@ -492,6 +572,9 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "mentee_tab.jsp", out, false);
       out.write("\r\n");
       out.write("                </div>\r\n");
+      out.write("            </div>\r\n");
+      out.write("        </div>\r\n");
+      out.write("                \r\n");
       out.write("                <!-- App Settings FAB -->\r\n");
       out.write("                <!--                <div id=\"app-settings\">\r\n");
       out.write("                   <app-settings layout-active=\"default\"\r\n");
@@ -602,7 +685,7 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
     _jspx_th_c_forEach_0.setParent(null);
     _jspx_th_c_forEach_0.setVar("mtor");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.mtorList}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.data}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
@@ -613,7 +696,7 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                        <div class=\"card\">\r\n");
           out.write("                                            <div class=\"card-body\">\r\n");
           out.write("                                                <div class=\"d-flex flex-column flex-sm-row\">\r\n");
-          out.write("                                                    <a href=\"?id=");
+          out.write("                                                    <a href=\"../rate?id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mtor.mentorID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\"\r\n");
           out.write("                                                       class=\"avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3\">\r\n");
@@ -622,14 +705,16 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
           out.write("\" alt=\"Card image cap\"\r\n");
           out.write("                                                             class=\"avatar-img rounded\">\r\n");
           out.write("                                                    </a>\r\n");
-          out.write("                                                             <a href=\"../conversation?id=");
+          out.write("                                                    <a href=\"../conversation?id=");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mtor.mentorID}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">\r\n");
-          out.write("                                                                 <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 0 24 24\" width=\"24px\" fill=\"#000000\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path d=\"M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z\"/></svg>\r\n");
-          out.write("                                                             </a>\r\n");
+          out.write("                                                        <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\" viewBox=\"0 0 24 24\" width=\"24px\" fill=\"#000000\"><path d=\"M0 0h24v24H0V0z\" fill=\"none\"/><path d=\"M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z\"/></svg>\r\n");
+          out.write("                                                    </a>\r\n");
           out.write("                                                    <div class=\"flex\" style=\"min-width: 200px;\">\r\n");
           out.write("                                                        <!-- <h5 class=\"card-title text-base m-0\"><a href=\"instructor-course-edit.html\"><strong>Learn Vue.js</strong></a></h5> -->\r\n");
-          out.write("                                                        <h4 class=\"card-title mb-1\"><a href=\"instructor-course-edit.html\">");
+          out.write("                                                        <h4 class=\"card-title mb-1\"><a href=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("/user/instructor-course-edit.html\">");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${mtor.name}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\r\n");
           out.write("                                                                ");
@@ -661,7 +746,9 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                                                </div>\r\n");
           out.write("                                                            </div>\r\n");
           out.write("                                                            <div class=\"text-center\">\r\n");
-          out.write("                                                                <a href=\"instructor-course-edit.html\"\r\n");
+          out.write("                                                                <a href=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("/user/instructor-course-edit.html\"\r\n");
           out.write("                                                                   class=\"btn btn-sm btn-white\">Edit</a>\r\n");
           out.write("                                                            </div>\r\n");
           out.write("                                                        </div>\r\n");
@@ -674,7 +761,9 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
           out.write("                                                    <i class=\"material-icons\">more_vert</i>\r\n");
           out.write("                                                </a>\r\n");
           out.write("                                                <div class=\"dropdown-menu dropdown-menu-right\">\r\n");
-          out.write("                                                    <a class=\"dropdown-item\" href=\"instructor-course-edit.html\">Edit course</a>\r\n");
+          out.write("                                                    <a class=\"dropdown-item\" href=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("/user/instructor-course-edit.html\">Edit course</a>\r\n");
           out.write("                                                    <a class=\"dropdown-item\" href=\"#\">Course Insights</a>\r\n");
           out.write("                                                    <div class=\"dropdown-divider\"></div>\r\n");
           out.write("                                                    <a class=\"dropdown-item text-danger\" href=\"#\">Delete course</a>\r\n");
@@ -765,6 +854,54 @@ public final class mentee_002ddashboard_jsp extends org.apache.jasper.runtime.Ht
     } finally {
       _jspx_th_c_forEach_1.doFinally();
       _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_2 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_end_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_2.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_2.setParent(null);
+    _jspx_th_c_forEach_2.setBegin(1);
+    _jspx_th_c_forEach_2.setEnd(((java.lang.Integer) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.num}", java.lang.Integer.class, (PageContext)_jspx_page_context, null)).intValue());
+    _jspx_th_c_forEach_2.setVar("i");
+    int[] _jspx_push_body_count_c_forEach_2 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_2 = _jspx_th_c_forEach_2.doStartTag();
+      if (_jspx_eval_c_forEach_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("                                                        \r\n");
+          out.write("                                <li class=\"page-item\">\r\n");
+          out.write("                                    <a class=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${requestScope.page==i?\"active\":\"\"}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write(" page-link\" href=\"home?page=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\">\r\n");
+          out.write("                                        <span>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${i}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</span>\r\n");
+          out.write("                                    </a>\r\n");
+          out.write("                               </li>                              \r\n");
+          out.write("                            ");
+          int evalDoAfterBody = _jspx_th_c_forEach_2.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_2[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_2.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_2.doFinally();
+      _jspx_tagPool_c_forEach_var_end_begin.reuse(_jspx_th_c_forEach_2);
     }
     return false;
   }

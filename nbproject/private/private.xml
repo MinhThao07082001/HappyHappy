@@ -3,7 +3,32 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/UserAuthentication.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/update-request.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/model/UserCommon.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/ForgetChangePasswordServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/chat.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/fixed-instructor-account-edit.html</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/instructor-messages.html</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/SubjectDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/ConversationDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/admin/SignIn.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/MyRequest.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/DemoController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/ChatController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/CreateRequest.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/ConversationControl.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/ConfirmCodeServlet.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/mentee/MenteeHome.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/dal/RequestDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/EditRequest.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/create-request.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/instructor-messages-2.html</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/authentication/ProcessAuthenticationCode.java</file>
             <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/SignIn.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/src/java/controller/MenteeEditProfile.java</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/mentee/mentee-dashboard.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/SWP391/Project/Main4/HappyHappy/web/user/fixed-instructor-browse-courses.html</file>
         </group>
     </open-files>
 </project-private>
