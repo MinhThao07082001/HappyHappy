@@ -74,10 +74,18 @@ public class RateAndComment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-        int id = Integer.parseInt(request.getParameter("id"));
+        Mentee m = (Mentee) session.getAttribute("user");
+        
+        int id2 = Integer.parseInt(request.getParameter("id"));
         MentorDAO db = new MentorDAO(); 
-        Mentor mt = db.getMentorById(id);
+        Mentor mt = db.getMentorById(id2);
+        
         request.setAttribute("mentor", mt);
+        RateAndCommentDAO rate = new RateAndCommentDAO();
+        if(rate.CheckLearned(m.getMenteeID(), id2)==false)
+        {
+        request.setAttribute("errorComment", "You haven't studied this person to rate them");
+        }
         request.getRequestDispatcher("/user/mentee/mentee_comment_rate.jsp").forward(request, response);
 
     }
@@ -102,7 +110,10 @@ public class RateAndComment extends HttpServlet {
         int menteeid = Integer.parseInt(request.getParameter("mentee"));
         int mentorid = Integer.parseInt(request.getParameter("mtorid"));
         String id = request.getParameter("id");
-        RateAndCommentDAO rating = new RateAndCommentDAO();      
+        RateAndCommentDAO rating = new RateAndCommentDAO();   
+        if(rating.CheckLearned(menteeid,mentorid)==false){       
+        response.sendRedirect("rate?id="+id);
+        }else{
         Rating rate = new Rating();       
         rate.setRateAmount(RateStar);
         rate.setRateDescription(Comment);
@@ -110,7 +121,8 @@ public class RateAndComment extends HttpServlet {
         rate.setMentorID(mentorid);
         rating.RateMentor(rate);
         session.setAttribute("user", m);
-        response.sendRedirect("rate?id= "+id);
+        response.sendRedirect("rate?id="+id);
+    }
     }
 
     /**

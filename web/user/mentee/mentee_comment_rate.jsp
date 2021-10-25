@@ -249,17 +249,19 @@
                                     </div>
 
                                     <!--COmment Section-->
-                                    <%--<c:if test="${sessionScope.user == '2' }">--%>
+                              
                                     <form action="rate" method="POST">
                                         <div class="card">
                                             <div class="row comment">
                                                 <div class="col-2"> <img src="https://i.imgur.com/xELPaag.jpg" width="70" class="rounded-circle mt-2"> </div>
                                                 <div class="col-10">
                                                     <div class="comment-box ml-2">
+                                                        <h3 style="color:red" >${requestScope.errorComment}</h3>
+                                                        <c:if test="${requestScope.errorComment eq null}">
                                                         <h4>Add a comment</h4>
-                                                        <input type="hidden" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly style="display:none"> 
-                                                        <input type="hidden" name ="mentee" value="${sessionScope.user.menteeID}" reaonly style="display:none">
-                                                        <input type="hidden" name ="id" value="${param.id}" reaonly style="display:none">
+                                                        <input type="text" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly "> 
+                                                        <input type="text" name ="mentee" value="${sessionScope.user.menteeID}" reaonly ">
+                                                        <input type="text" name ="id" value="${param.id}" reaonly ">
                                                         <div class="rating">
                                                             <input type="radio" name="star" value="5" id="5">
                                                             <label for="5">☆</label> 
@@ -284,12 +286,13 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        </c:if>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-                                    <%--</c:if>--%>
+                     
                                                     
 
                                     <!--end of comment section-->
