@@ -3,14 +3,14 @@
     Created on : Oct 5, 2021, 1:24:02 AM
     Author     : Admin
 --%>
-
+ 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en"
       dir="ltr">
-
-
+ 
+ 
     <!-- Mirrored from learnplus.demo.frontendmatter.com/fixed-instructor-messages-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Sep 2021 16:15:16 GMT -->
     <head>
         <meta charset="utf-8">
@@ -19,44 +19,44 @@
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Instructor - Messages</title>
-
+ 
         <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
         <meta name="robots"
               content="noindex">
-
+ 
         <!-- Custom Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&amp;display=swap"
               rel="stylesheet">
-
+ 
         <!-- Perfect Scrollbar -->
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.css"
               rel="stylesheet">
-
+ 
         <!-- Material Design Icons -->
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/css/material-icons.css"
               rel="stylesheet">
-
+ 
         <!-- Font Awesome Icons -->
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/css/fontawesome.css"
               rel="stylesheet">
-
+ 
         <!-- Preloader -->
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/vendor/spinkit.css"
               rel="stylesheet">
-
+ 
         <!-- App CSS -->
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
-
+ 
     </head>
-
+ 
     <body class="app-messages fixed-layout">
-
+ 
         <div class="preloader">
             <div class="sk-chase">
                 <div class="sk-chase-dot"></div>
@@ -66,246 +66,33 @@
                 <div class="sk-chase-dot"></div>
                 <div class="sk-chase-dot"></div>
             </div>
-
+ 
             <!-- <div class="sk-bounce">
     <div class="sk-bounce-dot"></div>
     <div class="sk-bounce-dot"></div>
   </div> -->
-
+ 
             <!-- More spinner examples at https://github.com/tobiasahlin/SpinKit/blob/master/examples.html -->
         </div>
         <h1>${requestScope.conversationID} UOA</h1>
         <!-- Header Layout -->
         <div class="mdk-header-layout js-mdk-header-layout">
-
+ 
             <!-- Header -->
-
-            <div id="header"
-                 class="mdk-header bg-dark js-mdk-header m-0"
-                 data-fixed
-                 data-effects="waterfall">
-                <div class="mdk-header__content">
-
-                    <!-- Navbar -->
-                    <nav id="default-navbar"
-                         class="navbar navbar-expand navbar-dark bg-primary m-0">
-                        <div class="container">
-                            <!-- Toggle sidebar -->
-                            <button class="navbar-toggler d-block"
-                                    data-toggle="sidebar"
-                                    type="button">
-                                <span class="material-icons">menu</span>
-                            </button>
-
-                            <!-- Brand -->
-                            <a href="fixed-instructor-dashboard.html"
-                               class="navbar-brand">
-                                <img src="${pageContext.request.contextPath}/user/assets/images/logo/white.svg"
-                                     class="mr-2"
-                                     alt="LearnPlus" />
-                                <span class="d-none d-xs-md-block">LearnPlus</span>
-                            </a>
-
-                            <ul class="nav navbar-nav navbar-nav-stats d-none d-md-flex flex-nowrap">
-                                <li class="nav-item">
-                                    <div class="nav-stats">$591 <small>GROSS</small></div>
-                                </li>
-                                <li class="nav-item">
-                                    <div class="nav-stats">$31 <small>TAXES</small></div>
-                                </li>
-                                <li class="nav-item mr-3">
-                                    <div class="nav-stats">$560 <small>NET</small></div>
-                                </li>
-                            </ul>
-
-                            <!-- Search -->
-                            <form class="search-form d-none d-md-flex">
-                                <input type="text"
-                                       class="form-control"
-                                       placeholder="Search">
-                                <button class="btn"
-                                        type="button"><i class="material-icons font-size-24pt">search</i></button>
-                            </form>
-                            <!-- // END Search -->
-
-                            <div class="flex"></div>
-
-                            <!-- Menu -->
-                            <ul class="nav navbar-nav flex-nowrap d-none d-lg-flex">
-                                <li class="nav-item">
-                                    <a class="nav-link"
-                                       href="fixed-instructor-forum.html">Forum</a>
-                                </li>
-                            </ul>
-
-                            <!-- Menu -->
-                            <ul class="nav navbar-nav flex-nowrap">
-
-                                <!-- Notifications dropdown -->
-                                <li class="nav-item dropdown dropdown-notifications dropdown-menu-sm-full">
-                                    <button class="nav-link btn-flush dropdown-toggle"
-                                            type="button"
-                                            data-toggle="dropdown"
-                                            data-dropdown-disable-document-scroll
-                                            data-caret="false">
-                                        <i class="material-icons">notifications</i>
-                                        <span class="badge badge-notifications badge-danger">2</span>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <div data-perfect-scrollbar
-                                             class="position-relative">
-                                            <div class="dropdown-header"><strong>Messages</strong></div>
-                                            <div class="list-group list-group-flush mb-0">
-
-                                                <a href="fixed-instructor-messages.html"
-                                                   class="list-group-item list-group-item-action unread">
-                                                    <span class="d-flex align-items-center mb-1">
-                                                        <small class="text-muted">5 minutes ago</small>
-
-                                                        <span class="ml-auto unread-indicator bg-primary"></span>
-
-                                                    </span>
-                                                    <span class="d-flex">
-                                                        <span class="avatar avatar-xs mr-2">
-                                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg"
-                                                                 alt="people"
-                                                                 class="avatar-img rounded-circle">
-                                                        </span>
-                                                        <span class="flex d-flex flex-column">
-                                                            <strong>Michelle</strong>
-                                                            <span class="text-black-70">Clients loved the new design.</span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-
-                                                <a href="fixed-instructor-messages.html"
-                                                   class="list-group-item list-group-item-action unread">
-                                                    <span class="d-flex align-items-center mb-1">
-                                                        <small class="text-muted">5 minutes ago</small>
-
-                                                        <span class="ml-auto unread-indicator bg-primary"></span>
-
-                                                    </span>
-                                                    <span class="d-flex">
-                                                        <span class="avatar avatar-xs mr-2">
-                                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/110/woman-5.jpg"
-                                                                 alt="people"
-                                                                 class="avatar-img rounded-circle">
-                                                        </span>
-                                                        <span class="flex d-flex flex-column">
-                                                            <strong>Michelle</strong>
-                                                            <span class="text-black-70">🔥 Superb job..</span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-
-                                            </div>
-
-                                            <div class="dropdown-header"><strong>System notifications</strong></div>
-                                            <div class="list-group list-group-flush mb-0">
-
-                                                <a href="fixed-instructor-messages.html"
-                                                   class="list-group-item list-group-item-action border-left-3 border-left-danger">
-                                                    <span class="d-flex align-items-center mb-1">
-                                                        <small class="text-muted">3 minutes ago</small>
-
-                                                    </span>
-                                                    <span class="d-flex">
-                                                        <span class="avatar avatar-xs mr-2">
-                                                            <span class="avatar-title rounded-circle bg-light">
-                                                                <i class="material-icons font-size-16pt text-danger">account_circle</i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="flex d-flex flex-column">
-
-                                                            <span class="text-black-70">Your profile information has not been synced correctly.</span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-
-                                                <a href="fixed-instructor-messages.html"
-                                                   class="list-group-item list-group-item-action">
-                                                    <span class="d-flex align-items-center mb-1">
-                                                        <small class="text-muted">5 hours ago</small>
-
-                                                    </span>
-                                                    <span class="d-flex">
-                                                        <span class="avatar avatar-xs mr-2">
-                                                            <span class="avatar-title rounded-circle bg-light">
-                                                                <i class="material-icons font-size-16pt text-success">group_add</i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="flex d-flex flex-column">
-                                                            <strong>Adrian. D</strong>
-                                                            <span class="text-black-70">Wants to join your private group.</span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-
-                                                <a href="fixed-instructor-messages.html"
-                                                   class="list-group-item list-group-item-action">
-                                                    <span class="d-flex align-items-center mb-1">
-                                                        <small class="text-muted">1 day ago</small>
-
-                                                    </span>
-                                                    <span class="d-flex">
-                                                        <span class="avatar avatar-xs mr-2">
-                                                            <span class="avatar-title rounded-circle bg-light">
-                                                                <i class="material-icons font-size-16pt text-warning">storage</i>
-                                                            </span>
-                                                        </span>
-                                                        <span class="flex d-flex flex-column">
-
-                                                            <span class="text-black-70">Your deploy was successful.</span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <!-- // END Notifications dropdown -->
-                                <!-- User dropdown -->
-                                <li class="nav-item dropdown ml-1 ml-md-3">
-                                    <a class="nav-link dropdown-toggle"
-                                       data-toggle="dropdown"
-                                       href="#"
-                                       role="button"><img src="${pageContext.request.contextPath}/user/assets/images/people/50/guy-6.jpg"
-                                                       alt="Avatar"
-                                                       class="rounded-circle"
-                                                       width="40"></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item"
-                                           href="fixed-instructor-account-edit.html">
-                                            <i class="material-icons">edit</i> Edit Account
-                                        </a>
-                                        <a class="dropdown-item"
-                                           href="fixed-instructor-profile.html">
-                                            <i class="material-icons">person</i> Public Profile
-                                        </a>
-                                        <a class="dropdown-item"
-                                           href="guest-login.html">
-                                            <i class="material-icons">lock</i> Logout
-                                        </a>
-                                    </div>
-                                </li>
-                                <!-- // END User dropdown -->
-                            </ul>
-                        </div>
-                    </nav>
-                    <!-- // END Navbar -->
-
-                </div>
-            </div>
-
+            <c:if test="${requestScope.role eq 1}">
+                <jsp:include page="mentor/mentor_header.jsp"></jsp:include>
+            </c:if>
+            <c:if test="${requestScope.role eq 2}">
+                <jsp:include page="mentee/mentee_header.jsp"></jsp:include>
+            </c:if>
+ 
             <!-- // END Header -->
-
+ 
             <!-- Header Layout Content -->
             <div class="mdk-header-layout__content d-flex flex-column">
-
+ 
                 <div class="page " style="margin-top: -64px">
-
+ 
                     <div class="app-messages__container d-flex flex-column h-100 pb-4">
                         <div class="navbar navbar-light bg-white navbar-expand-sm navbar-shadow z-1">
                             <div class="container flex-wrap px-sm-0">
@@ -339,39 +126,39 @@
                              style="position: relative;"
                              data-perfect-scrollbar>
                             <div class="container page__container">
-                                
+ 
                                 <ul class="d-flex flex-column list-unstyled"
                                     id="messages">
-
+ 
                                     <c:forEach var="mess" items="${requestScope.mList}">
                                         <li class="message d-inline-flex">
-                                        <div class="message__aside">
-                                            <a href="fixed-instructor-profile.html"
-                                               class="avatar">
-                                                <img src="${mess.sender eq requestScope.user1.userID ? requestScope.user1.imgAvt : requestScope.user2.imgAvt}"
-                                                     alt="people"
-                                                     class="avatar-img rounded-circle">
-                                            </a>
-                                        </div>
-                                        <div class="message__body card">
-                                            <div class="card-body">
-                                                <div class="d-flex align-items-center">
-                                                    <div class="flex mr-3">
-                                                        <a href="#0"
-                                                           class="text-body"><strong>${mess.sender eq requestScope.user1.userID ? requestScope.user1.name : requestScope.user2.name}</strong></a>
-                                                    </div>
-                                                    <div>
-                                                        <small class="text-muted">just now</small>
-                                                    </div>
-                                                </div>
-                                                <span class="text-black-70">${mess.content}</span>
-
+                                            <div class="message__aside">
+                                                <a href="fixed-instructor-profile.html"
+                                                   class="avatar">
+                                                    <img src="${mess.sender eq requestScope.user1.userID ? requestScope.user1.imgAvt : requestScope.user2.imgAvt}"
+                                                         alt="people"
+                                                         class="avatar-img rounded-circle">
+                                                </a>
                                             </div>
-                                        </div>
-                                    </li>
+                                            <div class="message__body card">
+                                                <div class="card-body">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="flex mr-3">
+                                                            <a href="#0"
+                                                               class="text-body"><strong>${mess.sender eq requestScope.user1.userID ? requestScope.user1.name : requestScope.user2.name}</strong></a>
+                                                        </div>
+                                                        <div>
+                                                            <small class="text-muted">just now</small>
+                                                        </div>
+                                                    </div>
+                                                    <span class="text-black-70">${mess.content}</span>
+ 
+                                                </div>
+                                            </div>
+                                        </li>
                                     </c:forEach>
-                                    
-
+ 
+ 
                                 </ul>
                             </div>
                         </div>
@@ -386,30 +173,30 @@
                                            placeholder="Type message">
                                     <div class="input-group-append">
                                         <div class="input-group-text pr-2">
-<!--                                            <button class="btn btn-flush"
-                                                    
-                                                    type="button"><i class="material-icons">tag_faces</i></button>-->
-                                                         <input type="Submit" value="Send">
+                                            <!--                                            <button class="btn btn-flush"
+ 
+                                                                                                type="button"><i class="material-icons">tag_faces</i></button>-->
+                                            <input type="Submit" value="Send">
                                         </div>
-<!--                                        <div class="input-group-text pl-0">
-                                            <div class="custom-file custom-file-naked d-flex"
-                                                 style="width: 24px; overflow: hidden;">
-                                                <input type="file"
-                                                       class="custom-file-input"
-                                                       id="customFile">
-                                                <label class="custom-file-label"
-                                                       style="color: inherit;"
-                                                       for="customFile">
-                                                    <i class="material-icons">attach_file</i>
-                                                </label>
-                                            </div>
-                                        </div>-->
+                                        <!--                                        <div class="input-group-text pl-0">
+                                                                                    <div class="custom-file custom-file-naked d-flex"
+                                                                                         style="width: 24px; overflow: hidden;">
+                                                                                        <input type="file"
+                                                                                               class="custom-file-input"
+                                                                                               id="customFile">
+                                                                                        <label class="custom-file-label"
+                                                                                               style="color: inherit;"
+                                                                                               for="customFile">
+                                                                                            <i class="material-icons">attach_file</i>
+                                                                                        </label>
+                                                                                    </div>
+                                                                                </div>-->
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-
+ 
                     <div class="container page__container">
                         <div class="footer">
                             Copyright &copy; 2016 - <a href="http://themeforest.net/item/learnplus-learning-management-application/15287372?ref=mosaicpro">Purchase LearnPlus</a>
@@ -418,10 +205,10 @@
                 </div>
             </div>
             <!-- // END Header Layout Content -->
-
+ 
         </div>
         <!-- // END Header Layout -->
-
+ 
         <div class="mdk-drawer js-mdk-drawer"
              data-align="end"
              id="messages-drawer">
@@ -442,189 +229,38 @@
                                 </div>
                             </div>
                         </div>
-
+ 
                         <div class="flex"
                              data-perfect-scrollbar>
-                            <div class="sidebar-heading">Online</div>
+                            <div class="sidebar-heading">Conversation</div>
                             <ul class="list-group list-group-fit mb-3">
-
-                                <li class="list-group-item px-4 py-3 bg-light">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-online mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/woman-5.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Michelle Smith</strong>
-
-                                            <span class="text-muted text-ellipsis">Personal Development Teacher Since 2014</span>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-online mr-3 flex-shrink-0">
-
-                                            <span class="avatar-title rounded-circle">AD</span>
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Andrew Brain</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-online mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/guy-2.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Jimmy Carter</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-online mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/woman-2.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Samantha Doe</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
+                                <c:forEach var="conv" items="${requestScope.convList}">
+                                    <li class="list-group-item px-4 py-3 bg-light">
+                                        <a href="conversation?id=${conv.userID}" class="d-flex align-items-center position-relative">
+                                            <span class="avatar avatar-sm avatar-online mr-3 flex-shrink-0">
+ 
+                                                <img src="${conv.imgAvt}" alt="Avatar" class="avatar-img rounded-circle">
+ 
+                                            </span>
+                                            <span class="flex d-flex flex-column" style="max-width: 175px;">
+                                                <strong class="text-body">${conv.name}</strong>
+ 
+                                                <span class="text-muted text-ellipsis">Personal Development Teacher Since 2014</span>
+ 
+                                            </span>
+                                        </a>
+                                    </li>
+                                </c:forEach>
+ 
+ 
                             </ul>
-                            <div class="sidebar-heading d-flex">
-                                <div class="flex text-muted">21 OFFLINE</div>
-                                <a href="#"
-                                   class="text-primary">Hide offline</a>
-                            </div>
-                            <ul class="list-group list-group-fit mb-3">
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-offline mr-3 flex-shrink-0">
-
-                                            <span class="avatar-title rounded-circle">XD</span>
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Xander Dale</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-offline mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/woman-1.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Beatriz Summers</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-offline mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/woman-3.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Cassie Wills</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3 bg-light">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-offline mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/guy-1.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Jarrod Forrest</strong>
-
-                                            <span class="text-muted text-ellipsis">Arts Teacher</span>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="list-group-item px-4 py-3">
-                                    <a href="#"
-                                       class="d-flex align-items-center position-relative">
-                                        <span class="avatar avatar-sm avatar-offline mr-3 flex-shrink-0">
-
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/people/50/guy-3.jpg"
-                                                 alt="Avatar"
-                                                 class="avatar-img rounded-circle">
-
-                                        </span>
-                                        <span class="flex d-flex flex-column"
-                                              style="max-width: 175px;">
-                                            <strong class="text-body">Ziva Ochoa</strong>
-
-                                        </span>
-                                    </a>
-                                </li>
-
-                            </ul>
+ 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+ 
         <div class="mdk-drawer js-mdk-drawer"
              id="default-drawer">
             <div class="mdk-drawer__content ">
@@ -999,7 +635,7 @@
                             </li>
                         </ul>
                         <!-- // END Components Menu -->
-
+ 
                         <div class="sidebar-heading">Layout</div>
                         <ul class="sidebar-menu">
                             <li class="sidebar-menu-item">
@@ -1019,39 +655,39 @@
                 </div>
             </div>
         </div>
-
+ 
         <!-- App Settings FAB -->
-<!--        <div id="app-settings">
-            <app-settings layout-active="fixed"
-                          :layout-location="{
-                          'fixed': 'fixed-instructor-messages-2.html',
-                          'default': 'instructor-messages-2.html'
-                          }"
-                          sidebar-variant="bg-transparent border-0"></app-settings>
-        </div>-->
+        <!--        <div id="app-settings">
+                    <app-settings layout-active="fixed"
+                                  :layout-location="{
+                                  'fixed': 'fixed-instructor-messages-2.html',
+                                  'default': 'instructor-messages-2.html'
+                                  }"
+                                  sidebar-variant="bg-transparent border-0"></app-settings>
+                </div>-->
         <!-- jQuery -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
-
+ 
         <!-- Bootstrap -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
         <script src="${pageContext.request.contextPath}/user/assets/vendor/bootstrap.min.js"></script>
-
+ 
         <!-- Perfect Scrollbar -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.min.js"></script>
-
+ 
         <!-- MDK -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/dom-factory.js"></script>
         <script src="${pageContext.request.contextPath}/user/assets/vendor/material-design-kit.js"></script>
-
+ 
         <!-- App JS -->
         <script src="${pageContext.request.contextPath}/user/assets/js/app.js"></script>
-
+ 
         <!-- Highlight.js -->
         <script src="${pageContext.request.contextPath}/user/assets/js/hljs.js"></script>
-
+ 
         <!-- App Settings (safe to remove) -->
         <script src="${pageContext.request.contextPath}/user/assets/js/app-settings.js"></script>
-
+ 
         <script id="template-message"
                 type="text/x-jsrender">
             <li class="message d-inline-flex">
@@ -1088,45 +724,46 @@
             </div>
             </li>
         </script>
-
+ 
         <!-- Messages App -->
         <script src="${pageContext.request.contextPath}/user/assets/js/messages.js"></script>
         <script type="text/javascript">
-    
-    var wsUrl;
-    //test giao thuc => ws phu hop
-    if (window.location.protocol === 'http:') {
-        wsUrl = 'ws://';
-    } else {
-        wsUrl = 'wss://';
-    }
-    // endpoint
-    var ws = new WebSocket(wsUrl + window.location.host + "/HappyHappy/chat/<%=request.getAttribute("conversationID")%>");
-    ws.onmessage = function(event) {
-      var mySpan = document.getElementById("messages");
-      mySpan.innerHTML+=event.data+"<br/>";
-    };
-     ws.onopen = function(event){
-         console.log("WebSocket is open now.");
-     }
-    ws.onerror = function(event){
-        console.log("Error ", event)
-    } 
-    function sendMsg() {
+ 
+                                var wsUrl;
+                                //test giao thuc => ws phu hop
+                                if (window.location.protocol === 'http:') {
+                                    wsUrl = 'ws://';
+                                } else {
+                                    wsUrl = 'wss://';
+                                }
+                                // endpoint
+                                var ws = new WebSocket(wsUrl + window.location.host + "/HappyHappy/chat/<%=request.getAttribute("conversationID")%>");
+                                ws.onmessage = function (event) {
+                                    var mySpan = document.getElementById("messages");
+                                    mySpan.innerHTML += event.data + "<br/>";
+                                };
+                                ws.onopen = function (event) {
+                                    console.log("WebSocket is open now.");
+                                }
+                                ws.onerror = function (event) {
+                                    console.log("Error ", event)
+                                }
+                                function sendMsg() {
 //        const msg = {name:<%= request.getSession().getAttribute("name")%>, content:document.getElementById("msg").value, to: <%= request.getParameter("to")%>};
 //        const msgJson = JSON.stringify(msg);
-        const msgJson = <%=request.getAttribute("from")%>+","+document.getElementById("msg").value +","+ <%= request.getAttribute("to")%> +"," + <%= request.getAttribute("conversationID")%>;
-        if(msgJson)
-        {
-            ws.send(msgJson);
-        }
-        document.getElementById("msg").value="";
-        //khong reload
-        return false
-    }
-</script>
+                                    let text = {"from":<%=request.getAttribute("from")%>, "msg": document.getElementById("msg").value, "to":<%= request.getAttribute("to")%>, "convID":<%= request.getAttribute("conversationID")%>};
+                                    const msgJson = JSON.stringify(text);
+                                    if (msgJson)
+                                    {
+                                        ws.send(msgJson);
+                                    }
+                                    document.getElementById("msg").value = "";
+                                    //khong reload
+                                    return false
+                                }
+        </script>
     </body>
-
-
+ 
+ 
     <!-- Mirrored from learnplus.demo.frontendmatter.com/fixed-instructor-messages-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Sep 2021 16:15:16 GMT -->
 </html>

@@ -7,6 +7,7 @@ package controller;
 
 import ShareData.FileHandling;
 import dal.MenteeDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.Format;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Mentee;
+import model.UserCommon;
 
 /**
  *
@@ -97,18 +99,17 @@ public class MenteeEditProfile extends HttpServlet {
         FileHandling fh = new FileHandling();
         Mentee m = (Mentee) session.getAttribute("user");
         MenteeDAO md = new MenteeDAO();
+        String[] fileName = request.getPart("imgAvt").toString().split(",")[0].split("=");
         String nameSave = "imgAvt_" + m.getMenteeID();
-        String imgAvtPath = fh.uploadFile(request, response, "imgAvt", nameSave);
+        String imgAvtPath = fileName.length==1?m.getImg():fh.uploadFile(request, response, "imgAvt", nameSave);
         String name = request.getParameter("name");
         String dob = request.getParameter("dob");
         String address = request.getParameter("address");
-        String phone = request.getParameter("phone");
         String description = request.getParameter("description");
         m.setImg(imgAvtPath);
         m.setName(name);
         m.setDob(dob);
         m.setAddress(address);
-        m.setPhone(phone);
         m.setDescription(description);
         md.updateMentee(m);
         session.setAttribute("user", m);

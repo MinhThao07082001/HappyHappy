@@ -86,7 +86,7 @@ public class ConfirmEmailServlet extends HttpServlet {
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);
             return;
-        } else if (email == null) {
+        } else if (dao.getAccountByEmail(email) == null) {
             mess = "Email not existed!";
             request.setAttribute("mess", mess);
             request.getRequestDispatcher("ConfirmEmail.jsp").forward(request, response);

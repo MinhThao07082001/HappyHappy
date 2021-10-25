@@ -52,9 +52,10 @@ public class SignInServlet extends HttpServlet {
             request.setAttribute("mess", "Email or password is not correct");
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);
         } else {
-            if (u.getRole() == 1) {
+             if (u.getRole() == 1) {
                 MentorDAO md = new MentorDAO();
                 session.setAttribute("email", m);
+                session.setAttribute("mentor", md.getMentorByEmail(u.getEmail()));
                 session.setAttribute("user", md.getMentorByEmail(u.getEmail()));
 //                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
                 response.sendRedirect("mentor/home");
@@ -62,9 +63,12 @@ public class SignInServlet extends HttpServlet {
                 MenteeDAO mtd = new MenteeDAO();
                 session.setAttribute("email", m);
                 session.setAttribute("user", mtd.getMenteeByEmail(u.getEmail()));
+                session.setAttribute("mentee", mtd.getMenteeByEmail(u.getEmail()));
 //                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response);
                 response.sendRedirect("mentee/home");
             }
+            session.setAttribute("userCommon", u);
+
         }
     }
 

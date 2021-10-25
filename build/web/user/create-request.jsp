@@ -1,8 +1,3 @@
-<%-- 
-    Document   : mentee-create-request
-    Created on : Oct 11, 2021, 1:14:25 PM
-    Author     : Admin
---%>
 <html lang="en"
       dir="ltr">
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -68,7 +63,12 @@
             </div>
         </div>
         <div class="mdk-header-layout js-mdk-header-layout">
-            <jsp:include page="mentee/mentee_header.jsp"/>
+            <c:if test="${sessionScope.userCommon.role eq 1}">
+                <jsp:include page="mentor/mentor_header.jsp"></jsp:include>
+            </c:if>
+            <c:if test="${sessionScope.userCommon.role eq 2}">
+                <jsp:include page="mentee/mentee_header.jsp"></jsp:include>
+            </c:if>
 
             <div class="mdk-header-layout__content">
 
@@ -84,125 +84,100 @@
                             </ol>
 
                             <div class="card-header flex-container " >
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>                                        
+                                    </div>  
 
-                                <div class="card">
-                                    <div class="card-header">
-                                        <div class="media align-items-center">
-                                            <div class="media-body">
-                                                <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>      
-                                                <p class="card-subtitle">Your request create</p>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-
-
+                                </br>
+                                <p><strong>1.Subject's Information</strong></p>
 
 
                                 <form action="createRequest" method="POST">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="media align-items-center">
-                                                <div class="media-body">
-                                                    <p><strong>1.Subject's Information</strong></p>
-                                                    Subject: <select name="subject">
-                                                        <c:forEach var="sub" items="${requestScope.sList}">
-                                                            <option value="${sub.subjectID}">
-                                                                ${sub.subjectName} - ${sub.level}
-                                                            </option>
-                                                        </c:forEach>
-                                                    </select>
-                                                    </br>
-                                                    </br>
-                                                    CourseType: 
-                                                    <select name="learnType">
-                                                        <option value="1">Offline</option>
-                                                        <option value="2">Online</option>
-                                                    </select>
-                                                </div>
-                                            </div>
+                                    Subject: <select name="subject">
+                                        <c:forEach items="${requestScope.sNameList}" var="sName">
+                                            <option value="${sName}">${sName}</option>
+                                        </c:forEach>
+                                    </select>
+                                    Level: <select name="level">
+                                        <c:forEach begin="1" end="12" var="i">
+                                            <option value="${i}">
+                                                Grade ${i}
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+
+                                    </br>
+                                    </br>
+                                    CourseType: 
+                                    <select name="learnType">
+                                        <option value="1">Offline</option>
+                                        <option value="2">Online</option>
+                                    </select>
+                                    </br>
+                                    </br>
+                                    <p><strong>2.Time and Fees</strong></p>
+
+
+                                    Budget per lesson: </br>
+                                    <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
+                                    Length of each lesson: </br> 
+                                    <input type="number" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                    <div class="row">     
+                                        <div class=" col-6">
+                                            Start Time: <input  type="date" name="startTime">
                                         </div>
-                                    </div>          
-
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="media align-items-center">
-                                                <div class="media-body">
-                                                    <p><strong>2.Time and Fees</strong></p>
-
-
-                                                    Budget per lesson: </br>
-                                                    <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
-                                                    Length of each lesson: </br> 
-                                                    <input type="number" name="timePerSlot" style="border-radius:  5px"></br></br>
-                                                    <div class="row">     
-                                                        <div class=" col-6">
-                                                            Start Time: <input  type="date" name="startTime">
-                                                        </div>
-                                                        <div class="col-6">
-                                                            End Time: <input  type="date" name="endTime">
-                                                        </div>
-                                                    </div>
-
-                                                    </br> 
-
-                                                    <table>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>Monday</td>
-                                                            <td>Tuesday</td>
-                                                            <td>Wednesday</td>
-                                                            <td>Thursday</td>
-                                                            <td>Friday</td>
-                                                            <td>Saturday</td>
-                                                            <td>Sunday</td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td>From</td>
-                                                            <td><input type="time" name="2" class="time"></td>
-                                                            <td><input type="time" name="3" class="time"></td>
-                                                            <td><input type="time" name="4" class="time"></td>
-                                                            <td><input type="time" name="5" class="time"></td>
-                                                            <td><input type="time" name="6" class="time"></td>
-                                                            <td><input type="time" name="7" class="time"></td>
-                                                            <td><input type="time" name="8" class="time"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>To</td>
-                                                            <td><input type="time" name="2" class="time"></td>
-                                                            <td><input type="time" name="3" class="time"></td>
-                                                            <td><input type="time" name="4" class="time"></td>
-                                                            <td><input type="time" name="5" class="time"></td>
-                                                            <td><input type="time" name="6" class="time"></td>
-                                                            <td><input type="time" name="7" class="time"></td>
-                                                            <td><input type="time" name="8" class="time"></td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
+                                        <div class="col-6">
+                                            End Time: <input  type="date" name="endTime">
                                         </div>
                                     </div>
-                                   
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <div class="media align-items-center">
-                                                <div class="media-body">
-                                    <p><strong> 3.Expectation</strong></p>
+
+                                    </br> 
+
+                                    <table>
+                                        <tr>
+                                            <td></td>
+                                            <td>Monday</td>
+                                            <td>Tuesday</td>
+                                            <td>Wednesday</td>
+                                            <td>Thursday</td>
+                                            <td>Friday</td>
+                                            <td>Saturday</td>
+                                            <td>Sunday</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>From</td>
+                                            <td><input type="time" name="2" class="time time-start"></td>
+                                            <td><input type="time" name="3" class="time time-start"></td>
+                                            <td><input type="time" name="4" class="time time-start"></td>
+                                            <td><input type="time" name="5" class="time time-start"></td>
+                                            <td><input type="time" name="6" class="time time-start"></td>
+                                            <td><input type="time" name="7" class="time time-start"></td>
+                                            <td><input type="time" name="8" class="time time-start"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>To</td>
+                                            <td><input type="time" name="2" class="time"></td>
+                                            <td><input type="time" name="3" class="time"></td>
+                                            <td><input type="time" name="4" class="time"></td>
+                                            <td><input type="time" name="5" class="time"></td>
+                                            <td><input type="time" name="6" class="time"></td>
+                                            <td><input type="time" name="7" class="time"></td>
+                                            <td><input type="time" name="8" class="time"></td>
+                                        </tr>
+                                    </table>
+                                    </br>
+                                    <p><strong> 3.Mentee's expectation from Mentor</strong></p>
 
                                     Detail Description: </br>
                                     <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
                                     <input type="text" id="timeJson" name="timeJson" hidden>
-                                    
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
                                     <div class="form-group " style="text-align: center;">
                                         <button type="submit " style="border-radius: 5px; width: 10%;"
                                                 class="btn btn-primary">
-                                            Sign In
+                                            Submit
                                         </button>
                                     </div>
                                 </form>
@@ -210,7 +185,12 @@
                         </div>
                     </div>
                     <!--Nav Tab-->
-                    <jsp:include page="mentee/mentee_tab.jsp"/>
+                    <c:if test="${sessionScope.userCommon.role eq 1}">
+                        <jsp:include page="mentor/mentor_tab.jsp"></jsp:include>
+                    </c:if>
+                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                        <jsp:include page="mentee/mentee_tab.jsp"></jsp:include>
+                    </c:if>
                     <!--End of Nav Tab-->
                 </div>
             </div>
@@ -280,6 +260,27 @@
             for (var i = 0; i < elements.length; i++) {
                 elements[i].addEventListener('input', func, false);
             }
+        </script>
+        <script>
+            document.querySelectorAll('.time-start').forEach(item => {
+                item.addEventListener('input', event => {
+                    //handle click
+                    var time = document.getElementById("timePerSlot").value.length === 0 ? 0 : document.getElementById("timePerSlot").value;
+                    var toTime = document.getElementsByName(item.name)[1];
+                    const timeArr = item.value.split(":");
+                    var min = parseInt(timeArr[0]) * 60 + parseInt(timeArr[1]) + parseInt(time);
+                    if (min > 1440) {
+                        alert("Fix time per slot")
+                    } else {
+                        toTime.value = parseInt(min / 60) + ":" + min % 60;
+                    }
+
+//                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))
+
+//                    alert("blah");
+                })
+            })
+
         </script>
     </body>
 </html>

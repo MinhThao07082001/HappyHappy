@@ -147,7 +147,7 @@
                                 <div class="sign ">
 
                                     <div class="form-group">
-                                        <label class="form-label" for="password">Old Password: <span style="color:red">*</span></label>
+                                        <label class="form-label" for="password">old Password: <span style="color:red">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="pass" name="pass" 
                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required="" class="form-control form-control-prepended" placeholder="Enter your old password">
@@ -180,7 +180,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-label" for="password">Confirm new Password: <span style="color:red">*</span></label>
+                                        <label class="form-label" for="password">confirm new Password: <span style="color:red">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="repeat-new-pass" name="repeat-new-pass" 
                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required="" class="form-control form-control-prepended" placeholder="Confirm your new password">

@@ -41,7 +41,7 @@
                         <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-help-center.html">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">credit_card</i>
-                            Payment
+                            Terms of Services
                         </a>
                     </li>
 
@@ -65,7 +65,7 @@
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="${pageContext.request.contextPath}/changepassword">
+                                   href="${pageContext.request.contextPath}/forgetchangepassword">
                                     <span class="sidebar-menu-text">Change Password</span>
                                 </a>
                             </li>
@@ -82,22 +82,12 @@
                         </ul>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" data-toggle="collapse"
-                           href="#messages_menu">
+                        <a class="sidebar-menu-button"
+                           href="${pageContext.request.contextPath}/conversation">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">comment</i>
                             Messages
-                            <span class="ml-auto sidebar-menu-toggle-icon"></span>
                         </a>
-                        <ul class="sidebar-submenu sm-indent collapse" id="messages_menu">
-                            <li class="sidebar-menu-item">
-                                <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-messages.html">
-                                    <span class="sidebar-menu-text">Conversation</span>
-                                    <span
-                                        class="sidebar-menu-badge badge badge-primary badge-notifications ml-auto">2</span>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="sidebar-menu-item">
                         <a class="sidebar-menu-button"  href="${pageContext.request.contextPath}/signout">

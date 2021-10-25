@@ -49,18 +49,20 @@ public class ProcessAuthenticationCode extends HttpServlet {
             } else {
                 UserDAO ud = new UserDAO();
                 ud.create(u);
-                if(u.getRole() == 1){
-                    MentorDAO md = new MentorDAO();
-                    md.createMentor(u);
-                    session.setAttribute("user", md.getMentorByEmail(u.getEmail()));
-                    response.sendRedirect("mentor/home");
-                    
-                }else{
-                    MenteeDAO mtd = new MenteeDAO();
-                    mtd.createMentee(u);
-                    session.setAttribute("user", mtd.getMenteeByEmail(u.getEmail()));
-                    response.sendRedirect("mentee/home");
-                }
+                if (u.getRole() == 1) {
+                MentorDAO md = new MentorDAO();
+                session.setAttribute("mentor", md.getMentorByEmail(u.getEmail()));
+                session.setAttribute("user", md.getMentorByEmail(u.getEmail()));
+//                request.getRequestDispatcher("user/mentor/mentor-dashboard.jsp").forward(request, response);
+                response.sendRedirect("mentor/home");
+            } else {
+                MenteeDAO mtd = new MenteeDAO();
+                session.setAttribute("user", mtd.getMenteeByEmail(u.getEmail()));
+                session.setAttribute("mentee", mtd.getMenteeByEmail(u.getEmail()));
+//                request.getRequestDispatcher("user/mentee/mentee-dashboard.jsp").forward(request, response);
+                response.sendRedirect("mentee/home");
+            }
+            session.setAttribute("userCommon", u);
                 
             }
 
