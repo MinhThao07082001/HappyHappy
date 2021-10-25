@@ -195,3 +195,4 @@ ALTER TABLE requestSlotTime
 ALTER COLUMN slotFrom time;
 ALTER TABLE requestSlotTime
 ALTER COLUMN slotTo time;
+
