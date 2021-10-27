@@ -265,10 +265,22 @@
                         alert("Fix time per slot")
                     } else {
                         if (parseInt(min / 60) < 10) {
-                            toTime.value = '0' + parseInt(min / 60) + ":" + min % 60;
+                            if(min % 60<10){
+                                toTime.value = '0' + parseInt(min / 60) + ":" + "0" +min % 60;
+                                
+                            }else{
+                                 toTime.value = '0' + parseInt(min / 60) + ":" + min % 60;
+                            }
                         } else {
+                                                        if(min % 60<10){
+                                toTime.value =  parseInt(min / 60) + ":" + "0" +min % 60;
+                                
+                            }else{
+                                 toTime.value =  parseInt(min / 60) + ":" + min % 60;
+                            }
                             toTime.value = parseInt(min / 60) + ":" + min % 60;
                         }
+                        
                     }
 
 //                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))
