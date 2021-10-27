@@ -43,6 +43,10 @@ public class Course {
         this.createTime = createTime;
     }
 
+    public Course() {
+        
+    }
+
     public int getCourseID() {
         return courseID;
     }

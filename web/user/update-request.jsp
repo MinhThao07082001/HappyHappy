@@ -30,7 +30,7 @@
                         Grade ${i}
                     </option>
                 </c:forEach>
-            </select
+            </select>
             Money Per Slot   <input type="number" value="${req.moneyPerSlot}"name="moneyPerSlot"><br/>
             timePerSlot:   <input type="number" id="timePerSlot"value="${req.timePerSlot}" name="timePerSlot"><br/>
 
