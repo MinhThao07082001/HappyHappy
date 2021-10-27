@@ -70,6 +70,7 @@
                 <jsp:include page="mentee/mentee_header.jsp"></jsp:include>
             </c:if>
 
+
             <div class="mdk-header-layout__content">
 
                 <div data-push
@@ -79,105 +80,132 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Home</a></li>
+                                <c:if test="${sessionScope.userCommon.role eq 1}">
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentor/home">Home</a></li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentee/home">Home</a></li>
+                                    </c:if>
                                 <li class="breadcrumb-item active">Request Mentor</li>
                             </ol>
 
                             <div class="card-header flex-container " >
-                                <div class="media align-items-center">
-                                    <div class="media-body">
-                                        <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>                                        
-                                    </div>  
 
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>      
+                                                <p class="card-subtitle">Your request create</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                </br>
-                                <p><strong>1.Subject's Information</strong></p>
+
+
 
 
                                 <form action="createRequest" method="POST">
-                                    Subject: <select name="subject">
-                                        <c:forEach items="${requestScope.sNameList}" var="sName">
-                                            <option value="${sName}">${sName}</option>
-                                        </c:forEach>
-                                    </select>
-                                    Level: <select name="level">
-                                        <c:forEach begin="1" end="12" var="i">
-                                            <option value="${i}">
-                                                Grade ${i}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
-
-                                    </br>
-                                    </br>
-                                    CourseType: 
-                                    <select name="learnType">
-                                        <option value="1">Offline</option>
-                                        <option value="2">Online</option>
-                                    </select>
-                                    </br>
-                                    </br>
-                                    <p><strong>2.Time and Fees</strong></p>
-
-
-                                    Budget per lesson: </br>
-                                    <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
-                                    Length of each lesson: </br> 
-                                    <input type="number" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
-                                    <div class="row">     
-                                        <div class=" col-6">
-                                            Start Time: <input  type="date" name="startTime">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <p><strong>1.Subject's Information</strong></p>
+                                                    Subject: <select name="subject">
+                                                        <c:forEach var="sub" items="${requestScope.sList}">
+                                                            <option value="${sub.subjectID}">
+                                                                ${sub.subjectName} - ${sub.level}
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    </br>
+                                                    </br>
+                                                    CourseType: 
+                                                    <select name="learnType">
+                                                        <option value="1">Offline</option>
+                                                        <option value="2">Online</option>
+                                                    </select>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-6">
-                                            End Time: <input  type="date" name="endTime">
+                                    </div>          
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <p><strong>2.Time and Fees</strong></p>
+
+
+                                                    Budget per lesson: </br>
+                                                    <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
+                                                    Length of each lesson: </br> 
+                                                    <input type="number" name="timePerSlot" id="timePerSlot"  style="border-radius:  5px"></br></br>
+                                                    <div class="row">     
+                                                        <div class=" col-6">
+                                                            Start Time: <input  type="date" name="startTime">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            End Time: <input  type="date" name="endTime">
+                                                        </div>
+                                                    </div>
+
+                                                    </br> 
+
+                                                    <table>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>Monday</td>
+                                                            <td>Tuesday</td>
+                                                            <td>Wednesday</td>
+                                                            <td>Thursday</td>
+                                                            <td>Friday</td>
+                                                            <td>Saturday</td>
+                                                            <td>Sunday</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>From</td>
+                                                            <c:forEach begin="2" end="8" var="i">
+                                                                <td><input type="time" name="${i}" class="time time-start"></td>
+                                                            </c:forEach>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>To</td>
+                                                             <c:forEach begin="2" end="8" var="i">
+                                                                <td><input type="time" name="${i}" class="time time-start"></td>
+                                                            </c:forEach>
+ 
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    </br> 
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <c:if test="${sessionScope.userCommon.role eq 1}">
+                                                        <p><strong> 3.Mentor's expectation from Mentee</strong></p>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                                                        <p><strong> 3.Mentee's expectation from Mentor</strong></p>
+                                                    </c:if>
+                                                    Detail Description: </br>
+                                                    <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
+                                                    <input type="text" id="timeJson" name="timeJson" hidden>
 
-                                    <table>
-                                        <tr>
-                                            <td></td>
-                                            <td>Monday</td>
-                                            <td>Tuesday</td>
-                                            <td>Wednesday</td>
-                                            <td>Thursday</td>
-                                            <td>Friday</td>
-                                            <td>Saturday</td>
-                                            <td>Sunday</td>
-                                        </tr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        <tr>
-                                            <td>From</td>
-                                            <td><input type="time" name="2" class="time time-start"></td>
-                                            <td><input type="time" name="3" class="time time-start"></td>
-                                            <td><input type="time" name="4" class="time time-start"></td>
-                                            <td><input type="time" name="5" class="time time-start"></td>
-                                            <td><input type="time" name="6" class="time time-start"></td>
-                                            <td><input type="time" name="7" class="time time-start"></td>
-                                            <td><input type="time" name="8" class="time time-start"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>To</td>
-                                            <td><input type="time" name="2" class="time"></td>
-                                            <td><input type="time" name="3" class="time"></td>
-                                            <td><input type="time" name="4" class="time"></td>
-                                            <td><input type="time" name="5" class="time"></td>
-                                            <td><input type="time" name="6" class="time"></td>
-                                            <td><input type="time" name="7" class="time"></td>
-                                            <td><input type="time" name="8" class="time"></td>
-                                        </tr>
-                                    </table>
-                                    </br>
-                                    <p><strong> 3.Mentee's expectation from Mentor</strong></p>
-
-                                    Detail Description: </br>
-                                    <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
-                                    <input type="text" id="timeJson" name="timeJson" hidden>
                                     <div class="form-group " style="text-align: center;">
                                         <button type="submit " style="border-radius: 5px; width: 10%;"
                                                 class="btn btn-primary">
-                                            Submit
+                                            Sign In
                                         </button>
                                     </div>
                                 </form>
@@ -224,7 +252,6 @@
         <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
         <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
 
-        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
             $(document).ready(function () {
                 var arr = [];
@@ -272,7 +299,12 @@
                     if (min > 1440) {
                         alert("Fix time per slot")
                     } else {
-                        toTime.value = parseInt(min / 60) + ":" + min % 60;
+                        if(parseInt(min / 60)<10){
+                            toTime.value = '0' + parseInt(min / 60) + ":" + min % 60;
+                        }else{
+                            toTime.value = parseInt(min / 60)+ ":" + min % 60;
+                        }
+                        
                     }
 
 //                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))

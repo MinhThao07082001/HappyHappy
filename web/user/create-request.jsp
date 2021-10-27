@@ -140,7 +140,7 @@
                                                     Budget per lesson: </br>
                                                     <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
                                                     Length of each lesson: </br> 
-                                                    <input type="number" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                                    <input type="number" name="timePerSlot" id="timePerSlot"  style="border-radius:  5px"></br></br>
                                                     <div class="row">     
                                                         <div class=" col-6">
                                                             Start Time: <input  type="date" name="startTime">
@@ -166,23 +166,16 @@
 
                                                         <tr>
                                                             <td>From</td>
-                                                            <td><input type="time" name="2" class="time"></td>
-                                                            <td><input type="time" name="3" class="time"></td>
-                                                            <td><input type="time" name="4" class="time"></td>
-                                                            <td><input type="time" name="5" class="time"></td>
-                                                            <td><input type="time" name="6" class="time"></td>
-                                                            <td><input type="time" name="7" class="time"></td>
-                                                            <td><input type="time" name="8" class="time"></td>
+                                                            <c:forEach begin="2" end="8" var="i">
+                                                                <td><input type="time" name="${i}" class="time time-start"></td>
+                                                            </c:forEach>
                                                         </tr>
                                                         <tr>
                                                             <td>To</td>
-                                                            <td><input type="time" name="2" class="time"></td>
-                                                            <td><input type="time" name="3" class="time"></td>
-                                                            <td><input type="time" name="4" class="time"></td>
-                                                            <td><input type="time" name="5" class="time"></td>
-                                                            <td><input type="time" name="6" class="time"></td>
-                                                            <td><input type="time" name="7" class="time"></td>
-                                                            <td><input type="time" name="8" class="time"></td>
+                                                             <c:forEach begin="2" end="8" var="i">
+                                                                <td><input type="time" name="${i}" class="time time-start"></td>
+                                                            </c:forEach>
+ 
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -306,7 +299,12 @@
                     if (min > 1440) {
                         alert("Fix time per slot")
                     } else {
-                        toTime.value = parseInt(min / 60) + ":" + min % 60;
+                        if(parseInt(min / 60)<10){
+                            toTime.value = '0' + parseInt(min / 60) + ":" + min % 60;
+                        }else{
+                            toTime.value = parseInt(min / 60)+ ":" + min % 60;
+                        }
+                        
                     }
 
 //                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))
