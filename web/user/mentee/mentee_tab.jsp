@@ -4,7 +4,7 @@
             <div class="sidebar-p-y">
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item active">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-dashboard.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/mentee/home">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">home</i>
                             Home
@@ -65,7 +65,7 @@
                             </li>
                             <li class="sidebar-menu-item">
                                 <a class="sidebar-menu-button"
-                                   href="${pageContext.request.contextPath}/forgetchangepassword">
+                                   href="${pageContext.request.contextPath}/changepassword">
                                     <span class="sidebar-menu-text">Change Password</span>
                                 </a>
                             </li>
