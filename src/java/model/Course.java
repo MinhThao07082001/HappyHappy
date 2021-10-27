@@ -14,7 +14,6 @@ import java.util.List;
 public class Course {
     private int courseID;
     private int subjectID;
-    private int menteeID;
     private int mentorID;
     private int slots;
     private int timePerSlot;
@@ -27,10 +26,9 @@ public class Course {
     private String createTime;
     private List<CourseSlot> listCourseSlot;
 
-    public Course(int courseID, int subjectID, int menteeID, int mentorID, int slots, int timePerSlot, int moneyPerSlot, String timeStart, String timeEnd, int learnType, int status, String description, String createTime) {
+    public Course(int courseID, int subjectID,int mentorID, int slots, int timePerSlot, int moneyPerSlot, String timeStart, String timeEnd, int learnType, int status, String description, String createTime) {
         this.courseID = courseID;
         this.subjectID = subjectID;
-        this.menteeID = menteeID;
         this.mentorID = mentorID;
         this.slots = slots;
         this.timePerSlot = timePerSlot;
@@ -61,14 +59,6 @@ public class Course {
 
     public void setSubjectID(int subjectID) {
         this.subjectID = subjectID;
-    }
-
-    public int getMenteeID() {
-        return menteeID;
-    }
-
-    public void setMenteeID(int menteeID) {
-        this.menteeID = menteeID;
     }
 
     public int getMentorID() {

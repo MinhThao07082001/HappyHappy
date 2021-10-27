@@ -32,7 +32,7 @@ public class CourseDAO extends DBContext {
     }
 
     public int getMentorIDWishReq(int wishReqId) {
-        String sql = "select TOP 1 userID from wishRequest w inner join request r on w.requestMenteeID = r.requestID where w.requestMentorID = ?";
+        String sql = "select TOP 1 userID from wishRequest w inner join request r on w.requestMentorID = r.requestID where w.requestMentorID = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, wishReqId);
@@ -52,7 +52,7 @@ public class CourseDAO extends DBContext {
         Request rq = reqListOfCourse.get(0);
         Course course = new Course();
         course.setSubjectID(rq.getSubjectID());
-        course.setMenteeID(mentorID);
+        course.setMentorID(mentorID);
         course.setSlots(getNumberOfSlot(rq.getStartTime(), rq.getEndTime(), daysOfRequest(rq.getRequestID())));
         course.setTimePerSlot(rq.getTimePerSlot());
         course.setMoneyPerSlot(rq.getMoneyPerSlot());
