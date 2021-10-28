@@ -9,6 +9,7 @@ import dal.MentorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -63,29 +64,11 @@ public class MenteeHome extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MentorDAO md = new MentorDAO();
-        List<Mentor> mList = md.getListMentor();
+        HashMap<Mentor,Float> mList = md.getListMentorTopRate();
         //request.setAttribute("mtorList", mList); 
-        //Tạo Phân Trang
-        
-        int size = mList.size();
-        int numperPage=4; 
-        int numPage=size/numperPage+(size%numperPage==0?0:1);
-        String spage=request.getParameter("page");
-        int page;
-        if(spage==null){
-            page=1;
-        }else{
-                page=Integer.parseInt(spage);
-            }
-        int start,end;
-        start=(page-1)*numperPage;
-        end=Math.min(size,page*numperPage);
-        
-        List<Mentor> arr = md.getMentorByPage(mList, start, end);
-        request.setAttribute("num", numPage);
-        request.setAttribute("data", arr);
-        request.setAttribute("page", page);  
-        //Phân trang xong
+        //Táº¡o PhÃ¢n Trang
+        request.setAttribute("mtorList", mList);
+        //PhÃ¢n trang xong
         request.getRequestDispatcher("/user/mentee/mentee-dashboard.jsp").forward(request, response);
         
     }

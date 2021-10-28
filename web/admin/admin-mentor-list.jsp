@@ -39,7 +39,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin/home">Home</a></li>
                                     <li class="breadcrumb-item active">Mentor list</li>
                                 </ol>
                             </div>
@@ -61,7 +61,7 @@
                                         <table id="example2" class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>Your ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
                                                     <th>Status</th>

@@ -11,7 +11,7 @@
          content="IE=edge">
       <meta name="viewport"
          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Student - Edit account - Fixed layout</title>
+      <title>Instructor - Edit account</title>
       <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
       <meta name="robots"
          content="noindex">

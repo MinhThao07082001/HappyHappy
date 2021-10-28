@@ -79,15 +79,20 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/home">Home</a></li>
+                                <c:if test="${sessionScope.userCommon.role eq 1}">
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentor/home">Home</a></li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentee/home">Home</a></li>
+                                    </c:if>
                                 <li class="breadcrumb-item active">Request Mentor</li>
                             </ol>
 
                             <div class="card-header flex-container " >
                                 <div class="media align-items-center">
                                     <div class="media-body">
-                                        <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>                                        
-                                    </div>  
+                                        <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>      
+                                    </div>
 
                                 </div>
                                 </br>
@@ -121,15 +126,15 @@
 
 
                                     Budget per lesson: </br>
-                                    <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
+                                    <input type="number" required="" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
                                     Length of each lesson: </br> 
-                                    <input type="number" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                    <input type="number" required="" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
                                     <div class="row">     
                                         <div class=" col-6">
-                                            Start Time: <input  type="date" name="startTime">
+                                            Start Time: <input  type="date" required="" name="startTime">
                                         </div>
                                         <div class="col-6">
-                                            End Time: <input  type="date" name="endTime">
+                                            End Time: <input  type="date" required="" name="endTime">
                                         </div>
                                     </div>
 
@@ -146,30 +151,27 @@
                                             <td>Saturday</td>
                                             <td>Sunday</td>
                                         </tr>
-
                                         <tr>
                                             <td>From</td>
-                                            <td><input type="time" name="2" class="time time-start"></td>
-                                            <td><input type="time" name="3" class="time time-start"></td>
-                                            <td><input type="time" name="4" class="time time-start"></td>
-                                            <td><input type="time" name="5" class="time time-start"></td>
-                                            <td><input type="time" name="6" class="time time-start"></td>
-                                            <td><input type="time" name="7" class="time time-start"></td>
-                                            <td><input type="time" name="8" class="time time-start"></td>
+                                            <c:forEach begin="2" end="8" var="i">
+                                                <td><input type="time" name="${i}" class="time time-start"></td>
+                                                </c:forEach>
                                         </tr>
                                         <tr>
                                             <td>To</td>
-                                            <td><input type="time" name="2" class="time"></td>
-                                            <td><input type="time" name="3" class="time"></td>
-                                            <td><input type="time" name="4" class="time"></td>
-                                            <td><input type="time" name="5" class="time"></td>
-                                            <td><input type="time" name="6" class="time"></td>
-                                            <td><input type="time" name="7" class="time"></td>
-                                            <td><input type="time" name="8" class="time"></td>
+                                            <c:forEach begin="2" end="8" var="i">
+                                                <td><input type="time" name="${i}" class="time time-start"></td>
+                                                </c:forEach>
+
                                         </tr>
                                     </table>
                                     </br>
-                                    <p><strong> 3.Mentee's expectation from Mentor</strong></p>
+                                    <c:if test="${sessionScope.userCommon.role eq 1}">
+                                        <p><strong> 3.Mentor's expectation from Mentee</strong></p>
+                                    </c:if>
+                                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                                        <p><strong> 3.Mentee's expectation from Mentor</strong></p>
+                                    </c:if>
 
                                     Detail Description: </br>
                                     <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
@@ -224,7 +226,7 @@
         <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
         <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
 
-        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+
         <script>
             $(document).ready(function () {
                 var arr = [];
@@ -272,7 +274,23 @@
                     if (min > 1440) {
                         alert("Fix time per slot")
                     } else {
-                        toTime.value = parseInt(min / 60) + ":" + min % 60;
+                        if (parseInt(min / 60) < 10) {
+                            if (min % 60 < 10) {
+                                toTime.value = '0' + parseInt(min / 60) + ":" + "0" + min % 60;
+
+                            } else {
+                                toTime.value = '0' + parseInt(min / 60) + ":" + min % 60;
+                            }
+                        } else {
+                            if (min % 60 < 10) {
+                                toTime.value = parseInt(min / 60) + ":" + "0" + min % 60;
+
+                            } else {
+                                toTime.value = parseInt(min / 60) + ":" + min % 60;
+                            }
+                            toTime.value = parseInt(min / 60) + ":" + min % 60;
+                        }
+
                     }
 
 //                    console.log(parseInt(timeArr[0])*60 + parseInt(timeArr[1]) + parseInt(time))

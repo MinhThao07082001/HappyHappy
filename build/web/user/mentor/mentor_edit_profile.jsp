@@ -11,7 +11,7 @@
          content="IE=edge">
       <meta name="viewport"
          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Student - Edit account - Fixed layout</title>
+      <title>Instructor - Edit account</title>
       <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
       <meta name="robots"
          content="noindex">
@@ -66,7 +66,7 @@
             <div class="mdk-drawer-layout__content page ">
                <div class="container-fluid page__container">
                   <ol class="breadcrumb">
-                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/student-dashboard.html">Home</a></li>
+                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentor/home">Home</a></li>
                      <li class="breadcrumb-item active">Edit Account</li>
                   </ol>
                   <h1 class="h2">Edit Account</h1>

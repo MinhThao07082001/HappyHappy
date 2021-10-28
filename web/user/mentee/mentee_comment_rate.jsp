@@ -240,7 +240,7 @@
                                             </li>
                                         </ul>
                                     </div>
-
+                                    <h4>${requestScope.starAvg}</h4>
                                     <!--COmment Section-->
                                     <%--<c:if test="${sessionScope.user == '2' }">--%>
                                     <form action="rate" method="POST">
@@ -251,7 +251,8 @@
                                                     <div class="comment-box ml-2">
                                                         <h3 style="color:red" >${requestScope.errorComment}</h3>
                                                         <c:if test="${requestScope.errorComment eq null}">
-                                                            <h4>Add a comment</h4>
+                                                    
+                                                            <h4>${requestScope.update ne null ? "Add":"Update"} a comment</h4>
                                                             <input type="text" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly "> 
                                                                    <input type="text" name ="mentee" value="${sessionScope.user.menteeID}" reaonly ">
                                                                    <input type="text" name ="id" value="${param.id}" reaonly ">
