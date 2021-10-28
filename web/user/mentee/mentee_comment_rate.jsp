@@ -117,24 +117,17 @@
                                 <div class="col-sm-auto mb-3 mb-sm-0"
                                      style="width: 265px;">
                                     <h1 class="h2 mb-1">${requestScope.mentor.name}</h1>
-                                    <p class="d-flex align-items-center mb-4">
-                                        <a href="#"
-                                           class="btn btn-sm btn-success mr-2">Follow @LazaBogdan</a>
-                                    </p>
                                     <div class="text-muted d-flex align-items-center mb-2">
                                         <i class="material-icons mr-1">account_box</i>
-                                        <div class="flex">Student since 2012</div>
+                                        <div class="flex">${requestScope.mentor.education}</div>
                                     </div>
                                     <div class="text-muted d-flex align-items-center mb-4">
                                         <i class="material-icons mr-1">location_on</i>
-                                        <div class="flex">Romania, Europe</div>
+                                        <div class="flex">${requestScope.mentor.address}</div>
                                     </div>
 
                                     <h4>About me</h4>
-                                    <p class="text-black-70 measure-paragraph">Fueled by my passion for understanding the nuances of cross-cultural advertising, I consider myself a forever student, eager to both build on my academic foundations in psychology and sociology and stay in tune with the latest digital marketing strategies through continued coursework.</p>
-
-                                    <h4>Connect</h4>
-                                    <p class="text-black-70 measure-paragraph">I’m currently working as a freelance marketing director and always interested in a challenge. Here’s how to reach out and connect.</p>
+                                    <p class="text-black-70 measure-paragraph">${requestScope.mentor.intro}</p>
                                 </div>
                                 <div class="col-sm">
                                     <!-- <div class="flex search-form search-form--light mb-4">
@@ -247,9 +240,9 @@
                                             </li>
                                         </ul>
                                     </div>
-
+                                    <h4>${requestScope.starAvg}</h4>
                                     <!--COmment Section-->
-                              
+                                    <%--<c:if test="${sessionScope.user == '2' }">--%>
                                     <form action="rate" method="POST">
                                         <div class="card">
                                             <div class="row comment">
@@ -258,42 +251,43 @@
                                                     <div class="comment-box ml-2">
                                                         <h3 style="color:red" >${requestScope.errorComment}</h3>
                                                         <c:if test="${requestScope.errorComment eq null}">
-                                                        <h4>Add a comment</h4>
-                                                        <input type="text" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly "> 
-                                                        <input type="text" name ="mentee" value="${sessionScope.user.menteeID}" reaonly ">
-                                                        <input type="text" name ="id" value="${param.id}" reaonly ">
-                                                        <div class="rating">
-                                                            <input type="radio" name="star" value="5" id="5">
-                                                            <label for="5">☆</label> 
-                                                            <input type="radio" name="star" value="4" id="4">
-                                                            <label for="4">☆</label> 
-                                                            <input type="radio" name="star" value="3" id="3">
-                                                            <label for="3">☆</label> 
-                                                            <input type="radio" name="star" value="2" id="2">
-                                                            <label for="2">☆</label> 
-                                                            <input type="radio" name="star" value="1" id="1">
-                                                            <label for="1">☆</label> 
-                                                        </div>
-                                                        <div class="comment-area"> 
-                                                            <textarea class="form-control" name="comment" placeholder="what is your view?" rows="4"></textarea>                                                        
-                                                           
-                                                        </div>
-                                                        <div class="comment-btns mt-2">
-                                                            <div class="row">
-                                                                <div class="col-6">
-                                                                    <div class="pull-right"> <button type="submit" class="btn btn-success send btn-sm">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
-                                                                
+                                                    
+                                                            <h4>${requestScope.update ne null ? "Add":"Update"} a comment</h4>
+                                                            <input type="text" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly "> 
+                                                                   <input type="text" name ="mentee" value="${sessionScope.user.menteeID}" reaonly ">
+                                                                   <input type="text" name ="id" value="${param.id}" reaonly ">
+                                                                   <div class="rating">
+                                                                <input type="radio" name="star" value="5" id="5">
+                                                                <label for="5">☆</label> 
+                                                                <input type="radio" name="star" value="4" id="4">
+                                                                <label for="4">☆</label> 
+                                                                <input type="radio" name="star" value="3" id="3">
+                                                                <label for="3">☆</label> 
+                                                                <input type="radio" name="star" value="2" id="2">
+                                                                <label for="2">☆</label> 
+                                                                <input type="radio" name="star" value="1" id="1">
+                                                                <label for="1">☆</label> 
+                                                            </div>
+                                                            <div class="comment-area"> 
+                                                                <textarea class="form-control" name="comment" placeholder="what is your view?" rows="4"></textarea>                                                        
+
+                                                            </div>
+                                                            <div class="comment-btns mt-2">
+                                                                <div class="row">
+                                                                    <div class="col-6">
+                                                                        <div class="pull-right"> <button type="submit" class="btn btn-success send btn-sm">Send <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
                                                         </c:if>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-                     
-                                                    
+                                    <%--</c:if>--%>
+
 
                                     <!--end of comment section-->
                                 </div>

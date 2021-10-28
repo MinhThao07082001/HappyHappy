@@ -75,16 +75,17 @@ public class RateAndComment extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Mentee m = (Mentee) session.getAttribute("user");
-        
         int id2 = Integer.parseInt(request.getParameter("id"));
-        MentorDAO db = new MentorDAO(); 
+        MentorDAO db = new MentorDAO();
         Mentor mt = db.getMentorById(id2);
-        
         request.setAttribute("mentor", mt);
         RateAndCommentDAO rate = new RateAndCommentDAO();
-        if(rate.CheckLearned(m.getMenteeID(), id2)==false)
-        {
-        request.setAttribute("errorComment", "You haven't studied this person to rate them");
+        float rateStarAvg = rate.getRatebyMentorID(id2);
+        request.setAttribute("starAvg", rateStarAvg);
+        if (rate.CheckLearned(m.getMenteeID(), id2) == false) {
+            request.setAttribute("errorComment", "You haven't studied this person to rate them");
+        }else if(rate.checkRated(m.getMenteeID(), id2)==false){
+            request.setAttribute("update", "");
         }
         request.getRequestDispatcher("/user/mentee/mentee_comment_rate.jsp").forward(request, response);
 
@@ -105,24 +106,25 @@ public class RateAndComment extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Mentee m = (Mentee) session.getAttribute("user");
-        int RateStar = Integer.parseInt(request.getParameter("star"));     
+        int RateStar = Integer.parseInt(request.getParameter("star"));
         String Comment = request.getParameter("comment");
         int menteeid = Integer.parseInt(request.getParameter("mentee"));
         int mentorid = Integer.parseInt(request.getParameter("mtorid"));
         String id = request.getParameter("id");
-        RateAndCommentDAO rating = new RateAndCommentDAO();   
-        if(rating.CheckLearned(menteeid,mentorid)==false){       
-        response.sendRedirect("rate?id="+id);
-        }else{
-        Rating rate = new Rating();       
+        RateAndCommentDAO rating = new RateAndCommentDAO();
+        Rating rate = new Rating();
         rate.setRateAmount(RateStar);
         rate.setRateDescription(Comment);
         rate.setMenteeID(menteeid);
         rate.setMentorID(mentorid);
-        rating.RateMentor(rate);
-        session.setAttribute("user", m);
-        response.sendRedirect("rate?id="+id);
-    }
+        if (rating.checkRated(mentorid, mentorid) == false) {
+            rating.updateRate(rate);
+            response.sendRedirect("rate?id=" + id);
+        } else {
+            rating.insertRateMentor(rate);
+            session.setAttribute("user", m);
+            response.sendRedirect("rate?id=" + id);
+        }
     }
 
     /**
