@@ -261,7 +261,7 @@
                                                                 <label for="5">☆</label> 
                                                                 <input type="radio" name="star" value="4" id="4">
                                                                 <label for="4">☆</label> 
-                                                                <input type="radio" name="star" value="3" id="3">
+                                                                <input type="radio" name="star" value="3" id="3" checked>
                                                                 <label for="3">☆</label> 
                                                                 <input type="radio" name="star" value="2" id="2">
                                                                 <label for="2">☆</label> 
