@@ -86,6 +86,7 @@ public class RateAndComment extends HttpServlet {
         request.setAttribute("starAvg", rateStarAvg);
         if (rate.CheckLearned(m.getMenteeID(), id2) == false) {
         request.setAttribute("errorComment", "You haven't studied this person to rate them");
+        
         }else if(rate.checkRated(m.getMenteeID(), id2)==false){
             request.setAttribute("update", "");
         }
@@ -114,19 +115,19 @@ public class RateAndComment extends HttpServlet {
         int mentorid = Integer.parseInt(request.getParameter("mtorid"));
         String id = request.getParameter("id");
         RateAndCommentDAO rating = new RateAndCommentDAO();   
-        Rating rate = new Rating();       
+        Rating rate = new Rating();      
+        session.setAttribute("user", m);
         rate.setRateAmount(RateStar);
         rate.setRateDescription(Comment);
         rate.setMenteeID(menteeid);
         rate.setMentorID(mentorid);
-        if (rating.checkRated(mentorid, mentorid) == false) {
+        if (rating.checkRated(menteeid, mentorid) == true) {
             rating.updateRate(rate);
             response.sendRedirect("rate?id=" + id);
         } else {
-            rating.insertRateMentor(rate);
-        session.setAttribute("user", m);
+            rating.insertRateMentor(rate);       
             response.sendRedirect("rate?id=" + id);
-    }
+        }
     }
 
     /**
