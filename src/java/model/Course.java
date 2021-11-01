@@ -26,6 +26,24 @@ public class Course {
     private String description;
     private String createTime;
     private List<CourseSlot> listCourseSlot;
+    private Mentor mentor;
+    private int slotDone;
+    private Subject subject;
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
+    }
+    public int getSlotDone() {
+        return slotDone;
+    }
+
+    public void setSlotDone(int slotDone) {
+        this.slotDone = slotDone;
+    }
 
     public Course(int courseID, int subjectID, int menteeID, int mentorID, int slots, int timePerSlot, int moneyPerSlot, String timeStart, String timeEnd, int learnType, int status, String description, String createTime) {
         this.courseID = courseID;
@@ -63,6 +81,10 @@ public class Course {
         this.subjectID = subjectID;
     }
 
+    public Mentor getMentor() {
+        return mentor;
+    }
+
 //    public int getMenteeID() {
 //        return menteeID;
 //    }
@@ -70,6 +92,9 @@ public class Course {
 //    public void setMenteeID(int menteeID) {
 //        this.menteeID = menteeID;
 //    }
+    public void setMentor(Mentor mentor) {
+        this.mentor = mentor;
+    }
 
     public int getMentorID() {
         return mentorID;
