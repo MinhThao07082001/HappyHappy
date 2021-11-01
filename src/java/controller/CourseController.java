@@ -3,30 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.mentee;
+package controller;
 
 import dal.CourseDAO;
-import dal.MentorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Mentee;
-import model.Mentor;
+import model.Course;
+import model.UserCommon;
 
 /**
  *
- * @author Admin
+ * @author vinh1
  */
-@WebServlet(name = "MenteeHome", urlPatterns = {"/mentee/home"})
-public class MenteeHome extends HttpServlet {
+@WebServlet(name = "CourseController", urlPatterns = {"/course"})
+public class CourseController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,10 +41,10 @@ public class MenteeHome extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MenteeHome</title>");            
+            out.println("<title>Servlet CourseController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MenteeHome at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CourseController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -66,17 +62,11 @@ public class MenteeHome extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MentorDAO md = new MentorDAO();
+        int courseID = Integer.parseInt(request.getParameter("id"));
         CourseDAO cd = new CourseDAO();
-        HttpSession session = request.getSession();
-        Mentee mtee = (Mentee) session.getAttribute("mentee");
-        HashMap<Mentor,Float> mList = md.getListMentorTopRate();
-        //request.setAttribute("mtorList", mList); 
-        //Táº¡o PhÃ¢n Trang
-        request.setAttribute("courseList", cd.getCoursesNotDoneByUserID(mtee.getMenteeID()));
-        request.setAttribute("mtorList", mList);
-        //PhÃ¢n trang xong
-        request.getRequestDispatcher("/user/mentee/mentee-dashboard.jsp").forward(request, response);
+        Course c = cd.getCourseByID(courseID);
+        request.setAttribute("course", c);
+        request.getRequestDispatcher("user/course-detail.jsp").forward(request, response);
         
     }
 
@@ -103,4 +93,5 @@ public class MenteeHome extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }

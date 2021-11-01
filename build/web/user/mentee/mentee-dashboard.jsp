@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en"
       dir="ltr">
@@ -352,16 +354,18 @@
                                             <div class="media align-items-center">
                                                 <div class="media-body">
                                                     <h4 class="card-title">Courses</h4>
+                                                    
                                                     <p class="card-subtitle">Your recent courses</p>
                                                 </div>
                                                 <div class="media-right">
-                                                    <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/user/student-my-courses.html">My
+                                                    <a class="btn btn-sm btn-primary"href="${pageContext.request.contextPath}/listCourse">My
                                                         courses</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <ul class="list-group list-group-fit mb-0" style="z-index: initial;">
-                                            <li class="list-group-item" style="z-index: initial;">
+                                            <c:forEach var="course" items="${requestScope.courseList}">
+                                                <li class="list-group-item" style="z-index: initial;">
                                                 <div class="d-flex align-items-center">
                                                     <a href="${pageContext.request.contextPath}/user/student-take-course.html"
                                                        class="avatar avatar-4by3 avatar-sm mr-3">
@@ -369,15 +373,16 @@
                                                              class="avatar-img rounded">
                                                     </a>
                                                     <div class="flex">
-                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html" class="text-body"><strong>Learn
-                                                                Vue.js Fundamentals</strong></a>
+                                                        <a href="${pageContext.request.contextPath}/course?id=${course.courseID}" class="text-body"><strong>
+                                                            ${course.subject.subjectName}
+                                                            </strong></a>
                                                         <div class="d-flex align-items-center">
                                                             <div class="progress" style="width: 100px;">
                                                                 <div class="progress-bar bg-primary" role="progressbar"
-                                                                     style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                                                     style="width: ${course.slotDone/course.slots*100.0}%" aria-valuenow="${course.slotDone/course.slots}" aria-valuemin="0"
                                                                      aria-valuemax="100"></div>
                                                             </div>
-                                                            <small class="text-muted ml-2">25%</small>
+                                                            <small class="text-muted ml-2"><fmt:formatNumber type="number" maxFractionDigits="2" value="${course.slotDone/course.slots*100.0}"/>%</small>
                                                         </div>
                                                     </div>
                                                     <div class="dropdown ml-3">
@@ -392,6 +397,8 @@
                                                     </div>
                                                 </div>
                                             </li>
+                                            </c:forEach>
+<!--                                            
                                             <li class="list-group-item" style="z-index: initial;">
                                                 <div class="d-flex align-items-center">
                                                     <a href="${pageContext.request.contextPath}/user/student-take-course.html"
@@ -453,7 +460,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                     </div>
                                 </div>
