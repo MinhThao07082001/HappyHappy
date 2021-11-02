@@ -73,12 +73,13 @@ public class RequestDAO extends DBContext {
         }
         return 0;
     }
-        public void updateStatusRequestByMentorRequest(int requestID, int status) {
+
+    public void updateStatusRequestByMentorRequest(int requestID, int status) {
         List<Request> l = getListMenteeReqByMentorReq(requestID);
-        for(Request r: l){
+        for (Request r : l) {
             updateStatusRequest(r.getRequestID(), status);
         }
-            updateStatusRequest(requestID, status);
+        updateStatusRequest(requestID, status);
     }
 
     public int insertRequestSlot(RequestSlotTime rst) {
@@ -138,33 +139,34 @@ public class RequestDAO extends DBContext {
     }
 
     public List<Request> getListMenteeReqByMentorReq(int mentorReqID) {
-        String sql = "SELECT TOP (1000) [requestID]\n" +
-"      ,[userID]\n" +
-"      ,[subjectID]\n" +
-"      ,[moneyPerSlot]\n" +
-"      ,[timePerSlot]\n" +
-"      ,[startTime]\n" +
-"      ,[endTime]\n" +
-"      ,[description]\n" +
-"      ,[status]\n" +
-"      ,[learnType]\n" +
-"      ,[reqTime]\n" +
-"  FROM [SWP391].[dbo].[wishRequest]  w inner join request r on w.requestMenteeID = r.requestID where w.requestMentorID = " + mentorReqID;
+        String sql = "SELECT TOP (1000) [requestID]\n"
+                + "      ,[userID]\n"
+                + "      ,[subjectID]\n"
+                + "      ,[moneyPerSlot]\n"
+                + "      ,[timePerSlot]\n"
+                + "      ,[startTime]\n"
+                + "      ,[endTime]\n"
+                + "      ,[description]\n"
+                + "      ,[status]\n"
+                + "      ,[learnType]\n"
+                + "      ,[reqTime]\n"
+                + "  FROM [SWP391].[dbo].[wishRequest]  w inner join request r on w.requestMenteeID = r.requestID where w.requestMentorID = " + mentorReqID;
         return getListRequest(sql);
     }
-    public List<Request> getListMentorReqByMenteeReq(int id){
-        String sql = "SELECT TOP (1000) [requestID]\n" +
-"      ,[userID]\n" +
-"      ,[subjectID]\n" +
-"      ,[moneyPerSlot]\n" +
-"      ,[timePerSlot]\n" +
-"      ,[startTime]\n" +
-"      ,[endTime]\n" +
-"      ,[description]\n" +
-"      ,[status]\n" +
-"      ,[learnType]\n" +
-"      ,[reqTime]\n" +
-"  FROM [SWP391].[dbo].[wishRequest]  w inner join request r on w.requestMentorID = r.requestID where w.requestMenteeID = "+id;
+
+    public List<Request> getListMentorReqByMenteeReq(int id) {
+        String sql = "SELECT TOP (1000) [requestID]\n"
+                + "      ,[userID]\n"
+                + "      ,[subjectID]\n"
+                + "      ,[moneyPerSlot]\n"
+                + "      ,[timePerSlot]\n"
+                + "      ,[startTime]\n"
+                + "      ,[endTime]\n"
+                + "      ,[description]\n"
+                + "      ,[status]\n"
+                + "      ,[learnType]\n"
+                + "      ,[reqTime]\n"
+                + "  FROM [SWP391].[dbo].[wishRequest]  w inner join request r on w.requestMentorID = r.requestID where w.requestMenteeID = " + id;
         return getListRequest(sql);
     }
 

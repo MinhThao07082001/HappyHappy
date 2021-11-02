@@ -73,7 +73,7 @@ public class MenteeHome extends HttpServlet {
         HashMap<Mentor,Float> mList = md.getListMentorTopRate();
         //request.setAttribute("mtorList", mList); 
         //Táº¡o PhÃ¢n Trang
-        request.setAttribute("courseList", cd.getCoursesNotDoneByUserID(mtee.getMenteeID()));
+        request.setAttribute("courseList", cd.getCoursesNotDoneByUserID(mtee.getMenteeID(), 1));
         request.setAttribute("mtorList", mList);
         //PhÃ¢n trang xong
         request.getRequestDispatcher("/user/mentee/mentee-dashboard.jsp").forward(request, response);

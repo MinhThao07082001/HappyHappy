@@ -66,9 +66,9 @@ public class ListCourseController extends HttpServlet {
         CourseDAO cd = new CourseDAO();
                 HttpSession session = request.getSession();
         UserCommon u = (UserCommon) session.getAttribute("userCommon");
-        List<Course> doneList = cd.getCoursesDoneByUserID(u.getUserID());
-        List<Course> notDoneList = cd.getCoursesNotDoneByUserID(u.getUserID());
-        List<Course> futureList = cd.getCoursesFutureByUserID(u.getUserID());
+        List<Course> doneList = cd.getCoursesDoneByUserID(u.getUserID(), u.getRole());
+        List<Course> notDoneList = cd.getCoursesNotDoneByUserID(u.getUserID(), u.getRole());
+        List<Course> futureList = cd.getCoursesFutureByUserID(u.getUserID(), u.getRole());
         request.setAttribute("doneList", doneList);
         request.setAttribute("notDoneList", notDoneList);
         request.setAttribute("futureList", futureList);

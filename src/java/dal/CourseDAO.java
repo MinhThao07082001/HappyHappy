@@ -212,21 +212,39 @@ public class CourseDAO extends DBContext {
 
     }
 
-    public List<Course> getCoursesNotDoneByUserID(int id) {
-        String sql = "SELECT TOP (1000) c.[courseID]\n"
-                + "      ,c.[subjectID]\n"
-                + "      ,[mentorID]\n"
-                + "      ,[slots]\n"
-                + "      ,c.[timePerSlot]\n"
-                + "      ,c.[moneyPerSlot]\n"
-                + "      ,[timeStart]\n"
-                + "      ,[timeEnd]\n"
-                + "      ,c.[learnType]\n"
-                + "      ,c.[status]\n"
-                + "      ,c.[description]\n"
-                + "      ,[createTime]\n"
-                + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
-                + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd > GETDATE() and timeStart < GETDATE()";
+    public List<Course> getCoursesNotDoneByUserID(int id, int role) {
+        String sql = "";
+        if (role == 2) {
+            sql = "SELECT TOP (1000) c.[courseID]\n"
+                    + "      ,c.[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,c.[timePerSlot]\n"
+                    + "      ,c.[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,c.[learnType]\n"
+                    + "      ,c.[status]\n"
+                    + "      ,c.[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                    + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd > GETDATE() and timeStart < GETDATE()";
+        } else {
+            sql = "SELECT TOP (1000) [courseID]\n"
+                    + "      ,[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,[timePerSlot]\n"
+                    + "      ,[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,[learnType]\n"
+                    + "      ,[status]\n"
+                    + "      ,[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] where mentorID = ? and timeEnd > GETDATE() and timeStart < GETDATE()";
+        }
+
         List<Course> cList = new ArrayList<>();
         MentorDAO md = new MentorDAO();
         SubjectDAO sd = new SubjectDAO();
@@ -260,21 +278,40 @@ public class CourseDAO extends DBContext {
         return cList;
 
     }
-    public List<Course> getCoursesDoneByUserID(int id) {
-        String sql = "SELECT TOP (1000) c.[courseID]\n"
-                + "      ,c.[subjectID]\n"
-                + "      ,[mentorID]\n"
-                + "      ,[slots]\n"
-                + "      ,c.[timePerSlot]\n"
-                + "      ,c.[moneyPerSlot]\n"
-                + "      ,[timeStart]\n"
-                + "      ,[timeEnd]\n"
-                + "      ,c.[learnType]\n"
-                + "      ,c.[status]\n"
-                + "      ,c.[description]\n"
-                + "      ,[createTime]\n"
-                + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
-                + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd < GETDATE()";
+
+    public List<Course> getCoursesDoneByUserID(int id, int role) {
+        String sql = "";
+        if (role == 2) {
+            sql = "SELECT TOP (1000) c.[courseID]\n"
+                    + "      ,c.[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,c.[timePerSlot]\n"
+                    + "      ,c.[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,c.[learnType]\n"
+                    + "      ,c.[status]\n"
+                    + "      ,c.[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                    + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd < GETDATE()";
+        } else {
+            sql = "SELECT TOP (1000) [courseID]\n"
+                    + "      ,[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,[timePerSlot]\n"
+                    + "      ,[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,[learnType]\n"
+                    + "      ,[status]\n"
+                    + "      ,[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] where mentorID = ? and timeEnd < GETDATE()";
+        }
+
         List<Course> cList = new ArrayList<>();
         MentorDAO md = new MentorDAO();
         SubjectDAO sd = new SubjectDAO();
@@ -308,21 +345,39 @@ public class CourseDAO extends DBContext {
         return cList;
 
     }
-    public List<Course> getCoursesFutureByUserID(int id) {
-        String sql = "SELECT TOP (1000) c.[courseID]\n"
-                + "      ,c.[subjectID]\n"
-                + "      ,[mentorID]\n"
-                + "      ,[slots]\n"
-                + "      ,c.[timePerSlot]\n"
-                + "      ,c.[moneyPerSlot]\n"
-                + "      ,[timeStart]\n"
-                + "      ,[timeEnd]\n"
-                + "      ,c.[learnType]\n"
-                + "      ,c.[status]\n"
-                + "      ,c.[description]\n"
-                + "      ,[createTime]\n"
-                + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
-                + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeStart > GETDATE()";
+
+    public List<Course> getCoursesFutureByUserID(int id, int role) {
+        String sql = "";
+        if (role == 2) {
+            sql = "SELECT TOP (1000) c.[courseID]\n"
+                    + "      ,c.[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,c.[timePerSlot]\n"
+                    + "      ,c.[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,c.[learnType]\n"
+                    + "      ,c.[status]\n"
+                    + "      ,c.[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                    + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeStart > GETDATE()";
+        } else {
+            sql = "SELECT TOP (1000) [courseID]\n"
+                    + "      ,[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,[timePerSlot]\n"
+                    + "      ,[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,[learnType]\n"
+                    + "      ,[status]\n"
+                    + "      ,[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] where mentorID = ? and timeStart > GETDATE()";
+        }
         List<Course> cList = new ArrayList<>();
         MentorDAO md = new MentorDAO();
         SubjectDAO sd = new SubjectDAO();
@@ -356,6 +411,7 @@ public class CourseDAO extends DBContext {
         return cList;
 
     }
+
     public List<Course> getCoursesByUserID(int id) {
         String sql = "SELECT TOP (1000) c.[courseID]\n"
                 + "      ,c.[subjectID]\n"
