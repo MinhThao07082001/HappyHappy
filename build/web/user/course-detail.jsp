@@ -163,16 +163,6 @@
         </div>
     </body>
     <script>
-        console.log();
-        console.log(document.getElementById("dates").value);
-
-        console.log(slots.length);
-        console.log(dates.length);
-
-        console.log(findDate("2022-01-27"))
-        console.log(dates[64])
-    </script>
-    <script>
         var slots = [];
         var dates = [];
         slots = document.getElementById("slots").value.split(";");
