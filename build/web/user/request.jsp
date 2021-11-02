@@ -8,7 +8,6 @@
         <title>JSP Page</title>
     </head>
     <body> 
-        <h1>Hello World!</h1>
         <table>
             <tr>
                 <th>requestID</th>
@@ -22,7 +21,7 @@
                 <th>status</th>
                 <th>learnType</th>
                 <th>reqTime</th>
-                <th>EDIT</th>
+                <th>Action</th>
             </tr>
             <c:forEach var="rList" items="${requestScope.rList}">
                 <tr>
@@ -37,7 +36,14 @@
                     <th>${rList.status}</th>
                     <th>${rList.learnType}</th>
                     <th>${rList.reqTime}</th>
-                    <th><a href="editRequest?id=${rList.requestID}">EDIT</a></th>
+                   
+                    <th>
+                         <c:if test="${rList.status ne 1}"><a href="editRequest?id=${rList.requestID}">EDIT</a></c:if>
+                         <a href="${pageContext.request.contextPath}/listRequest?detail=${rList.requestID}">Details</a>
+                    </th>
+                    
+                    
+                    
                 </tr>
             </c:forEach>
         </table>

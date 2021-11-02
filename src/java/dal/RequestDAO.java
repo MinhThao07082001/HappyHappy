@@ -45,6 +45,22 @@ public class RequestDAO extends DBContext {
         return 0;
     }
 
+    public int getCountRequestByMentorReq(int mentorReq) {
+        String sql = "SELECT count(*)\n"
+                + "  FROM [SWP391].[dbo].[wishRequest] where requestMentorID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, mentorReq);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
+    }
+
     public int updateStatusRequest(int requestID, int status) {
         String sql = "UPDATE request set status = ? where requestID = ? ";
         try {
@@ -56,6 +72,13 @@ public class RequestDAO extends DBContext {
             System.out.println(e);
         }
         return 0;
+    }
+        public void updateStatusRequestByMentorRequest(int requestID, int status) {
+        List<Request> l = getListMenteeReqByMentorReq(requestID);
+        for(Request r: l){
+            updateStatusRequest(r.getRequestID(), status);
+        }
+            updateStatusRequest(requestID, status);
     }
 
     public int insertRequestSlot(RequestSlotTime rst) {
@@ -113,8 +136,9 @@ public class RequestDAO extends DBContext {
         }
         return null;
     }
-    public List<Request> getListMenteeReqByMentorReq(int mentorReqID){
-        String sql = "select [requestID]\n" +
+
+    public List<Request> getListMenteeReqByMentorReq(int mentorReqID) {
+        String sql = "SELECT TOP (1000) [requestID]\n" +
 "      ,[userID]\n" +
 "      ,[subjectID]\n" +
 "      ,[moneyPerSlot]\n" +
@@ -124,10 +148,26 @@ public class RequestDAO extends DBContext {
 "      ,[description]\n" +
 "      ,[status]\n" +
 "      ,[learnType]\n" +
-"      ,[reqTime] from wishRequest w inner join request r on w.requestMenteeID = r.requestID where w.requestMentorID = "+mentorReqID;
+"      ,[reqTime]\n" +
+"  FROM [SWP391].[dbo].[wishRequest]  w inner join request r on w.requestMenteeID = r.requestID where w.requestMentorID = " + mentorReqID;
         return getListRequest(sql);
     }
-    
+    public List<Request> getListMentorReqByMenteeReq(int id){
+        String sql = "SELECT TOP (1000) [requestID]\n" +
+"      ,[userID]\n" +
+"      ,[subjectID]\n" +
+"      ,[moneyPerSlot]\n" +
+"      ,[timePerSlot]\n" +
+"      ,[startTime]\n" +
+"      ,[endTime]\n" +
+"      ,[description]\n" +
+"      ,[status]\n" +
+"      ,[learnType]\n" +
+"      ,[reqTime]\n" +
+"  FROM [SWP391].[dbo].[wishRequest]  w inner join request r on w.requestMentorID = r.requestID where w.requestMenteeID = "+id;
+        return getListRequest(sql);
+    }
+
     public List<Request> getListRequestOfMentee() {
         String sql = "SELECT TOP 100 [requestID]\n"
                 + "      ,r.[userID]\n"
@@ -277,7 +317,6 @@ public class RequestDAO extends DBContext {
     public static void main(String[] args) {
 
 //        Request req = new Request(1, 1, 1, 11000, 112, "2023/11/19", "2022/11/19", "Uoa", 1, 1, "");
-        
         RequestDAO re = new RequestDAO();
         List<Request> l = re.getListRequestOfMe(2);
 //        l = re.getListRequestOfMentee();

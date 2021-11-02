@@ -226,7 +226,7 @@ public class CourseDAO extends DBContext {
                 + "      ,c.[description]\n"
                 + "      ,[createTime]\n"
                 + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
-                + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd > GETDATE()";
+                + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd > GETDATE() and timeStart < GETDATE()";
         List<Course> cList = new ArrayList<>();
         MentorDAO md = new MentorDAO();
         SubjectDAO sd = new SubjectDAO();

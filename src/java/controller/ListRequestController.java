@@ -28,6 +28,8 @@ import model.UserCommon;
 @WebServlet(name = "ListRequestController", urlPatterns = {"/listRequest"})
 public class ListRequestController extends HttpServlet {
 
+    private final int MAX_REQ_PER_MENTOR_REQ = 3;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -69,13 +71,23 @@ public class ListRequestController extends HttpServlet {
         HttpSession session = request.getSession();
         RequestDAO rd = new RequestDAO();
         String idRequest = request.getParameter("detail");
+        UserCommon u = (UserCommon) session.getAttribute("userCommon");
+        int role = u.getRole();
         if (idRequest != null) {
             Request r = rd.getRequestById(Integer.parseInt(idRequest));
-            request.setAttribute("req", r);
-            request.getRequestDispatcher("user/request-detail.jsp").forward(request, response);
+            if (role == 2) {
+                request.setAttribute("reqMentor", rd.getListMentorReqByMenteeReq(r.getRequestID()));
+                request.setAttribute("req", r);
+                request.getRequestDispatcher("user/mentee/mentee-request-detail.jsp").forward(request, response);
+            } else {
+                request.setAttribute("listMenteeReq", rd.getListMenteeReqByMentorReq(r.getRequestID()));
+                request.setAttribute("req", r);
+                request.getRequestDispatcher("user/mentor/mentor-request-detail.jsp").forward(request, response);
+            }
+
         } else {
-            int role = 2;
-//            int role = Integer.parseInt((String) session.getAttribute("role"));
+//            int role = 2;
+
             List<Request> reqList = role == 2 ? rd.getListRequestOfMentee() : rd.getListRequestOfMentor();
             request.setAttribute("reqList", reqList);
             request.getRequestDispatcher("user/list-request.jsp").forward(request, response);
@@ -94,11 +106,22 @@ public class ListRequestController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int reqID = Integer.parseInt(request.getParameter("id"));
+        
+
         HttpSession session = request.getSession();
         UserCommon u = (UserCommon) session.getAttribute("userCommon");
         RequestDAO rd = new RequestDAO();
         CourseDAO cd = new CourseDAO();
+        if (request.getParameter("mentorReqAccept") != null) {
+            int menteeReqID = Integer.parseInt(request.getParameter("menteeReq"));
+            int mentorReqID = Integer.parseInt(request.getParameter("mentorReqAccept"));
+            rd.updateStatusRequest(menteeReqID, 1);
+            rd.updateStatusRequest(mentorReqID, 1);
+            cd.insertCourse(mentorReqID);
+            response.sendRedirect("listCourse");
+            return;
+        }
+        int reqID = Integer.parseInt(request.getParameter("id"));
         //get req By id
         Request r = rd.getRequestById(reqID);
 //        System.out.println("DARK SIZE: "+r.getListSlotTime().size());
@@ -106,6 +129,7 @@ public class ListRequestController extends HttpServlet {
         r.setUserID(u.getUserID());
         //insert req of people accept req
         List<RequestSlotTime> rstList = r.getListSlotTime();
+        //insert
         r = rd.getRequestById(rd.insertRequest(r));
 //        System.out.println(r.getRequestID());
         for (RequestSlotTime reqST : rstList) {
@@ -115,12 +139,21 @@ public class ListRequestController extends HttpServlet {
         //if mentee acp mentor, req of mentor change status
         if (u.getRole() == 2) {
             //update have people accept req
-            rd.updateStatusRequest(reqID, 1);
-            rd.updateStatusRequest(r.getRequestID(), 1);
+            rd.updateStatusRequest(reqID, 0);
+            rd.updateStatusRequest(r.getRequestID(), 0);
             rd.insertWishRequest(r.getRequestID(), reqID);
-            cd.insertCourse(reqID);
-        }else{
+            //so mentee req cua 1 mentor req == 3 thi tao khoa hoc
+            if (rd.getCountRequestByMentorReq(reqID) == MAX_REQ_PER_MENTOR_REQ) {
+                cd.insertCourse(reqID);
+                //after create course, change all status request to 1
+                rd.updateStatusRequestByMentorRequest(reqID, 1);
+            }
+
+        } else {
+            //reqID is req of mentee, r now is mentor
             rd.insertWishRequest(reqID, r.getRequestID());
+            rd.updateStatusRequest(reqID, 0);
+            rd.updateStatusRequest(r.getRequestID(), 0);
         }
         response.sendRedirect("request");
 
