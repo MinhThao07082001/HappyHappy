@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Course;
+import model.CourseSlot;
 import model.UserCommon;
 
 /**
@@ -65,6 +66,18 @@ public class CourseController extends HttpServlet {
         int courseID = Integer.parseInt(request.getParameter("id"));
         CourseDAO cd = new CourseDAO();
         Course c = cd.getCourseByID(courseID);
+        String slotString = "";
+        String dateString = "";
+        for(CourseSlot cs: c.getListCourseSlot()){
+            slotString += cs.getSlotTimeFrom().substring(11,16) + "-" + cs.getSlotTimeTo().substring(11,16)+";";
+        }
+        for(CourseSlot cs: c.getListCourseSlot()){
+            dateString += cs.getSlotTimeFrom().substring(0,10)+";";
+        }
+        slotString = slotString.substring(0, slotString.length()-1);
+        dateString = dateString.substring(0, dateString.length()-1);
+        request.setAttribute("dates", dateString);
+        request.setAttribute("slots", slotString);
         request.setAttribute("course", c);
         request.getRequestDispatcher("user/course-detail.jsp").forward(request, response);
         
