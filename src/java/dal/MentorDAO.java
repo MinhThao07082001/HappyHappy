@@ -13,6 +13,8 @@ import model.UserCommon;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import model.Major;
 import model.Mentor;
@@ -191,7 +193,7 @@ public class MentorDAO extends DBContext {
         return null;
     }
     
-    public List<Mentor> getListMentor() {
+   public List<Mentor> getListMentor() {
         List<Mentor> mList = new ArrayList<>();
         String sql = "SELECT TOP 10 * FROM userCommon u inner join mentor m on u.userID = m.userID";
         try {
@@ -222,6 +224,24 @@ public class MentorDAO extends DBContext {
                 List<Subject> sList = md.getListMajorByMentorID(mentor.getMentorID());
                 mentor.setListMajor(sList);
                 mList.add(mentor);
+            }
+            return mList;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    
+       public HashMap<Mentor,Float> getListMentorTopRate() {
+        HashMap<Mentor,Float> mList = new HashMap<>();
+        String sql = "SELECT TOP 10 Format(AVG(cast(rateAmount as float)),'N1') as [avg],mentorID from Rating group by mentorID order by [avg] desc";
+        MentorDAO md = new MentorDAO();
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                mList.put(md.getMentorById(rs.getInt(2)), rs.getFloat(1));
             }
             return mList;
         } catch (SQLException e) {

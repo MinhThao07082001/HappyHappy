@@ -17,13 +17,13 @@ public class UserCommon {
     private int sex;
     private String address,phone,imgAvt,description,status;
     private int moneyLeft;
-    private Date createTime;
+    private String createTime;
     private int role;
 
     public UserCommon() {
     }
 
-    public UserCommon(int userID, String name, String password, String email, String dob, int sex, String address, String phone, String imgAvt, String description, String status, int moneyLeft, Date createTime, int role) {
+    public UserCommon(int userID, String name, String password, String email, String dob, int sex, String address, String phone, String imgAvt, String description, String status, int moneyLeft, String createTime, int role) {
         this.userID = userID;
         this.name = name;
         this.password = password;
@@ -136,11 +136,11 @@ public class UserCommon {
         this.moneyLeft = moneyLeft;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

@@ -10,14 +10,6 @@
               content="IE=edge">
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
         <title>Student - Dashboard</title>
         <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
         <meta name="robots"
@@ -45,12 +37,12 @@
         <link type="text/css"
               href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
-        
+
         <style>
-                .pagination a.active {
+            .pagination a.active {
                 background-color: #006cfa;
                 color: white;
-              }
+            }
             .pagination a:hover:not(.active) {
                 background-color: lightskyblue;
             }
@@ -113,15 +105,19 @@
                             <!--End of recom tab -->
                             <!--List of mentors -->
                             <div class="row">
-                                <c:forEach var="mtor" items="${requestScope.data}">
+                                <c:forEach var="mtorItem" items="${requestScope.mtorList}">
+                                    <c:set var="mtor" value="${mtorItem.key}"></c:set>
                                     <div class="col-md-6">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column flex-sm-row">
+                                                    <h4>${mtorItem.value}</h4>
+                                             
                                                     <a href="../rate?id=${mtor.mentorID}"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">
+                                                        
                                                     </a>
                                                     <a href="../conversation?id=${mtor.mentorID}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
@@ -287,7 +283,7 @@
                                                                  <h4 class="card-title mb-1"><a href="instructor-course-edit.html">Gulp
                                                                     &amp; Slush Workflows</a>
                                                                  </h4>
-                                                                 <p class="text-black-70">Let’s start with a quick tour of Vue’s data
+                                                                 <p class="text-black-70">Letâ€™s start with a quick tour of Vueâ€™s data
                                                                     binding features.
                                                                  </p>
                                                                  <div class="d-flex align-items-end">
@@ -326,20 +322,20 @@
                             </div>
                             <!-- End of List of mentors -->
                             <!-- Pagination -->
-                             <ul class="pagination justify-content-center pagination-sm">
-                                  <li class="page-item ">
+                            <ul class="pagination justify-content-center pagination-sm">
+                                <li class="page-item ">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true" class="material-icons">chevron_left</span>
                                         <span>Prev</span>
                                     </a>
                                 </li>
-                            <c:forEach begin="1" end="${requestScope.num}" var="i">                                                        
-                                <li class="page-item">
-                                    <a class="${requestScope.page==i?"active":""} page-link" href="home?page=${i}">
-                                        <span>${i}</span>
-                                    </a>
-                               </li>                              
-                            </c:forEach>
+                                <c:forEach begin="1" end="${requestScope.num}" var="i">                                                        
+                                    <li class="page-item">
+                                        <a class="${requestScope.page==i?"active":""} page-link" href="home?page=${i}">
+                                            <span>${i}</span>
+                                        </a>
+                                    </li>                              
+                                </c:forEach>
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Next">
                                         <span>Next</span>
@@ -347,7 +343,7 @@
                                     </a>
                                 </li> 
                             </ul>
-                           
+
                             <!-- end of pagination -->
                             <div class="row">
                                 <div class="col-lg-7">
@@ -480,36 +476,37 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div style="width: 80%;margin: 0 auto;" id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <div id="demo" class="carousel slide" data-ride="carousel" >
+
                                     <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                                    </ol>
+                                    <ul class="carousel-indicators">
+                                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                        <li data-target="#demo" data-slide-to="1"></li>
+                                        <li data-target="#demo" data-slide-to="2"></li>
+                                    </ul>
 
-                                    <!-- Wrapper for slides -->
+                                    <!-- The slideshow -->
                                     <div class="carousel-inner">
-                                        <div class="item active">
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/1.png" alt="Anime">
+                                        <div class="carousel-item active">
+                                            <img src="${pageContext.request.contextPath}/user/assets/images/1.png" alt="Los Angeles">
                                         </div>
-
-                                        <div class="item">
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/2.png" alt="Anime">
+                                        <div class="carousel-item">
+                                            <img src="${pageContext.request.contextPath}/user/assets/images/2.png" alt="Chicago">
                                         </div>
-
-                                        <div class="item">
-                                            <img src="${pageContext.request.contextPath}/user/assets/images/4.png" alt="Anime">
+                                        <div class="carousel-item">
+                                            <img src="${pageContext.request.contextPath}/user/assets/images/4.png" alt="New York">
                                         </div>
                                     </div>
-                                    <!-- Controls -->
-                                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                                        <span class="glyphicon glyphicon-chevron-left"></span>
+
+                                    <!-- Left and right controls -->
+                                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                        <span class="carousel-control-prev-icon"></span>
                                     </a>
-                                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                                        <span class="glyphicon glyphicon-chevron-right"></span>
+                                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                                        <span class="carousel-control-next-icon"></span>
                                     </a>
-                                </div><!--Kết thúc slider-->
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -517,43 +514,43 @@
                 </div>
             </div>
         </div>
-                
-                <!-- App Settings FAB -->
-                <!--                <div id="app-settings">
-                   <app-settings layout-active="default"
-                                 :layout-location="{
-                   'fixed': 'fixed-student-dashboard.html',
-                   'default': 'student-dashboard.html'
-                   }"
-                                 sidebar-variant="bg-transparent border-0"></app-settings>
-                   </div>-->
-                <!-- jQuery -->
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
-                <!-- Bootstrap -->
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/bootstrap.min.js"></script>
-                <!-- Perfect Scrollbar -->
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.min.js"></script>
-                <!-- MDK -->
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/dom-factory.js"></script>
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/material-design-kit.js"></script>
-                <!-- App JS -->
-                <script src="${pageContext.request.contextPath}/user/assets/js/app.js"></script>
-                <!-- Highlight.js -->
-                <script src="${pageContext.request.contextPath}/user/assets/js/hljs.js"></script>
-                <!-- App Settings (safe to remove) -->
-                <script src="${pageContext.request.contextPath}/user/assets/js/app-settings.js"></script>
-                <!-- Global Settings -->
-                <script src="${pageContext.request.contextPath}/user/assets/js/settings.js"></script>
-                <!-- Moment.js -->
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/moment.min.js"></script>
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/moment-range.js"></script>
-                <!-- Chart.js -->
-                <script src="${pageContext.request.contextPath}/user/assets/vendor/Chart.min.js"></script>
-                <script src="${pageContext.request.contextPath}/user/assets/js/chartjs.js"></script>
-                <!-- Student Dashboard Page JS -->
-                <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
-                <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
-                </body>
-                <!-- Mirrored from learnplus.demo.frontendmatter.com/student-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Sep 2021 16:13:01 GMT -->
-                </html>
+
+        <!-- App Settings FAB -->
+        <!--                <div id="app-settings">
+           <app-settings layout-active="default"
+                         :layout-location="{
+           'fixed': 'fixed-student-dashboard.html',
+           'default': 'student-dashboard.html'
+           }"
+                         sidebar-variant="bg-transparent border-0"></app-settings>
+           </div>-->
+        <!-- jQuery -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/bootstrap.min.js"></script>
+        <!-- Perfect Scrollbar -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.min.js"></script>
+        <!-- MDK -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/dom-factory.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/material-design-kit.js"></script>
+        <!-- App JS -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/app.js"></script>
+        <!-- Highlight.js -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/hljs.js"></script>
+        <!-- App Settings (safe to remove) -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/app-settings.js"></script>
+        <!-- Global Settings -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/settings.js"></script>
+        <!-- Moment.js -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/moment.min.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/moment-range.js"></script>
+        <!-- Chart.js -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/Chart.min.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/js/chartjs.js"></script>
+        <!-- Student Dashboard Page JS -->
+        <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
+    </body>
+    <!-- Mirrored from learnplus.demo.frontendmatter.com/student-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Sep 2021 16:13:01 GMT -->
+</html>

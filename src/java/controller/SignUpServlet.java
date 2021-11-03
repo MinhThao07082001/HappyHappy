@@ -94,18 +94,21 @@ public class SignUpServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String e = request.getParameter("email");
         String p = request.getParameter("password");
+        String rp = request.getParameter("repeat-password");
         String n = request.getParameter("name");
         String dob = request.getParameter("dob");
         String ph = request.getParameter("phone");
         String s = request.getParameter("sex");
         String r = request.getParameter("role");
         UserDAO ud = new UserDAO();
-        MenteeDAO ted = new MenteeDAO();
-        MentorDAO tod = new MentorDAO();
+        
         UserCommon a = ud.getEmail(e);
         UserCommon b = ud.getPhone(ph);
         if (a != null || b!=null) {
             request.setAttribute("mess", "Email or phonenumber has already existed");
+            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
+        } else if(!p.equals(rp)){
+            request.setAttribute("mess1", "Repassword must be the same as password");
             request.getRequestDispatcher("SignUp.jsp").forward(request, response);
         } else {
             UserCommon u = new UserCommon();

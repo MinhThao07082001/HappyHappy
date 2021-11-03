@@ -15,8 +15,8 @@
         <table>
             <tr>
                 <th>UserName</th>
-                <th>UserImg1</th>
-                <th>UserImg2</th>
+                <th>Your First Image</th>
+                <th>Your Second Image</th>
                 <th>Edit</th>
             </tr>
             <c:forEach var="mtor" items="${requestScope.mtor}">

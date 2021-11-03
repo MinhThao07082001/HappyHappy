@@ -105,15 +105,19 @@
                             <!--End of recom tab -->
                             <!--List of mentors -->
                             <div class="row">
-                                <c:forEach var="mtor" items="${requestScope.data}">
+                                <c:forEach var="mtorItem" items="${requestScope.mtorList}">
+                                    <c:set var="mtor" value="${mtorItem.key}"></c:set>
                                     <div class="col-md-6">
                                         <div class="card">
                                             <div class="card-body">
                                                 <div class="d-flex flex-column flex-sm-row">
+                                                    <h4>${mtorItem.value}</h4>
+                                             
                                                     <a href="../rate?id=${mtor.mentorID}"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">
+                                                        
                                                     </a>
                                                     <a href="../conversation?id=${mtor.mentorID}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
@@ -279,7 +283,7 @@
                                                                  <h4 class="card-title mb-1"><a href="instructor-course-edit.html">Gulp
                                                                     &amp; Slush Workflows</a>
                                                                  </h4>
-                                                                 <p class="text-black-70">Let’s start with a quick tour of Vue’s data
+                                                                 <p class="text-black-70">Letâ€™s start with a quick tour of Vueâ€™s data
                                                                     binding features.
                                                                  </p>
                                                                  <div class="d-flex align-items-end">

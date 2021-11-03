@@ -3,7 +3,7 @@
     Created on : Oct 3, 2021, 11:43:47 PM
     Author     : WacMac
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en"
       dir="ltr">
@@ -337,7 +337,7 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/user/mentor-dashboard.html">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentor/home">Home</a></li>
                                 <li class="breadcrumb-item active">Request Mentor</li>
                             </ol>
 
@@ -347,9 +347,16 @@
                                     <div class="media-body">
                                         <h4 class="card-title">List of Request</h4>                                        
                                     </div>
-                                    <div class="media-right mt-2 mt-xs-plus-0">
-                                        <a class="btn-grad" href="${pageContext.request.contextPath}/createRequest">Create a request</a>
-                                    </div>
+                                    <c:if test="${mentor.authen eq 0}">
+                                        <div class="media-right mt-2 mt-xs-plus-0">
+                                            <a class="btn-grad" onclick="alert('You need to authenticate to create request')" href="${pageContext.request.contextPath}/mentorAuthen">Create a request</a>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${mentor.authen eq 1}">
+                                        <div class="media-right mt-2 mt-xs-plus-0">
+                                            <a class="btn-grad" href="${pageContext.request.contextPath}/createRequest">Create a request</a>
+                                        </div>
+                                    </c:if>
                                 </div>
                                 <div class="tabs">
 

@@ -23,8 +23,8 @@ import model.Mentor;
  */
 
 @MultipartConfig()
-@WebServlet(name = "MentorCV", urlPatterns = {"/user/mentor/updatecv"})
-public class MentorCV extends HttpServlet {
+@WebServlet(name = "MentorBeforeRequest", urlPatterns = {"/user/mentor/beforerequest"})
+public class MentorBeforeRequest extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -69,7 +69,7 @@ public class MentorCV extends HttpServlet {
         String email = (String)session.getAttribute("email");
         Mentor m = tod.getMentorByEmail(email);
         request.setAttribute("mentor", m);
-        request.getRequestDispatcher("/user/mentor/mentor_update_cv.jsp").forward(request, response);
+        request.getRequestDispatcher("/user/mentor/mentor_request.jsp").forward(request, response);
     }
 
     /**
@@ -83,20 +83,7 @@ public class MentorCV extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        request.setCharacterEncoding("utf-8");
-        HttpSession session = request.getSession();
-        Mentor m = (Mentor) session.getAttribute("user");
-        MentorDAO md = new MentorDAO();
-        String edu = request.getParameter("education");
-        int yearE = Integer.parseInt(request.getParameter("yearExperiment"));
-        String intro = request.getParameter("intro");
-        m.setEducation(edu);
-        m.setYearExperiment(yearE);
-        m.setIntro(intro);
-        md.updateMentorCV(m);
-        session.setAttribute("mentor", m);
-        request.getRequestDispatcher("/user/mentor/mentor_update_cv.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**

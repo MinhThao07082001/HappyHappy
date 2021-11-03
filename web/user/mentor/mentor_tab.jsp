@@ -17,7 +17,7 @@
                 <div class="sidebar-heading">Mentor</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/mentor/mentor_request.jsp">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/mentor/beforerequest">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i>
                             Find Mentee
@@ -44,7 +44,13 @@
                             Payment
                         </a>
                     </li>
-
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/mentorAuthen">
+                            <i
+                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">A</i>
+                            Authentication
+                        </a>
+                    </li>
                 </ul>
                 <div class="sidebar-heading">Account</div>
                 <ul class="sidebar-menu">
