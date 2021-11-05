@@ -68,7 +68,7 @@ public class ListMenteeControl extends HttpServlet {
         List<Mentee> mList;
         String searchString = request.getParameter("searchString");
         if (searchString != null) {
-            mList = dao.getMeteeBySearch(searchString) ;
+            mList = dao.getMeteeBySearch(searchString);
         } else {
             mList = md.getListMentee();
         }
