@@ -11,7 +11,7 @@ public class Mentor {
     private int sex;
     private String education;
     private int yearExperiment;
-    private String address;
+    private String address;  
     private String phone;
     private String intro;
     private String imgAvt;

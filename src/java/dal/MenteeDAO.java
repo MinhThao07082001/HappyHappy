@@ -3,6 +3,8 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Mentee;
 import model.UserCommon;
 
@@ -105,7 +107,7 @@ public class MenteeDAO extends DBContext {
                 + "      ,[createTime]\n"
                 + "      ,[role]\n"
                 + "     FROM [SWP391].[dbo].[userCommon] u inner join mentee m on u.userID = m.userID "
-                + "     where id = ?";
+                + "     where m.userID = ?";
         try {
             PreparedStatement st = connection.prepareCall(sql);
             st.setInt(1, id);
@@ -133,11 +135,56 @@ public class MenteeDAO extends DBContext {
         }
         return null;
     }
+      public List<Mentee> getListMentee() {
+          List<Mentee> mList = new ArrayList<>();
+        String sql = "SELECT TOP 1000 u.[userID]\n"
+                + "      ,[name]\n"
+                + "      ,[password]\n"
+                + "      ,[email]\n"
+                + "      ,[dob]\n"
+                + "      ,[sex]\n"
+                + "      ,[address]\n"
+                + "      ,[phone]\n"
+                + "      ,[imgAvt]\n"
+                + "      ,[description]\n"
+                + "      ,[status]\n"
+                + "      ,[moneyLeft]\n"
+                + "      ,[createTime]\n"
+                + "      ,[role]\n"
+                + "     FROM [SWP391].[dbo].[userCommon] u inner join mentee m on u.userID = m.userID ";
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Mentee m = new Mentee(
+                        rs.getInt("userID"),
+                        rs.getString("name"),
+                        rs.getString("password"),
+                        rs.getString("email"),
+                        rs.getString("dob"),
+                        rs.getInt("sex"),
+                        rs.getString("address"),
+                        rs.getString("phone"),
+                        rs.getString("imgAvt"),
+                        rs.getString("description"),
+                        rs.getString("status"),
+                        rs.getInt("moneyLeft"),
+                        rs.getString("createTime"));
+                mList.add(m);
+            }
+            return mList;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
  //Test
     public static void main(String[] args) {
         Mentee m = new Mentee(1, "Name", "Name", "Name", "2019-10-10", 1, "Adderess", "0102391293", "", "Des", "No", 999, "2918-12-12");
         MenteeDAO md = new MenteeDAO();
-        System.out.println(md.getMenteeByEmail("vinhhshe150155@fpt.edu.vn"));;
+        System.out.println(md.getListMentee().size());
+        System.out.println(md.getMenteeById(12));;
        
     }
 

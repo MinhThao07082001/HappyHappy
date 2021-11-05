@@ -13,6 +13,8 @@ import model.UserCommon;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import model.Major;
 import model.Mentor;
@@ -71,12 +73,7 @@ public class MentorDAO extends DBContext {
                 + "      [phone] = ?,"
                 + "      [imgAvt] = ?,"
                 + "      [description] = ?"
-                + "      where userID = ?;\n"; 
-//                     "UPDATE mentor set "
-//                + "      [education] = ?, "
-//                + "      [yearExperiment] = ?, "
-//                + "      [intro] ?, "
-//                + "      where userID = ?;";
+                + "      where userID = ?;"; 
         try {
             PreparedStatement st = connection.prepareStatement(sql);
             st.setString(1, m.getName());
@@ -86,10 +83,25 @@ public class MentorDAO extends DBContext {
             st.setString(5, m.getImgAvt());
             st.setString(6, m.getDescription());
             st.setInt(7, m.getMentorID());
-//            st.setString(8, m.getEducation());
-//            st.setInt(9, m.getYearExperiment());
-//            st.setString(10, m.getIntro());
-//            st.setInt(11, m.getMentorID());
+            return st.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        
+        return 0;
+    }
+    public int updateMentorCV(Mentor m) {
+        String sql ="UPDATE mentor set "
+                + "      [education] = ?, "
+                + "      [yearExperiment] = ?, "
+                + "      [intro] = ? "
+                + "      where userID = ?;";
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, m.getEducation());
+            st.setInt(2, m.getYearExperiment());
+            st.setString(3, m.getIntro());
+            st.setInt(4, m.getMentorID());
             return st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -181,7 +193,7 @@ public class MentorDAO extends DBContext {
         return null;
     }
     
-    public List<Mentor> getListMentor() {
+   public List<Mentor> getListMentor() {
         List<Mentor> mList = new ArrayList<>();
         String sql = "SELECT TOP 10 * FROM userCommon u inner join mentor m on u.userID = m.userID";
         try {
@@ -212,6 +224,24 @@ public class MentorDAO extends DBContext {
                 List<Subject> sList = md.getListMajorByMentorID(mentor.getMentorID());
                 mentor.setListMajor(sList);
                 mList.add(mentor);
+            }
+            return mList;
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    
+       public HashMap<Mentor,Float> getListMentorTopRate() {
+        HashMap<Mentor,Float> mList = new HashMap<>();
+        String sql = "SELECT TOP 10 Format(AVG(cast(rateAmount as float)),'N1') as [avg],mentorID from Rating group by mentorID order by [avg] desc";
+        MentorDAO md = new MentorDAO();
+        try {
+            PreparedStatement st = connection.prepareCall(sql);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                mList.put(md.getMentorById(rs.getInt(2)), rs.getFloat(1));
             }
             return mList;
         } catch (SQLException e) {
@@ -269,7 +299,9 @@ public class MentorDAO extends DBContext {
     }
 
     public static void main(String[] args) {
+        Mentor m = new Mentor();
         MentorDAO md = new MentorDAO();
-        System.out.println(md.getMentorByEmail("chautvmhe150128@fpt.edu.vn"));
+        System.out.println(md.updateMentorCV(m));
+          System.out.println(md.getMentorById(10));;
     }
 }
