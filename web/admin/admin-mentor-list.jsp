@@ -30,6 +30,7 @@
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
+     
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <div class="container-fluid">
@@ -55,6 +56,19 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h3 class="card-title">Mentor list</h3>
+                                        <form class="form-inline" action="mentor" method="GET"> 
+                                            <div class="input-group input-group-sm" style="padding-left: 20px">
+
+                                                <input class="form-control form-control-navbar" name="searchString2" type="text" placeholder="Search" aria-label="Search">
+
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-navbar" type="submit">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                
+                                    </div>
+                                            </div>
+                                        </form>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">

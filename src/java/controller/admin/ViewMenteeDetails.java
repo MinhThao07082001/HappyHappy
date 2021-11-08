@@ -5,23 +5,22 @@
  */
 package controller.admin;
 
-import dal.admin.MentorControl;
+import dal.MenteeDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Mentor;
+import model.Mentee;
 
 /**
  *
- * @author Admin
+ * @author user
  */
-@WebServlet(name = "ListMentorControl", urlPatterns = {"/admin/mentor"})
-public class ListMentorControl extends HttpServlet {
+@WebServlet(name = "ViewMenteeDetails", urlPatterns = {"/admin/mteeDetail"})
+public class ViewMenteeDetails extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class ListMentorControl extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListMentorControl</title>");            
+            out.println("<title>Servlet ViewMenteeDetails</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ListMentorControl at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ViewMenteeDetails at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,22 +60,11 @@ public class ListMentorControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        MentorControl mc = new MentorControl();
-        List<Mentor> m = mc.getListMentor();
-
-        MentorControl dao = new MentorControl();
-        List<Mentor> mtorList;
-        String searchString2 = request.getParameter("searchString2");
-        if (searchString2 != null) {
-            mtorList = dao.getMetorBySearch(searchString2);
-        } else {
-            mtorList = mc.getListMentor();
-        }
-        request.setAttribute("mtorList", mtorList);
-//        if (mtorList.size() == 0) {
-//            request.setAttribute("result", "Mentor not found");
-//        }
-        request.getRequestDispatcher("/admin/admin-mentor-list.jsp").forward(request, response);
+        int mteeID = Integer.parseInt(request.getParameter("id"));
+        MenteeDAO mc = new MenteeDAO();
+        Mentee m = mc.getMenteeById(mteeID);
+        request.setAttribute("mtee", m);
+        request.getRequestDispatcher("/admin/mentee-detail.jsp").forward(request, response);
     }
 
     /**
