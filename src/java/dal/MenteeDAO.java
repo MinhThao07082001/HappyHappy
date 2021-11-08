@@ -107,7 +107,7 @@ public class MenteeDAO extends DBContext {
                 + "      ,[createTime]\n"
                 + "      ,[role]\n"
                 + "     FROM [SWP391].[dbo].[userCommon] u inner join mentee m on u.userID = m.userID "
-                + "     where id = ?";
+                + "     where m.userID = ?";
         try {
             PreparedStatement st = connection.prepareCall(sql);
             st.setInt(1, id);
@@ -184,7 +184,7 @@ public class MenteeDAO extends DBContext {
         Mentee m = new Mentee(1, "Name", "Name", "Name", "2019-10-10", 1, "Adderess", "0102391293", "", "Des", "No", 999, "2918-12-12");
         MenteeDAO md = new MenteeDAO();
         System.out.println(md.getListMentee().size());
-        System.out.println(md.getMenteeByEmail("vinhhshe150155@fpt.edu.vn"));;
+        System.out.println(md.getMenteeById(12));;
        
     }
 

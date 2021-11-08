@@ -18,6 +18,8 @@
         <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="assets/dist/css/adminlte.min.css">
+        
+       
     </head>
     <body class="hold-transition sidebar-mini">
         <div class="wrapper">
@@ -29,7 +31,9 @@
             <jsp:include page="admin-header.jsp"/>
 
             <!-- Content Wrapper. Contains page content -->
+
             <div class="content-wrapper">
+
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <div class="container-fluid">
@@ -49,12 +53,26 @@
 
                 <!-- Main content -->
                 <section class="content">
+
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h3 class="card-title">Mentor list</h3>
+                                        <h3 class="card-title h3" >Mentee list</h3>
+                                        <form class="form-inline" action="mentee" method="GET"> 
+                                            <div class="input-group input-group-sm" style="padding-left: 20px">
+
+                                                <input  class="form-control form-control-navbar" name="searchString" type="text" placeholder="Search" aria-label="Search">
+
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-navbar" type="submit">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                    
+                                    </div>
+                                            </div>
+                                        </form>
                                     </div>
                                     <!-- /.card-header -->
                                     <div class="card-body">
@@ -64,7 +82,6 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Status</th>
                                                     <th>Date Created</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -73,12 +90,10 @@
                                                 <c:forEach var="mtee" items="${requestScope.mteeList}">
                                                     <tr>
                                                         <td>${mtee.menteeID}</td>
-                                                        <td>${mtee.name}
-                                                        </td>
+                                                        <td>${mtee.name}</td>
                                                         <td>${mtee.email}</td>
-                                                        <td>${mtee.status}</td>
                                                         <td>${mtee.createTime}</td>
-                                                        <td><a href="#">Details</a></td>
+                                                        <td><a href="../admin/mteeDetail?id=${mtee.menteeID}">Details</a></td>
                                                     </tr>
                                                 </c:forEach>
 
@@ -87,7 +102,6 @@
                                                     <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Email</th>
-                                                    <th>Status</th>
                                                     <th>Date Created</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -96,10 +110,7 @@
                                     </div>
                                     <!-- /.card-body -->
                                 </div>
-                                <!-- /.card -->
 
-
-                                <!-- /.card -->
                             </div>
                             <!-- /.col -->
                         </div>

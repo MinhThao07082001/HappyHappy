@@ -6,6 +6,7 @@
 package controller.admin;
 
 import dal.MenteeDAO;
+import dal.admin.MenteeControl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -62,8 +63,19 @@ public class ListMenteeControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MenteeDAO md = new MenteeDAO();
-        List<Mentee> mList = md.getListMentee();
+
+        MenteeControl dao = new MenteeControl();
+        List<Mentee> mList;
+        String searchString = request.getParameter("searchString");
+        if (searchString != null) {
+            mList = dao.getMeteeBySearch(searchString);
+        } else {
+            mList = md.getListMentee();
+        }
         request.setAttribute("mteeList", mList);
+//        if (mList.size() == 0) {
+//            request.setAttribute("result", "Mentee not found");
+//        }
         request.getRequestDispatcher("/admin/admin-mentee-list.jsp").forward(request, response);
     }
 
