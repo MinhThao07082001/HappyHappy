@@ -38,7 +38,7 @@ public class UserDAO extends DBContext {
                                     rs.getString("description"),
                                     rs.getString("status"),
                                     rs.getInt("moneyLeft"),
-                                    rs.getString("createTime"),
+                                    rs.getDate("createTime"),
                                     rs.getInt("role"));
             }
         }catch(SQLException e){
@@ -66,7 +66,7 @@ public class UserDAO extends DBContext {
                                     rs.getString("description"),
                                     rs.getString("status"),
                                     rs.getInt("moneyLeft"),
-                                    rs.getString("createTime"),
+                                    rs.getDate("createTime"),
                                     rs.getInt("role"));
             }
         }catch(SQLException e){
@@ -93,7 +93,7 @@ public class UserDAO extends DBContext {
                                     rs.getString("description"),
                                     rs.getString("status"),
                                     rs.getInt("moneyLeft"),
-                                    rs.getString("createTime"),
+                                    rs.getDate("createTime"),
                                     rs.getInt("role"));
             }
         }catch(SQLException e){
@@ -138,7 +138,7 @@ public class UserDAO extends DBContext {
                                     rs.getString("description"),
                                     rs.getString("status"),
                                     rs.getInt("moneyLeft"),
-                                    rs.getString("createTime"),
+                                    rs.getDate("createTime"),
                                     rs.getInt("role"));
             }
         }catch(SQLException e){
@@ -182,7 +182,7 @@ public class UserDAO extends DBContext {
                         rs.getString("description"),
                         rs.getString("status"),
                         rs.getInt("moneyLeft"),
-                        rs.getString("createTime"),
+                        rs.getDate("createTime"),
                         rs.getInt("role"));
             }
         } catch (Exception e) {
