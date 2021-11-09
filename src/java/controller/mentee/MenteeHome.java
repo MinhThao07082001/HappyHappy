@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,11 +65,11 @@ public class MenteeHome extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MentorDAO md = new MentorDAO();
-        HashMap<Mentor,Float> mList = md.getListMentorTopRate();
-        //request.setAttribute("mtorList", mList); 
-        //Táº¡o PhÃ¢n Trang
+        LinkedHashMap<Mentor,Float> mList = md.getListMentorTopRate();
+
         request.setAttribute("mtorList", mList);
-        //PhÃ¢n trang xong
+       
+//PhÃ¢n trang xong
         request.getRequestDispatcher("/user/mentee/mentee-dashboard.jsp").forward(request, response);
         
     }

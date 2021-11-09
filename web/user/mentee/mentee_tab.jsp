@@ -17,10 +17,17 @@
                 <div class="sidebar-heading">Mentee</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/mentee/mentee_request.jsp">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/request">
+                            <i
+                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">today</i>
+                            My Request
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/listRequest">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i>
-                            Find Mentor
+                            Find Request
                         </a>
                     </li>
                     <li class="sidebar-menu-item">

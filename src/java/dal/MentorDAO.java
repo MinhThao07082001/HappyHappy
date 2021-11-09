@@ -15,9 +15,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import model.Major;
 import model.Mentor;
+import model.Rating;
 import model.Subject;
 public class MentorDAO extends DBContext {
 
@@ -195,7 +197,7 @@ public class MentorDAO extends DBContext {
     
    public List<Mentor> getListMentor() {
         List<Mentor> mList = new ArrayList<>();
-        String sql = "SELECT TOP 10 * FROM userCommon u inner join mentor m on u.userID = m.userID";
+        String sql = "SELECT top 10 * FROM userCommon u inner join mentor m on u.userID = m.userID";
         try {
             PreparedStatement st = connection.prepareCall(sql);
             ResultSet rs = st.executeQuery();
@@ -231,14 +233,13 @@ public class MentorDAO extends DBContext {
         }
         return null;
     }
-
     
-       public HashMap<Mentor,Float> getListMentorTopRate() {
-        HashMap<Mentor,Float> mList = new HashMap<>();
+       public LinkedHashMap<Mentor,Float> getListMentorTopRate() {
+        LinkedHashMap<Mentor,Float> mList = new LinkedHashMap<Mentor,Float>();      
         String sql = "SELECT TOP 10 Format(AVG(cast(rateAmount as float)),'N1') as [avg],mentorID from Rating group by mentorID order by [avg] desc";
         MentorDAO md = new MentorDAO();
         try {
-            PreparedStatement st = connection.prepareCall(sql);
+            PreparedStatement st = connection.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 mList.put(md.getMentorById(rs.getInt(2)), rs.getFloat(1));
@@ -301,6 +302,9 @@ public class MentorDAO extends DBContext {
     public static void main(String[] args) {
         Mentor m = new Mentor();
         MentorDAO md = new MentorDAO();
-        System.out.println(md.updateMentorCV(m));
+        System.out.println(md.getListMentorTopRate());
+        
+       
+        
     }
 }

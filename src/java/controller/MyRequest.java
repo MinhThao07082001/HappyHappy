@@ -68,8 +68,11 @@ public class MyRequest extends HttpServlet {
         UserDAO ud = new UserDAO();
         UserCommon u = ud.getEmail((String) session.getAttribute("email"));
         RequestDAO rd = new RequestDAO();
-        List<Request> rList = rd.getListRequestOfMe(u.getUserID());
-        request.setAttribute("rList", rList);
+        List<Request> rAcList = rd.getListRequestOfMeAccept(u.getUserID());
+        List<Request> rOnList = rd.getListRequestOfMeOnGoing(u.getUserID());
+        
+        request.setAttribute("rAList", rAcList);
+        request.setAttribute("rOList", rOnList);
         request.getRequestDispatcher("user/request.jsp").forward(request, response);
     }
 
