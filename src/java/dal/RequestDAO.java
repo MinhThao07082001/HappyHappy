@@ -20,8 +20,8 @@ import model.RequestSlotTime;
 public class RequestDAO extends DBContext {
 
     public int insertRequest(Request req) {
-        String sql = "INSERT INTO request(userID, subjectID, moneyPerSlot, timePerSlot, startTime, endTime, description, learnType) values\n"
-                + "                (?,?,?,?,?,?,?,?)\n";
+        String sql = "INSERT INTO request(userID, subjectID, moneyPerSlot, timePerSlot, startTime, endTime, description,status, learnType) values\n"
+                + "                (?,?,?,?,?,?,?,0,?)\n";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, req.getUserID());
@@ -164,7 +164,7 @@ public class RequestDAO extends DBContext {
         return getListRequest(sql);
     }
 
-    public List<Request> getListRequestOfMe(int userID) {
+    public List<Request> getListRequestOfMeAccept(int userID) {
         String sql = "SELECT TOP 1000 [requestID]\n"
                 + "      ,[userID]\n"
                 + "      ,[subjectID]\n"
@@ -177,7 +177,26 @@ public class RequestDAO extends DBContext {
                 + "      ,[learnType]\n"
                 + "      ,[reqTime]\n"
                 + "  FROM [SWP391].[dbo].[request]\n"
-                + "  where userID = " + userID;
+                + "  where status=1 and userID = " + userID;
+        List<Request> rList = getListRequest(sql);
+        return rList;
+
+    }
+    
+     public List<Request> getListRequestOfMeOnGoing(int userID) {
+        String sql = "SELECT TOP 1000 [requestID]\n"
+                + "      ,[userID]\n"
+                + "      ,[subjectID]\n"
+                + "      ,[moneyPerSlot]\n"
+                + "      ,[timePerSlot]\n"
+                + "      ,[startTime]\n"
+                + "      ,[endTime]\n"
+                + "      ,[description]\n"
+                + "      ,[status]\n"
+                + "      ,[learnType]\n"
+                + "      ,[reqTime]\n"
+                + "  FROM [SWP391].[dbo].[request]\n"
+                + "  where status=0 and userID = " + userID;
         List<Request> rList = getListRequest(sql);
         return rList;
 
@@ -279,7 +298,7 @@ public class RequestDAO extends DBContext {
 //        Request req = new Request(1, 1, 1, 11000, 112, "2023/11/19", "2022/11/19", "Uoa", 1, 1, "");
         
         RequestDAO re = new RequestDAO();
-        List<Request> l = re.getListRequestOfMe(2);
+        List<Request> l = re.getListRequestOfMeAccept(2);
 //        l = re.getListRequestOfMentee();
 //        for (Request request : l) {
 //            System.out.println(request.getListSlotTime().get(0).getSlotFrom());
