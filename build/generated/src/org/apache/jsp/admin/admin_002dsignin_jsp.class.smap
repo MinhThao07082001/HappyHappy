@@ -1,0 +1,20 @@
+SMAP
+admin_002dsignin_jsp.java
+JSP
+*S JSP
+*F
++ 0 admin-signin.jsp
+admin/admin-signin.jsp
+*L
+1,21:44
+22:65,3
+23,11:68
+34,2:80
+35:82
+36:83,3
+37:86
+38,2:88
+39,5:90
+44:95,3
+45,91:98
+*E
