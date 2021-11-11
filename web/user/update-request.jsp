@@ -1,94 +1,275 @@
-<%-- 
-    Document   : update-request
-    Created on : Oct 12, 2021, 2:05:58 AM
-    Author     : Admin
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<html lang="en"
+      dir="ltr">
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    <%@page contentType="text/html" pageEncoding="UTF-8"%>
+    <!DOCTYPE html>
+
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Instructor - Public profile</title>
+
+        <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
+        <meta name="robots"
+              content="noindex">
+
+        <!-- Custom Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Oswald:400,500,700%7CRoboto:400,500%7CRoboto:400,500&amp;display=swap"
+              rel="stylesheet">
+        <!-- Perfect Scrollbar -->
+        <link type="text/css"
+              href="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.css"
+              rel="stylesheet">
+        <!-- Material Design Icons -->
+        <link type="text/css"
+              href="${pageContext.request.contextPath}/user/assets/css/material-icons.css"
+              rel="stylesheet">
+        <!-- Font Awesome Icons -->
+        <link type="text/css"
+              href="${pageContext.request.contextPath}/user/assets/css/fontawesome.css"
+              rel="stylesheet">
+        <!-- Preloader -->
+        <link type="text/css"
+              href="${pageContext.request.contextPath}/user/assets/vendor/spinkit.css"
+              rel="stylesheet">
+        <!-- App CSS -->
+        <link type="text/css"
+              href="${pageContext.request.contextPath}/user/assets/css/app.css"
+              rel="stylesheet">
+
+        <style>
+            div th td{
+                display:flex;
+                justify-content:flex-end;
+            }
+        </style>
+
     </head>
-    <body>
 
-        <form action="editRequest" method="POST">
-            ID:<input type="text" value="${req.requestID}"  disabled><br/>
-            <input type="text" name="reqID" value="${req.requestID}"  hidden>
-            Subject: <select name="subject">
-                <option value="${req.subject.subjectName}">${req.subject.subjectName}</option>
-                <c:forEach items="${requestScope.sNameList}" var="sName">
-                    <option value="${sName}">${sName}</option>
-                </c:forEach>
-            </select>
-            Level: <select name="level">
-                <option value="${req.subject.level}">Grade ${req.subject.level}</option>
-                <c:forEach begin="1" end="12" var="i">
-                    <option value="${i}">
-                        Grade ${i}
-                    </option>
-                </c:forEach>
-            </select>
-            Money Per Slot   <input type="number" value="${req.moneyPerSlot}"name="moneyPerSlot"><br/>
-            timePerSlot:   <input type="number" id="timePerSlot"value="${req.timePerSlot}" name="timePerSlot"><br/>
 
-            startTime: <input type="date" value="${fn:substring(req.startTime,0, 10)}" name="startTime"><br/>
-            endTime:  <input type="date" value="${fn:substring(req.endTime,0, 10)}" name="endTime"><br/>
-            Note:  <input type="text" name="description" value="${req.description}"><br/>
-            LearnType:
-            <select name="learnType">
-                <option value="${req.learnType}">${req.learnType eq 1?"Offline":"Online"}</option>
-                <option value="1">Offline</option>
-                <option value="2">Online</option>
-            </select><br/>
-            <!--<input type="text" name="2" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}">-->
-            Create Date: <input type="text" disabled value="${req.reqTime}"><br/>
+    <body class=" layout-fluid" style="background-color: #eaf4fc">
 
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                </tr>
-                <tr>
-                    <td>From</td>
-                    <c:forEach begin="2" end="8" var="i">
-                        <td><input type="time" name="${i}" class="time time-start" value="${fn:substring(req.listSlotTime[i-2].slotFrom,0, 5)}"></td>
-                        </c:forEach>
-    <!--                    <td><input type="time" name="2" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
-                        <td><input type="time" name="3" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
-                        <td><input type="time" name="4" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
-                        <td><input type="time" name="5" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
-                        <td><input type="time" name="6" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
-                        <td><input type="time" name="7" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>
-                        <td><input type="time" name="8" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}"></td>-->
-                </tr>
-                <tr>
-                    <td>To</td>
-                    <c:forEach begin="2" end="8" var="i">
-                        <td><input type="time" name="${i}" class="time" value="${fn:substring(req.listSlotTime[i-2].slotTo,0, 5)}"></td>
-                        </c:forEach>
-                    <!--                    <td><input type="time" name="2" class="time"></td>
-                                        <td><input type="time" name="3" class="time"></td>
-                                        <td><input type="time" name="4" class="time"></td>
-                                        <td><input type="time" name="5" class="time"></td>
-                                        <td><input type="time" name="6" class="time"></td>
-                                        <td><input type="time" name="7" class="time"></td>
-                                        <td><input type="time" name="8" class="time"></td>-->
+        <div class="preloader">
+            <div class="sk-chase">
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+                <div class="sk-chase-dot"></div>
+            </div>
+        </div>
+        <div class="mdk-header-layout js-mdk-header-layout">
+            <c:if test="${sessionScope.userCommon.role eq 1}">
+                <jsp:include page="mentor/mentor_header.jsp"></jsp:include>
+            </c:if>
+            <c:if test="${sessionScope.userCommon.role eq 2}">
+                <jsp:include page="mentee/mentee_header.jsp"></jsp:include>
+            </c:if>
 
-                </tr>
-            </table>
-            <input type="text" id="timeJson" name="timeJson" hidden>
-            <input type="submit">
-        </form>
-        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+            <div class="mdk-header-layout__content">
+
+
+                <div data-push
+                     data-responsive-width="992px"
+                     class="mdk-drawer-layout js-mdk-drawer-layout">
+
+                    <div class="mdk-drawer-layout__content page ">
+                        <div class="container-fluid page__container">
+                            <ol class="breadcrumb">
+                                <c:if test="${sessionScope.userCommon.role eq 1}">
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentor/home">Home</a></li>
+                                    <li class="breadcrumb-item active">Request Mentee</li>
+                                    </c:if>
+                                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentee/home">Home</a></li>
+                                    <li class="breadcrumb-item active">Request Mentor</li>
+                                    </c:if> 
+                                
+                            </ol>
+
+                            <div class="card-header flex-container " >
+
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>      
+                                                <p class="card-subtitle">Update your request </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <form action="editRequest" method="POST">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <p><strong>1.Subject's Information</strong></p>
+<!--                                                    ID:<input type="text" value="${req.requestID}"  disabled><br/>-->
+                                                    <input type="text" name="reqID" value="${req.requestID}"  hidden>
+                                                    Subject: <select name="subject">
+                                                        <option value="${req.subject.subjectName}">${req.subject.subjectName}</option>
+                                                        <c:forEach items="${requestScope.sNameList}" var="sName">
+                                                            <option value="${sName}">${sName}</option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    Level:  <select name="level">
+                                                        <option value="${req.subject.level}">Grade ${req.subject.level}</option>
+                                                        <c:forEach begin="1" end="12" var="i">
+                                                            <option value="${i}">
+                                                                Grade ${i}
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
+                                                    </br>
+                                                    </br>
+                                                    CourseType: 
+                                                    <select name="learnType">
+                                                        <option value="${req.learnType}">${req.learnType eq 1?"Offline":"Online"}</option>
+                                                        <option value="1">Offline</option>
+                                                        <option value="2">Online</option>
+                                                    </select><br/>
+                                                    <!--<input type="text" name="2" class="time" value="${fn:substring(req.listSlotTime[0].slotFrom,0, 5)}">-->
+                                                    <!--Create Date: <input type="text" disabled value="${req.reqTime}"><br/>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>          
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    <p><strong>2.Time and Fees</strong></p>
+                                                    Budget per lesson: </br>
+                                                    <input type="number" value="${req.moneyPerSlot}"name="moneyPerSlot"style="border-radius:  5px"> </br></br> 
+                                                    Length of each lesson: </br> 
+                                                    <input type="number" id="timePerSlot"value="${req.timePerSlot}" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                                    <div class="row">     
+                                                        <div class=" col-6">
+                                                            Start Time: <input  type="date" value="${fn:substring(req.startTime,0, 10)}" name="startTime">
+                                                        </div>
+                                                        <div class="col-6">
+                                                            End Time: <input  type="date" value="${fn:substring(req.endTime,0, 10)}" name="endTime">
+                                                        </div>
+                                                    </div>
+
+                                                    </br> 
+
+                                                    <table>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>Monday</td>
+                                                            <td>Tuesday</td>
+                                                            <td>Wednesday</td>
+                                                            <td>Thursday</td>
+                                                            <td>Friday</td>
+                                                            <td>Saturday</td>
+                                                            <td>Sunday</td>
+                                                        </tr>
+
+                                                        <tr>
+                                                            <td>From</td>
+                                                            <c:forEach begin="2" end="8" var="i">
+                                                                <td><input type="time" name="${i}" class="time time-start" value="${fn:substring(req.listSlotTime[i-2].slotFrom,0, 5)}"></td>
+                                                                </c:forEach>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>To</td>
+                                                            <c:forEach begin="2" end="8" var="i">
+                                                                <td><input type="time" name="${i}" class="time" value="${fn:substring(req.listSlotTime[i-2].slotTo,0, 5)}"></td>
+                                                                </c:forEach>
+
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="media align-items-center">
+                                                <div class="media-body">
+                                                    </br>
+                                                    <c:if test="${sessionScope.userCommon.role eq 1}">
+                                                        <p><strong> 3.Mentor's expectation from Mentee</strong></p>
+                                                    </c:if>
+                                                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                                                        <p><strong> 3.Mentee's expectation from Mentor</strong></p>
+                                                    </c:if>
+                                                    Detail Description: </br>
+                                                    <textarea type="text" name="description" value="${req.description}" rows="4" cols="70">${req.description} </textarea></br>   
+                                                    <input type="text" id="timeJson" name="timeJson" hidden>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group " style="text-align: center;">
+                                        <button type="submit " style="border-radius: 5px; width: 10%;"
+                                                class="btn btn-primary">
+                                            Submit
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Nav Tab-->
+                    <c:if test="${sessionScope.userCommon.role eq 1}">
+                        <jsp:include page="mentor/mentor_tab.jsp"></jsp:include>
+                    </c:if>
+                    <c:if test="${sessionScope.userCommon.role eq 2}">
+                        <jsp:include page="mentee/mentee_tab.jsp"></jsp:include>
+                    </c:if>
+                    <!--End of Nav Tab-->
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <!-- jQuery -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/popper.min.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/bootstrap.min.js"></script>
+        <!-- Perfect Scrollbar -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/perfect-scrollbar.min.js"></script>
+        <!-- MDK -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/dom-factory.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/material-design-kit.js"></script>
+        <!-- App JS -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/app.js"></script>
+        <!-- Highlight.js -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/hljs.js"></script>
+        <!-- App Settings (safe to remove) -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/app-settings.js"></script>
+        <!-- Global Settings -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/settings.js"></script>
+        <!-- Moment.js -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/moment.min.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/moment-range.js"></script>
+        <!-- Chart.js -->
+        <script src="${pageContext.request.contextPath}/user/assets/vendor/Chart.min.js"></script>
+        <script src="${pageContext.request.contextPath}/user/assets/js/chartjs.js"></script>
+        <!-- Student Dashboard Page JS -->
+        <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
+        <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
+
+
         <script>
             $(document).ready(function () {
                 var arr = [];
