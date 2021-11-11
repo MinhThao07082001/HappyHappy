@@ -88,8 +88,8 @@
                                             <div class="col-sm-9">
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="Your First Image"
+                                        <div  class="form-group row" >
+                                            <label required="" for="Your First Image" 
                                                    class="col-sm-3 col-form-label form-label">Your First Image</label>
                                             <div class="col-sm-8">
                                                 <div class="row">
@@ -99,8 +99,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="Your Second Image"
+                                        <div  class="form-group row">
+                                            <label required="" for="Your Second Image"
                                                    class="col-sm-3 col-form-label form-label">Your Second Image</label>
                                             <div class="col-sm-8">
                                                 <div class="row">

@@ -3,28 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.admin;
 
-import dal.RequestDAO;
-import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Request;
-import model.UserCommon;
 
 /**
  *
- * @author Admin
+ * @author admin
  */
-@WebServlet(name = "MyRequest", urlPatterns = {"/request"})
-public class MyRequest extends HttpServlet {
+@WebServlet(name = "SignOutAdmin", urlPatterns = {"/adminout"})
+public class SignOutAdmin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +37,10 @@ public class MyRequest extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MyRequest</title>");            
+            out.println("<title>Servlet SignOutAdmin</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MyRequest at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SignOutAdmin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,16 +58,8 @@ public class MyRequest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        UserDAO ud = new UserDAO();
-        UserCommon u = ud.getEmail((String) session.getAttribute("email"));
-        RequestDAO rd = new RequestDAO();
-        List<Request> rAcList = rd.getListRequestOfMeAccept(u.getUserID());
-        List<Request> rOnList = rd.getListRequestOfMeOnGoing(u.getUserID());
-        
-        request.setAttribute("rAList", rAcList);
-        request.setAttribute("rOList", rOnList);
-        request.getRequestDispatcher("user/request.jsp").forward(request, response);
+       request.getSession().invalidate();
+       response.sendRedirect("admin/signin");
     }
 
     /**

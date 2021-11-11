@@ -5,17 +5,21 @@
  */
 package controller.mentee;
 
+import dal.CourseDAO;
 import dal.MentorDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.Mentee;
 import model.Mentor;
 
 /**
@@ -64,10 +68,12 @@ public class MenteeHome extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         MentorDAO md = new MentorDAO();
-        HashMap<Mentor,Float> mList = md.getListMentorTopRate();
-        //request.setAttribute("mtorList", mList); 
-        //Táº¡o PhÃ¢n Trang
+        CourseDAO cd = new CourseDAO();
+        HttpSession session = request.getSession();
+        Mentee mtee = (Mentee) session.getAttribute("mentee");
+        LinkedHashMap<Mentor,Float> mList = md.getListMentorTopRate();
         request.setAttribute("mtorList", mList);
+       
         //PhÃ¢n trang xong
         request.getRequestDispatcher("/user/mentee/mentee-dashboard.jsp").forward(request, response);
         

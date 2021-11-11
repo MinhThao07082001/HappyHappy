@@ -24,24 +24,18 @@
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-view-course.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/listCourse">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>
                             Courses
                         </a>
                     </li>
+                    
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-my-courses.html">
-                            <i
-                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">schedule</i>
-                            My Schedule
-                        </a>
-                    </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-help-center.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/mentorAuthen">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">credit_card</i>
-                            Payment
+                            Mentor Authentication
                         </a>
                     </li>
 

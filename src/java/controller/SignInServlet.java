@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
-
+import java.util.Base64;
 import dal.MenteeDAO;
 import dal.MentorDAO;
 import dal.UserDAO;
@@ -46,8 +46,9 @@ public class SignInServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String m = request.getParameter("email");
         String p = request.getParameter("password");
+        p = Base64.getEncoder().encodeToString(p.getBytes());
         UserDAO db = new UserDAO();
-        UserCommon u = db.getAccount(m, p);
+        UserCommon u = db.getAccount(m, p);  
         if (u == null) {          
             request.setAttribute("mess", "Email or password is not correct");
             request.getRequestDispatcher("SignIn.jsp").forward(request, response);

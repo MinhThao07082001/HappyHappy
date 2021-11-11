@@ -140,8 +140,8 @@
                                     <div class="form-group">
                                         <label class="form-label" for="email">Email address: <span style="color:red">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <input id="email" type="email" name="email"
-                                                   required="" class="form-control form-control-prepended" placeholder="Your email address">
+                                            <input id="email" type="text" name="email"
+                                                   pattern="[\w\.]+@([\w-]+\.)+[\w-]{2,4}" required="" class="form-control form-control-prepended" placeholder="Your email address">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <span class="far fa-envelope"></span>
@@ -153,7 +153,7 @@
                                         <label class="form-label" for="password">Password: <span style="color:red">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <input id="password" type="password" name="password" 
-                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required="" class="form-control form-control-prepended" placeholder="Enter your password">
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}"  required="" class="form-control form-control-prepended" placeholder="Enter your password">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <span class="far fa-key"></span>
@@ -171,7 +171,7 @@
                                         <label class="form-label" for="password">Confirm Password: <span style="color:red">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <input type="password" id="repeat-new-pass" name="repeat-password" 
-                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  required="" class="form-control form-control-prepended" placeholder="Confirm your new password">
+                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,50}"  required="" class="form-control form-control-prepended" placeholder="Confirm your new password">
                                             <div class="input-group-prepend">
                                                 <div class="input-group-text">
                                                     <span class="far fa-key"></span>

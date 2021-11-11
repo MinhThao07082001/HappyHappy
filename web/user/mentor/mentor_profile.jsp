@@ -105,10 +105,7 @@
                                     <a href="student-profile.html"
                                        class="nav-link active">Courses</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="student-profile-posts.html"
-                                       class="nav-link">Posts</a>
-                                </li>
+                                
                             </ul>
                         </div>
 

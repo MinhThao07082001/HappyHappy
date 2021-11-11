@@ -5,8 +5,7 @@
  */
 package controller;
 
-import dal.RequestDAO;
-import dal.UserDAO;
+import dal.CourseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -16,15 +15,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.Request;
+import model.Course;
 import model.UserCommon;
 
 /**
  *
- * @author Admin
+ * @author vinh1
  */
-@WebServlet(name = "MyRequest", urlPatterns = {"/request"})
-public class MyRequest extends HttpServlet {
+@WebServlet(name = "ListCourseController", urlPatterns = {"/listCourse"})
+public class ListCourseController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,10 +42,10 @@ public class MyRequest extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MyRequest</title>");            
+            out.println("<title>Servlet ListCourseController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet MyRequest at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ListCourseController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -64,16 +63,16 @@ public class MyRequest extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        UserDAO ud = new UserDAO();
-        UserCommon u = ud.getEmail((String) session.getAttribute("email"));
-        RequestDAO rd = new RequestDAO();
-        List<Request> rAcList = rd.getListRequestOfMeAccept(u.getUserID());
-        List<Request> rOnList = rd.getListRequestOfMeOnGoing(u.getUserID());
-        
-        request.setAttribute("rAList", rAcList);
-        request.setAttribute("rOList", rOnList);
-        request.getRequestDispatcher("user/request.jsp").forward(request, response);
+        CourseDAO cd = new CourseDAO();
+                HttpSession session = request.getSession();
+        UserCommon u = (UserCommon) session.getAttribute("userCommon");
+        List<Course> doneList = cd.getCoursesDoneByUserID(u.getUserID(), u.getRole());
+        List<Course> notDoneList = cd.getCoursesNotDoneByUserID(u.getUserID(), u.getRole());
+        List<Course> futureList = cd.getCoursesFutureByUserID(u.getUserID(), u.getRole());
+        request.setAttribute("doneList", doneList);
+        request.setAttribute("notDoneList", notDoneList);
+        request.setAttribute("futureList", futureList);
+        request.getRequestDispatcher("user/course-list.jsp").forward(request, response);
     }
 
     /**

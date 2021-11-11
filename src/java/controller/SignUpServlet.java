@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package controller;
-
+import java.util.Base64;
 import dal.MenteeDAO;
 import dal.MentorDAO;
 import dal.UserDAO;
@@ -94,7 +94,9 @@ public class SignUpServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String e = request.getParameter("email");
         String p = request.getParameter("password");
+        p = Base64.getEncoder().encodeToString(p.getBytes());
         String rp = request.getParameter("repeat-password");
+        rp = Base64.getEncoder().encodeToString(rp.getBytes());
         String n = request.getParameter("name");
         String dob = request.getParameter("dob");
         String ph = request.getParameter("phone");

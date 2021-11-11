@@ -3,7 +3,7 @@
     Created on : Oct 3, 2021, 11:43:47 PM
     Author     : WacMac
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en"
       dir="ltr">
@@ -347,9 +347,16 @@
                                     <div class="media-body">
                                         <h4 class="card-title">List of Request</h4>                                        
                                     </div>
+                                    <c:if test="${mentor.authen eq 0}">
                                     <div class="media-right mt-2 mt-xs-plus-0">
+                                            <a class="btn-grad" onclick="alert('You need to authenticate to create request')" href="${pageContext.request.contextPath}/mentorAuthen">Create a request</a>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${mentor.authen eq 1}">
+                                        <div class="media-right mt-2 mt-xs-plus-0">
                                         <a class="btn-grad" href="${pageContext.request.contextPath}/createRequest">Create a request</a>
                                     </div>
+                                    </c:if>
                                 </div>
                                 <div class="tabs">
 

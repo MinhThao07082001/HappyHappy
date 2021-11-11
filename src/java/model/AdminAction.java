@@ -46,5 +46,11 @@ public class AdminAction {
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "AdminAction{" + "adminID=" + adminID + ", action=" + action + ", createTime=" + createTime + '}';
+    }
+    
     
 }

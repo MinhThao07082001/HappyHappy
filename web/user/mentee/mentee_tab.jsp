@@ -17,14 +17,21 @@
                 <div class="sidebar-heading">Mentee</div>
                 <ul class="sidebar-menu sm-active-button-bg">
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/mentee/mentee_request.jsp">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/request">
                             <i
-                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i>
-                            Find Mentor
+                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">today</i>
+                            My Request
                         </a>
                     </li>
                     <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-view-course.html">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/listRequest">
+                            <i
+                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">search</i>
+                            Find Request
+                        </a>
+                    </li>
+                    <li class="sidebar-menu-item">
+                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/listCourse">
                             <i
                                 class="sidebar-menu-icon sidebar-menu-icon--left material-icons">import_contacts</i>
                             Courses
@@ -37,13 +44,7 @@
                             My Schedule
                         </a>
                     </li>
-                    <li class="sidebar-menu-item">
-                        <a class="sidebar-menu-button" href="${pageContext.request.contextPath}/user/student-help-center.html">
-                            <i
-                                class="sidebar-menu-icon sidebar-menu-icon--left material-icons">credit_card</i>
-                            Terms of Services
-                        </a>
-                    </li>
+                    
 
                 </ul>
                 <div class="sidebar-heading">Account</div>

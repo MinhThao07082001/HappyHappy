@@ -44,20 +44,4 @@ public class DateParse {
         c.setTime(date);
         return c.get(Calendar.DAY_OF_WEEK);
     }
-
-//    public static void main(String[] args) throws ParseException {
-////        System.out.println(dmyTOymd("19-11-2001"));
-//        System.out.println(dateDiff("2021-10-10", "2021-10-19"));
-//        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
-//        Calendar start = Calendar.getInstance();
-//        start.setTime(myFormat.parse("2021-10-27"));
-//        Calendar end = Calendar.getInstance();
-//        end.setTime(myFormat.parse("2021-11-17"));;
-//
-//        for (Date date = start.getTime(); start.before(end); start.add(Calendar.DATE, 1), date = start.getTime()) {
-//            // Do your job here with `date`.
-//            System.out.println(getDayByDate(date));
-//            System.out.println(myFormat.format(date));
-//        }
-//    }
 }

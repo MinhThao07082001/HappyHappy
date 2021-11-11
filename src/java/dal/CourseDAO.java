@@ -7,10 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import model.Course;
+import model.CourseSlot;
 import model.Request;
 import model.RequestSlotTime;
 
@@ -184,6 +186,341 @@ public class CourseDAO extends DBContext {
         }
         return 0;
 
+    }
+
+    public List<CourseSlot> getSlotByCourse(int id) {
+        List<CourseSlot> sList = new ArrayList<>();
+        String sql = "SELECT TOP (1000) [slotID]\n"
+                + "      ,[slotTimeFrom]\n"
+                + "      ,[slotTimeTo]\n"
+                + "      ,[courseID]\n"
+                + "      ,[status]\n"
+                + "      ,[description]\n"
+                + "  FROM [SWP391].[dbo].[slot] where courseID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                sList.add(new CourseSlot(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), rs.getString(6)));
+}
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+
+        return sList;
+
+    }
+
+    public List<Course> getCoursesNotDoneByUserID(int id, int role) {
+        String sql = "";
+        if (role == 2) {
+            sql = "SELECT TOP (1000) c.[courseID]\n"
+                    + "      ,c.[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,c.[timePerSlot]\n"
+                    + "      ,c.[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,c.[learnType]\n"
+                    + "      ,c.[status]\n"
+                    + "      ,c.[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                    + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd > GETDATE() and timeStart < GETDATE()";
+        } else {
+            sql = "SELECT TOP (1000) [courseID]\n"
+                    + "      ,[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,[timePerSlot]\n"
+                    + "      ,[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,[learnType]\n"
+                    + "      ,[status]\n"
+                    + "      ,[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] where mentorID = ? and timeEnd > GETDATE() and timeStart < GETDATE()";
+        }
+
+        List<Course> cList = new ArrayList<>();
+        MentorDAO md = new MentorDAO();
+        SubjectDAO sd = new SubjectDAO();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setCourseID(rs.getInt(1));
+                c.setSubjectID(rs.getInt(2));
+                c.setMentorID(rs.getInt(3));
+                c.setSlots(rs.getInt(4));
+                c.setTimePerSlot(rs.getInt(5));
+                c.setMoneyPerSlot(rs.getInt(6));
+                c.setTimeStart(rs.getString(7));
+                c.setTimeEnd(rs.getString(8));
+                c.setLearnType(rs.getInt(9));
+                c.setStatus(rs.getInt(10));
+                c.setDescription(rs.getString(11));
+                c.setCreateTime(rs.getString(12));
+                c.setMentor(md.getMentorById(c.getMentorID()));
+                c.setListCourseSlot(getSlotByCourse(c.getCourseID()));
+                c.setSlotDone(getSlotDoneByCourseID(c.getCourseID()));
+                c.setSubject(sd.getSubject(c.getSubjectID()));
+                cList.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cList;
+
+    }
+
+    public List<Course> getCoursesDoneByUserID(int id, int role) {
+        String sql = "";
+        if (role == 2) {
+            sql = "SELECT TOP (1000) c.[courseID]\n"
+                    + "      ,c.[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,c.[timePerSlot]\n"
+                    + "      ,c.[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,c.[learnType]\n"
+                    + "      ,c.[status]\n"
+                    + "      ,c.[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                    + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeEnd < GETDATE()";
+        } else {
+            sql = "SELECT TOP (1000) [courseID]\n"
+                    + "      ,[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,[timePerSlot]\n"
+                    + "      ,[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,[learnType]\n"
+                    + "      ,[status]\n"
+                    + "      ,[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] where mentorID = ? and timeEnd < GETDATE()";
+        }
+
+        List<Course> cList = new ArrayList<>();
+        MentorDAO md = new MentorDAO();
+        SubjectDAO sd = new SubjectDAO();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setCourseID(rs.getInt(1));
+                c.setSubjectID(rs.getInt(2));
+                c.setMentorID(rs.getInt(3));
+                c.setSlots(rs.getInt(4));
+                c.setTimePerSlot(rs.getInt(5));
+                c.setMoneyPerSlot(rs.getInt(6));
+                c.setTimeStart(rs.getString(7));
+                c.setTimeEnd(rs.getString(8));
+                c.setLearnType(rs.getInt(9));
+                c.setStatus(rs.getInt(10));
+                c.setDescription(rs.getString(11));
+                c.setCreateTime(rs.getString(12));
+                c.setMentor(md.getMentorById(c.getMentorID()));
+                c.setListCourseSlot(getSlotByCourse(c.getCourseID()));
+                c.setSlotDone(getSlotDoneByCourseID(c.getCourseID()));
+                c.setSubject(sd.getSubject(c.getSubjectID()));
+                cList.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cList;
+
+    }
+
+    public List<Course> getCoursesFutureByUserID(int id, int role) {
+        String sql = "";
+        if (role == 2) {
+            sql = "SELECT TOP (1000) c.[courseID]\n"
+                    + "      ,c.[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,c.[timePerSlot]\n"
+                    + "      ,c.[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,c.[learnType]\n"
+                    + "      ,c.[status]\n"
+                    + "      ,c.[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                    + "  inner join request req on r.requestID = req.requestID where req.userID = ? and timeStart > GETDATE()";
+        } else {
+            sql = "SELECT TOP (1000) [courseID]\n"
+                    + "      ,[subjectID]\n"
+                    + "      ,[mentorID]\n"
+                    + "      ,[slots]\n"
+                    + "      ,[timePerSlot]\n"
+                    + "      ,[moneyPerSlot]\n"
+                    + "      ,[timeStart]\n"
+                    + "      ,[timeEnd]\n"
+                    + "      ,[learnType]\n"
+                    + "      ,[status]\n"
+                    + "      ,[description]\n"
+                    + "      ,[createTime]\n"
+                    + "  FROM [SWP391].[dbo].[course] where mentorID = ? and timeStart > GETDATE()";
+        }
+        List<Course> cList = new ArrayList<>();
+        MentorDAO md = new MentorDAO();
+        SubjectDAO sd = new SubjectDAO();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setCourseID(rs.getInt(1));
+                c.setSubjectID(rs.getInt(2));
+                c.setMentorID(rs.getInt(3));
+                c.setSlots(rs.getInt(4));
+                c.setTimePerSlot(rs.getInt(5));
+                c.setMoneyPerSlot(rs.getInt(6));
+                c.setTimeStart(rs.getString(7));
+                c.setTimeEnd(rs.getString(8));
+                c.setLearnType(rs.getInt(9));
+                c.setStatus(rs.getInt(10));
+                c.setDescription(rs.getString(11));
+                c.setCreateTime(rs.getString(12));
+                c.setMentor(md.getMentorById(c.getMentorID()));
+                c.setListCourseSlot(getSlotByCourse(c.getCourseID()));
+                c.setSlotDone(getSlotDoneByCourseID(c.getCourseID()));
+                c.setSubject(sd.getSubject(c.getSubjectID()));
+                cList.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cList;
+
+    }
+
+    public List<Course> getCoursesByUserID(int id) {
+        String sql = "SELECT TOP (1000) c.[courseID]\n"
+                + "      ,c.[subjectID]\n"
+                + "      ,[mentorID]\n"
+                + "      ,[slots]\n"
+                + "      ,c.[timePerSlot]\n"
+                + "      ,c.[moneyPerSlot]\n"
+                + "      ,[timeStart]\n"
+                + "      ,[timeEnd]\n"
+                + "      ,c.[learnType]\n"
+                + "      ,c.[status]\n"
+                + "      ,c.[description]\n"
+                + "      ,[createTime]\n"
+                + "  FROM [SWP391].[dbo].[course] c inner join requestsCourse r on c.courseID = r.courseID \n"
+                + "  inner join request req on r.requestID = req.requestID where req.userID = ?";
+        List<Course> cList = new ArrayList<>();
+        MentorDAO md = new MentorDAO();
+        SubjectDAO sd = new SubjectDAO();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Course c = new Course();
+                c.setCourseID(rs.getInt(1));
+                c.setSubjectID(rs.getInt(2));
+                c.setMentorID(rs.getInt(3));
+                c.setSlots(rs.getInt(4));
+                c.setTimePerSlot(rs.getInt(5));
+                c.setMoneyPerSlot(rs.getInt(6));
+                c.setTimeStart(rs.getString(7));
+                c.setTimeEnd(rs.getString(8));
+                c.setLearnType(rs.getInt(9));
+                c.setStatus(rs.getInt(10));
+                c.setDescription(rs.getString(11));
+                c.setCreateTime(rs.getString(12));
+                c.setMentor(md.getMentorById(c.getMentorID()));
+                c.setListCourseSlot(getSlotByCourse(c.getCourseID()));
+                c.setSlotDone(getSlotDoneByCourseID(c.getCourseID()));
+                c.setSubject(sd.getSubject(c.getSubjectID()));
+                cList.add(c);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return cList;
+
+    }
+
+    public Course getCourseByID(int id) {
+        String sql = "SELECT TOP (1000) c.[courseID]\n"
+                + "      ,c.[subjectID]\n"
+                + "      ,[mentorID]\n"
+                + "      ,[slots]\n"
+                + "      ,c.[timePerSlot]\n"
+                + "      ,c.[moneyPerSlot]\n"
+                + "      ,[timeStart]\n"
+                + "      ,[timeEnd]\n"
+                + "      ,c.[learnType]\n"
+                + "      ,c.[status]\n"
+                + "      ,c.[description]\n"
+                + "      ,[createTime]\n"
+                + "  FROM [SWP391].[dbo].[course] c where c.courseID = ?";
+        MentorDAO md = new MentorDAO();
+        SubjectDAO sd = new SubjectDAO();
+        Course c = new Course();
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+
+                c.setCourseID(rs.getInt(1));
+                c.setSubjectID(rs.getInt(2));
+                c.setMentorID(rs.getInt(3));
+                c.setSlots(rs.getInt(4));
+                c.setTimePerSlot(rs.getInt(5));
+                c.setMoneyPerSlot(rs.getInt(6));
+                c.setTimeStart(rs.getString(7));
+                c.setTimeEnd(rs.getString(8));
+                c.setLearnType(rs.getInt(9));
+                c.setStatus(rs.getInt(10));
+                c.setDescription(rs.getString(11));
+                c.setCreateTime(rs.getString(12));
+                c.setMentor(md.getMentorById(c.getMentorID()));
+                c.setListCourseSlot(getSlotByCourse(c.getCourseID()));
+                c.setSlotDone(getSlotDoneByCourseID(c.getCourseID()));
+                c.setSubject(sd.getSubject(c.getSubjectID()));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return c;
+    }
+
+    public int getSlotDoneByCourseID(int id) {
+        String sql = "SELECT count(*)\n"
+                + "  FROM [SWP391].[dbo].[slot] where courseID = ? and slotTimeFrom < getDate()";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return 0;
     }
 
 }

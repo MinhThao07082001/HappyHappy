@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="en"
@@ -10,7 +11,7 @@
               content="IE=edge">
         <meta name="viewport"
               content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Student - Dashboard</title>
+        <title>Mentee - Dashboard</title>
         <!-- Prevent the demo from appearing in search engines (REMOVE THIS) -->
         <meta name="robots"
               content="noindex">
@@ -38,15 +39,7 @@
               href="${pageContext.request.contextPath}/user/assets/css/app.css"
               rel="stylesheet">
 
-        <style>
-            .pagination a.active {
-                background-color: #006cfa;
-                color: white;
-            }
-            .pagination a:hover:not(.active) {
-                background-color: lightskyblue;
-            }
-        </style>
+   
     </head>
     <body class=" layout-fluid" style="background-color: #eaf4fc">
         <div class="preloader">
@@ -107,18 +100,20 @@
                             <div class="row">
                                 <c:forEach var="mtorItem" items="${requestScope.mtorList}">
                                     <c:set var="mtor" value="${mtorItem.key}"></c:set>
-                                    <div class="col-md-6">
+                                        <div class="col-md-6 Paginate module-name">
+
                                         <div class="card">
-                                            <div class="card-body">
-                                                <div class="d-flex flex-column flex-sm-row">
-                                                    <h4>${mtorItem.value}</h4>
                                              
+                                                <div class=" card-body">
+
+                                                    <div class=" d-flex flex-column flex-sm-row">
+                                                        <h4>${mtorItem.value} ☆</h4>  
                                                     <a href="../rate?id=${mtor.mentorID}"
                                                        class="avatar avatar-lg avatar-4by3 mb-3 w-xs-plus-down-100 mr-sm-3">
                                                         <img src="${mtor.imgAvt}" alt="Card image cap"
                                                              class="avatar-img rounded">
-                                                        
                                                     </a>
+                                                        
                                                     <a href="../conversation?id=${mtor.mentorID}">
                                                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M15 4v7H5.17L4 12.17V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z"/></svg>
                                                     </a>
@@ -146,8 +141,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="text-center">
-                                                                <a href="${pageContext.request.contextPath}/user/instructor-course-edit.html"
-                                                                   class="btn btn-sm btn-white">Edit</a>
+                                                                <a href="../rate?id=${mtor.mentorID}"
+                                                                   class="btn btn-sm btn-white">View Detail</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -168,6 +163,67 @@
                                         </div>
                                     </div>
                                 </c:forEach>
+                                 </div>
+                            <ul class="pagination justify-content-center pagination-sm">
+                                <li class="page-item disabled" id="prevBtn">
+                                    <a class="page-link"
+                                       href="#0"
+                                       aria-label="Previous"
+                                       onclick="paginate(document.getElementById('pageNow').innerHTML - 1)">
+                                        <span aria-hidden="true"
+                                              class="material-icons">chevron_left</span>
+                                        <span>Prev</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="#0"
+                                       aria-label="1"
+                                       onclick="paginate(1)">
+                                        1
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="#0"
+                                       aria-label="1"
+                                       onclick="paginate(2)">
+                                        <span>2</span>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="#0"
+                                       aria-label="1"
+                                       onclick="paginate(3)">
+                                        <span>3</span>
+                                    </a>
+                                </li>
+                                <li class="page-item" id="nextBtn">
+                                    <a class="page-link"
+                                       href="#0"
+                                       aria-label="Next"
+                                       onclick="paginate(Number(document.getElementById('pageNow').innerHTML) + 1)">
+                                        <span>Next</span>
+                                        <span aria-hidden="true"
+                                              class="material-icons">chevron_right</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <h1 style="display: none" id="pageNow">1</h1>
+                            <!--                                <div class="page" >
+                                                            <a href="#">1</a>&nbsp;                                                                   
+                                                            <a href="#">2</a>&nbsp;                                
+                                                            <a href="#">3</a>&nbsp;                    
+                                                            <a href="#">4</a>&nbsp;
+                                                        </div>-->
+
+
+
+
+
+
+                            <%--</c:forEach>--%>
                                 <!--                  
                                                   <div class="col-md-6">
                                                      <div class="card">
@@ -319,30 +375,40 @@
                                                         </div>
                                                      </div>
                                                   </div>-->
-                            </div>
+                            
                             <!-- End of List of mentors -->
                             <!-- Pagination -->
-                            <ul class="pagination justify-content-center pagination-sm">
+                            <!--                            <ul class="pagination justify-content-center pagination-sm">
                                 <li class="page-item ">
                                     <a class="page-link" href="#" aria-label="Previous">
                                         <span aria-hidden="true" class="material-icons">chevron_left</span>
                                         <span>Prev</span>
                                     </a>
                                 </li>
-                                <c:forEach begin="1" end="${requestScope.num}" var="i">                                                        
+                            
+                            <%--<c:forEach begin="1" end="${requestScope.num}" var="i">                                                    
                                     <li class="page-item">
                                         <a class="${requestScope.page==i?"active":""} page-link" href="home?page=${i}">
                                             <span>${i}</span>
                                         </a>
                                     </li>                              
-                                </c:forEach>
+                            </c:forEach>--%>
                                 <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Next">
                                         <span>Next</span>
                                         <span aria-hidden="true" class="material-icons">chevron_right</span>
                                     </a>
                                 </li> 
-                            </ul>
+                        </ul>-->
+
+
+
+
+
+
+
+
+
 
                             <!-- end of pagination -->
                             <div class="row">
@@ -355,13 +421,14 @@
                                                     <p class="card-subtitle">Your recent courses</p>
                                                 </div>
                                                 <div class="media-right">
-                                                    <a class="btn btn-sm btn-primary" href="${pageContext.request.contextPath}/user/student-my-courses.html">My
+                                                    <a class="btn btn-sm btn-primary"href="${pageContext.request.contextPath}/listCourse">My
                                                         courses</a>
                                                 </div>
                                             </div>
                                         </div>
                                         <ul class="list-group list-group-fit mb-0" style="z-index: initial;">
-                                            <li class="list-group-item" style="z-index: initial;">
+                                            <c:forEach var="course" items="${requestScope.courseList}">
+                                                <li class="list-group-item" style="z-index: initial;">
                                                 <div class="d-flex align-items-center">
                                                     <a href="${pageContext.request.contextPath}/user/student-take-course.html"
                                                        class="avatar avatar-4by3 avatar-sm mr-3">
@@ -369,15 +436,16 @@
                                                              class="avatar-img rounded">
                                                     </a>
                                                     <div class="flex">
-                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html" class="text-body"><strong>Learn
-                                                                Vue.js Fundamentals</strong></a>
+                                                        <a href="${pageContext.request.contextPath}/course?id=${course.courseID}" class="text-body"><strong>
+                                                            ${course.subject.subjectName}
+                                                            </strong></a>
                                                         <div class="d-flex align-items-center">
                                                             <div class="progress" style="width: 100px;">
                                                                 <div class="progress-bar bg-primary" role="progressbar"
-                                                                     style="width: 25%" aria-valuenow="25" aria-valuemin="0"
+                                                                     style="width: ${course.slotDone/course.slots*100.0}%" aria-valuenow="${course.slotDone/course.slots}" aria-valuemin="0"
                                                                      aria-valuemax="100"></div>
                                                             </div>
-                                                            <small class="text-muted ml-2">25%</small>
+                                                            <small class="text-muted ml-2"><fmt:formatNumber type="number" maxFractionDigits="2" value="${course.slotDone/course.slots*100.0}"/>%</small>
                                                         </div>
                                                     </div>
                                                     <div class="dropdown ml-3">
@@ -392,90 +460,12 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item" style="z-index: initial;">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="${pageContext.request.contextPath}/user/student-take-course.html"
-                                                       class="avatar avatar-4by3 avatar-sm mr-3">
-                                                        <img src="${pageContext.request.contextPath}/user/assets/images/vuejs.png" alt="course"
-                                                             class="avatar-img rounded">
-                                                    </a>
-                                                    <div class="flex">
-                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html" class="text-body"><strong>Angular
-                                                                in Steps</strong></a>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="progress" style="width: 100px;">
-                                                                <div class="progress-bar bg-success" role="progressbar"
-                                                                     style="width: 100%" aria-valuenow="100"
-                                                                     aria-valuemin="0" aria-valuemax="100"></div>
-                                                            </div>
-                                                            <small class="text-muted ml-2">100%</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown ml-3">
-                                                        <a href="#" class="dropdown-toggle text-muted" data-caret="false"
-                                                           data-toggle="dropdown">
-                                                            <i class="material-icons">more_vert</i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item"
-                                                               href="${pageContext.request.contextPath}/user/student-take-course.html">Continue</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item" style="z-index: initial;">
-                                                <div class="d-flex align-items-center">
-                                                    <a href="${pageContext.request.contextPath}/user/student-take-course.html"
-                                                       class="avatar avatar-4by3 avatar-sm mr-3">
-                                                        <img src="${pageContext.request.contextPath}/user/assets/images/nodejs.png" alt="course"
-                                                             class="avatar-img rounded">
-                                                    </a>
-                                                    <div class="flex">
-                                                        <a href="${pageContext.request.contextPath}/user/student-take-course.html"
-                                                           class="text-body"><strong>Bootstrap Foundations</strong></a>
-                                                        <div class="d-flex align-items-center">
-                                                            <div class="progress" style="width: 100px;">
-                                                                <div class="progress-bar bg-warning" role="progressbar"
-                                                                     style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-                                                                     aria-valuemax="100"></div>
-                                                            </div>
-                                                            <small class="text-muted ml-2">80%</small>
-                                                        </div>
-                                                    </div>
-                                                    <div class="dropdown ml-3">
-                                                        <a href="#" class="dropdown-toggle text-muted" data-caret="false"
-                                                           data-toggle="dropdown">
-                                                            <i class="material-icons">more_vert</i>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item"
-                                                               href="${pageContext.request.contextPath}/user/student-take-course.html">Continue</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                            </c:forEach>
+
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="col-lg-5">
-                                    <div class="card card-2by1">
-                                        <div class="card-header">
-                                            <h4 class="card-title">Rewards</h4>
-                                            <p class="card-subtitle">Your latest achievements</p>
-                                        </div>
-                                        <div class="card-body text-center">
-                                            <div class="btn btn-primary btn-circle"><i class="material-icons">thumb_up</i>
-                                            </div>
-                                            <div class="btn btn-danger btn-circle"><i class="material-icons">grade</i></div>
-                                            <div class="btn btn-success btn-circle"><i
-                                                    class="material-icons">bubble_chart</i></div>
-                                            <div class="btn btn-warning btn-circle"><i
-                                                    class="material-icons">keyboard_voice</i></div>
-                                            <div class="btn btn-info btn-circle"><i
-                                                    class="material-icons">event_available</i></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                                 <div id="demo" class="carousel slide" data-ride="carousel" >
 
                                     <!-- Indicators -->
@@ -551,6 +541,72 @@
         <!-- Student Dashboard Page JS -->
         <!-- <script src="assets/js/chartjs-rounded-bar.js"></script> -->
         <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
+
+
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+        <script>
+//            var mkeyList = new List('easyPaginateList', {
+//                valueNames: ['module-name'],
+//                page: 1,
+//                pagination: true
+//            });
+//
+//            $('.nav').append('<div class="btn-next"> > </div><div class="btn-last"> >> </div>');
+//            $('.nav').prepend('<div class="btn-first"> << </div><div class="btn-prev"> < </div>');
+//
+//            $('.btn-next').on('click', function () {
+//                $('.pagination .active').next().trigger('click');
+//            })
+//            $('.btn-prev').on('click', function () {
+//                $('.pagination .active').prev().trigger('click');
+//            })
+//            $('.btn-first').on('click', function () {
+//                //
+//            })
+//            $('.btn-last').on('click', function () {
+//                //
+//            })
+
+        </script>
+
+        <script type="text/javascript">
+            var numPerPage = 4;          
+            function paginate(page) {
+                var items = [];
+                var pageitems = [];
+                pageitems = document.getElementsByClassName("page-item");
+                for (var i = 0; i < pageitems.length; i++) {
+                    pageitems[i].className = "page-item";
+                }
+                pageitems[page].className = "page-item active";
+                if (page === 3) {
+                    document.getElementById("nextBtn").className = "page-item disabled";
+                } else {
+                    document.getElementById("nextBtn").className = "page-item active";
+                }
+                if (page === 1) {
+                    document.getElementById("prevBtn").className = "page-item disabled";
+                } else {
+                    document.getElementById("prevBtn").className = "page-item active";
+                }
+                items = document.getElementsByClassName("Paginate");
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = "none"
+                }
+                for (var i = (page - 1) * 4; i < page * 4; i++) {
+                    if (i === items.length) {
+                        break;
+                    }
+                    items[i].style.display = "block"
+                }
+                if (page <= 3 && page >= 1)
+                    document.getElementById("pageNow").innerHTML = page;
+            }
+            paginate(1);
+
+
+        </script>
     </body>
     <!-- Mirrored from learnplus.demo.frontendmatter.com/student-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 21 Sep 2021 16:13:01 GMT -->
 </html>
