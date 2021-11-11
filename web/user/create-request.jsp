@@ -72,6 +72,7 @@
 
             <div class="mdk-header-layout__content">
 
+
                 <div data-push
                      data-responsive-width="992px"
                      class="mdk-drawer-layout js-mdk-drawer-layout">
@@ -79,110 +80,134 @@
                     <div class="mdk-drawer-layout__content page ">
                         <div class="container-fluid page__container">
                             <ol class="breadcrumb">
-                                <c:if test="${sessionScope.userCommon.role eq 1}">
-                                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentor/home">Home</a></li>
-                                    </c:if>
+                                
                                     <c:if test="${sessionScope.userCommon.role eq 2}">
                                     <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/mentee/home">Home</a></li>
-                                    </c:if>
-                                <li class="breadcrumb-item active">Request Mentor</li>
+                                    <li class="breadcrumb-item active">Request Mentor</li>
+                                    </c:if> 
+                                   
                             </ol>
 
                             <div class="card-header flex-container " >
-                                <div class="media align-items-center">
-                                    <div class="media-body">
-                                        <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>      
-                                    </div>
 
+                                <div class="card">
+                                    <div class="card-header">
+                                        <div class="media align-items-center">
+                                            <div class="media-body">
+                                                <h4 class="card-title " style="font-weight: bold ;text-transform: uppercase">Request Form</h4>      
+                                                <p class="card-subtitle">Your request create</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                </br>
-                                <p><strong>1.Subject's Information</strong></p>
+                                    <form action="createRequest" method="POST">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <p><strong>1.Subject's Information</strong></p>
+                                                        Subject: <select name="subject">
+                                                            <c:forEach items="${requestScope.sNameList}" var="sName">
+                                                                <option value="${sName}">${sName}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        Level: <select name="level">
+                                                            <c:forEach begin="1" end="12" var="i">
+                                                                <option value="${i}">
+                                                                    Grade ${i}
+                                                                </option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        </br>
+                                                        </br>
+                                                        CourseType: 
+                                                        <select name="learnType">
+                                                            <option value="1">Offline</option>
+                                                            <option value="2">Online</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>          
 
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                        <p><strong>2.Time and Fees</strong></p>
+                                                        Budget per lesson: </br>
+                                                        <input type="number" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
+                                                        Length of each lesson: </br> 
+                                                        <input type="number" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
+                                                        <div class="row">     
+                                                            <div class=" col-6">
+                                                                Start Time: <input  type="date" name="startTime">
+                                                            </div>
+                                                            <div class="col-6">
+                                                                End Time: <input  type="date" name="endTime">
+                                                            </div>
+                                                        </div>
 
-                                <form action="createRequest" method="POST">
-                                    Subject: <select name="subject">
-                                        <c:forEach items="${requestScope.sNameList}" var="sName">
-                                            <option value="${sName}">${sName}</option>
-                                        </c:forEach>
-                                    </select>
-                                    Level: <select name="level">
-                                        <c:forEach begin="1" end="12" var="i">
-                                            <option value="${i}">
-                                                Grade ${i}
-                                            </option>
-                                        </c:forEach>
-                                    </select>
+                                                        </br> 
 
-                                    </br>
-                                    </br>
-                                    CourseType: 
-                                    <select name="learnType">
-                                        <option value="1">Offline</option>
-                                        <option value="2">Online</option>
-                                    </select>
-                                    </br>
-                                    </br>
-                                    <p><strong>2.Time and Fees</strong></p>
+                                                        <table>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td>Monday</td>
+                                                                <td>Tuesday</td>
+                                                                <td>Wednesday</td>
+                                                                <td>Thursday</td>
+                                                                <td>Friday</td>
+                                                                <td>Saturday</td>
+                                                                <td>Sunday</td>
+                                                            </tr>
 
-
-                                    Budget per lesson: </br>
-                                    <input type="number" required="" name="moneyPerSlot" style="border-radius:  5px"> </br></br> 
-                                    Length of each lesson: </br> 
-                                    <input type="number" required="" id="timePerSlot" name="timePerSlot" style="border-radius:  5px"></br></br>
-                                    <div class="row">     
-                                        <div class=" col-6">
-                                            Start Time: <input  type="date" required="" name="startTime">
-                                        </div>
-                                        <div class="col-6">
-                                            End Time: <input  type="date" required="" name="endTime">
-                                        </div>
-                                    </div>
-
-                                    </br> 
-
-                                    <table>
-                                        <tr>
-                                            <td></td>
-                                            <td>Monday</td>
-                                            <td>Tuesday</td>
-                                            <td>Wednesday</td>
-                                            <td>Thursday</td>
-                                            <td>Friday</td>
-                                            <td>Saturday</td>
-                                            <td>Sunday</td>
-                                        </tr>
-                                        <tr>
-                                            <td>From</td>
+                                                            <tr>
+                                                                <td>From</td>
                                             <c:forEach begin="2" end="8" var="i">
                                                 <td><input type="time" name="${i}" class="time time-start"></td>
                                                 </c:forEach>
-                                        </tr>
-                                        <tr>
-                                            <td>To</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>To</td>
                                             <c:forEach begin="2" end="8" var="i">
                                                 <td><input type="time" name="${i}" class="time time-start"></td>
                                                 </c:forEach>
 
-                                        </tr>
-                                    </table>
-                                    </br>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <div class="media align-items-center">
+                                                    <div class="media-body">
+                                                       </br>
                                     <c:if test="${sessionScope.userCommon.role eq 1}">
                                         <p><strong> 3.Mentor's expectation from Mentee</strong></p>
                                     </c:if>
                                     <c:if test="${sessionScope.userCommon.role eq 2}">
                                         <p><strong> 3.Mentee's expectation from Mentor</strong></p>
                                     </c:if>
+                                                        Detail Description: </br>
+                                                        <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
+                                                        <input type="text" id="timeJson" name="timeJson" hidden>
 
-                                    Detail Description: </br>
-                                    <textarea type="text" name="description" rows="4" cols="70"> </textarea></br>   
-                                    <input type="text" id="timeJson" name="timeJson" hidden>
-                                    <div class="form-group " style="text-align: center;">
-                                        <button type="submit " style="border-radius: 5px; width: 10%;"
-                                                class="btn btn-primary">
-                                            Submit
-                                        </button>
-                                    </div>
-                                </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group " style="text-align: center;">
+                                            <button type="submit " style="border-radius: 5px; width: 10%;"
+                                                    class="btn btn-primary">
+                                                Submit
+                                            </button>
+                                        </div>
+                                    </form>
                             </div>
                         </div>
                     </div>
@@ -197,6 +222,13 @@
                 </div>
             </div>
         </div>
+
+
+
+
+
+
+
 
         <!-- jQuery -->
         <script src="${pageContext.request.contextPath}/user/assets/vendor/jquery.min.js"></script>
@@ -227,7 +259,7 @@
         <script src="${pageContext.request.contextPath}/user/assets/js/page.student-dashboard.js"></script>
 
 
-        <script>
+      <script>
             $(document).ready(function () {
                 var arr = [];
                 for (let i = 2; i <= 8; i++) {
