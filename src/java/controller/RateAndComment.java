@@ -74,6 +74,7 @@ public class RateAndComment extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
+        //Get Mentee detail session
         Mentee m = (Mentee) session.getAttribute("user");
         
         int id2 = Integer.parseInt(request.getParameter("id"));
@@ -82,12 +83,15 @@ public class RateAndComment extends HttpServlet {
         
         request.setAttribute("mentor", mt);
         RateAndCommentDAO rate = new RateAndCommentDAO();
+        //Get Rating Score
         float rateStarAvg = rate.getRatebyMentorID(id2);
         request.setAttribute("starAvg", rateStarAvg);
+        //check Learned
         if (rate.CheckLearned(m.getMenteeID(), id2) == false) {
         request.setAttribute("errorComment", "You haven't studied this person to rate them");
         
-        }else if(rate.checkRated(m.getMenteeID(), id2)==false){
+        }//check Rated
+        else if(rate.checkRated(m.getMenteeID(), id2)==false){
             request.setAttribute("update", "");
         }
         request.getRequestDispatcher("/user/mentee/mentee_comment_rate.jsp").forward(request, response);
@@ -109,6 +113,7 @@ public class RateAndComment extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         Mentee m = (Mentee) session.getAttribute("user");
+        //Comment + rate stars
         int RateStar = Integer.parseInt(request.getParameter("star"));     
         String Comment = request.getParameter("comment");
         int menteeid = Integer.parseInt(request.getParameter("mentee"));
