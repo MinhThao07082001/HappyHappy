@@ -240,7 +240,7 @@
                                             </li>
                                         </ul>
                                     </div>
-
+                                    <h4>Your Rating: ${requestScope.starAvg}</h4>
                                     <!--COmment Section-->
                                     <%--<c:if test="${sessionScope.user == '2' }">--%>
                                     <%--</c:if>--%>
