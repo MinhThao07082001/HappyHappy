@@ -246,16 +246,16 @@
                                     <form action="rate" method="POST">
                                         <div class="card">
                                             <div class="row comment">
-                                                <div class="col-2"> <img src="https://i.imgur.com/xELPaag.jpg" width="70" class="rounded-circle mt-2"> </div>
+                                                <div class="col-2"> <img src="${sessionScope.user.img}" width="70" class="rounded-circle mt-2"> </div>
                                                 <div class="col-10">
                                                     <div class="comment-box ml-2">
                                                         <h3 style="color:red" >${requestScope.errorComment}</h3>
                                                         <c:if test="${requestScope.errorComment eq null}">
                                                     
                                                             <h4>${requestScope.update ne null ? "Add":"Update"} a comment</h4>
-                                                            <input type="text" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly "> 
-                                                                   <input type="text" name ="mentee" value="${sessionScope.user.menteeID}" reaonly ">
-                                                                   <input type="text" name ="id" value="${param.id}" reaonly ">
+                                                            <input type="hidden" name="mtorid" value="${requestScope.mentor.mentorID}" reaonly > 
+                                                                   <input type="hidden" name ="mentee" value="${sessionScope.user.menteeID}" reaonly >
+                                                                   <input type="hidden" name ="id" value="${param.id}" reaonly >
                                                                    <div class="rating">
                                                                 <input type="radio" name="star" value="5" id="5">
                                                                 <label for="5">☆</label> 
@@ -265,7 +265,7 @@
                                                                 <label for="3">☆</label> 
                                                                 <input type="radio" name="star" value="2" id="2">
                                                                 <label for="2">☆</label> 
-                                                                <input type="radio" name="star" value="1" id="1">
+                                                                <input type="radio" name="star" value="1" id="1" checked>
                                                                 <label for="1">☆</label> 
                                                             </div>
                                                             <div class="comment-area"> 
