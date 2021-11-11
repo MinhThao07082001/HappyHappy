@@ -6,6 +6,7 @@
 package controller;
 
 import dal.MentorDAO;
+import dal.RateAndCommentDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -68,6 +69,10 @@ public class MentorProfile extends HttpServlet {
         MentorDAO tod = new MentorDAO();
         String email = (String)session.getAttribute("email");
         Mentor m = tod.getMentorByEmail(email);
+        RateAndCommentDAO rate = new RateAndCommentDAO();
+        //Get Rating Score
+        float rateStarAvg = rate.getRatebyMentorID(m.getMentorID());
+        request.setAttribute("starAvg", rateStarAvg);
         request.setAttribute("mentor", m);
         request.getRequestDispatcher("/user/mentor/mentor_profile.jsp").forward(request, response);
     }
